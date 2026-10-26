@@ -1,0 +1,355 @@
+---
+title: "150-fig5-global-reference"
+subtitle: "Figure 5: local observations and a separate global reference analysis"
+author:
+  - name: Jinlong Ru
+    orcid: "0000-0002-6757-6018"
+  - name: Cunli Pan
+    orcid: "0000-0002-2595-7533"
+date: today
+params:
+  name: "150-fig5-global-reference"
+---
+
+**Updated: `r format(Sys.time(), '%Y-%m-%d %H:%M:%S %Z %z', tz = 'Europe/Berlin')`.**
+
+```{r}
+#| label: params
+#| eval: !expr interactive()
+#| include: false
+params <- list(name = "150-fig5-global-reference")
+```
+
+```{r}
+#| label: setup
+#| include: false
+#| message: false
+#| warning: false
+#| cache: false
+wd <- "analyses"
+if (basename(getwd()) != wd) {
+    setwd(here::here(wd))
+}
+here::i_am(paste0(params$name, ".qmd"), uuid = "b4509dce-6b02-4eef-acd3-018d16dad407")
+qproj::proj_create_dir_target(params$name, clean = FALSE)
+
+# convenience helpers
+path_target <- qproj::proj_path_target(params$name)
+path_source <- qproj::proj_path_source(params$name)
+path_raw <- path_source("00-raw")
+path_resource <- here::here(path_raw, "d00-resource")
+path_data <- here::here(path_raw, paste0("d", params$name))
+dir.create(path_raw, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_data, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_resource, recursive = TRUE, showWarnings = FALSE)
+```
+
+```{r}
+#| label: packages
+#| message: false
+#| warning: false
+#| cache: false
+# qproj template chunk, trimmed to what figure steps use: ggplot2 and
+# patchwork plus the project helpers in R/.
+suppressPackageStartupMessages({
+  library(ggplot2)
+  library(patchwork)
+  devtools::load_all()
+})
+```
+
+```{r}
+#| label: step-guard
+#| cache: false
+# Checks params$name, path_target() and here() against config/workflow.yml
+# and opens a staging folder for this run's outputs.
+step <- rwv_step_begin(params$name, path_target)
+# New outputs are staged; the previous result stays until rwv_step_finish()
+# has checked and published the new one.
+path_target <- step$path_target
+```
+
+```{r}
+#| label: report-presentation
+#| include: false
+rwv_report_setup(step)
+```
+
+<!-- RWV_REPORT_SUMMARY_POSITION -->
+
+<details class="rwv-analysis-details">
+<summary>Analysis steps, methods and full verification</summary>
+
+## Tasks
+
+Figure 5 separates local catalogue carriage proportions in recovered-sequence gene-count bins (a) from per-feature results in a separate global reference catalogue (b,c). The two parts have no shared data axis, shared Venn diagram or global-validation arrow. Both global feature sets use the same reference catalogue; panel c checks support for the same 38 profiles and is not an independent replication.
+
+### Task 1: Inputs
+
+```{r}
+#| label: inputs
+manifest <- rwv_read_tsv(rwv_step_input(step, path_source, "010-input-manifest", "input-manifest.tsv"))
+style <- rwv_style_read(rwv_project_input(step, "config/style.yml", manifest))
+style <- rwv_style_for_figure(style, "fig5")   # v39: figure-specific text sizes (config/style.yml figure_text_pt)
+palettes <- rwv_palettes_read(rwv_project_input(step, "config/palettes.yml", manifest))
+figures <- rwv_figures_read(rwv_project_input(step, "config/figures.yml", manifest))
+defs <- rwv_definitions_read(rwv_project_input(step, "config/definitions.tsv", manifest))
+up5 <- function(f) as.data.frame(rwv_read_tsv(rwv_step_input(step, path_source, "050-global-inputs", f)))
+bins <- up5("local_carriage_bins.tsv")
+fits <- up5("global_feature_fits.tsv")
+medians <- up5("global_group_medians.tsv")
+support <- up5("global_profile_support.tsv")
+num <- as.numeric
+for (k in c("lo_inclusive", "hi_exclusive", "n", "k", "rate", "percent")) bins[[k]] <- num(bins[[k]])
+for (k in c("carriers", "slope", "se", "cluster_se")) fits[[k]] <- num(fits[[k]])
+for (k in c("slope", "carriers", "carrier_clusters", "single_carrier_cluster")) support[[k]] <- num(support[[k]])
+for (k in c("n_features", "median_slope", "n_positive", "n_negative")) medians[[k]] <- num(medians[[k]])
+fonts <- rwv_fonts_resolve(style)
+spec <- rwv_figure_spec(figures, "fig5", params$name)
+checks <- rwv_checks_new()
+pt <- style$text_pt; ink <- style$colours$text; fam <- style$font$family
+```
+
+### Task 2: Panel a: six local catalogue bins
+
+```{r}
+#| label: panel-a
+rwv_check_def(checks, defs, "catalogue_votu", sum(bins$n), "local_carriage_bins.tsv")
+rwv_check_def(checks, defs, "antidefense_union", sum(bins$k), "local_carriage_bins.tsv")
+rwv_check(checks, "highest bin 17 / 18", c(17, 18), c(bins$k[6], bins$n[6]))
+# All vOTUs fall in the six bins (sum checked above), so the last [120, 300) bin
+# is shown as an open "≥120" bin; the others as closed integer ranges.
+top <- seq_len(nrow(bins)) == nrow(bins)
+bins$disp <- ifelse(top, paste0("≥", bins$lo_inclusive), rwv_fmt_range(bins$lo_inclusive, bins$hi_exclusive - 1))
+bins$disp <- factor(bins$disp, levels = bins$disp)
+bins$txt <- rwv_fmt_frac(bins$k, bins$n)
+```
+
+### Task 3: Panel b: all global per-feature coefficients
+
+```{r}
+#| label: panel-b
+rwv_check_def(checks, defs, "global_metab", sum(fits$group == "285 metabolic-related Pfam domains"), "global_feature_fits.tsv")
+rwv_check_def(checks, defs, "global_adf", sum(fits$group == "38 non-NARP anti-defense profiles"), "global_feature_fits.tsv")
+rwv_check(checks, "group medians (6 dp)", round(medians$median_slope, 6),
+          round(unname(tapply(fits$slope, fits$group, median))[match(medians$group, sort(unique(fits$group)))], 6))
+fits$group <- factor(fits$group, levels = c("285 metabolic-related Pfam domains", "38 non-NARP anti-defense profiles"))
+med_lab <- data.frame(group = factor(medians$group, levels = levels(fits$group)), median_slope = medians$median_slope,
+                      txt = sprintf("median %s; %d positive, %d negative of %d",
+                                    rwv_fmt_num(medians$median_slope, 2), medians$n_positive, medians$n_negative, medians$n_features))
+med_lab$yi <- as.integer(med_lab$group)
+grp_col <- c("285 metabolic-related Pfam domains" = palettes$feature_group$METAB,
+             "38 non-NARP anti-defense profiles" = palettes$feature_group$ADF)
+grp_shape <- c("285 metabolic-related Pfam domains" = palettes$feature_group_shape$METAB,
+               "38 non-NARP anti-defense profiles" = palettes$feature_group_shape$ADF)
+```
+
+### Task 4: Panel c: coefficients, carrier genomes and gene-sharing clusters for 38 profiles
+
+```{r}
+#| label: panel-c
+rwv_check_def(checks, defs, "global_adf", nrow(support), "global_profile_support.tsv")
+rwv_check_def(checks, defs, "global_single_cluster", sum(support$single_carrier_cluster == 1), "global_profile_support.tsv")
+support <- support[order(-support$slope), ]
+support$lab <- sprintf("%s%s", support$profile, ifelse(support$single_carrier_cluster == 1, " *", ""))
+```
+
+### Task 5: Assemble and export
+
+```{r}
+#| label: assemble
+# 2026-10-18 (v38): adopted panel-consult version D (outputs/fig345-visual-review-2026-10-17, code/final-figure5.R,
+# draw_mixed): local bins (a), both fixed sets on one coefficient axis with medians and sign counts (b), and all 38
+# profiles in two sorted columns with genomes and clusters (c). Drawn with grid at absolute mm positions on the
+# W x H page and handed to rwv_figure_export as one patchwork element inside a W x H viewport.
+W <- spec$width_mm; H <- spec$height_mm; S <- pt; L <- style$line_mm; K <- style$colours
+rwv_check(checks, "page size of the adopted layout (mm)", c(180, 226), c(W, H), source = "config/figures.yml")
+colM <- palettes$feature_group$METAB; colA <- palettes$feature_group$ADF; fillA <- palettes$function_calls$anti_defense_derived
+n_ref <- rwv_def(defs, "global_references")
+rwv_check(checks, "every coefficient lies on the -15 to 12.5 axis", TRUE, all(fits$slope > -15 & fits$slope < 12.5))
+# Carried over from v36 with the panel C axis of the adopted layout (row_table: -15 to 12.5).
+coef_lim <- c(-15, 12.5)
+rwv_check(checks, "every coefficient lies inside the panel C axis", TRUE,
+          all(support$slope > coef_lim[1] & support$slope < coef_lim[2]))
+support <- support[order(-support$slope), ]
+support$single <- support$single_carrier_cluster == 1
+tx <- function(label, x, y, size = S$ordinary, bold = FALSE, colour = K$text, just = "left", rot = 0)
+  grid::grid.text(label, unit(x, "mm"), unit(H - y, "mm"), just = just, rot = rot,
+                  gp = grid::gpar(fontfamily = fam, fontsize = size, fontface = if (bold) "bold" else "plain", col = colour))
+ln <- function(x0, y0, x1, y1, colour = K$grey_rule, width = L$thin, lty = 1)
+  grid::grid.lines(unit(c(x0, x1), "mm"), unit(H - c(y0, y1), "mm"), gp = grid::gpar(col = colour, lwd = rwv_lwd(width), lty = lty))
+rect <- function(x, y, w, h, fill = "white", colour = NA, width = L$thin)
+  grid::grid.rect(unit(x, "mm"), unit(H - y, "mm"), width = unit(w, "mm"), height = unit(h, "mm"), just = c("left", "top"),
+                  gp = grid::gpar(fill = fill, col = colour, lwd = rwv_lwd(width)))
+dot <- function(x, y, r = .5, colour = colA, fill = colA, shape = "circle") {
+  if (shape == "circle") grid::grid.circle(unit(x, "mm"), unit(H - y, "mm"), r = unit(r, "mm"), gp = grid::gpar(col = colour, fill = fill, lwd = rwv_lwd(L$thin)))
+  else { rd <- r * sqrt(pi / 2); grid::grid.polygon(unit(x + c(0, rd, 0, -rd), "mm"), unit(H - y + c(rd, 0, -rd, 0), "mm"),
+                                                    gp = grid::gpar(col = colour, fill = fill, lwd = rwv_lwd(L$thin))) }
+}
+# v50 figure cleanup (2026-10-19, Codex task book docs/figure-cleanup-v49-2026-10-19/00): panel letters only; the
+# explanatory titles, the a footnote, the c ordering line and the c footer are not drawn (caption / figure notes carry
+# them). Short data-identity labels keep local (a) and global (b, c) apart. Values and order unchanged; page size unchanged.
+panel <- function(id, y) tx(rwv_tag(style, id), 4, y, S$tag, TRUE)
+xmap <- function(v, x0 = 26, x1 = 174) x0 + (v + 15) / 27.5 * (x1 - x0)
+tick_lab <- function(v) ifelse(v < 0, paste0(rwv_minus, abs(v)), as.character(v))
+axis_slope <- function(y, x0 = 26, x1 = 174, label = TRUE, labelled = c(-15, -10, -5, 0, 5, 10)) {
+  ln(x0, y, x1, y, K$grey_dark, L$main)
+  for (v in c(-15, -10, -5, 0, 5, 10)) { xx <- xmap(v, x0, x1); ln(xx, y, xx, y + 1, K$grey_dark)
+    if (v %in% labelled) tx(tick_lab(v), xx, y + 3, S$minimum, just = "centre") }
+  if (label) tx("Log-odds change per 10-fold increase in CDS count", (x0 + x1) / 2, y + 8, S$ordinary, just = "centre")
+}
+draw_local <- function(yshift = -8) {
+  panel("A", 7)
+  x0 <- 25; x1 <- 174; top <- 17 + yshift; base <- 41 + yshift
+  for (v in c(0, 50, 100)) { yy <- base - (base - top) * v / 100; ln(x0, yy, x1, yy, K$grey_pale); tx(as.character(v), x0 - 2, yy, S$minimum, just = "right") }
+  for (i in seq_len(nrow(bins))) {
+    xx <- x0 + (i - .5) * (x1 - x0) / 6; w <- (x1 - x0) / 6 * .66; hh <- (base - top) * bins$percent[i] / 100
+    rect(xx - w / 2, base - hh, w, hh, fillA, colA, L$hairline)
+    tx(bins$txt[i], xx, base - hh - 2, S$minimum, just = "centre")
+    tx(as.character(bins$disp[i]), xx, base + 4, S$minimum, just = "centre")
+  }
+  ln(x0, base, x1, base, K$grey_dark, L$main)
+  tx("Local carriage (%)", 7, (top + base) / 2, S$minimum, just = "centre", rot = 90)
+  tx("Predicted genes per recovered vOTU", (x0 + x1) / 2, base + 10, S$ordinary, just = "centre")
+}
+jitter <- function(n, amp = 3.0) ((seq_len(n) * .61803398875) %% 1 - .5) * amp * 2
+draw_distributions <- function(ytop = 59, axis_y = 94) {
+  panel("B", ytop)
+  tx("Global reference", 4, ytop + 5, S$minimum, TRUE)
+  xs <- c(51, 174)
+  grp <- c("285 metabolic-related Pfam domains", "38 non-NARP anti-defense profiles")
+  for (j in 1:2) {
+    metab <- j == 1; v <- fits$slope[fits$group == grp[j]]; yy <- ytop + 12 + (j - 1) * 12; cj <- if (metab) colM else colA
+    tx(if (metab) "285 metabolic" else "38 non-NARP", 4, yy - 1, S$minimum, colour = cj)
+    tx(if (metab) "Pfam domains" else "anti-defense profiles", 4, yy + 3, S$minimum, colour = cj)
+    jj <- jitter(length(v), 2.5)
+    for (i in seq_along(v)) dot(xmap(v[i], xs[1], xs[2]), yy + jj[i], r = if (metab) .32 else .47, colour = NA, fill = cj)
+    m <- medians[medians$group == grp[j], ]
+    xx <- xmap(m$median_slope, xs[1], xs[2]); ln(xx, yy - 3.4, xx, yy + 3.4, cj, L$emphasis)
+    tx(sprintf("median %s; %d positive / %d negative", rwv_fmt_num(m$median_slope, 2), as.integer(m$n_positive), as.integer(m$n_negative)),
+       174, yy - 6, S$minimum, colour = cj, just = "right")
+  }
+  ln(xmap(0, xs[1], xs[2]), ytop + 7, xmap(0, xs[1], xs[2]), axis_y, K$grey_ref)
+  axis_slope(axis_y, xs[1], xs[2])
+}
+row_table <- function(d, x0, y0, step = 4.4) {
+  px0 <- x0 + 22; px1 <- x0 + 54; gx <- x0 + 65; cx <- x0 + 81
+  tx("Profile", x0, y0 - 6, S$minimum, TRUE); tx("Genomes", gx, y0 - 6, S$minimum, TRUE, just = "right"); tx("Clusters", cx, y0 - 6, S$minimum, TRUE, just = "right")
+  yy <- y0 + (seq_len(nrow(d)) - 1) * step
+  ln(xmap(0, px0, px1), y0 - 2, xmap(0, px0, px1), tail(yy, 1) + 2, K$grey_ref)
+  for (i in seq_len(nrow(d))) {
+    tx(d$profile[i], x0, yy[i], S$minimum, bold = d$single[i])
+    ln(xmap(0, px0, px1), yy[i], xmap(d$slope[i], px0, px1), yy[i], fillA, L$thin)
+    dot(xmap(d$slope[i], px0, px1), yy[i], .65, colA, if (d$single[i]) "white" else colA, if (d$single[i]) "diamond" else "circle")
+    tx(rwv_fmt_int(d$carriers[i]), gx, yy[i], S$minimum, just = "right"); tx(rwv_fmt_int(d$carrier_clusters[i]), cx, yy[i], S$minimum, just = "right")
+  }
+  # v39: the narrow column axes label -10 to 10 only (at 9.2 pt the "-15" and "-10" labels would touch); the -15 tick stays.
+  axis_slope(tail(yy, 1) + 3, px0, px1, FALSE, labelled = c(-10, -5, 0, 5, 10))
+}
+draw_page <- function() {
+  draw_local(-4)
+  draw_distributions(52, 87)
+  panel("C", 104)
+  row_table(support[1:19, ], 4, 116); row_table(support[20:38, ], 94, 116)
+  tx("Coefficient", 42, 207, S$minimum, just = "centre"); tx("Coefficient", 132, 207, S$minimum, just = "centre")
+  dot(5, 215, .6, colA, "white", "diamond"); tx("Hollow diamond / bold name: one carrier cluster", 8, 215, S$minimum)
+}
+page <- grid::gTree(children = grid::gList(rwv_capture_grob(draw_page(), width = rwv_mm_to_in(W), height = rwv_mm_to_in(H), style = style, fonts = fonts)),
+                    vp = grid::viewport(width = unit(W, "mm"), height = unit(H, "mm"), clip = "off"))
+fig <- patchwork::wrap_elements(full = page)
+expected_text <- c(rwv_tag(style, c("A", "B", "C")), "Local carriage (%)",
+                   "Predicted genes per recovered vOTU", "Global reference", "Pfam domains", "anti-defense profiles",
+                   "median 4.05; 269 positive / 16 negative", "median 1.36; 26 positive / 12 negative",
+                   "Log-odds change per 10-fold increase in CDS count",
+                   "Profile", "Genomes", "Clusters", "Coefficient", "17/18", "76/1,077", "≥120", "gp4.5", "samase",
+                   "Hollow diamond / bold name: one carrier cluster")
+res <- rwv_figure_export(fig, path_target, "fig5", spec, style, fonts, expected_text, step)
+knitr::kable(res$qa[, c("format", "check", "observed", "pass")])
+```
+
+
+### Task 6: Record plot values, caption and checks
+
+```{r}
+#| label: values-legend
+vals <- rbind(
+  # The open top bin is labelled as drawn ("≥120") with its computed bounds kept (Codex final review 2026-10-12).
+  data.frame(panel = "A", item = ifelse(top, paste0(bins$disp, " (bin ", bins$label, ")"), as.character(bins$label)), value = bins$k, value2 = bins$n, unit = "vOTUs carrying / vOTUs in bin"),
+  data.frame(panel = "B", item = paste(fits$group, fits$feature), value = fits$slope, value2 = fits$carriers,
+             unit = "log-odds per 10-fold CDS (value2 = carrier genomes)"),
+  data.frame(panel = "C", item = support$profile, value = support$carriers, value2 = support$carrier_clusters,
+             unit = "carrier genomes (value2 = gene-sharing clusters)"),
+  data.frame(panel = "C", item = paste(support$profile, "coefficient"), value = support$slope, value2 = NA,
+             unit = "log-odds per 10-fold CDS (the panel B value)")
+)
+rwv_write_tsv(vals, path_target("fig5-plot-values.tsv"))
+# Figure-expression revision 2026-10-07 (Codex 03/04): short submission caption; detail in notes_en.
+legend_en <- paste0(
+  "The local observation is shown first and the separate reference second; they are not the same effect measured twice. ",
+  "(a) Local catalogue: percentage of vOTUs with at least one candidate anti-defense annotation (DefenseFinder anti-defense call or filtered dbAPIS hit; the union of Fig. 3c) ",
+  sprintf("in six ordered bins of predicted genes per recovered vOTU; labels give carriers/vOTUs in the bin (all %s vOTUs, %s carriers). ",
+          rwv_fmt_int(sum(bins$n)), rwv_fmt_int(sum(bins$k))),
+  "The gene count does not separate recovery completeness from detection opportunity; no trend is fitted and the bins do not establish a cause. ",
+  sprintf("(b) Separate global reference: coefficient of every feature in two fixed sets, %d metabolic-related Pfam domains (navy) and %d non-NARP anti-defense profiles (ochre), ",
+          medians$n_features[medians$group == "285 metabolic-related Pfam domains"], medians$n_features[medians$group == "38 non-NARP anti-defense profiles"]),
+  "each from a logit model of presence against log10(CDS count) in 77,951 Caudoviricetes reference genomes labelled Complete by their source. ",
+  "All features are shown, including negative coefficients; the vertical bar marks each set's median, with the numbers of positive and negative coefficients. ",
+  "The metabolic domains are a second fixed class, not a baseline or null, and the coefficients are associations with coding capacity, not functional demand. ",
+  sprintf("(c) All %d anti-defense profiles of b, sorted by coefficient with the order continuing from the left column to the right; each column has its own axis on the same coefficient scale, beside carrier genomes and gene-sharing clusters; ", nrow(support)),
+  "hollow diamonds and bold names mark the four profiles whose carriers fall in one cluster, which is not one genome; support counts are not confidence intervals. ",
+  "Panels a and b use different units and feature definitions; the global arm does not validate the local observation. ",
+  sprintf("Details: Supplementary figure notes, %s.", spec$label)
+)
+notes_en <- c(
+  sprintf("Bins (a): %s genes; every vOTU falls in one bin, so the last bin is open-ended; %d of %d vOTUs in the highest bin carry a candidate. The gene count is the number of genes predicted on the recovered sequence. No fitted line, confidence interval or trend test is drawn.",
+          paste(levels(bins$disp), collapse = ", "), bins$k[6], bins$n[6]),
+  "Reference models (b): each feature is fitted as binary presence against log10(CDS count) with a logit link; points are jittered vertically only. The two sets come from the same reference catalogue and are not two independent cohorts; the median describes the fixed set rather than testing one set against the other.",
+  "Support check (c): profiles are ordered by coefficient and split into two columns of 19 rows, the right column continuing the order of the left; each column has its own axis on the same coefficient scale; exact coefficients are in Data 2. This is a support check on the same reference set, not a further replication. Supplementary Note 4 summarizes the global sensitivity analyses and limits, with direct navigation to the complete Data 2 tables."
+)
+abbrev <- c("CDS, coding sequence", "NARP, NAD+ reconstitution pathway",
+            "vOTU, viral operational taxonomic unit")
+rwv_write_legend(path_target("fig5-legend.md"), spec$label, "A local observation and a separate global reference", legend_en,
+  abbreviations = abbrev, notes = notes_en,
+  can_read = "Local candidate anti-defense carriage rises across predicted-gene-count bins, reaching 17/18 in the highest bin. The separate global catalogue supplies coefficient distributions for 285 metabolic domains and 38 non-NARP anti-defense profiles, including negative values, plus carrier-genome and gene-sharing-cluster support for the same 38 profiles.",
+  cannot_infer = "Local and global panels are not on a common data axis; global results do not validate the local trend. A median is not a between-set test and a cluster is not a genome. The local pattern does not separate recovery completeness from detection opportunity and does not establish causation.",
+  sources = c("analyses/data/050-global-inputs/local_carriage_bins.tsv (production-inputs/local_carriage_bins_display.tsv)",
+              "analyses/data/050-global-inputs/global_feature_fits.tsv, global_group_medians.tsv (dev/280 global_primary/full_feature_fits.tsv, fixed_universe.tsv)",
+              "analyses/data/050-global-inputs/global_profile_support.tsv (global_fixed38_display.tsv; profile_cluster_support.tsv filtered to the fixed 38)"))
+check_table <- rwv_checks_finish(checks, path_target("fig5-checks.tsv"))
+knitr::kable(check_table[, c("check", "expected", "observed", "pass")])
+rwv_write_session_info(path_target("session-info.txt"),
+                       c(step = params$name, run_id = step$run_id, mode = step$mode, quarto = rwv_quarto_version()))
+```
+
+```{r}
+#| label: step-record
+outputs <- rwv_step_finish(step, path_target)
+knitr::kable(transform(outputs, sha256 = substr(outputs$sha256, 1, 16)), caption = "Outputs recorded in step-record.json")
+rwv_report_complete(step, outputs)
+```
+
+</details>
+
+## Published figure preview
+
+```{r}
+#| label: preview
+#| out-width: "100%"
+knitr::include_graphics(path_target("fig5.png"))
+```
+
+<details class="rwv-file-details">
+<summary>All output files</summary>
+
+```{r}
+#| label: list-files-target
+rwv_report_files(step, outputs)
+```
+
+</details>
+
+```{r}
+#| label: report-summary
+#| results: asis
+cat(rwv_report_summary(step))
+```

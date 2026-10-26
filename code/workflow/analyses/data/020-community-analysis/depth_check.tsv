@@ -1,0 +1,4 @@
+metric	spearman_rho
+observed_unrarefied~mapped_viral_reads	0.8571428571428569
+observed_unrarefied~clean_reads	0.6428571428571427
+observed_rarefied~mapped_viral_reads	0.8571428571428569

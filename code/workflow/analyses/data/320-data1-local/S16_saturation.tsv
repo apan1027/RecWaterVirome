@@ -1,0 +1,22 @@
+layer	sample_id	location	total_reads	observed_taxa	singletons	doubletons	goods_coverage	chao1	pct_of_chao1	new_taxa_per_1Mr	omic	definition
+Virome (vOTUs)	bc1	Beijing	11082843	2067	520	238	0.9999530806310258	2635.0672268907565	78.44202147506321	46.9193689741883	virome	unmasked positive counts (SQLite virus_abundance_count); not the masked alpha definition
+Virome (vOTUs)	bc2	Beijing	4289845	1717	349	159	0.9999186450792512	2100.0220125786163	81.7610477278615	81.35492074888487	virome	unmasked positive counts (SQLite virus_abundance_count); not the masked alpha definition
+Virome (vOTUs)	bd1	Beijing	6914350	2322	45	84	0.9999934917960474	2334.0535714285716	99.48357777318736	6.5082039526492	virome	unmasked positive counts (SQLite virus_abundance_count); not the masked alpha definition
+Virome (vOTUs)	gc1	Garching	2395771	1675	441	193	0.999815925645648	2178.836787564767	76.8758821018488	184.07435435189757	virome	unmasked positive counts (SQLite virus_abundance_count); not the masked alpha definition
+Virome (vOTUs)	gd1	Garching	3161066	1215	304	62	0.9999038299105428	1960.2903225806451	61.98061511625993	96.17008945716414	virome	unmasked positive counts (SQLite virus_abundance_count); not the masked alpha definition
+Virome (vOTUs)	oc1	Oberschleissheim	1823749	1077	317	108	0.9998261822213472	1542.2268518518515	69.83408431170656	173.8177786526545	virome	unmasked positive counts (SQLite virus_abundance_count); not the masked alpha definition
+Virome (vOTUs)	od1	Oberschleissheim	1723001	1043	209	65	0.999878700012362	1379.0076923076922	75.63409586603522	121.29998763784816	virome	unmasked positive counts (SQLite virus_abundance_count); not the masked alpha definition
+16S bacteria (ASVs)	bc1	Beijing	100282	1308	19	28	0.9998105342932928	1314.446428571429	99.50957084052222	189.465706707086	bact_16s	retained amplicon count table
+16S bacteria (ASVs)	bc2	Beijing	88103	1005	20	34	0.9997729929741326	1010.8823529411764	99.41809717777132	227.0070258674506	bact_16s	retained amplicon count table
+16S bacteria (ASVs)	bd1	Beijing	90544	1384	20	32	0.9997791129174766	1390.25	99.55044056824312	220.887082523414	bact_16s	retained amplicon count table
+16S bacteria (ASVs)	gc1	Garching	73230	618	13	19	0.9998224771268606	622.4473684210526	99.28550289603857	177.52287313942372	bact_16s	retained amplicon count table
+16S bacteria (ASVs)	gd1	Garching	87118	485	18	16	0.9997933836864942	495.125	97.9550618530674	206.6163135058197	bact_16s	retained amplicon count table
+16S bacteria (ASVs)	oc1	Oberschleissheim	63564	659	11	21	0.9998269460701026	661.8809523809524	99.56473254433612	173.05392989742623	bact_16s	retained amplicon count table
+16S bacteria (ASVs)	od1	Oberschleissheim	97890	437	12	29	0.99987741342323	439.4827586206897	99.43507257748136	122.5865767698437	bact_16s	retained amplicon count table
+18S microeukaryotes (ASVs)	bc1	Beijing	93962	191	2	3	0.9999787147996	191.66666666666663	99.65217391304348	21.285200400161767	euk_18s_microeuk	retained amplicon count table
+18S microeukaryotes (ASVs)	bc2	Beijing	104166	118	2	5	0.9999807998771192	118.4	99.66216216216216	19.20012288078644	euk_18s_microeuk	retained amplicon count table
+18S microeukaryotes (ASVs)	bd1	Beijing	98500	149	0	1	1	149	100	0	euk_18s_microeuk	retained amplicon count table
+18S microeukaryotes (ASVs)	gc1	Garching	51620	272	2	5	0.9999612553273924	272.4	99.8531571218796	38.74467260751646	euk_18s_microeuk	retained amplicon count table
+18S microeukaryotes (ASVs)	gd1	Garching	52969	267	0	3	1	267	100	0	euk_18s_microeuk	retained amplicon count table
+18S microeukaryotes (ASVs)	oc1	Oberschleissheim	69346	182	4	5	0.9999423182303232	183.6	99.1285403050109	57.68176967669368	euk_18s_microeuk	retained amplicon count table
+18S microeukaryotes (ASVs)	od1	Oberschleissheim	58898	69	6	10	0.9998981289687257	70.8	97.45762711864408	101.8710312744066	euk_18s_microeuk	retained amplicon count table

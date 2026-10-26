@@ -1,0 +1,131 @@
+{
+  "step": "090-style-proof",
+  "status": "complete",
+  "run_id": "20261020T001926-86706",
+  "mode": "launcher",
+  "qmd": "analyses/090-style-proof.qmd",
+  "source_contract": "rwv-source-v1",
+  "sources": [
+    {
+      "path": "analyses/_quarto.yml",
+      "sha256": "f0a3aa48cc56e27741842f9b2de3347ce9248fe5f891412a3574bd30eae244a3"
+    },
+    {
+      "path": "analyses/090-style-proof.qmd",
+      "sha256": "2425d9c35f25bbde21d9220de523b2bdc9ba8c53430cfb3e9424029c30643e90"
+    },
+    {
+      "path": "DESCRIPTION",
+      "sha256": "542f81044f872f6abab362c51697985b128b55c5a1eae811ab9aaf63a0d41d12"
+    },
+    {
+      "path": "NAMESPACE",
+      "sha256": "53248d066122bbbf7fefbbca5b547a05a2ef79b4d01f8adce5487c937d37351f"
+    },
+    {
+      "path": "R/community.R",
+      "sha256": "e43790efd903763a406173508ab07c3e875e61aa6ab006b8efc32a5669018bef"
+    },
+    {
+      "path": "R/export.R",
+      "sha256": "b7cc60626548945b094ab3b70e59feae0eed56289ed081c9233fbf0fe16d1951"
+    },
+    {
+      "path": "R/figures.R",
+      "sha256": "b8c4a6f75680a85b60ee94752ece28837afed188a77be4511b068d82909a601b"
+    },
+    {
+      "path": "R/fonts.R",
+      "sha256": "5423a0f88176e82fd1f8ada882972dc56adeb330d692101318af6318783d5adf"
+    },
+    {
+      "path": "R/literature-summary.R",
+      "sha256": "9b225ec26f45adaf1597bb3f0851143466b28537dbc99dbeb636107dee16a079"
+    },
+    {
+      "path": "R/report.R",
+      "sha256": "3eb3fbd7a788c9b4d4cd8e61403415637b4bcde87faad9d5069be57d20f1b4ea"
+    },
+    {
+      "path": "R/sfig-sharing-hosts.R",
+      "sha256": "2428b3b776a1ea14cd26d7df769519b85e244bf7c69869eab19c83d793e9bf57"
+    },
+    {
+      "path": "R/style.R",
+      "sha256": "e03dbf78ae81c5108c6a28abe2638e06c70b49c3f3fee20fbe50f4292efc97b2"
+    },
+    {
+      "path": "R/workflow.R",
+      "sha256": "f235287b127dc0411c60b883ddc44ad25592b07efe2dd9f3a7fcc019b66a46f1"
+    },
+    {
+      "path": "scripts/gfm-from-knit.R",
+      "sha256": "9e8f8570c3f8a07f9e7208a0e26cd501e44dfc00e03331a44eff78f0b01dc29a"
+    },
+    {
+      "path": "scripts/render-step.R",
+      "sha256": "3632f5636861fd03d4ffbee5e2b51724abe6ced71f38e933613901272a1b820a"
+    },
+    {
+      "path": "scripts/render.R",
+      "sha256": "c8dbba5879978f032ddf8d7104987b9d548370555844dc411445f59810216654"
+    }
+  ],
+  "started": "2026-10-20T00:22:50+0200",
+  "finished": "2026-10-20T00:22:53+0200",
+  "inputs": [
+    {
+      "kind": "upstream",
+      "path": "010-input-manifest/input-manifest.tsv",
+      "sha256": "70ee8c390a17b829c9918447651b445edf633ac557ff7822648889529dea4536"
+    },
+    {
+      "kind": "project",
+      "path": "config/style.yml",
+      "sha256": "07c316c563f2f4ae746f894f3a5c260481dc553abdd81ed4f70c70617b359326"
+    },
+    {
+      "kind": "project",
+      "path": "config/samples.tsv",
+      "sha256": "d78164d7c020f6f56899cdbb7e22f9bde3b38252493c582b9790976074dc13d5"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "style-proof.pdf",
+      "bytes": 53081,
+      "sha256": "b2082256c1c6cdbe722ede55669a3f97c2086f1e1c1b56c73e5b70a98582a2fc"
+    },
+    {
+      "file": "style-proof.svg",
+      "bytes": 31880,
+      "sha256": "0a08dd5fbb3c4764b6c6179248171f46470892c46e4ef345a47d9929fdf24db5"
+    },
+    {
+      "file": "style-proof.png",
+      "bytes": 220958,
+      "sha256": "31d79a3436aa9716b162337087902acf37f27f17f6f1f2163c470a008d28156e"
+    },
+    {
+      "file": "style-proof.tiff",
+      "bytes": 548214,
+      "sha256": "de2238b858b4ed62927131afe54d586537ec18d5e99f103b173125e58e753bb8"
+    },
+    {
+      "file": "style-proof-values.tsv",
+      "bytes": 1203,
+      "sha256": "8b0b579f8d1126a35571678a60fd0317e95da720647d4e822b3b8a4755c408f3"
+    },
+    {
+      "file": "style-proof-export.json",
+      "bytes": 9287,
+      "sha256": "c497edf6fbf24b105f8e84b1f29452ae091d2015a85f432883cc109c0ea65369"
+    },
+    {
+      "file": "session-info.txt",
+      "bytes": 13764,
+      "sha256": "cfb8fa7bf4b4e92f372218af3e6a62076bad0568d4861a0b00cdebac224271c8"
+    }
+  ],
+  "output_dir_files": []
+}

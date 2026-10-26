@@ -1,0 +1,14 @@
+# Single switch for the source of the community results read by 020.
+# Authors (display order): Jinlong Ru, Cunli Pan
+#   render-r3-baseline      : archived community tables (the R3 formal baseline)
+#   analysis-v2026.09.28.1  : community results computed in this project: 012
+#                             builds the TSEs from the migrated SQLite snapshot
+#                             and amplicon tables, and 020 (Task 2, functions in
+#                             R/community.R) computes the community tables
+# There is no per-file fallback: with the rebuilt version every community
+# table must be computed in 020, and a missing one is an error. The retired
+# step 013 is kept only in _graveyard/2026-09-28-workflow-simplification/.
+active: analysis-v2026.09.28.1
+versions:
+  render-r3-baseline: archived
+  analysis-v2026.09.28.1: rebuilt

@@ -1,0 +1,10 @@
+file	content	method
+composition_full / feature_taxonomy	per-assay taxon sums and within-sample shares	virome trimmed_tpm by tax_class; 16S relabundance by gtdb_phylum (p__ removed); microeukaryote relabundance by Division; empty -> Unclassified
+alpha_summary	amplicon alpha on the rarefied assay	mia::addAlpha observed, shannon, pielou, faith
+virome_alpha / viral_load_per_sample / virome_depth_check / label_pairs	virome alpha, load and depth diagnostics	round(count_masked); vegan::rrarefy x 100 at depth 1648195, seed 42; Spearman rho (n = 7)
+permanova_marginal	marginal PERMANOVA for every distance	adonis2(~ location + water_condition, by = margin, 999 permutations); set.seed(42) once per assay before its distances
+betadisper_summary	dispersion checks (parametric, permutation, bias-adjusted median)	vegan::betadisper; permutest 9999 permutations requested, set.seed(42) before every call; failed tests are undetermined
+pcoa_aitchison / pcoa-eigen / distances	Aitchison and other distances, PCoA	Aitchison = Euclidean on clr; Bray and binary Jaccard on relabundance (virome trimmed_tpm/1e6); UniFrac on rarefied; cmdscale k = 2, % = eig / sum(|eig|)
+crossomics_pairwise	Procrustes, Mantel and RV for the three assay pairs	full-rank PCoA (k = 6); set.seed(42) once; per pair protest then Mantel (spearman), 999 permutations each
+corrected_host_members	200 archived iPHoP records with recomputed host_in_16s_clean, visibility_status, in_127_named_visible_set, host_prevalence_saved, n_codetected_saved	final 16S TSE counts summed by gtdb_genus (empty and bare g__ excluded); present = count > 0; co-detection with count_masked > 0
+crispr_host_edges_primary	29 archived strict edges with recomputed host_visible_in_16s, n_codetected_masked, n_codetected_raw, votu_prevalence	filtered 16S table before rarefaction by g__ + Genus; masked = count > 0 and covered_fraction >= 0.75; raw = count > 0

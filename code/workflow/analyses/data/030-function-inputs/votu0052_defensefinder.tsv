@@ -1,0 +1,4 @@
+vOTU_id	vcontig_id	hit_id	gene_name	hit_pos	model_fqn	sys_id	hit_i_eval	hit_score	hit_profile_cov	hit_seq_cov	type	subtype	activity
+vOTU0052	vctg2997	vctg2997-cat_1_101	narp2_nmnat	87128	defense-finder-models/ADF/NADP/NARP2	vctg2997-cat_1_NARP2_18	3.4e-116	390.8	0.869	0.981	NADP	NARP2	Antidefense
+vOTU0052	vctg2997	vctg2997-cat_1_103	narp2_nampt	87130	defense-finder-models/ADF/NADP/NARP2	vctg2997-cat_1_NARP2_18	2.5e-162	543.7	0.863	0.965	NADP	NARP2	Antidefense
+vOTU0052	vctg2997	vctg2997-cat_1_166	atd1	87193	defense-finder-models/ADF/Anti_Thoeris/atd1	vctg2997-cat_1_atd1_19	1.2e-33	117.5	0.931	0.827	Anti_Thoeris	atd1	Antidefense

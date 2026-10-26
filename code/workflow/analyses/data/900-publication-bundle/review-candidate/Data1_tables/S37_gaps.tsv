@@ -1,0 +1,3 @@
+item	status	consequence
+read-rarefaction curve values	not exported: only PNG files analyses/data/115-supp-qc/figures/panel_a_rarefaction.png and panel_i_crossomic_rarefaction.png in the source project	S1 shows saved end-point diagnostics; curves are not redrawn (re-running vegan::rarefy is outside this task)
+rarefaction curve with the masked alpha definition	not done in the source project	masked alpha saturation cannot be claimed from the unmasked curves

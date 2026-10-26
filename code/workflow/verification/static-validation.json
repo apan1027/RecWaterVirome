@@ -1,0 +1,19 @@
+{
+  "python_syntax": "PASS",
+  "unchanged_shared_scientific_sources": [
+    "community.R",
+    "fonts.R",
+    "style.R",
+    "sfig-sharing-hosts.R",
+    "literature-summary.R"
+  ],
+  "original_archived_reports_byte_identical": 11,
+  "history_hashes": "PASS",
+  "frozen_register": "PASS",
+  "current_code_chinese_files": [],
+  "preexisting_export_functions_identical": true,
+  "scientific_expression_comparison": "19 steps match under explicit normalization of output-only report/legend/preview calls, the input-staging status label, the font-aware capture device, and the CheckV literal NA token. The latter was separately compared across all 3060 saved values: identical numeric values/missingness, 47 missing values retained.",
+  "all_21_qmd_R_bodies_and_shared_R_parse": true,
+  "report_entrypoints_checked": 21,
+  "latest_verification": "The earlier static/AST scope is historical. The seven-file Claude patch and final run are accepted in ../../review-2026-10-20/Codex-acceptance.md; scientific outputs compared directly to sealed references."
+}

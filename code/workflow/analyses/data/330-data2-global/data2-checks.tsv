@@ -1,0 +1,26 @@
+check	expected	observed	tolerance	pass	source
+no empty sheet	TRUE	TRUE	0	TRUE	
+sheet names unique and <= 31 characters	TRUE, TRUE	TRUE, TRUE	0	TRUE	
+definitions.tsv:global_metab	285	285	0	TRUE	G01_feature_fits
+definitions.tsv:global_adf	38	38	0	TRUE	G01_feature_fits
+definitions.tsv:global_adf	38	38	0	TRUE	G03_profile_support
+six local bins retained	6	6	0	TRUE	
+numeric columns are numeric after conversion (feature slopes)	TRUE	TRUE	0	TRUE	
+per-feature fits of the two separate adjustments cover both sets twice	646	646	0	TRUE	G01 row count
+aggregation members cover the fixed 38	38	38	0	TRUE	definitions.tsv global_adf
+resampling detail sheets: 500 replicate rows and 80,750 feature rows	  500, 80750	  500, 80750	0	TRUE	
+valid replicates rebuilt from the detail equal the G07 summary	76, 10, 76, 10	76, 10, 76, 10	0	TRUE	G17 valid column
+Firth slope and raw_slope are the same coefficient wherever the fit is valid	0	0	0	TRUE	G12 columns
+G01 keeps the 8 original columns first and adds the 13 opportunity fields	 8, 21	 8, 21	0	TRUE	
+G01 gamma valid 320/323 and null_valid 323/323	320, 323	320, 323	0	TRUE	
+G01 residual identity on the delivered values (|diff| <= 1e-12)	TRUE	TRUE	0	TRUE	
+repair fits: 364 rows, 19 corrected	364,  19	364,  19	0	TRUE	
+status index refers only to sheets of this workbook	TRUE	TRUE	0	TRUE	
+field dictionary agrees with the delivered values (missing rules, ranges, code sets)			0	TRUE	rwv_field_dictionary_check
+every delivered field has exactly one dictionary row	215	215	0	TRUE	
+no duplicated sheet/field pair in the dictionary	FALSE	FALSE	0	TRUE	
+every field of the model, resampling and construct sheets is curated	0	0	0	TRUE	
+every numeric field is curated and states a unit or code	0	0	0	TRUE	
+workbook written	written	written	0	TRUE	
+workbook sheets read back equal INDEX, FIELDS plus every sheet	INDEX, FIELDS, G01_feature_fits, G02_group_medians, G03_profile_support, ... (27 values)	INDEX, FIELDS, G01_feature_fits, G02_group_medians, G03_profile_support, ... (27 values)	0	TRUE	readxl on the written file
+feature-fit sheet read back: rows and numeric slope column	323, TRUE	323, TRUE	0	TRUE	readxl on the written file

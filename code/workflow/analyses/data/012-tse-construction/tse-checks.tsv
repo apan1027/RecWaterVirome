@@ -1,0 +1,26 @@
+check	expected	observed	tolerance	pass	source
+calculation sample order has the seven samples	7	7	0	TRUE	
+SQLite integrity check	ok	ok	0	TRUE	
+SQLite has no 16S/18S ASV or tree table (amplicons come from the ampliseq files)	FALSE	FALSE	0	TRUE	
+sample aliases are one-to-one for all seven samples	TRUE	TRUE	0	TRUE	
+virome abundance tables: 3,060 rows each, identical row and column order	TRUE	TRUE	0	TRUE	
+virome abundance: no missing value, no negative value	FALSE, FALSE	FALSE, FALSE	0	TRUE	
+catalogue tables keyed on vOTU_id without duplicates (3,060)	3060, 3060,    0,    0	3060, 3060,    0,    0	0	TRUE	
+abundance vOTU set equals the catalogue	TRUE	TRUE	0	TRUE	
+taxonomy join key is unique (no row duplicated by the join)	FALSE	FALSE	0	TRUE	
+cargo join: every catalogue vOTU matched	0	0	0	TRUE	
+nreads aliases map one-to-one onto the seven samples	TRUE	TRUE	0	TRUE	
+16s ASV IDs unique; taxonomy, tree tips and registered order cover exactly the same ASVs	TRUE, TRUE, TRUE, TRUE	TRUE, TRUE, TRUE, TRUE	0	TRUE	
+16s tree: one tip per ASV, branch lengths present	TRUE, TRUE	TRUE, TRUE	0	TRUE	
+16s sample columns and metadata IDs are the seven aliased samples	TRUE, TRUE	TRUE, TRUE	0	TRUE	
+18s ASV IDs unique; taxonomy, tree tips and registered order cover exactly the same ASVs	TRUE, TRUE, TRUE, TRUE	TRUE, TRUE, TRUE, TRUE	0	TRUE	
+18s tree: one tip per ASV, branch lengths present	TRUE, TRUE	TRUE, TRUE	0	TRUE	
+18s sample columns and metadata IDs are the seven aliased samples	TRUE, TRUE	TRUE, TRUE	0	TRUE	
+18S taxonomy keeps the PR2 Subdivision needed to remove Metazoa	TRUE	TRUE	0	TRUE	
+trimmed_tpm sums to one million per sample	TRUE	TRUE	0	TRUE	
+virome TSE: 3,060 x 7 in calculation order	3060,    7,    1	3060,    7,    1	0	TRUE	
+breadth mask removes positive counts (cells with reads but covered_fraction < 0.75)	TRUE	TRUE	0	TRUE	
+16S/18S trees pruned to the surviving rows	TRUE, TRUE	TRUE, TRUE	0	TRUE	
+16S rarefied totals equal the depth	TRUE	TRUE	0	TRUE	
+18S rarefied totals equal the depth	TRUE	TRUE	0	TRUE	
+microeukaryote rarefied totals are not equal among samples (Metazoa removed after rarefaction)	TRUE	TRUE	0	TRUE	

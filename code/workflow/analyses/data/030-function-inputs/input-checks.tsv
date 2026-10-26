@@ -1,0 +1,102 @@
+check	expected	observed	tolerance	pass	source
+definitions.tsv:amg_ko	138	138	0	TRUE	amg_ko_matrix_tpm.tsv
+KO total_TPM equals the row sum	431615.0014416, 117560.7597346,  93675.1934569,  88352.2677979,  83452.2004330, ... (138 values)	431615.0014416, 117560.7597346,  93675.1934569,  88352.2677979,  83452.2004330, ... (138 values)	1e-6	TRUE	
+samples_detected equals positive cells	7, 1, 5, 6, 7, ... (138 values)	7, 1, 5, 6, 7, ... (138 values)	0	TRUE	
+curated pathway rows	68	68	0	TRUE	
+pathway total_TPM equals row sum	489923.9945006, 333329.9258145, 330894.9286101, 199575.2671402, 185785.1510084, ... (68 values)	489923.9945006, 333329.9258145, 330894.9286101, 199575.2671402, 185785.1510084, ... (68 values)	1e-6	TRUE	
+definitions.tsv:amg_carriers_dbid	560	560	0	TRUE	amg_carrier_contributions.tsv (dbID level)
+definitions.tsv:amg_carriers_ko	544	544	0	TRUE	amg_carrier_contributions.tsv (KO level)
+KO-level contribution rows	731	731	0	TRUE	
+every KO row has carriers	K00010, K00012, K00059, K00067, K00287, ... (138 values)	K00010, K00012, K00059, K00067, K00287, ... (138 values)	0	TRUE	
+carrier TPM sums reproduce the KO matrix totals	431615.0014416, 117560.7597346,  93675.1934569,  88352.2677979,  83452.2004330, ... (138 values)	431615.0014416, 117560.7597346,  93675.1934569,  88352.2677979,  83452.2004330, ... (138 values)	1e-6	TRUE	
+carrier TPM sums reproduce KO matrix column bc1	74028.3381136,     0.0000000, 14374.0362227,   199.4639142,  6144.2734712, ... (138 values)	74028.3381136,     0.0000000, 14374.0362227,   199.4639142,  6144.2734712, ... (138 values)	1e-6	TRUE	
+carrier TPM sums reproduce KO matrix column bd1	 33682.71197687, 117560.75973458,  27511.30896859,   1244.08922749,   3069.78322702, ... (138 values)	 33682.71197687, 117560.75973458,  27511.30896859,   1244.08922749,   3069.78322702, ... (138 values)	1e-6	TRUE	
+carrier TPM sums reproduce KO matrix column bc2	80979.7774833,     0.0000000, 47966.2857402,  1053.5728398,   978.4758349, ... (138 values)	80979.7774833,     0.0000000, 47966.2857402,  1053.5728398,   978.4758349, ... (138 values)	1e-6	TRUE	
+carrier TPM sums reproduce KO matrix column gc1	61297.357099,     0.000000,     0.000000, 76393.537523, 56071.021956, ... (138 values)	61297.357099,     0.000000,     0.000000, 76393.537523, 56071.021956, ... (138 values)	1e-6	TRUE	
+carrier TPM sums reproduce KO matrix column gd1	43984.1196280,     0.0000000,  2366.1503676,  2616.8790130,  1552.2112202, ... (138 values)	43984.1196280,     0.0000000,  2366.1503676,  2616.8790130,  1552.2112202, ... (138 values)	1e-6	TRUE	
+carrier TPM sums reproduce KO matrix column oc1	74716.3897780,     0.0000000,     0.0000000,  6844.7252808,   713.9526358, ... (138 values)	74716.3897780,     0.0000000,     0.0000000,  6844.7252808,   713.9526358, ... (138 values)	1e-6	TRUE	
+carrier TPM sums reproduce KO matrix column od1	62926.3073631,     0.0000000,  1457.4121578,     0.0000000, 14922.4820875, ... (138 values)	62926.3073631,     0.0000000,  1457.4121578,     0.0000000, 14922.4820875, ... (138 values)	1e-6	TRUE	
+contribution fractions sum to 1 per KO	1, 1, 1, 1, 1, ... (138 values)	1, 1, 1, 1, 1, ... (138 values)	1e-9	TRUE	
+carriers per KO equal saved n_contributing_vOTU	146,   1,  33,  10,  13, ... (138 values)	146,   1,  33,  10,  13, ... (138 values)	0	TRUE	
+definitions.tsv:k00558_carriers	146	146	0	TRUE	amg_carrier_contributions.tsv
+curated_pathway-level contribution rows	934	934	0	TRUE	amg_carrier_contributions.tsv
+curated_pathway-level contribution fractions sum to 1 per feature	1, 1, 1, 1, 1, ... (68 values)	1, 1, 1, 1, 1, ... (68 values)	1e-9	TRUE	
+dbID-level contribution rows	772	772	0	TRUE	amg_carrier_contributions.tsv
+dbID-level contribution fractions sum to 1 per feature	1, 1, 1, 1, 1, ... (145 values)	1, 1, 1, 1, 1, ... (145 values)	1e-9	TRUE	
+pathway carriers cover exactly the pathways of the pathway matrix	map00010, map00020, map00030, map00040, map00051, ... (68 values)	map00010, map00020, map00030, map00040, map00051, ... (68 values)	0	TRUE	
+carrier TPM sums reproduce the pathway matrix totals	489923.9945006, 333329.9258145, 330894.9286101, 199575.2671402, 185785.1510084, ... (68 values)	489923.9945006, 333329.9258145, 330894.9286101, 199575.2671402, 185785.1510084, ... (68 values)	1e-6	TRUE	
+carrier TPM sums reproduce pathway matrix column bc1	 76126.3586381,  50383.4636085, 153690.1939260,  21114.3906737,  12263.8254245, ... (68 values)	 76126.3586381,  50383.4636085, 153690.1939260,  21114.3906737,  12263.8254245, ... (68 values)	1e-6	TRUE	
+carrier TPM sums reproduce pathway matrix column bd1	 36520.4113829, 148647.5102498,  19853.3481640,  39762.3135447,   7860.2498842, ... (68 values)	 36520.4113829, 148647.5102498,  19853.3481640,  39762.3135447,   7860.2498842, ... (68 values)	1e-6	TRUE	
+carrier TPM sums reproduce pathway matrix column bc2	80979.7774833, 60443.5285780, 54645.9292278, 49019.8585800,  8161.6644106, ... (68 values)	80979.7774833, 60443.5285780, 54645.9292278, 49019.8585800,  8161.6644106, ... (68 values)	1e-6	TRUE	
+carrier TPM sums reproduce pathway matrix column gc1	 61297.357099,  32621.627175,  32621.627175,  76393.537523,  89462.403112, ... (68 values)	 61297.357099,  32621.627175,  32621.627175,  76393.537523,  89462.403112, ... (68 values)	1e-6	TRUE	
+carrier TPM sums reproduce pathway matrix column gd1	46719.0637982, 11163.6841856, 10805.9766405,  4983.0293806, 29118.9805693, ... (68 values)	46719.0637982, 11163.6841856, 10805.9766405,  4983.0293806, 29118.9805693, ... (68 values)	1e-6	TRUE	
+carrier TPM sums reproduce pathway matrix column oc1	108189.3760923,   5656.8785541,  42104.5133548,   6844.7252808,  10565.2267774, ... (68 values)	108189.3760923,   5656.8785541,  42104.5133548,   6844.7252808,  10565.2267774, ... (68 values)	1e-6	TRUE	
+carrier TPM sums reproduce pathway matrix column od1	80091.650007, 24413.233464, 17173.340122,  1457.412158, 28352.800831, ... (68 values)	80091.650007, 24413.233464, 17173.340122,  1457.412158, 28352.800831, ... (68 values)	1e-6	TRUE	
+definitions.tsv:amg_carriers_dbid	560	560	0	TRUE	amg_dbid_carriers.tsv
+definitions.tsv:amg_carriers_ko	544	544	0	TRUE	amg_ko_carriers.tsv
+every KO-level carrier is also a dbID-level carrier	TRUE	TRUE	0	TRUE	
+dbID carriers minus KO carriers	16	16	0	TRUE	definitions.tsv amg_carriers_dbid and amg_carriers_ko
+selection provenance hash of the KO matrix equals the staged source	b19100e40f49818f6278fdd73c7837de554f9bf7819a1da3e8e63db0d1dc67c9	b19100e40f49818f6278fdd73c7837de554f9bf7819a1da3e8e63db0d1dc67c9	0	TRUE	
+selection provenance hash of the driver summary equals the staged source	23bc0d7d1620f5ba2f59562511a1e27662f8b6155816b43be2e886f2359e859a	23bc0d7d1620f5ba2f59562511a1e27662f8b6155816b43be2e886f2359e859a	0	TRUE	
+top 10 by total_TPM (ties by KO) + K13522 equals the frozen list	K00558, K13381, K00820, K01939, K00560, K01858, K00390, K13010, K06217, K03462, K13522	K00558, K13381, K00820, K01939, K00560, K01858, K00390, K13010, K06217, K03462, K13522	0	TRUE	
+selection file order equals the frozen list	K00558, K13381, K00820, K01939, K00560, K01858, K00390, K13010, K06217, K03462, K13522	K00558, K13381, K00820, K01939, K00560, K01858, K00390, K13010, K06217, K03462, K13522	0	TRUE	
+saved selection totals equal the KO matrix	431615.00144, 117560.75973,  93675.19346,  88352.26780,  83452.20043,  82606.51154,  73263.48947,  72552.20253,  59487.56104,  59206.79621,  45005.47854	431615.00144, 117560.75973,  93675.19346,  88352.26780,  83452.20043,  82606.51154,  73263.48947,  72552.20253,  59487.56104,  59206.79621,  45005.47854	1e-6	TRUE	
+K13522 is not in the top 10	TRUE	TRUE	0	TRUE	
+rank fractions sum to 1 per displayed KO	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1	1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1	1e-9	TRUE	
+top-1 fraction equals the saved selection value	0.1408863246, 1.0000000000, 0.3115063924, 0.5000692766, 0.6783835028, 0.5348519605, 0.2061770594, 0.3534367282, 0.9411623031, 0.5706248794, 0.7506835177	0.1408863246, 1.0000000000, 0.3115063924, 0.5000692766, 0.6783835028, 0.5348519605, 0.2061770594, 0.3534367282, 0.9411623031, 0.5706248794, 0.7506835177	1e-9	TRUE	
+top-1 vOTU equals the saved dominant vOTU	vOTU2575, vOTU1191, vOTU0008, vOTU0004, vOTU0035, vOTU0004, vOTU0399, vOTU0016, vOTU0011, vOTU0113, vOTU0113	vOTU2575, vOTU1191, vOTU0008, vOTU0004, vOTU0035, vOTU0004, vOTU0399, vOTU0016, vOTU0011, vOTU0113, vOTU0113	0	TRUE	
+AMG-host register covers every KO carrier exactly once	vOTU0003, vOTU0004, vOTU0008, vOTU0010, vOTU0011, ... (544 values)	vOTU0003, vOTU0004, vOTU0008, vOTU0010, vOTU0011, ... (544 values)	0	TRUE	amg_ko_carriers.tsv (all carriers, not only successful host links)
+AMG-host evidence coverage: all / primary prediction / visible genus / co-detected	544,  36,  24,  16	544,  36,  24,  16	0	TRUE	020 host_iphop.tsv and primary host_codetection_by_sample.tsv
+selected KO-host paths: associations / KOs / vOTUs / genera	22, 14, 16, 14	22, 14, 16, 14	0	TRUE	all KO associations of the co-detected AMG-carrier subset
+every selected AMG-host association occurs in one actual sample	TRUE	TRUE	0	TRUE	
+NARP case: retained host genus / sample / confidence / strict CRISPR	g__Novosphingobium, gd1, 90.8, FALSE	g__Novosphingobium, gd1, 90.8, FALSE	0	TRUE	020 primary iPHoP record, same-sample flags and strict CRISPR edges
+local vOTU table covers the catalogue	vOTU0001, vOTU0002, vOTU0003, vOTU0004, vOTU0005, ... (3060 values)	vOTU0001, vOTU0002, vOTU0003, vOTU0004, vOTU0005, ... (3060 values)	0	TRUE	
+definitions.tsv:df_antidefense	106	106	0	TRUE	local_votu_table.tsv
+definitions.tsv:dbapis_filtered	715	715	0	TRUE	local_votu_table.tsv
+definitions.tsv:antidefense_overlap	99	99	0	TRUE	local_votu_table.tsv
+definitions.tsv:antidefense_union	722	722	0	TRUE	local_votu_table.tsv
+definitions.tsv:df_defense	5	5	0	TRUE	local_votu_table.tsv
+definitions.tsv:padloc	31	31	0	TRUE	local_votu_table.tsv
+tool counts equal cargo_library_tiers.tsv (dbAPIS, DF anti-defense, DF defense, PADLOC)	715, 106,   5,  31	715, 106,   5,  31	0	TRUE	
+definitions.tsv:narp1_df	3	3	0	TRUE	narp_votu_detail.tsv
+definitions.tsv:narp2_df	5	5	0	TRUE	narp_votu_detail.tsv
+definitions.tsv:narp_ko_cooccurrence	6	6	0	TRUE	cooccurring_NAMPT_K03462_nadM_K13522_vOTUs.tsv
+saved dbAPIS NARP-targeting count equals its ID list	19	19	0	TRUE	narp_thoeris_context.tsv (n column vs vOTUs column)
+definitions.tsv:dbapis_narp_targeting	19	19	0	TRUE	narp_thoeris_context.tsv
+vOTUs under any of the four NARP definitions	19	19	0	TRUE	regression constant: union of narp_votu_detail, KO co-occurrence and dbAPIS NARP-targeting sets
+KO co-occurrence set minus DF NARP2 set	vOTU0863	vOTU0863	0	TRUE	
+DF NARP2 set is inside the KO co-occurrence set	TRUE	TRUE	0	TRUE	
+every DefenseFinder NARP2 vOTU carries K13522	TRUE	TRUE	0	TRUE	
+nadM (K13522) carriers without a DefenseFinder NARP2 call	vOTU0863, vOTU1898	vOTU0863, vOTU1898	0	TRUE	
+TSE samples cover the configured samples	TRUE	TRUE	0	TRUE	
+masked trimmed TPM sums to one million per sample (whole-catalogue denominator)	1e+06, 1e+06, 1e+06, 1e+06, 1e+06, 1e+06, 1e+06	1e+06, 1e+06, 1e+06, 1e+06, 1e+06, 1e+06, 1e+06	0.001	TRUE	
+sample abundance table: 7 vOTUs x 7 samples, unique keys	49, 49	49, 49	0	TRUE	
+non-zero abundance exactly where covered fraction >= 0.75	TRUE	TRUE	0	TRUE	
+non-zero vOTU-sample cells in the case set	8	8	0	TRUE	regression constant (Codex-reviewed S2 candidate, 2026-10-14)
+type table: 18 DefenseFinder anti-defense, 4 DefenseFinder defense and 4 PADLOC types	18,  4,  4	18,  4,  4	0	TRUE	
+CheckV class counts add up to n_votu in every type	TRUE	TRUE	0	TRUE	
+DefenseFinder defense types add up to the Figure 3c set	5	5	0	TRUE	
+PADLOC types add up to the Figure 3c set	31	31	0	TRUE	
+DefenseFinder anti-defense type counts (112) exceed distinct carriers (106): not additive	112, 106	112, 106	0	TRUE	
+NARP1 and NARP2 type counts equal the NARP definitions	3, 5	3, 5	0	TRUE	
+ORF101-103 coordinates	42702, 43781, 43790, 44425, 44422, 45891	42702, 43781, 43790, 44425, 44422, 45891	0	TRUE	
+ORF101-103 all on + strand	1, 1, 1	1, 1, 1	0	TRUE	
+ORF101/103 KOs	K13522, , K03462	K13522, , K03462	0	TRUE	
+ORF102 length (aa, excluding stop)	211	211	0	TRUE	
+DF hits on vOTU0052 (ORF101, 103, 166)	vctg2997-cat_1_101, vctg2997-cat_1_103, vctg2997-cat_1_166	vctg2997-cat_1_101, vctg2997-cat_1_103, vctg2997-cat_1_166	0	TRUE	
+ORF101 and ORF103 in the same NARP2 system	1	1	0	TRUE	
+ORF166 coordinates (not part of the ORF101-103 neighbourhood)	91206, 91499	91206, 91499	0	TRUE	
+vOTU0052 length and CheckV	132528, Medium-quality, 88.84	132528, Medium-quality, 88.84	0	TRUE	
+vOTU0052 NMNAT/NAMPT rows match the locus coordinates	42702, 44422	42702, 44422	0	TRUE	votu0052_context.tsv coordinates
+gene-pair table covers exactly the KO co-occurrence vOTUs	vOTU0052, vOTU0113, vOTU0131, vOTU0544, vOTU0863, vOTU1643	vOTU0052, vOTU0113, vOTU0131, vOTU0544, vOTU0863, vOTU1643	0	TRUE	cooccurring_NAMPT_K03462_nadM_K13522_vOTUs.tsv
+HE: the +-10 ORF window covers the whole NARP2 reference cohort	104	104	0	TRUE	doc_votu0052_he_targeting.md lines 27, 69
+HE: strict-window assessable = cohort minus modules with adjacent genes	56	56	0	TRUE	doc_votu0052_he_targeting.md lines 66, 69, 75
+HE: the between-gene ORF distribution sums to the NARP2 reference cohort	104	104	0	TRUE	doc_votu0052_he_targeting.md lines 69, 75-76
+HE: genomes with >= 1 ORF between the genes equal the strict-window assessable genomes	56	56	0	TRUE	doc_votu0052_he_targeting.md lines 66, 75-76
+supplementary information states the 16S and full-18S rarefaction depths	TRUE	TRUE	0	TRUE	supplementary_information.qmd
+supplementary information states that microeukaryote totals need not stay equal	TRUE	TRUE	0	TRUE	supplementary_information.qmd
+registered amplicon depths match that statement	63564/53257	63564/53257	0	TRUE	definitions.tsv
+every document value parsed to a number	FALSE	FALSE	0	TRUE	document tables
+ORF102 length in the document equals the coordinate-derived length	211	211	0	TRUE	votu0052_context.tsv coordinates
+global NARP1/NARP2 in the SI equal the registered value	566/166	566/166	0	TRUE	config/definitions.tsv (framework table)
+GIY-YIG domain lies inside ORF102, before the NUMOD-like module	TRUE	TRUE	0	TRUE	internal consistency of the parsed boundaries

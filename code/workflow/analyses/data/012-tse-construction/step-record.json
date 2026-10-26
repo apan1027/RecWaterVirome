@@ -1,0 +1,216 @@
+{
+  "step": "012-tse-construction",
+  "status": "complete",
+  "run_id": "quarto-render-20261023T135833",
+  "mode": "quarto-render",
+  "qmd": "analyses/012-tse-construction.qmd",
+  "source_contract": "rwv-source-v1",
+  "sources": [
+    {
+      "path": "analyses/_quarto.yml",
+      "sha256": "f0a3aa48cc56e27741842f9b2de3347ce9248fe5f891412a3574bd30eae244a3"
+    },
+    {
+      "path": "analyses/012-tse-construction.qmd",
+      "sha256": "f2ba664fe71fbb47bd55ad2ed6b2a326afb57610adef6871d4d05abf3c663b67"
+    },
+    {
+      "path": "DESCRIPTION",
+      "sha256": "542f81044f872f6abab362c51697985b128b55c5a1eae811ab9aaf63a0d41d12"
+    },
+    {
+      "path": "NAMESPACE",
+      "sha256": "53248d066122bbbf7fefbbca5b547a05a2ef79b4d01f8adce5487c937d37351f"
+    },
+    {
+      "path": "R/community.R",
+      "sha256": "e43790efd903763a406173508ab07c3e875e61aa6ab006b8efc32a5669018bef"
+    },
+    {
+      "path": "R/export.R",
+      "sha256": "b7cc60626548945b094ab3b70e59feae0eed56289ed081c9233fbf0fe16d1951"
+    },
+    {
+      "path": "R/figures.R",
+      "sha256": "b8c4a6f75680a85b60ee94752ece28837afed188a77be4511b068d82909a601b"
+    },
+    {
+      "path": "R/fonts.R",
+      "sha256": "5423a0f88176e82fd1f8ada882972dc56adeb330d692101318af6318783d5adf"
+    },
+    {
+      "path": "R/literature-summary.R",
+      "sha256": "9b225ec26f45adaf1597bb3f0851143466b28537dbc99dbeb636107dee16a079"
+    },
+    {
+      "path": "R/report.R",
+      "sha256": "3eb3fbd7a788c9b4d4cd8e61403415637b4bcde87faad9d5069be57d20f1b4ea"
+    },
+    {
+      "path": "R/sfig-sharing-hosts.R",
+      "sha256": "2428b3b776a1ea14cd26d7df769519b85e244bf7c69869eab19c83d793e9bf57"
+    },
+    {
+      "path": "R/style.R",
+      "sha256": "e03dbf78ae81c5108c6a28abe2638e06c70b49c3f3fee20fbe50f4292efc97b2"
+    },
+    {
+      "path": "R/workflow.R",
+      "sha256": "f235287b127dc0411c60b883ddc44ad25592b07efe2dd9f3a7fcc019b66a46f1"
+    },
+    {
+      "path": "scripts/gfm-from-knit.R",
+      "sha256": "9e8f8570c3f8a07f9e7208a0e26cd501e44dfc00e03331a44eff78f0b01dc29a"
+    },
+    {
+      "path": "scripts/render-step.R",
+      "sha256": "3632f5636861fd03d4ffbee5e2b51724abe6ced71f38e933613901272a1b820a"
+    },
+    {
+      "path": "scripts/render.R",
+      "sha256": "c8dbba5879978f032ddf8d7104987b9d548370555844dc411445f59810216654"
+    }
+  ],
+  "started": "2026-10-23T13:58:33+0200",
+  "finished": "2026-10-23T13:58:34+0200",
+  "inputs": [
+    {
+      "kind": "upstream",
+      "path": "010-input-manifest/input-manifest.tsv",
+      "sha256": "70ee8c390a17b829c9918447651b445edf633ac557ff7822648889529dea4536"
+    },
+    {
+      "kind": "upstream",
+      "path": "010-input-manifest/raw-input-manifest.tsv",
+      "sha256": "28fbe92253ba4d14f566494b38325c973e24450eff272bd756b654ba1f16e9f7"
+    },
+    {
+      "kind": "project",
+      "path": "config/community.yml",
+      "sha256": "7afd3cc3a10d8ff8080ff610e06eb55536815d33361551ba2fc1ab11b5429732"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d012-tse-construction/p0061_snapshot.sqlite",
+      "sha256": "44a3a8e3bfbd819b287dbd4d8a3f887f8d7f02c81ec2a3d2337de10bc9a3bbc5"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d012-tse-construction/nreads_virome.tsv",
+      "sha256": "22072dbe11588025d13342ebf4953f33fa5230f672b463b9253d0e69e3414fdc"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d012-tse-construction/16s_ASV_table_filt.tsv",
+      "sha256": "3a43a59712a3a3d2420578db09f9c0e9523dacb2b81a3f31311b37ceeb473c50"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d012-tse-construction/16s_ASV_tax.tsv",
+      "sha256": "b8aaab02fe0b736e74ca6866c5debdf857ac2df85f61d790cb6162fe065c915b"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d012-tse-construction/16s_metadata.tsv",
+      "sha256": "14e4df3d2c49e662c5169729d601b9512beabb98720d8f98883d69d4e422c1c2"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d012-tse-construction/16s_tree.nwk",
+      "sha256": "b4548b6d96bb3820ac6b92d00f99d43082ab77ee5215ad9d34b33c305c954827"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d012-tse-construction/16s_legacy_row_order.tsv",
+      "sha256": "4f016a25a97576cfc58b030e291b769dd2ce7e38d65cd20001c4f58d59930302"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d012-tse-construction/18s_ASV_table_filt.tsv",
+      "sha256": "9648e377ad1d7af43159f542d6e2a7a646ee910acef107702f7a2e3637580722"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d012-tse-construction/18s_ASV_tax.tsv",
+      "sha256": "20047dae6564fda6c7e88cd6141d85a88738f4fbf3e4a7c00cc58f4885f4e242"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d012-tse-construction/18s_metadata.tsv",
+      "sha256": "14e4df3d2c49e662c5169729d601b9512beabb98720d8f98883d69d4e422c1c2"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d012-tse-construction/18s_tree.nwk",
+      "sha256": "b5bca5b508d557ce9906f1f72395b9543e4999d8c62607ba78cdd46369d1c634"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d012-tse-construction/18s_legacy_row_order.tsv",
+      "sha256": "5791951aa4ca9be6ef0c931e4bdfbc44d6c2cc155f40a42f362bfdd06f3b4269"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "tse_virome.rds",
+      "bytes": 758940,
+      "sha256": "51dfe0fbc7a40a600a0eb6adefbb6a05f9189cb8d49595dee227957e46c4e707"
+    },
+    {
+      "file": "tse_16s.rds",
+      "bytes": 898701,
+      "sha256": "9be63dfaecb9305f9c4774383a0cd17c98a26d9af0744a54ac2a006228cb0e46"
+    },
+    {
+      "file": "tse_16s_filtered.rds",
+      "bytes": 675919,
+      "sha256": "9ab2c148041998bf9ef0b8c2642022235e8ccba0fee77e39f144bb0607fb9aa2"
+    },
+    {
+      "file": "tse_18s_all.rds",
+      "bytes": 244052,
+      "sha256": "a8b712365b5fdd7d6d9442690c8838b18f9ed92c63c313af16ecdd7a2276c8f9"
+    },
+    {
+      "file": "tse_18s_microeuk.rds",
+      "bytes": 231096,
+      "sha256": "f36f9322c67712b999356aaeab2924fda6d2ecb521dd48d19907f87e218dc825"
+    },
+    {
+      "file": "tse-objects.tsv",
+      "bytes": 804,
+      "sha256": "2a880213a56a023d5e0b876825c8d6b668830a30ccf57057c8ce673f2446936e"
+    },
+    {
+      "file": "rarefy-record.tsv",
+      "bytes": 307,
+      "sha256": "c5a723f6522b4635a0563fe3b9177fcdf7ce8042aa093b8b887fe56ecaf69c73"
+    },
+    {
+      "file": "sqlite-schema.tsv",
+      "bytes": 6143,
+      "sha256": "2b7bf5454c5a21778f1ebb27217ddac4e864c3e71beabf46ee53a4a642b52800"
+    },
+    {
+      "file": "join-report.tsv",
+      "bytes": 343,
+      "sha256": "5caf079124deab0fb0736ae0e963fe29f397c467446ad98d6d0b257c43a7aacb"
+    },
+    {
+      "file": "sample-aliases.tsv",
+      "bytes": 150,
+      "sha256": "f1b46eda865098286cf4a07dd4f8a07d1b325ed4ffaa6e969d60fd4d4c65231a"
+    },
+    {
+      "file": "tse-checks.tsv",
+      "bytes": 2131,
+      "sha256": "9de095da17456e669e23053d7865c398dbe8a4219e07913a3006ffc8da6b109e"
+    },
+    {
+      "file": "session-info.txt",
+      "bytes": 13712,
+      "sha256": "85adadf1583a6d1588d9e7a2fb33f73d036991ef67a681b00ffc6a5304adb5a4"
+    }
+  ],
+  "output_dir_files": []
+}

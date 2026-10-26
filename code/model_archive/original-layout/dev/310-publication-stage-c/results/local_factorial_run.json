@@ -1,0 +1,7 @@
+{
+  "anchor_expected": [2.5207, 1.0496, 0.9508],
+  "anchor_observed": [2.5207, 1.0496, 0.9508],
+  "R": "R version 4.5.2 (2025-10-31)",
+  "MASS": "7.3.65",
+  "scope": "Fixed completeness, same rows; definition sensitivity, not causal decomposition"
+}

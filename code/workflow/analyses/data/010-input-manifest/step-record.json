@@ -1,0 +1,251 @@
+{
+  "step": "010-input-manifest",
+  "status": "complete",
+  "run_id": "quarto-render-20261023T135813",
+  "mode": "quarto-render",
+  "qmd": "analyses/010-input-manifest.qmd",
+  "source_contract": "rwv-source-v1",
+  "sources": [
+    {
+      "path": "analyses/_quarto.yml",
+      "sha256": "f0a3aa48cc56e27741842f9b2de3347ce9248fe5f891412a3574bd30eae244a3"
+    },
+    {
+      "path": "analyses/010-input-manifest.qmd",
+      "sha256": "142b53bd76331e3d7169b01a2543c4abed5734510993b42b57db193e2e4164a8"
+    },
+    {
+      "path": "DESCRIPTION",
+      "sha256": "542f81044f872f6abab362c51697985b128b55c5a1eae811ab9aaf63a0d41d12"
+    },
+    {
+      "path": "NAMESPACE",
+      "sha256": "53248d066122bbbf7fefbbca5b547a05a2ef79b4d01f8adce5487c937d37351f"
+    },
+    {
+      "path": "R/community.R",
+      "sha256": "e43790efd903763a406173508ab07c3e875e61aa6ab006b8efc32a5669018bef"
+    },
+    {
+      "path": "R/export.R",
+      "sha256": "b7cc60626548945b094ab3b70e59feae0eed56289ed081c9233fbf0fe16d1951"
+    },
+    {
+      "path": "R/figures.R",
+      "sha256": "b8c4a6f75680a85b60ee94752ece28837afed188a77be4511b068d82909a601b"
+    },
+    {
+      "path": "R/fonts.R",
+      "sha256": "5423a0f88176e82fd1f8ada882972dc56adeb330d692101318af6318783d5adf"
+    },
+    {
+      "path": "R/literature-summary.R",
+      "sha256": "9b225ec26f45adaf1597bb3f0851143466b28537dbc99dbeb636107dee16a079"
+    },
+    {
+      "path": "R/report.R",
+      "sha256": "3eb3fbd7a788c9b4d4cd8e61403415637b4bcde87faad9d5069be57d20f1b4ea"
+    },
+    {
+      "path": "R/sfig-sharing-hosts.R",
+      "sha256": "2428b3b776a1ea14cd26d7df769519b85e244bf7c69869eab19c83d793e9bf57"
+    },
+    {
+      "path": "R/style.R",
+      "sha256": "e03dbf78ae81c5108c6a28abe2638e06c70b49c3f3fee20fbe50f4292efc97b2"
+    },
+    {
+      "path": "R/workflow.R",
+      "sha256": "f235287b127dc0411c60b883ddc44ad25592b07efe2dd9f3a7fcc019b66a46f1"
+    },
+    {
+      "path": "scripts/gfm-from-knit.R",
+      "sha256": "9e8f8570c3f8a07f9e7208a0e26cd501e44dfc00e03331a44eff78f0b01dc29a"
+    },
+    {
+      "path": "scripts/render-step.R",
+      "sha256": "3632f5636861fd03d4ffbee5e2b51724abe6ced71f38e933613901272a1b820a"
+    },
+    {
+      "path": "scripts/render.R",
+      "sha256": "c8dbba5879978f032ddf8d7104987b9d548370555844dc411445f59810216654"
+    }
+  ],
+  "started": "2026-10-23T13:58:13+0200",
+  "finished": "2026-10-23T13:58:14+0200",
+  "inputs": [
+    {
+      "kind": "project",
+      "path": "metadata/frozen-files.tsv",
+      "sha256": "cb190f61f161a047df078371e2d3a5358e42993a99b43749ca4b5ad1c1e6db40"
+    },
+    {
+      "kind": "project",
+      "path": "archive/original-records/paper-framework/v2026.09.27.1.md",
+      "sha256": "678a15fcf547bdfb3ece22bb244ef8f33f3ff05b2a6756a69b01b7b1023bdce8"
+    },
+    {
+      "kind": "project",
+      "path": "archive/original-records/figure-production-design-2026-09-27/01.md",
+      "sha256": "6265097bc88158ac8e5d464b8b7efdfac30230671700c5a7eccf4ee50fa0c379"
+    },
+    {
+      "kind": "project",
+      "path": "archive/original-records/figure-production-design-2026-09-27/02-qproj.md",
+      "sha256": "d6e82e10c90f702b0fbc3d12839b0c6b44e7aab230779939f273413537b5cfbe"
+    },
+    {
+      "kind": "project",
+      "path": "archive/original-records/figure-production-design-2026-09-27/03-Claude.md",
+      "sha256": "9bb08c9a482167f44673dfe68c66ed8cbaeb0678d13fb7c46e80bae926e81ee8"
+    },
+    {
+      "kind": "project",
+      "path": "config/style.yml",
+      "sha256": "07c316c563f2f4ae746f894f3a5c260481dc553abdd81ed4f70c70617b359326"
+    },
+    {
+      "kind": "project",
+      "path": "config/samples.tsv",
+      "sha256": "d78164d7c020f6f56899cdbb7e22f9bde3b38252493c582b9790976074dc13d5"
+    },
+    {
+      "kind": "project",
+      "path": "config/workflow.yml",
+      "sha256": "bf86d81b7afcabb37514a6188b6a38909c097dd138111179a19ae28591750436"
+    },
+    {
+      "kind": "project",
+      "path": "metadata/raw-inputs.tsv",
+      "sha256": "c696a8a668d5ff4647ef24550cf26b00e1f6a1431a4b1704ee708be1c24864cf"
+    },
+    {
+      "kind": "project",
+      "path": "config/palettes.yml",
+      "sha256": "4e26369292abab1d9307bd6514fa82aa22ad09ff045ea0275ef2ed3c6fc90bd6"
+    },
+    {
+      "kind": "project",
+      "path": "config/figures.yml",
+      "sha256": "54186035b7061c7294e75cc9854aae30adb0481039691b4d47edaa9bc700d42a"
+    },
+    {
+      "kind": "project",
+      "path": "config/definitions.tsv",
+      "sha256": "bc592e0d61475b88436abc3d64e13c47d63ae99796a4c1f8dc8a7e7e75bfc725"
+    },
+    {
+      "kind": "project",
+      "path": "metadata/visual-review.tsv",
+      "sha256": "1ca7934e64bfa3039407e816266f047118277f86ac7bbbdddd975a6c277fc7fc"
+    },
+    {
+      "kind": "project",
+      "path": "config/field-notes.tsv",
+      "sha256": "f190356ddff945b1fecca73380bb2e2154d8ad0294816782868783da91481819"
+    },
+    {
+      "kind": "project",
+      "path": "config/community.yml",
+      "sha256": "7afd3cc3a10d8ff8080ff610e06eb55536815d33361551ba2fc1ab11b5429732"
+    },
+    {
+      "kind": "project",
+      "path": "config/analysis-version.yml",
+      "sha256": "2935cff8fe2f9623e07c4021f49354a11b0fec0bf79b4f36fcd5c74701aa88dc"
+    },
+    {
+      "kind": "project",
+      "path": "DESCRIPTION",
+      "sha256": "542f81044f872f6abab362c51697985b128b55c5a1eae811ab9aaf63a0d41d12"
+    },
+    {
+      "kind": "project",
+      "path": "metadata/review-log.tsv",
+      "sha256": "dcca63671ef0cea7b591c80f19a233252f843321626b52b8454b71a990d13141"
+    },
+    {
+      "kind": "project",
+      "path": "archive/original-records/codex-workflow-acceptance-2026-09-28/00.md",
+      "sha256": "15c44465dd5fd0353361fcb6c0bf3b36ffa61719990e139bf1d4692769932a73"
+    },
+    {
+      "kind": "project",
+      "path": "config/site-locations.tsv",
+      "sha256": "204ccb103c7a5f03c39d3d0545ba6bb19d0f0252ca040d4234a405d6370b7c02"
+    },
+    {
+      "kind": "project",
+      "path": "config/f3-ko-labels.tsv",
+      "sha256": "bac4e14d2ab162a41456851bb1d266ffedd645580b71d3bab8e659713609ddfe"
+    },
+    {
+      "kind": "project",
+      "path": "archive/original-records/final-review-2026-10-12/01-Codex.md",
+      "sha256": "f68073acdaeb5114a09c53b1bda1abb3052eb68087b72fbeeb72a0a89c9be12b"
+    },
+    {
+      "kind": "project",
+      "path": "archive/original-records/final-review-2026-10-12/03-Codex.md",
+      "sha256": "a3d71d5ec7ae89ab851b7d10874f9560cbff59014d4a31960805e9e162bbc49d"
+    },
+    {
+      "kind": "project",
+      "path": "archive/original-records/figure3a-label-design-2026-10-13/08-Codex.md",
+      "sha256": "ebc41f32357adbd6c47d11c43a3a529433b85893404a66e0cf7382c116f06a0c"
+    },
+    {
+      "kind": "project",
+      "path": "archive/original-records/figure4-restructure-2026-10-14/00-Codex.md",
+      "sha256": "8d568ede20e70f147932a16d1b2efbfb04b8cc84048926d203e022881c362159"
+    },
+    {
+      "kind": "project",
+      "path": "docs/s4-note-adoption-2026-10-15/implementation-scope.md",
+      "sha256": "2e6bd60a0e4f5f690b6e6a991dfd51b1e798d9af42e71636da0fdcb07e268f32"
+    },
+    {
+      "kind": "project",
+      "path": "R/literature-summary.R",
+      "sha256": "9b225ec26f45adaf1597bb3f0851143466b28537dbc99dbeb636107dee16a079"
+    },
+    {
+      "kind": "project",
+      "path": "archive/original-records/literature-integration-2026-10-15/implementation-scope.md",
+      "sha256": "692b14e74e830c602ea453b04cd57fc4fd55da1c7a66cb1ab11dca27fb674fe6"
+    },
+    {
+      "kind": "project",
+      "path": "archive/original-records/figure-cleanup-v49-2026-10-19/04-Codex-v50.md",
+      "sha256": "c5e4fdab1e951ad181b1fb2b2f69fc9d8b04db42c12de46282f3aba5a12d1aa6"
+    },
+    {
+      "kind": "project",
+      "path": "metadata/raw-inputs.tsv",
+      "sha256": "c696a8a668d5ff4647ef24550cf26b00e1f6a1431a4b1704ee708be1c24864cf"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "input-manifest.tsv",
+      "bytes": 6725,
+      "sha256": "70ee8c390a17b829c9918447651b445edf633ac557ff7822648889529dea4536"
+    },
+    {
+      "file": "raw-input-manifest.tsv",
+      "bytes": 45979,
+      "sha256": "28fbe92253ba4d14f566494b38325c973e24450eff272bd756b654ba1f16e9f7"
+    },
+    {
+      "file": "science-input-status.tsv",
+      "bytes": 898,
+      "sha256": "789bad80a8c708217c10a890497e204526c924fbf284d6a481dace63e0e9d5ba"
+    },
+    {
+      "file": "session-info.txt",
+      "bytes": 13710,
+      "sha256": "e61979c5ad1bcae3ea5d525c10da72aba7446f21cfeb45cbf744d3bdae3d1cba"
+    }
+  ],
+  "output_dir_files": []
+}

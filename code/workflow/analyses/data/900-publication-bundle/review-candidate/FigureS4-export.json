@@ -1,0 +1,513 @@
+{
+  "figure": "sfig4",
+  "label": "Supplementary Figure 4",
+  "scientific_content": true,
+  "run_id": "20261020T001926-86706",
+  "width_mm": 180,
+  "height_mm": 182,
+  "png_dpi": 300,
+  "tiff_dpi": 600,
+  "files": [
+    {
+      "format": "pdf",
+      "file": "sfig4.pdf",
+      "device": "quartz_pdf",
+      "bytes": 40003,
+      "sha256": "ceab384905aab9aa8ae035d0bf1e69a12a122337cddbca4421441302ac13b816"
+    },
+    {
+      "format": "svg",
+      "file": "sfig4.svg",
+      "device": "svglite",
+      "bytes": 18716,
+      "sha256": "201356d0a7b9e9c51ea5b134eb37f4fefa1955bdf0db7ebc9d619ff07337b3cf"
+    },
+    {
+      "format": "png",
+      "file": "sfig4.png",
+      "device": "ragg::agg_png",
+      "bytes": 123516,
+      "sha256": "9fce8415f43cc499c7c46dc1e44f6f4ece640b0f28e11c1d9ffadd3282b4d9d5"
+    },
+    {
+      "format": "tiff",
+      "file": "sfig4.tiff",
+      "device": "ragg::agg_tiff (LZW)",
+      "bytes": 381112,
+      "sha256": "78ee39ab8e5257e9331efc771c4e14e00eadd57599989d9d76bde40d301e5187"
+    }
+  ],
+  "device_probes": {
+    "pdf": "cairo_pdf: unable to load shared object '/Library/Frameworks/R.framework/Resources/library/grDevices/libs//cairo.so': dlopen(/Library/Frameworks/R.framework/Resources/library/grDevices/libs//cairo.so, 0x0006): Library not loaded: /opt/X11/lib/libXrender.1.dylib Referenced from: <263B701F-2238-3478-A7D2-B7513231EF98> /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/library/grDevices/libs/cairo.so Reason: tried: '/opt/X11/lib/libXrender.1.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/X11/lib/libXrender.1.dylib' (no such file), '/opt/X11/lib/libXrender.1.dylib' (no such file), '/Library/Frameworks/R.framework/Resources/lib/libXrender.1.dylib' (no such file), '/Library/Java/JavaVirtualMachines/jdk-11.0.18+10/Contents/Home/lib/server/libXrender.1.dylib' (no such file); quartz_pdf: ok",
+    "svg": "svglite: ok",
+    "png": "agg_png: ok",
+    "tiff": "agg_tiff: ok"
+  },
+  "fonts": [
+    {
+      "role": "text",
+      "family": "Arial",
+      "weight": "normal",
+      "resolved_family": "Arial",
+      "style": "Regular",
+      "postscript_name": "ArialMT",
+      "path": "/System/Library/Fonts/Supplemental/Arial.ttf",
+      "index": 0,
+      "sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+    },
+    {
+      "role": "text-bold",
+      "family": "Arial",
+      "weight": "bold",
+      "resolved_family": "Arial",
+      "style": "Bold",
+      "postscript_name": "Arial-BoldMT",
+      "path": "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
+      "index": 0,
+      "sha256": "d72db21f9242aedd6b917d8549ad5921766b24d5f8d0becfda2ff4c620b3c2e0"
+    }
+  ],
+  "qa": [
+    {
+      "format": "pdf",
+      "check": "pages",
+      "expected": "1",
+      "observed": "1",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "page size (mm)",
+      "expected": "180.00 x 182.00",
+      "observed": "180.00 x 182.00",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "all fonts embedded",
+      "expected": "TRUE",
+      "observed": "TRUE",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "embedded fonts are resolved fonts (no substitution)",
+      "expected": "ArialMT, Arial-BoldMT",
+      "observed": "Arial-BoldMT, ArialMT",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "a",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "b",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "c",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU0073",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU0016",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU0273",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU0446",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU1009",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU1381",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU2681",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU3434",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Pred. host: 18",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Boundary: 1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Pred. viral: 1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "No prediction: 123",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Hits",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Position (kb)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Predicted host region",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Predicted viral region",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Coloured marks: VF-hit ORFs",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "ORF23 / VF0608-like",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "ORF28 / VF0465-like",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "page size (mm)",
+      "expected": "180.00 x 182.00",
+      "observed": "180.00 x 182.00",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "font families are the resolved fonts",
+      "expected": "Arial",
+      "observed": "Arial",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "smallest text (pt)",
+      "expected": ">= 9.2",
+      "observed": "9.2",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "no embedded raster images",
+      "expected": "0",
+      "observed": "0",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "a",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "b",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "c",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU0073",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU0016",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU0273",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU0446",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU1009",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU1381",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU2681",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU3434",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Pred. host: 18",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Boundary: 1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Pred. viral: 1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "No prediction: 123",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Hits",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Position (kb)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Predicted host region",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Predicted viral region",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Coloured marks: VF-hit ORFs",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "ORF23 / VF0608-like",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "ORF28 / VF0465-like",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "main stroke width (pt)",
+      "expected": "0.85 (0.30 mm)",
+      "observed": "0.57, 0.85, 1.70",
+      "pass": true
+    },
+    {
+      "format": "png",
+      "check": "pixels (w x h)",
+      "expected": "2126 x 2150",
+      "observed": "2125 x 2149",
+      "pass": true
+    },
+    {
+      "format": "png",
+      "check": "resolution (dpi)",
+      "expected": "300",
+      "observed": "300.00",
+      "pass": true
+    },
+    {
+      "format": "png",
+      "check": "opaque (no transparency)",
+      "expected": "TRUE",
+      "observed": "TRUE",
+      "pass": true
+    },
+    {
+      "format": "png",
+      "check": "white corners",
+      "expected": "1",
+      "observed": "1",
+      "pass": true
+    },
+    {
+      "format": "tiff",
+      "check": "pixels (w x h)",
+      "expected": "4252 x 4299",
+      "observed": "4251 x 4299",
+      "pass": true
+    },
+    {
+      "format": "tiff",
+      "check": "resolution (dpi)",
+      "expected": "600",
+      "observed": "600.00 x 600.00",
+      "pass": true
+    },
+    {
+      "format": "tiff",
+      "check": "LZW compression (code 5)",
+      "expected": "5",
+      "observed": "5",
+      "pass": true
+    },
+    {
+      "format": "tiff",
+      "check": "RGB without alpha (3 samples per pixel)",
+      "expected": "3",
+      "observed": "3",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text >= 2.5 mm from every page edge (mm)",
+      "expected": ">= 2.5",
+      "observed": "2.82",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "no forbidden strings on the page",
+      "expected": "none",
+      "observed": "none",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,449 @@
+---
+title: "110-fig1-design-composition"
+subtitle: "Figure 1: study design, profiles from three sequencing assays and five CheckV quality categories"
+author:
+  - name: Jinlong Ru
+    orcid: "0000-0002-6757-6018"
+  - name: Cunli Pan
+    orcid: "0000-0002-2595-7533"
+date: today
+params:
+  name: "110-fig1-design-composition"
+---
+
+**Updated: `r format(Sys.time(), '%Y-%m-%d %H:%M:%S %Z %z', tz = 'Europe/Berlin')`.**
+
+```{r}
+#| label: params
+#| eval: !expr interactive()
+#| include: false
+params <- list(name = "110-fig1-design-composition")
+```
+
+```{r}
+#| label: setup
+#| include: false
+#| message: false
+#| warning: false
+#| cache: false
+wd <- "analyses"
+if (basename(getwd()) != wd) {
+    setwd(here::here(wd))
+}
+here::i_am(paste0(params$name, ".qmd"), uuid = "2fccc12f-4165-4b99-bf1d-cb533387370c")
+qproj::proj_create_dir_target(params$name, clean = FALSE)
+
+# convenience helpers
+path_target <- qproj::proj_path_target(params$name)
+path_source <- qproj::proj_path_source(params$name)
+path_raw <- path_source("00-raw")
+path_resource <- here::here(path_raw, "d00-resource")
+path_data <- here::here(path_raw, paste0("d", params$name))
+dir.create(path_raw, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_data, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_resource, recursive = TRUE, showWarnings = FALSE)
+```
+
+```{r}
+#| label: packages
+#| message: false
+#| warning: false
+#| cache: false
+# qproj template chunk, trimmed to what figure steps use: ggplot2 and
+# patchwork plus the project helpers in R/.
+suppressPackageStartupMessages({
+  library(ggplot2)
+  library(patchwork)
+  devtools::load_all()
+})
+```
+
+```{r}
+#| label: step-guard
+#| cache: false
+# Checks params$name, path_target() and here() against config/workflow.yml
+# and opens a staging folder for this run's outputs.
+step <- rwv_step_begin(params$name, path_target)
+# New outputs are staged; the previous result stays until rwv_step_finish()
+# has checked and published the new one.
+path_target <- step$path_target
+```
+
+```{r}
+#| label: report-presentation
+#| include: false
+rwv_report_setup(step)
+```
+
+<!-- RWV_REPORT_SUMMARY_POSITION -->
+
+<details class="rwv-analysis-details">
+<summary>Analysis steps, methods and full verification</summary>
+
+## Tasks
+
+Draw Figure 1 from verified 020 tables: regional study context, seven water samples with three sequencing assays each, within-assay composition and all five CheckV completeness categories for 3,060 vOTUs. No new statistics are calculated.
+
+### Task 1: Inputs
+
+```{r}
+#| label: inputs
+manifest <- rwv_read_tsv(rwv_step_input(step, path_source, "010-input-manifest", "input-manifest.tsv"))
+style <- rwv_style_read(rwv_project_input(step, "config/style.yml", manifest))
+style <- rwv_style_for_figure(style, "fig1")   # v40: figure-specific text sizes (config/style.yml figure_text_pt)
+samples <- rwv_samples_read(rwv_project_input(step, "config/samples.tsv", manifest), style)
+palettes <- rwv_palettes_read(rwv_project_input(step, "config/palettes.yml", manifest))
+figures <- rwv_figures_read(rwv_project_input(step, "config/figures.yml", manifest))
+defs <- rwv_definitions_read(rwv_project_input(step, "config/definitions.tsv", manifest))
+up <- function(f) as.data.frame(rwv_read_tsv(rwv_step_input(step, path_source, "020-community-analysis", f)))
+disp <- up("composition_display.tsv")
+disp$relative_abundance <- as.numeric(disp$relative_abundance)
+taxon_map <- up("taxon_display_map.tsv")
+catalogue <- up("checkv_catalogue.tsv")
+fonts <- rwv_fonts_resolve(style)
+spec <- rwv_figure_spec(figures, "fig1", params$name)
+checks <- rwv_checks_new()
+pt <- style$text_pt; ink <- style$colours$text; fam <- style$font$family; col <- style$colours
+lvl <- rwv_sample_levels(samples)
+site_col <- rwv_site_colours(style)
+site_of <- as.character(samples$site)
+# City/municipality representative coordinates for the study-region map (Figure 1a):
+# public city coordinates with their source, NOT sampling points (not recovered).
+loc <- utils::read.delim(rwv_project_input(step, "config/site-locations.tsv", manifest), stringsAsFactors = FALSE)
+rwv_check(checks, "site-locations.tsv lists exactly the configured sites", sort(names(site_col)), sort(loc$site),
+          source = "config/site-locations.tsv")
+rwv_check(checks, "every map coordinate is declared as a representative, not a sampling, coordinate", TRUE,
+          all(grepl("representative coordinate \\(not a sampling point\\)", loc$coordinate_kind)))
+```
+
+### Task 2: Panel a: regional study context
+
+Natural Earth 1:50m country boundaries (rnaturalearthdata::countries50; package CC0, geographic data public domain) use a Lambert equal-area projection for regional orientation only. config/site-locations.tsv supplies city/municipality representative coordinates, not recovered sampling coordinates. Beijing has one regional marker. The two German municipalities are about 6 km apart and share one marker at their coordinate mean, linked to both sample groups. The 3/2/2 bottles indicate sample counts. No waterworks, river, process or flow direction is inferred.
+
+```{r}
+#| label: panel-a
+# Design table behind panel a and its plot values (unchanged from the former grid):
+# one row per sample x assay; 21 assay records from 7 water samples.
+gap <- cumsum(c(0, diff(as.integer(factor(site_of, levels = unique(site_of)))) > 0)) * 0.9
+design <- data.frame(sample_id = lvl, site = site_of, x = seq_along(lvl) + gap)
+cells <- merge(design, data.frame(assay = c("Virome (viral metagenome)", "16S rRNA gene amplicons", "18S rRNA gene amplicons"),
+                                  y = c(3, 2, 1)))
+rwv_check(checks, "design cells = 7 samples x 3 assays", 21, nrow(cells))
+sf::sf_use_s2(FALSE)
+# Lambert azimuthal equal-area centred on Eurasia: a compact locator for China and
+# Germany. The map only locates the study regions; it is not a distance analysis.
+crs_map <- "+proj=laea +lat_0=45 +lon_0=65 +datum=WGS84 +units=m"
+bb <- c(xmin = -25, xmax = 150, ymin = 5, ymax = 75)
+world <- rnaturalearthdata::countries50[, c("admin")]
+world$study <- world$admin %in% unique(loc$country)
+world <- suppressWarnings(suppressMessages(sf::st_crop(world, bb)))
+rwv_check(checks, "map highlights exactly the two study countries", sort(unique(loc$country)),
+          sort(unique(world$admin[world$study])), source = "rnaturalearthdata::countries50")
+world <- sf::st_transform(world, crs_map)
+prj <- function(lon, lat) {
+  xy <- sf::st_coordinates(sf::st_transform(sf::st_as_sf(data.frame(lon = lon, lat = lat), coords = c("lon", "lat"),
+                                                         crs = 4326), crs_map))
+  data.frame(x = xy[, 1], y = xy[, 2])
+}
+xl <- c(-5.0e6, 5.4e6); yl <- c(-2.5e6, 2.6e6)          # projected extent (m)
+p_map <- ggplot() +
+  geom_sf(data = world[!world$study, ], fill = col$grey_pale, colour = "#FFFFFF", linewidth = rwv_linewidth(style$line_mm$hairline)) +
+  geom_sf(data = world[world$study, ], fill = col$grey_rule, colour = "#FFFFFF", linewidth = rwv_linewidth(style$line_mm$hairline)) +
+  coord_sf(crs = crs_map, xlim = xl, ylim = yl, expand = FALSE, datum = NA) +
+  theme_void(base_family = fam) + theme(plot.margin = margin(0, 0, 0, 0))
+# One anchor per study region at the true representative position: Beijing, and the
+# mean of the two German municipality coordinates (about 6 km apart). No display offset.
+de <- loc[loc$country == "Germany", ]; cn <- loc[loc$country == "China", ]
+anc <- rbind(prj(cn$lon, cn$lat), prj(mean(de$lon), mean(de$lat)))
+anc$region <- c("China", "Germany")
+rwv_check(checks, "German anchor is the mean of the two municipality coordinates (no display offset)", TRUE,
+          isTRUE(all.equal(unlist(anc[2, c("x", "y")]), unlist(prj(mean(de$lon), mean(de$lat))), check.attributes = FALSE)),
+          source = "config/site-locations.tsv")
+# Panel a is one vector canvas in millimetres: map (left) -> seven sampling bottles in
+# site colours, grouped 3/2/2 (middle) -> the three assays made on each sample (right).
+cw <- 172; ch <- 40
+mw <- 50; mh <- mw * diff(yl) / diff(xl); mx <- 0; my <- 2
+anc$cx <- mx + (anc$x - xl[1]) / diff(xl) * mw
+anc$cy <- my + (anc$y - yl[1]) / diff(yl) * mh
+grp <- data.frame(site = names(site_col), centre = c(69.5, 90.75, 113.5))
+bot <- do.call(rbind, lapply(seq_len(nrow(grp)), function(i) {
+  s <- lvl[site_of == grp$site[i]]
+  data.frame(site = grp$site[i], sample_id = s, cx = grp$centre[i] + 7.5 * (seq_along(s) - (length(s) + 1) / 2))
+}))
+rwv_check(checks, "bottles keep the configured sample order and 3/2/2 site membership", lvl, bot$sample_id)
+rwv_check(checks, "bottles per site", c(3, 2, 2), as.vector(table(factor(bot$site, levels = names(site_col)))))
+bot$col <- unname(site_col[bot$site]); grp$col <- unname(site_col[grp$site])
+# Elbow connectors above the map: Beijing anchor -> Beijing; German anchor -> Garching and Oberschleissheim.
+yb <- 34.5; yg <- 37.5; ytop <- 32.4
+conn <- rbind(
+  data.frame(x = anc$cx[1], y = anc$cy[1] + 0.9, xend = anc$cx[1], yend = yb),
+  data.frame(x = anc$cx[1], y = yb, xend = grp$centre[1], yend = yb),
+  data.frame(x = grp$centre[1], y = yb, xend = grp$centre[1], yend = ytop),
+  data.frame(x = anc$cx[2], y = anc$cy[2] + 0.9, xend = anc$cx[2], yend = yg),
+  data.frame(x = anc$cx[2], y = yg, xend = grp$centre[3], yend = yg),
+  data.frame(x = grp$centre[2:3], y = yg, xend = grp$centre[2:3], yend = ytop))
+lw_main <- rwv_linewidth(style$line_mm$main); lw_thin <- rwv_linewidth(style$line_mm$thin)
+hexa <- function(x0, y0, r) data.frame(x = x0 + r * cos(seq(0, 5) * pi / 3 + pi / 6), y = y0 + r * sin(seq(0, 5) * pi / 3 + pi / 6))
+ix <- 135; iy <- c(25, 19, 13)
+assays <- data.frame(label = c("Viral metagenome", "16S rRNA amplicons", "18S rRNA amplicons"), y = iy)
+tx <- function(...) annotate("text", family = fam, size = rwv_text_pt(style, pt$annotation), colour = ink, ...)
+p_a <- ggplot() +
+  annotation_custom(ggplotGrob(p_map), xmin = mx, xmax = mx + mw, ymin = my, ymax = my + mh) +
+  geom_segment(data = conn, aes(x = x, y = y, xend = xend, yend = yend), colour = col$grey_mid, linewidth = lw_thin) +
+  geom_point(data = anc, aes(x = cx, y = cy), shape = 21, size = 2, fill = "#FFFFFF", colour = ink, stroke = 0.6) +
+  # bottles: body with a water line, neck and a cap in the site colour
+  geom_rect(data = bot, aes(xmin = cx - 2.4, xmax = cx + 2.4, ymin = 12, ymax = 18), fill = col$grey_pale, colour = NA) +
+  geom_rect(data = bot, aes(xmin = cx - 2.4, xmax = cx + 2.4, ymin = 12, ymax = 22.5, colour = I(col)), fill = NA, linewidth = lw_main) +
+  geom_rect(data = bot, aes(xmin = cx - 1.2, xmax = cx + 1.2, ymin = 22.5, ymax = 24, colour = I(col)), fill = "#FFFFFF", linewidth = lw_main) +
+  geom_rect(data = bot, aes(xmin = cx - 1.7, xmax = cx + 1.7, ymin = 24, ymax = 26, fill = I(col)), colour = NA) +
+  geom_text(data = bot, aes(x = cx, y = 9.2, label = sample_id, colour = I(col)), family = fam,
+            size = rwv_text_pt(style, pt$annotation), fontface = "bold") +
+  geom_text(data = grp, aes(x = centre, y = 30.3, label = site, colour = I(col)), family = fam,
+            size = rwv_text_pt(style, pt$annotation), fontface = "bold") +
+  tx(x = 90.75, y = 4.3, label = "7 water samples × 3 assays") +
+  # each sample -> three assays (icons drawn here: capsid, rod cell, nucleated cell)
+  annotate("segment", x = 122, xend = 128.5, y = 19, yend = 19, colour = ink, linewidth = lw_main,
+           arrow = arrow(length = unit(1.3, "mm"), type = "closed")) +
+  annotate("segment", x = 130.5, xend = 130.5, y = 11.2, yend = 26.8, colour = ink, linewidth = lw_main) +
+  annotate("segment", x = 130.5, xend = 131.5, y = c(11.2, 26.8), yend = c(11.2, 26.8), colour = ink, linewidth = lw_main) +
+  tx(x = 130.5, y = 30.3, label = "Each sample", hjust = 0) +
+  geom_polygon(data = hexa(ix, iy[1], 1.8), aes(x = x, y = y), fill = "#FFFFFF", colour = ink, linewidth = lw_main) +
+  ggforce::geom_ellipse(aes(x0 = ix, y0 = iy[2], a = 2.3, b = 0.95, angle = 0), fill = "#FFFFFF", colour = ink, linewidth = lw_main) +
+  ggforce::geom_ellipse(aes(x0 = ix, y0 = iy[3], a = 2, b = 1.45, angle = 0), fill = "#FFFFFF", colour = ink, linewidth = lw_main) +
+  annotate("point", x = ix + 0.4, y = iy[3], size = 1.1, colour = col$grey_mid) +
+  geom_text(data = assays, aes(x = ix + 3.6, y = y, label = label), hjust = 0, family = fam,
+            size = rwv_text_pt(style, pt$annotation), colour = ink) +
+  coord_fixed(xlim = c(0, cw), ylim = c(0, ch), expand = FALSE, clip = "off") +
+  labs(tag = rwv_tag(style, "A")) +
+  rwv_void_panel(style) +
+  theme(plot.margin = margin(1.5, 1.5, 1, 1.5, unit = "mm"))
+```
+
+### Task 3: Panels b-d: within-assay composition
+
+Each composition panel sums to 100% within its own assay/sample and cannot compare absolute biomass between assays. Caudoviricetes account for 88-99.9% of viral composition; the additional expanded-axis strip shows the same non-Caudoviricetes values. Taxon colours are meaningful only within their own assay.
+
+```{r}
+#| label: panels-bcd
+cat_levels <- function(o) {
+  m <- taxon_map[taxon_map$omic == o, ]
+  named <- unique(m$display_category[!m$display_category %in% c("Other", "Unclassified")])
+  named <- named[order(as.numeric(m$rank_among_named[match(named, m$taxon)]))]
+  c(named, intersect(c("Other", "Unclassified"), unique(m$display_category)))
+}
+cat_cols <- function(o) {
+  cols <- c(unlist(palettes$taxa[[o]]), Other = palettes$other, Unclassified = palettes$unclassified)
+  cols[cat_levels(o)]
+}
+label_of <- function(x) {
+  lab <- unlist(palettes$taxon_display_labels)
+  ifelse(x %in% names(lab), lab[x], x)
+}
+site_strip <- data.frame(sample_id = factor(lvl, levels = lvl), site = site_of)
+comp_panel <- function(o, title, tag, legend_title, ymax = 100, keep = NULL, legend = TRUE,
+                       y_breaks = seq(0, 100, 25), y_lab = "Relative\nabundance (%)", x_lab = "Samples") {
+  d <- disp[disp$omic == o, ]
+  if (!is.null(keep)) d <- d[d$display_category %in% keep, ]
+  d$sample_id <- factor(d$sample_id, levels = lvl)
+  d$display_category <- factor(d$display_category, levels = rev(cat_levels(o)))
+  strip_h <- ymax * 0.045
+  ggplot(d, aes(x = sample_id, y = 100 * relative_abundance, fill = display_category)) +
+    geom_col(width = 0.78, colour = NA, show.legend = TRUE) +
+    geom_tile(data = site_strip, aes(x = sample_id, y = -strip_h * 1.1, fill = NULL, colour = NULL),
+              fill = site_col[site_strip$site], height = strip_h, width = 0.78, inherit.aes = FALSE) +
+    scale_fill_manual(values = cat_cols(o), breaks = cat_levels(o), labels = label_of(cat_levels(o)),
+                      name = legend_title, drop = FALSE, limits = cat_levels(o)) +
+    scale_x_discrete(expand = expansion(add = 0.3)) +
+    scale_y_continuous(breaks = y_breaks, expand = c(0, 0)) +
+    coord_cartesian(ylim = c(-strip_h * 1.7, ymax * 1.005), clip = "off") +
+    labs(title = title, tag = rwv_tag(style, tag), x = x_lab, y = y_lab) +
+    guides(fill = if (legend) guide_legend(ncol = 1, byrow = TRUE, title.position = "top") else "none") +
+    rwv_panel(style) +
+    # v40: at 9.2 pt the legend starts at the left edge of the whole panel (incl. the y title), so the
+    # longest division label "Opisthokonta (non-metazoan)" stays inside the page.
+    theme(legend.position = "bottom", legend.justification = "left", legend.location = "plot", legend.key.size = unit(2.8, "mm"),
+          legend.text = element_text(size = pt$annotation), legend.title = element_text(size = pt$annotation),
+          legend.key.spacing.y = unit(0.4, "mm"), plot.margin = margin(1.5, 0.6, 1.5, 0.6, unit = "mm"),
+          axis.title.y = element_text(margin = margin(r = 0.8, unit = "mm")))
+}
+nonc <- disp[disp$omic == "virome" & disp$display_category != "Caudoviricetes", ]
+nonc_max <- max(tapply(nonc$relative_abundance, nonc$sample_id, sum)) * 100
+rwv_check(checks, "largest non-Caudoviricetes share (%) fits the 15% expanded axis", TRUE, nonc_max < 15)
+# Figure-expression revision 2026-10-07: short titles and explicit axes on the page;
+# the TPM basis, GTDB, the non-metazoan 18S basis and the expanded-view rule are in the caption.
+p_b <- comp_panel("virome", NULL, "B", NULL, legend = FALSE, x_lab = NULL,
+                  y_lab = "vOTU relative\nabundance (%)") +
+  theme(axis.text.x = element_blank(), axis.ticks.x = element_blank(), plot.margin = margin(1.5, 0.6, 0, 0.6, unit = "mm"),
+        axis.title.y = element_text(lineheight = 0.95, margin = margin(r = 0.8, unit = "mm")))
+# v50 figure cleanup (2026-10-19): shorter legend title and detail label; the source-label meaning is in the figure notes.
+p_b2 <- comp_panel("virome", NULL, NULL, "Viral class", ymax = 15, y_breaks = c(0, 15),   # v44: boundary ticks only
+                   y_lab = "(%)", keep = setdiff(cat_levels("virome"), "Caudoviricetes")) +
+  labs(subtitle = "0\u201315% detail") +
+  theme(plot.subtitle = element_text(margin = margin(t = 2.5, b = 2.0, unit = "mm")),
+        plot.margin = margin(0.5, 0.6, 1.5, 0.6, unit = "mm"))
+# Each composition panel names its own basis on the y axis (no shared distant axis title).
+p_c <- comp_panel("bact_16s", NULL, "C", "Phylum", y_lab = "Retained 16S reads (%)")
+p_d <- comp_panel("euk_18s_microeuk", NULL, "D", "Division",
+                  y_lab = "Retained microeukaryotic\n18S reads (%)") +
+  theme(axis.title.y = element_text(lineheight = 0.95, margin = margin(r = 0.8, unit = "mm")))
+for (o in c("virome", "bact_16s", "euk_18s_microeuk")) {
+  s <- tapply(disp$relative_abundance[disp$omic == o], disp$sample_id[disp$omic == o], sum)
+  rwv_check(checks, paste(o, "bars sum to 100%"), rep(100, 7), unname(100 * s[lvl]), tol = 1e-7)
+}
+rwv_check(checks, "16S table includes an archaeal phylum (hence 'prokaryotic')", TRUE,
+          "Methanobacteriota" %in% taxon_map$taxon[taxon_map$omic == "bact_16s"], source = "taxon_display_map.tsv")
+```
+
+### Task 4: Panel e: all five CheckV completeness categories
+
+```{r}
+#| label: panel-e
+cls <- names(palettes$checkv)
+n_cls <- as.numeric(table(factor(catalogue$checkv_quality, levels = cls)))
+rwv_check_def(checks, defs, "catalogue_votu", sum(n_cls), "checkv_catalogue.tsv")
+for (k in seq_along(cls)) {
+  rwv_check_def(checks, defs, c("checkv_complete", "checkv_high", "checkv_medium", "checkv_low", "checkv_undetermined")[k],
+                n_cls[k], "checkv_catalogue.tsv")
+}
+qc <- data.frame(class = factor(cls, levels = rev(cls)), n = n_cls, pct = 100 * n_cls / sum(n_cls))
+leg_lab <- sprintf("%s %s (%.1f%%)", cls, rwv_fmt_int(n_cls), 100 * n_cls / sum(n_cls))
+leg_lab[cls == "Undetermined"] <- sprintf("Undetermined %d (%.1f%%)", n_cls[cls == "Undetermined"],
+                                          100 * n_cls[cls == "Undetermined"] / sum(n_cls))
+len_rng <- range(as.numeric(catalogue$contig_length_bp))
+rwv_check(checks, "length range stated in the legend (moved from the panel title)", c(10005, 158264), len_rng)
+p_e <- ggplot(qc, aes(x = pct, y = "all", fill = class)) +
+  geom_col(width = 0.62, colour = ink, linewidth = rwv_linewidth(style$line_mm$hairline), orientation = "y") +
+  scale_fill_manual(values = unlist(palettes$checkv), breaks = cls, labels = leg_lab, name = NULL) +
+  scale_x_continuous(breaks = seq(0, 100, 20), expand = c(0, 0)) +
+  coord_cartesian(xlim = c(0, 100), clip = "off") +
+  guides(fill = guide_legend(nrow = 2, byrow = TRUE)) +
+  labs(x = "Catalogue vOTUs (%)", y = NULL, tag = rwv_tag(style, "E")) +
+  rwv_panel(style) +
+  theme(legend.position = "bottom", legend.justification = "left", axis.line.y = element_blank(),
+        axis.text.y = element_blank(), axis.ticks.y = element_blank(), legend.key.size = unit(2.8, "mm"),
+        legend.text = element_text(size = pt$annotation), legend.key.spacing.x = unit(1.5, "mm"))
+```
+
+### Task 5: Assemble and export
+
+```{r}
+#| label: assemble
+# Panel a (one vector canvas: map -> bottles -> assays) spans the top row.
+layout <- c(area(1, 1, 1, 12), area(2, 1, 2, 4), area(2, 5, 3, 8), area(2, 9, 3, 12),
+            area(3, 1, 3, 4), area(4, 1, 4, 12))
+# wrap_elements: panel a is not aligned to the axis columns of b-d, so it uses the full width.
+fig <- wrap_elements(full = p_a) + p_b + p_c + p_d + p_b2 + p_e +
+  plot_layout(design = layout, heights = c(150, 80, 36, 24),
+              widths = c(rep(1, 4), rep(0.99, 4), rep(1.01, 4)))   # d carries a two-line y title
+# Export text check: no descriptive panel titles any more; the check requires the
+# reading elements that stay on the page (axis names, legend titles, labels, keys).
+expected_text <- c(rwv_tag(style, c("A", "B", "C", "D", "E")), names(site_col), lvl, "Each sample", "Viral metagenome",
+                   "16S rRNA amplicons", "18S rRNA amplicons", "7 water samples", "Samples", "vOTU relative",
+                   "Retained 16S reads (%)", "Retained microeukaryotic", "18S reads (%)", "0\u201315% detail",
+                   "Catalogue vOTUs (%)", "Viral class", "Phylum", "Division", "Caudoviricetes",
+                   "Pseudomonadota", "Opisthokonta (non-metazoan)", "Class unassigned (Bamfordvirae)", "Unclassified", "Other",
+                   "Undetermined 47 (1.5%)")
+res <- rwv_figure_export(fig, path_target, "fig1", spec, style, fonts, expected_text, step)
+knitr::kable(res$qa[, c("format", "check", "observed", "pass")])
+```
+
+
+### Task 6: Record plot values, caption and checks
+
+```{r}
+#| label: values-legend
+vals <- rbind(
+  data.frame(panel = "A", category = cells$assay, sample_id = cells$sample_id, value = 1, unit = "assay performed"),
+  data.frame(panel = "B", category = disp$display_category[disp$omic == "virome"], sample_id = disp$sample_id[disp$omic == "virome"],
+             value = 100 * disp$relative_abundance[disp$omic == "virome"], unit = "% of the assay total in the sample"),
+  data.frame(panel = "C", category = disp$display_category[disp$omic == "bact_16s"], sample_id = disp$sample_id[disp$omic == "bact_16s"],
+             value = 100 * disp$relative_abundance[disp$omic == "bact_16s"], unit = "% of the assay total in the sample"),
+  data.frame(panel = "D", category = disp$display_category[disp$omic == "euk_18s_microeuk"],
+             sample_id = disp$sample_id[disp$omic == "euk_18s_microeuk"],
+             value = 100 * disp$relative_abundance[disp$omic == "euk_18s_microeuk"], unit = "% of the assay total in the sample"),
+  data.frame(panel = "E", category = cls, sample_id = "all", value = n_cls, unit = "vOTUs (of 3,060)")
+)
+rwv_check(checks, "plot-values panels equal the figure's panel tags", c("A", "B", "C", "D", "E"), sort(unique(vals$panel)))
+rwv_write_tsv(vals, path_target("fig1-plot-values.tsv"))
+n_named_virus <- sum(!cat_levels("virome") %in% c("Unclassified", "[Novel_Class]_{kingdom}_Bamfordvirae"))
+# Figure-expression revision 2026-10-07 (Codex 03/04): the submission caption keeps what is
+# needed to read the figure; detail moves to the figure notes in the same file (not dropped).
+legend_en <- paste0(
+  "(a) Seven water samples from three sites (Beijing: bc1, bd1, bc2; Garching: gc1, gd1; Oberschleissheim: oc1, od1), ",
+  "each profiled once by viral metagenomics and by 16S and 18S rRNA gene amplicon sequencing ",
+  sprintf("(%d assay records, not %d independent samples). ", nrow(cells), nrow(cells)),
+  "Map points are regional anchors (Beijing; the mean of the Garching and Oberschleissheim municipality coordinates), not sampling points. ",
+  "In the available sample descriptions, d denotes treatment-process water and c nearby water after facility outflow; these process positions are not verified hydraulic pairs, and bc2 has no designated d counterpart. ",
+  "(b", rwv_ndash, "d) Relative composition within each assay; bars sum to 100% and are not comparable as absolute biomass across assays. ",
+  "The strip under each bar marks the site. ",
+  sprintf("(b) Viral classes (all %d source labels) as shares of vOTU trimmed TPM after breadth masking at 75%%; ", length(cat_levels("virome"))),
+  "the expanded view replots the same values, without renormalization, for the classes other than Caudoviricetes on a 0", rwv_ndash, "15% axis. ",
+  "(c) GTDB phyla as shares of retained 16S reads (archaeal phyla fall in Other). ",
+  "(d) Microeukaryotic divisions as shares of the 18S reads retained after removal of Metazoa, so Opisthokonta is non-metazoan. ",
+  "In c and d the eight taxa with the highest seven-sample mean are named, other named taxa are merged into Other and ",
+  "Unclassified is kept separate; colours do not link taxa across panels. ",
+  sprintf("(e) CheckV completeness classes of all %s representative vOTU sequences (Low-quality: estimated completeness below 50%%); ", rwv_fmt_int(sum(n_cls))),
+  "they estimate genome recovery, not sequencing-read quality. ",
+  sprintf("Details: Supplementary figure notes, %s; the full composition is in Data 1.", spec$label)
+)
+notes_en <- c(
+  "Map (a): Natural Earth 1:50m admin-0 country boundaries (public domain; read with the rnaturalearthdata R package), Lambert azimuthal equal-area projection centred on 45°N 65°E; China and Germany are shaded. The map locates the study regions only and is not used for any distance analysis.",
+  "Map anchors (a): public city or municipality representative coordinates (sources below); exact sampling coordinates have not been recovered. Garching and Oberschleissheim are about 6 km apart, so Germany carries one anchor at the mean of the two coordinates, joined to both site groups; there is no display offset of either point. Bottles and assay icons are schematic.",
+  sprintf("Coordinate source (a), %s: %s N, %s E, %s; %s, accessed %s.", loc$site, loc$lat, loc$lon,
+          sub(" \\(not a sampling point\\)$", "", loc$coordinate_kind), loc$source,
+          paste(as.integer(format(as.Date(loc$accessed), "%d")), month.name[as.integer(format(as.Date(loc$accessed), "%m"))],
+                format(as.Date(loc$accessed), "%Y"))),
+  "Viral composition (b): trimmed-mean coverage set to zero where less than 75% of a vOTU is covered, normalized to one million within each sample (trimmed TPM). The alpha diversity in Fig. 2a instead uses breadth-masked read counts with repeated rarefaction; the two differ in the quantity and its normalization, not in masking.",
+  sprintf("Virome source labels (b): %d assigned classes, one Bamfordvirae label without an assigned class, and Unclassified.", n_named_virus),
+  "Amplicon normalization (c, d): shares are computed within each sample from the filtered counts, not from the rarefied tables used for alpha diversity in Fig. 2. 16S taxonomy is GTDB at phylum level (bacteria and archaea); 18S Metazoa are removed at the subdivision level before the shares are computed.",
+  "Taxon display (b-d): the full 59-taxon composition and the taxon-to-category mapping are in Data 1.",
+  sprintf("Catalogue (e): representative sequence lengths %s bp; Complete %d, High-quality %d, Medium-quality %d, Low-quality %s, Undetermined %d (CheckV label Not-determined).",
+          rwv_fmt_range(len_rng[1], len_rng[2]), n_cls[1], n_cls[2], n_cls[3], rwv_fmt_int(n_cls[4]), n_cls[5])
+)
+rwv_write_legend(path_target("fig1-legend.md"), spec$label, "Study design and composition of the three assays", legend_en,
+  can_read = "Seven samples (Beijing 3, Garching 2, Oberschleissheim 2) each have three sequencing assays. Panels show within-assay composition and sample differences, and all five CheckV categories; 73.7% of 3,060 vOTUs are Low-quality.",
+  cannot_infer = "Do not compare absolute biomass across assays, interpret c/d as before/after treatment, treat regional markers as sampling locations, equate Low-quality with poor sequencing-read quality, or count 21 assay records as independent samples. Viral composition uses breadth >= 75% masked trimmed-mean coverage normalized to one million per sample; viral alpha uses masked read counts with repeated rarefaction. Both are masked but use different quantities and normalizations.",
+  sources = c("analyses/data/020-community-analysis/composition_display.tsv, taxon_display_map.tsv (computed in 012/020 from the migrated primary tables; 014 checks them against production-inputs/composition_full.tsv: numerically consistent under the registered comparison tolerance in step 014)",
+              "analyses/data/020-community-analysis/checkv_catalogue.tsv (CheckV quality_summary.tsv joined through the read-only vOTU map)",
+              "analyses/data/020-community-analysis/samples.tsv (S1_sample_metadata.tsv)",
+              "config/site-locations.tsv (city representative coordinates and their public sources); rnaturalearthdata::countries50 (Natural Earth 1:50m admin-0, public domain)"),
+  abbreviations = c("vOTU, viral operational taxonomic unit", "TPM, abundance normalized to one million per sample", "GTDB, Genome Taxonomy Database"),
+  notes = notes_en)
+check_table <- rwv_checks_finish(checks, path_target("fig1-checks.tsv"))
+knitr::kable(check_table[, c("check", "expected", "observed", "pass")])
+rwv_write_session_info(path_target("session-info.txt"),
+                       c(step = params$name, run_id = step$run_id, mode = step$mode, quarto = rwv_quarto_version()))
+```
+
+```{r}
+#| label: step-record
+outputs <- rwv_step_finish(step, path_target)
+knitr::kable(transform(outputs, sha256 = substr(outputs$sha256, 1, 16)), caption = "Outputs recorded in step-record.json")
+rwv_report_complete(step, outputs)
+```
+
+</details>
+
+## Published figure preview
+
+```{r}
+#| label: preview
+#| out-width: "100%"
+knitr::include_graphics(path_target("fig1.png"))
+```
+
+<details class="rwv-file-details">
+<summary>All output files</summary>
+
+```{r}
+#| label: list-files-target
+rwv_report_files(step, outputs)
+```
+
+</details>
+
+```{r}
+#| label: report-summary
+#| results: asis
+cat(rwv_report_summary(step))
+```

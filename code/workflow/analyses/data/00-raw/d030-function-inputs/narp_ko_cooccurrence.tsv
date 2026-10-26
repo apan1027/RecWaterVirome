@@ -1,0 +1,7 @@
+vOTU_id	vcontig_id	NAMPT_K03462_proteins	nadM_K13522_proteins	NAMPT_gene_positions	nadM_gene_positions	closest_pair	closest_gene_position_distance	closest_coordinate_gap_bp	contig_length_bp	CheckV_completeness	CheckV_quality	lifestyle	replidec_lifestyle	vibrant_type	peak_sample	peak_trimmed_tpm	peak_relative_percent	detected_samples_n	detected_samples	host_genus	host_confidence	host_methods
+vOTU0052	vctg2997	vctg2997_103	vctg2997_101	103	101	vctg2997_101(K13522)-vctg2997_103(K03462)	2	640	132528	88.84	3	temperate	temperate	lysogenic	gd1	1267.477	0.1267	1	gd1	d__Bacteria;p__Pseudomonadota;c__Alphaproteobacteria;o__Sphingomonadales;f__Sphingomonadaceae;g__Novosphingobium	90.8	blast;93.20
+vOTU0113	vctg2633	vctg2633_37	vctg2633_35	37	35	vctg2633_35(K13522)-vctg2633_37(K03462)	2	570	61898	16.65	4	virulent	lytic	lytic	gc1	33391.381	3.3391	2	gc1;gd1			
+vOTU0131	vctg3454	vctg3454_21	vctg3454_26	21	26	vctg3454_26(K13522)-vctg3454_21(K03462)	5	2369	58307	31.9	4	virulent	lytic	lytic	od1	7204.883	0.7205	1	od1			
+vOTU0544	vctg2892	vctg2892_14	vctg2892_13	14	13	vctg2892_13(K13522)-vctg2892_14(K03462)	1	14	35287	14.34	4	virulent	lytic	lytic	gd1	1159.695	0.1160	1	gd1			
+vOTU0863	vctg0405	vctg0405_39	vctg0405_38	39	38	vctg0405_38(K13522)-vctg0405_39(K03462)	1	0	26081	27.13	4	virulent	lytic	lytic	bc1	720.362	0.0720	1	bc1			
+vOTU1643	vctg2728	vctg2728_1	vctg2728_2	1	2	vctg2728_2(K13522)-vctg2728_1(K03462)	1	1	16548	6.8	4	virulent	lytic	lytic	gd1	605.999	0.0606	1	gd1			

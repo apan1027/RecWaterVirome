@@ -1,0 +1,647 @@
+covariate	feat	valid	slope	se	warnings
+ecosystem	pfam03819	TRUE	2.51094648436025	0.0671397029106205	""
+ecosystem	pfam00156	TRUE	6.1185033624254	0.142893889879829	""
+ecosystem	pfam13692	TRUE	2.65314868291666	0.116798553360571	""
+ecosystem	pfam00534	TRUE	4.16865891559697	0.0841570616671545	""
+ecosystem	pfam01503	TRUE	3.14501372473059	0.0936723240440598	""
+ecosystem	pfam08241	TRUE	2.58730367866059	0.0879768956680276	""
+ecosystem	pfam13489	TRUE	2.84272922218834	0.0835315108901059	""
+ecosystem	pfam01464	TRUE	1.64483678324443	0.0621162125383991	""
+ecosystem	pfam13856	TRUE	-1.74993971830904	0.607323281558563	""
+ecosystem	pfam01520	TRUE	-0.112155000565202	0.098542857173947	""
+ecosystem	pfam13469	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam13394	TRUE	4.30475406712225	0.101860317790818	""
+ecosystem	pfam00535	TRUE	3.57687514830877	0.0645621615453767	""
+ecosystem	pfam13472	TRUE	1.08671481673953	0.11233129739199	""
+ecosystem	pfam06737	TRUE	2.73793462336147	0.178497781448726	""
+ecosystem	pfam03407	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam05838	TRUE	-0.0127345180437388	0.092940638956782	""
+ecosystem	pfam00268	TRUE	6.68589080325734	0.10252636682332	""
+ecosystem	pfam13597	TRUE	6.11168167085644	0.0968970004520374	""
+ecosystem	pfam13704	TRUE	3.55277269944757	0.146574683660556	""
+ecosystem	pfam13578	TRUE	3.23018892512898	0.0817323339559202	""
+ecosystem	pfam01050	TRUE	6.21521348030013	0.219193787843661	""
+ecosystem	pfam03414	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam01370	TRUE	5.22324469860699	0.0935453079370575	""
+ecosystem	pfam11860	TRUE	2.00417816317603	0.163127431120617	""
+ecosystem	pfam11775	TRUE	3.10265230366677	0.193787594520035	""
+ecosystem	pfam06508	TRUE	3.42864135348681	0.108631218047342	""
+ecosystem	pfam18823	TRUE	2.29410646089284	0.230955293062038	""
+ecosystem	pfam01183	TRUE	0.368485282582096	0.0786727457696294	""
+ecosystem	pfam00206	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam03167	TRUE	3.13241034570438	0.0726551347504842	""
+ecosystem	pfam00583	TRUE	1.89011844448938	0.080055094905973	""
+ecosystem	pfam07486	TRUE	3.35532407894004	0.0794881417847517	""
+ecosystem	pfam01507	TRUE	0.869542014339589	0.0732663219201225	""
+ecosystem	pfam01510	TRUE	0.580385006778654	0.0595731360860096	""
+ecosystem	pfam00303	TRUE	4.34044558819509	0.0711281452785775	""
+ecosystem	pfam02511	TRUE	4.59471570428565	0.0584977108473432	""
+ecosystem	pfam05869	TRUE	0.799086270788716	0.0968361269889481	""
+ecosystem	pfam18760	TRUE	-0.752227822946934	0.261380251170808	""
+ecosystem	pfam02675	TRUE	5.16094080196424	0.145984603996607	""
+ecosystem	pfam00186	TRUE	7.5509123940551	0.151633429798965	""
+ecosystem	pfam02086	TRUE	2.70716137898552	0.0797756332511245	""
+ecosystem	pfam18909	TRUE	1.11770258629829	0.135313535803822	""
+ecosystem	pfam05382	TRUE	-2.97865445685619	0.377754895635243	""
+ecosystem	pfam02867	TRUE	6.414564713224	0.0787362417749933	""
+ecosystem	pfam00383	TRUE	5.15312446540315	0.0720434209064505	""
+ecosystem	pfam17975	TRUE	3.58344404442265	0.237995832988759	""
+ecosystem	pfam03013	TRUE	4.0886091043475	0.133212651871968	""
+ecosystem	pfam07833	TRUE	0.290874990773277	0.317893745655045	""
+ecosystem	pfam08719	TRUE	7.24593947203644	0.136259397461358	""
+ecosystem	pfam02719	TRUE	2.46914544650763	0.224914565460849	""
+ecosystem	pfam04973	TRUE	4.68511151992285	0.180390394564152	""
+ecosystem	pfam02709	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam01467	TRUE	6.89432310073566	0.115336132357982	""
+ecosystem	pfam14602	TRUE	2.20754420916346	0.301392629066097	""
+ecosystem	pfam06213	TRUE	3.34239830056877	0.262132488348558	""
+ecosystem	pfam05050	TRUE	3.61159206272392	0.0882245389618731	""
+ecosystem	pfam09423	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam07659	TRUE	1.63227411356034	0.118656486875168	""
+ecosystem	pfam13672	TRUE	6.92071892076498	0.377033082451025	""
+ecosystem	pfam00085	TRUE	6.11496453272599	0.107735673482349	""
+ecosystem	pfam02223	TRUE	6.19108795279632	0.150096440762893	""
+ecosystem	pfam07021	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam01041	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam08924	TRUE	1.57240452097762	0.259167910104018	""
+ecosystem	pfam06339	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam13302	TRUE	2.45719142181364	0.201306883040993	""
+ecosystem	pfam13793	TRUE	5.99962841892237	0.229619385175437	""
+ecosystem	pfam04488	TRUE	3.66674015140381	0.162811089920551	""
+ecosystem	pfam02540	TRUE	9.21656092063997	0.282789222007126	""
+ecosystem	pfam00795	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam01075	TRUE	3.40100825351957	0.121731747676273	""
+ecosystem	pfam01071	TRUE	-2.26152119477753	0.397260902508299	""
+ecosystem	pfam05175	TRUE	2.7186544841374	0.211482721566678	""
+ecosystem	pfam13524	TRUE	3.0732847926726	0.133637906315083	""
+ecosystem	pfam01227	TRUE	3.73495045410897	0.101795359591203	""
+ecosystem	pfam00106	TRUE	3.74718766133869	0.212277471546649	""
+ecosystem	pfam04447	TRUE	1.06600864813698	0.27258860020041	""
+ecosystem	pfam12708	TRUE	-0.315875343097931	0.116418703250713	""
+ecosystem	pfam06094	TRUE	2.24617907128775	0.158349019006104	""
+ecosystem	pfam00109	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00317	TRUE	6.57227738642549	0.107192431731222	""
+ecosystem	pfam13641	TRUE	2.63217725462147	0.19938807190578	""
+ecosystem	pfam03496	TRUE	1.3391620971082	0.148542501746805	""
+ecosystem	pfam00265	TRUE	6.05071383124901	0.185146473114458	""
+ecosystem	pfam01501	TRUE	3.58966743682774	0.212922687901143	""
+ecosystem	pfam01973	TRUE	-0.246333382323624	0.229571415765905	""
+ecosystem	pfam06941	TRUE	6.27595611974489	0.111317507258268	""
+ecosystem	pfam15891	TRUE	7.67454103679897	0.212633944567134	""
+ecosystem	pfam00483	TRUE	6.17997438088278	0.203671088375983	""
+ecosystem	pfam01408	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00984	TRUE	5.12121288862547	0.151117923590434	""
+ecosystem	pfam00908	TRUE	5.52173682512711	0.242085276766545	""
+ecosystem	pfam13508	TRUE	3.60081339062704	0.168932109420277	""
+ecosystem	pfam08471	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam02348	TRUE	2.85922137925897	0.175871032830815	""
+ecosystem	pfam07521	TRUE	5.82965472925438	0.266521057246912	""
+ecosystem	pfam12917	TRUE	1.78528194024549	0.321327204507205	""
+ecosystem	pfam02882	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam03747	TRUE	4.17166041716782	0.165302890578099	""
+ecosystem	pfam00709	TRUE	4.86516457486032	0.131095951554584	""
+ecosystem	pfam00266	TRUE	5.64556385883557	0.1858661432393	""
+ecosystem	pfam21448	TRUE	5.87367650620197	0.254300624259997	""
+ecosystem	pfam01817	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam13419	TRUE	6.16194779979277	0.218376911729461	""
+ecosystem	pfam02843	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00438	TRUE	2.24191973357799	0.22952431368128	""
+ecosystem	pfam01242	TRUE	3.74905874692957	0.0975573977734089	""
+ecosystem	pfam04275	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam04724	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam13649	TRUE	3.11242860901002	0.143536379792944	""
+ecosystem	pfam02943	TRUE	4.92880878948053	0.248495056909756	""
+ecosystem	pfam00551	TRUE	3.4003539945659	0.27778534139581	""
+ecosystem	pfam02826	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00478	TRUE	8.22516323285623	0.204811557812872	""
+ecosystem	pfam13712	TRUE	5.65264608303974	0.211145987873822	""
+ecosystem	pfam03721	TRUE	5.32100590338037	0.159180729826043	""
+ecosystem	pfam06559	TRUE	2.48886088780481	0.316513535990707	""
+ecosystem	pfam01531	TRUE	4.39867950250151	0.172388783710006	""
+ecosystem	pfam18127	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam13673	TRUE	3.71373985999578	0.164850647130177	""
+ecosystem	pfam01583	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam04230	TRUE	4.172397207163	0.262063128411269	""
+ecosystem	pfam00977	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam13230	TRUE	0.319423067957859	0.314378284669482	""
+ecosystem	pfam01564	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam01697	TRUE	4.7753514683278	0.415546376947451	""
+ecosystem	pfam04095	TRUE	8.33443925547057	0.147130874775324	""
+ecosystem	pfam04446	TRUE	8.44745664246194	0.191291449824577	""
+ecosystem	pfam03275	TRUE	5.16020229529317	0.228434018401709	""
+ecosystem	pfam13522	TRUE	2.05944350231063	0.142994025447639	""
+ecosystem	pfam01885	TRUE	9.3172862833641	0.445176320474951	""
+ecosystem	pfam13439	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam01656	TRUE	0.208488365034122	0.222536787600591	""
+ecosystem	pfam00150	TRUE	1.81411693346431	0.318470503909443	""
+ecosystem	pfam11397	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam08544	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam03567	TRUE	4.47768727020036	0.197143749659214	""
+ecosystem	pfam03738	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00733	TRUE	3.33021977467115	0.239137471301921	""
+ecosystem	pfam05708	TRUE	3.70417240189529	0.18930745525645	""
+ecosystem	pfam00215	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam03358	TRUE	6.72680577522719	0.523556498853259	""
+ecosystem	pfam11051	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00334	TRUE	6.27470702986837	0.438125409926531	""
+ecosystem	pfam20691	TRUE	0.843465120008747	0.373032866130794	""
+ecosystem	pfam03976	TRUE	3.39575579525981	0.508635782646948	""
+ecosystem	pfam05014	TRUE	4.11031990524818	0.132547720862295	""
+ecosystem	pfam08787	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam08484	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00685	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam01909	TRUE	5.76420551691553	0.270243258738519	""
+ecosystem	pfam13872	TRUE	0.945359922768834	0.286244456544657	""
+ecosystem	pfam00152	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00923	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam05996	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam18723	TRUE	2.03673931879266	0.349870896172017	""
+ecosystem	pfam01128	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam13350	TRUE	1.30504103831676	0.40057290480738	""
+ecosystem	pfam15644	TRUE	-0.531005660514246	0.398071523983567	""
+ecosystem	pfam02794	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam16861	TRUE	6.16945925653627	0.183980567917457	""
+ecosystem	pfam13537	TRUE	3.61741377862804	0.340321634734382	""
+ecosystem	pfam14819	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam01521	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00132	TRUE	2.05128206786488	0.154849907366868	""
+ecosystem	pfam01981	TRUE	8.32478648787379	0.226072436599856	""
+ecosystem	pfam07934	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam08343	TRUE	5.19050705420625	0.262245898147193	""
+ecosystem	pfam00657	TRUE	1.59044714800263	0.418583678761369	""
+ecosystem	pfam18757	TRUE	-0.420782792790733	0.689437199267104	""
+ecosystem	pfam01755	TRUE	4.4684499253107	0.157658855185155	""
+ecosystem	pfam13450	TRUE	4.98450998325923	0.213092592343034	""
+ecosystem	pfam00777	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam13192	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam04464	TRUE	3.37205740822638	0.421287516883453	""
+ecosystem	pfam06798	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam12804	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00702	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam02543	TRUE	6.1559449772941	0.183256485495898	""
+ecosystem	pfam05159	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00625	TRUE	6.87003366387843	0.152310763215234	""
+ecosystem	pfam00782	TRUE	6.20133382671827	0.188030917381569	""
+ecosystem	pfam00561	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam01757	TRUE	0.0830377663569778	0.302686458359554	""
+ecosystem	pfam01712	TRUE	3.38456693879741	0.279588545801297	""
+ecosystem	pfam00763	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam05711	TRUE	3.53393311579163	0.201483239569929	""
+ecosystem	pfam01129	TRUE	1.77788142318358	0.637095250342351	""
+ecosystem	pfam00202	TRUE	2.07676219306924	0.339990203303787	""
+ecosystem	pfam03332	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam01121	TRUE	10.8716871523134	0.727320838974678	""
+ecosystem	pfam04616	TRUE	1.05384977998215	0.857250676294482	""
+ecosystem	pfam11316	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00676	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00081	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00793	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00107	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam22769	TRUE	2.19739679742667	0.289768698166159	""
+ecosystem	pfam00704	TRUE	0.670345226000914	0.84092655366245	""
+ecosystem	pfam13847	TRUE	3.83211657126655	0.206435130059468	""
+ecosystem	pfam00454	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00288	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00722	TRUE	2.55547668470732	0.248002972829954	""
+ecosystem	pfam08645	TRUE	5.44687551055633	0.20765490191533	""
+ecosystem	pfam01762	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam04989	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam02350	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam04536	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam13561	TRUE	3.78833743001571	0.235667050027325	""
+ecosystem	pfam00300	TRUE	4.35665580971541	0.217602228633395	""
+ecosystem	pfam13735	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam01266	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam07335	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00596	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam11790	TRUE	2.03809562004845	0.618688087135619	""
+ecosystem	pfam02773	TRUE	3.56489172978213	0.251055229192134	""
+ecosystem	pfam13420	TRUE	-1.36542825428911	0.624845424260057	""
+ecosystem	pfam16656	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam02649	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam02156	TRUE	2.88839444536186	0.504820136199621	""
+ecosystem	pfam05637	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam03767	TRUE	3.31118118495034	0.214223974588528	""
+ecosystem	pfam02772	TRUE	3.74984082225502	0.264055522297125	""
+ecosystem	pfam08242	TRUE	3.75323924621325	0.358373438015124	""
+ecosystem	pfam13651	TRUE	4.02668131412531	0.298382904714952	""
+ecosystem	pfam00155	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam14572	TRUE	6.78832759376409	0.34934575158299	""
+ecosystem	pfam13506	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam03537	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00294	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00579	TRUE	6.23018362164808	0.406825839930402	""
+ecosystem	pfam02777	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam01149	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam03214	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam14099	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam04454	TRUE	1.96179618257905	0.328788380999661	""
+ecosystem	pfam00852	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam07992	TRUE	5.01757837128052	0.322838067302371	""
+ecosystem	pfam18406	TRUE	3.94772290418543	0.309767755196043	""
+ecosystem	pfam04991	TRUE	2.64082128632447	0.387715340259637	""
+ecosystem	pfam00881	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam13632	TRUE	1.97097530210285	0.76978582647469	""
+ecosystem	pfam00464	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam09411	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam10111	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam02627	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00512	TRUE	2.28298005530437	0.353075880284702	""
+ecosystem	pfam13733	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00912	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam01596	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam04127	TRUE	8.08801155977786	0.482668756015115	""
+ecosystem	pfam00069	TRUE	5.46800154792406	0.299324160953787	""
+ecosystem	pfam04765	TRUE	2.92427298551986	0.267805717549998	""
+ecosystem	pfam08757	TRUE	1.90405361436182	0.303106775384739	""
+ecosystem	pfam05908	TRUE	3.92061615636716	0.472032455034627	""
+ecosystem	pfam00697	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam03031	TRUE	5.31366658580005	0.464836036669434	""
+ecosystem	pfam13091	TRUE	2.98469564342639	0.352568687876353	""
+ecosystem	pfam04577	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam01636	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam03162	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam08282	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00587	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam21995	TRUE	4.33957621342162	0.507668812249301	""
+ecosystem	pfam00255	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00254	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam06831	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam03720	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam02801	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam13242	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam08139	TRUE	1.76297039960847	0.549684794830668	""
+ecosystem	pfam09334	TRUE	5.68767005473362	0.551683531784307	""
+ecosystem	pfam13090	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam07859	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam08240	TRUE	4.44290328447448	0.457215343576303	""
+ecosystem	pfam18724	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam01374	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam02894	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam17767	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam08759	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam01923	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam04226	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	pfam00749	TRUE	6.76674707515728	0.458316052145294	""
+ecosystem	pfam01261	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	dam	TRUE	6.1024329088793	0.350970600379814	""
+ecosystem	vcrx093	TRUE	-2.59027519452623	0.145229845943299	""
+ecosystem	lar	TRUE	1.11391708299843	0.21933888670011	""
+ecosystem	tad1	TRUE	2.5092131195055	0.158657328539192	""
+ecosystem	acb2	TRUE	1.97721477725659	0.222652368361722	""
+ecosystem	rad	TRUE	5.50228053639465	0.311338829835056	""
+ecosystem	acb1	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	ardc	TRUE	0.877276816961108	0.182330912244063	""
+ecosystem	acriia21	TRUE	0.0266329060717696	0.495377538275627	""
+ecosystem	aca11	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	vcrx089	TRUE	4.47678193139943	0.142941125716003	""
+ecosystem	vcrx092	TRUE	-2.23205117592983	0.416106492923331	""
+ecosystem	acriia7	TRUE	1.17861544334832	0.12240941366212	""
+ecosystem	tad2	TRUE	1.02745326582142	0.130743952854672	""
+ecosystem	vcrx091	TRUE	-0.192520433312617	0.143745709841663	""
+ecosystem	ulx	TRUE	2.87729041714797	0.361314153585377	""
+ecosystem	ddra	TRUE	2.59399267982388	0.598780100796965	""
+ecosystem	hdf	TRUE	2.76136384258621	0.491804101005714	""
+ecosystem	adnd_p0020	TRUE	-0.965540236034213	0.45341780140234	""
+ecosystem	darb	TRUE	2.59426980760123	0.601899113742794	""
+ecosystem	atd1	TRUE	8.81163687131198	0.50022175504243	""
+ecosystem	apyc1	TRUE	7.18396427827207	0.450811459639653	""
+ecosystem	gp4.5	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	samase	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	ardu	TRUE	-0.34925960025699	0.435758466054848	""
+ecosystem	ntase	TRUE	6.07190410743525	0.262581338727158	""
+ecosystem	aca13	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	aca10	TRUE	0.250577547895677	0.509179594350065	""
+ecosystem	aca1	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	ocr	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	gad1	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	gad2	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	mom	TRUE	-2.85080508118961	0.542740580606345	""
+ecosystem	adnd_p0021	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+ecosystem	acriii1	TRUE	2.81122626296532	0.383777316938192	""
+ecosystem	acric5	TRUE	1.22666070375447	0.30351163101817	""
+ecosystem	acriia9	TRUE	1.19208593205842	0.668189355346605	""
+ecosystem	acrva1	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam03819	TRUE	2.45717043784585	0.0677383894663905	""
+host	pfam00156	TRUE	6.07736055869245	0.142244301707217	""
+host	pfam13692	TRUE	2.41821473824099	0.117778598821947	""
+host	pfam00534	TRUE	3.88356185862607	0.0832131813012974	""
+host	pfam01503	TRUE	2.99374222245042	0.0937185083932284	""
+host	pfam08241	TRUE	2.44316214783919	0.0866872547075778	""
+host	pfam13489	TRUE	2.66353285425569	0.0828419593939965	""
+host	pfam01464	TRUE	1.74352973308023	0.061945393128588	""
+host	pfam13856	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam01520	TRUE	-0.00512579085979435	0.099619884645398	""
+host	pfam13469	TRUE	3.89992101651805	0.181044408363719	""
+host	pfam13394	TRUE	4.2551869517933	0.101776860077602	""
+host	pfam00535	TRUE	3.34688404689069	0.0634530826325035	""
+host	pfam13472	TRUE	1.32942665409743	0.108340842904205	""
+host	pfam06737	TRUE	2.69785799742082	0.174722324409907	""
+host	pfam03407	TRUE	3.52450582628835	0.304761634013425	""
+host	pfam05838	TRUE	-0.0380135080930033	0.0912393903616043	""
+host	pfam00268	TRUE	6.61439743682207	0.101591062304184	""
+host	pfam13597	TRUE	5.5841175755579	0.0844433598571375	""
+host	pfam13704	TRUE	3.41023408535357	0.147921064195909	""
+host	pfam13578	TRUE	2.9290969297708	0.079939618581302	""
+host	pfam01050	TRUE	6.10040600011363	0.217499611643657	""
+host	pfam03414	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam01370	TRUE	4.89608012425188	0.0903934167519147	""
+host	pfam11860	TRUE	2.12157312033779	0.160117951857379	""
+host	pfam11775	TRUE	3.18626053091499	0.196567322002247	""
+host	pfam06508	TRUE	3.39808739288749	0.108006314058348	""
+host	pfam18823	TRUE	2.23670849488832	0.210852925524074	""
+host	pfam01183	TRUE	0.845745490579947	0.0803451839549269	""
+host	pfam00206	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam03167	TRUE	3.00197862576253	0.070699518313986	""
+host	pfam00583	TRUE	1.86279309056112	0.0792870015813295	""
+host	pfam07486	TRUE	3.54359555240379	0.0811328625896923	""
+host	pfam01507	TRUE	0.940896384503802	0.0739454374104682	""
+host	pfam01510	TRUE	0.672790143236136	0.0600888235996767	""
+host	pfam00303	TRUE	4.30915805295777	0.0718488583507506	""
+host	pfam02511	TRUE	4.5519738020976	0.0585032582505706	""
+host	pfam05869	TRUE	0.980456128555718	0.0944688362658285	""
+host	pfam18760	TRUE	-0.432633246653965	0.247999966965954	""
+host	pfam02675	TRUE	4.94411594488651	0.14551302981933	""
+host	pfam00186	TRUE	7.95757790390498	0.157011329431591	""
+host	pfam02086	TRUE	2.78907640453369	0.0797539783154143	""
+host	pfam18909	TRUE	1.33201578860921	0.123939427662156	""
+host	pfam05382	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam02867	TRUE	6.00280369104148	0.0743555451915155	""
+host	pfam00383	TRUE	5.21258067311633	0.0728039800326653	""
+host	pfam17975	TRUE	3.42401466288732	0.235631880700059	""
+host	pfam03013	TRUE	4.07936847038179	0.135337114712673	""
+host	pfam07833	TRUE	0.669302467061677	0.316844284550961	""
+host	pfam08719	TRUE	7.17992329025854	0.132837811096044	""
+host	pfam02719	TRUE	2.37657726640357	0.219449969046308	""
+host	pfam04973	TRUE	4.89061438201924	0.18195332815182	""
+host	pfam02709	TRUE	3.88769611088779	0.188257713498412	""
+host	pfam01467	TRUE	6.73688020376192	0.113954661443193	""
+host	pfam14602	TRUE	2.08457370052081	0.302388703082478	""
+host	pfam06213	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam05050	TRUE	3.3123579188188	0.0856997283958223	""
+host	pfam09423	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam07659	TRUE	1.46001171231264	0.122163019582247	""
+host	pfam13672	TRUE	7.05890293931033	0.379455964569178	""
+host	pfam00085	TRUE	6.00825334187319	0.108185502958571	""
+host	pfam02223	TRUE	6.33567898324776	0.150790036978498	""
+host	pfam07021	TRUE	2.43551561272969	0.571755483166531	""
+host	pfam01041	TRUE	4.4840408868017	0.118385188384181	""
+host	pfam08924	TRUE	1.82987962109345	0.236092503911795	""
+host	pfam06339	TRUE	-1.32976464631688	1.03468741130119	""
+host	pfam13302	TRUE	2.41557885479826	0.197227593408231	""
+host	pfam13793	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam04488	TRUE	3.52201999885872	0.167484090183754	""
+host	pfam02540	TRUE	8.83958536150857	0.255297495209136	""
+host	pfam00795	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam01075	TRUE	3.22285708815265	0.122421360659874	""
+host	pfam01071	TRUE	-1.07164313015421	0.327555110716441	""
+host	pfam05175	TRUE	2.79280836416079	0.213078524095121	""
+host	pfam13524	TRUE	2.88493590453672	0.132393305815867	""
+host	pfam01227	TRUE	3.64340161407379	0.101400637167819	""
+host	pfam00106	TRUE	3.67440937804608	0.214370437578315	""
+host	pfam04447	TRUE	1.1933872341734	0.262550135708749	""
+host	pfam12708	TRUE	-0.155989559147145	0.111478849960389	""
+host	pfam06094	TRUE	2.18920764440881	0.16042681640616	""
+host	pfam00109	TRUE	3.01373160191498	0.310178486885811	""
+host	pfam00317	TRUE	6.55137017267571	0.106659049302759	""
+host	pfam13641	TRUE	2.47702406947972	0.201874816284861	""
+host	pfam03496	TRUE	1.49665169368989	0.146693553351341	""
+host	pfam00265	TRUE	6.30809788131264	0.184077881461682	""
+host	pfam01501	TRUE	3.62734196714023	0.218472257123779	""
+host	pfam01973	TRUE	-0.282660802179542	0.220019888517423	""
+host	pfam06941	TRUE	6.35168587889331	0.111682816830534	""
+host	pfam15891	TRUE	7.77139191597124	0.215323638745013	""
+host	pfam00483	TRUE	6.12834469805874	0.203180034510269	""
+host	pfam01408	TRUE	3.00916136765006	0.266107554305613	""
+host	pfam00984	TRUE	5.02568069756829	0.152306427158146	""
+host	pfam00908	TRUE	5.4693926589863	0.242870803207334	""
+host	pfam13508	TRUE	3.58874527558473	0.16879448032674	""
+host	pfam08471	TRUE	5.50964754011809	0.349652572559244	""
+host	pfam02348	TRUE	2.70076487952538	0.174251303401853	""
+host	pfam07521	TRUE	5.94455063948351	0.249629995232498	""
+host	pfam12917	TRUE	1.77531435968594	0.303016943529158	""
+host	pfam02882	TRUE	5.35945652645413	0.190956630388476	""
+host	pfam03747	TRUE	4.27269830351959	0.165428862024951	""
+host	pfam00709	TRUE	4.82403932697358	0.131215600433703	""
+host	pfam00266	TRUE	5.99022581399742	0.180423301159554	""
+host	pfam21448	TRUE	5.58059302081957	0.228257299716991	""
+host	pfam01817	TRUE	6.28436082364995	0.46614105368735	""
+host	pfam13419	TRUE	6.11365322110223	0.2213294826713	""
+host	pfam02843	TRUE	-0.588019261135494	0.393576889682633	""
+host	pfam00438	TRUE	2.36354461010638	0.23454551300007	""
+host	pfam01242	TRUE	3.65076512159912	0.0971566371282494	""
+host	pfam04275	TRUE	4.2648168981946	0.34315890256203	""
+host	pfam04724	TRUE	4.95274553409946	0.225862373176388	""
+host	pfam13649	TRUE	2.99620714213598	0.144127225003766	""
+host	pfam02943	TRUE	4.84817102759746	0.233530264002275	""
+host	pfam00551	TRUE	3.30074794254647	0.279439758316283	""
+host	pfam02826	TRUE	4.13394405266831	0.458218698644857	""
+host	pfam00478	TRUE	8.05219768727704	0.203287487118883	""
+host	pfam13712	TRUE	5.62985309554879	0.214758199201543	""
+host	pfam03721	TRUE	5.22583196249442	0.160366074939568	""
+host	pfam06559	TRUE	2.48862736693888	0.318048907901891	""
+host	pfam01531	TRUE	4.10615551482771	0.173481429992861	""
+host	pfam18127	TRUE	6.58059916289551	0.20812674070423	""
+host	pfam13673	TRUE	3.6940871589543	0.166699865636212	""
+host	pfam01583	TRUE	5.18276157914582	0.17297448022976	""
+host	pfam04230	TRUE	4.06717747432871	0.26620996720195	""
+host	pfam00977	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam13230	TRUE	-0.088853629928006	0.323074970570192	""
+host	pfam01564	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam01697	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam04095	TRUE	8.30361549420051	0.144803481592426	""
+host	pfam04446	TRUE	8.50534255613896	0.188490321400606	""
+host	pfam03275	TRUE	5.13452670552406	0.230652180824641	""
+host	pfam13522	TRUE	1.90223333489336	0.140933172401079	""
+host	pfam01885	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam13439	TRUE	4.28177167171663	0.196251847900115	""
+host	pfam01656	TRUE	0.866250961219659	0.207247788722035	""
+host	pfam00150	TRUE	2.12150692166774	0.296079748666489	""
+host	pfam11397	TRUE	5.18792413693538	0.216644201654163	""
+host	pfam08544	TRUE	4.57220541608524	0.325325331774914	""
+host	pfam03567	TRUE	4.31795037198333	0.20187442018058	""
+host	pfam03738	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam00733	TRUE	3.10505496715254	0.244318433166158	""
+host	pfam05708	TRUE	3.72052995645467	0.193374783574569	""
+host	pfam00215	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam03358	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam11051	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam00334	TRUE	6.15917307021233	0.43085003196743	""
+host	pfam20691	TRUE	1.05118619020714	0.360615149673846	""
+host	pfam03976	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam05014	TRUE	4.20228214210173	0.131491668816301	""
+host	pfam08787	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam08484	TRUE	3.90475781752052	0.182448100845809	""
+host	pfam00685	TRUE	3.97300628297953	0.235844325405975	""
+host	pfam01909	TRUE	5.7813516280905	0.269268780319041	""
+host	pfam13872	TRUE	0.803833885922311	0.28209873031008	""
+host	pfam00152	TRUE	7.17440992889526	0.440712623391583	""
+host	pfam00923	TRUE	5.45549781546147	0.382692356693628	""
+host	pfam05996	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam18723	TRUE	2.04701740140614	0.323449482436206	""
+host	pfam01128	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam13350	TRUE	1.68874378478127	0.4007653797683	""
+host	pfam15644	TRUE	-0.562441518663169	0.406457121800345	""
+host	pfam02794	TRUE	-3.13462979483171	0.767719885275333	""
+host	pfam16861	TRUE	5.95948276154923	0.18014868780054	""
+host	pfam13537	TRUE	3.44913398171299	0.346597032811761	""
+host	pfam14819	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam01521	TRUE	7.2806969270939	0.249395806994983	""
+host	pfam00132	TRUE	1.76792997781863	0.159745643965874	""
+host	pfam01981	TRUE	8.37347085569463	0.224946449860787	""
+host	pfam07934	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam08343	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam00657	TRUE	1.74150547673414	0.419554631797376	""
+host	pfam18757	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam01755	TRUE	4.22747567113171	0.15968773759804	""
+host	pfam13450	TRUE	4.96392991029118	0.215504117623837	""
+host	pfam00777	TRUE	2.611447164585	0.372221655254223	""
+host	pfam13192	TRUE	5.4706001394841	0.442545980598015	""
+host	pfam04464	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam06798	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam12804	TRUE	4.48707439061124	0.225299280759443	""
+host	pfam00702	TRUE	6.6209104218368	0.317949990716238	""
+host	pfam02543	TRUE	5.9463193033658	0.179344203247561	""
+host	pfam05159	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam00625	TRUE	6.55611485285945	0.13982277051136	""
+host	pfam00782	TRUE	6.12055558207209	0.186568671990269	""
+host	pfam00561	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam01757	TRUE	0.99356088458312	0.271693971649378	""
+host	pfam01712	TRUE	3.74725144181621	0.286007134437896	""
+host	pfam00763	TRUE	5.79155638123899	0.22034251515745	""
+host	pfam05711	TRUE	3.40040723856096	0.20057290358471	""
+host	pfam01129	TRUE	1.60601325899126	0.628478857339253	""
+host	pfam00202	TRUE	1.99516097326133	0.325934549356774	""
+host	pfam03332	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam01121	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam04616	TRUE	1.0885690986971	0.805320312517137	""
+host	pfam11316	TRUE	2.99149439806297	0.489245503209845	""
+host	pfam00676	TRUE	3.88314421397738	0.317078204122958	""
+host	pfam00081	TRUE	8.00218706714108	0.392137321487041	""
+host	pfam00793	TRUE	3.58140161017443	0.366326178318946	""
+host	pfam00107	TRUE	3.73959503464378	0.591433810340998	""
+host	pfam22769	TRUE	2.52938946127565	0.280046992448684	""
+host	pfam00704	TRUE	1.01107135875651	0.755886604350874	""
+host	pfam13847	TRUE	3.71346631056343	0.2101126897767	""
+host	pfam00454	TRUE	4.54801410732211	0.381873475547608	""
+host	pfam00288	TRUE	4.68874464423203	0.30589130164202	""
+host	pfam00722	TRUE	2.75024529986385	0.239969303538756	""
+host	pfam08645	TRUE	4.98042195714194	0.21422791202063	""
+host	pfam01762	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam04989	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam02350	TRUE	4.32000922677275	0.285583927966818	""
+host	pfam04536	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam13561	TRUE	3.80126252169606	0.234410983173516	""
+host	pfam00300	TRUE	4.07884297999984	0.201914452717309	""
+host	pfam13735	TRUE	8.0718383158524	0.348445715956891	""
+host	pfam01266	TRUE	5.02589557854547	0.292047556861242	""
+host	pfam07335	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam00596	TRUE	7.46905901149539	0.376436254493527	""
+host	pfam11790	TRUE	1.91455479071824	0.622392897287586	""
+host	pfam02773	TRUE	3.66861520546712	0.251056497349749	""
+host	pfam13420	TRUE	-1.35511520803943	0.605714080908867	""
+host	pfam16656	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam02649	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam02156	TRUE	2.92693924049197	0.477687313220072	""
+host	pfam05637	TRUE	3.98963717384959	0.353509769909231	""
+host	pfam03767	TRUE	3.39173197761639	0.210417275873483	""
+host	pfam02772	TRUE	3.890706710043	0.265385455003487	""
+host	pfam08242	TRUE	3.68291099530245	0.366288810739371	""
+host	pfam13651	TRUE	4.21932969193281	0.291145675019827	""
+host	pfam00155	TRUE	6.58460481288133	0.379304124421699	""
+host	pfam14572	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam13506	TRUE	1.10538232261936	0.748126572355421	""
+host	pfam03537	TRUE	2.39830850642253	0.680247639271989	""
+host	pfam00294	TRUE	5.24866212805912	0.203043343786428	""
+host	pfam00579	TRUE	6.28027947764415	0.403332985984479	""
+host	pfam02777	TRUE	8.19762786423573	0.353574787920622	""
+host	pfam01149	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam03214	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam14099	TRUE	2.22375327640433	0.418266000468012	""
+host	pfam04454	TRUE	1.68876095118087	0.341634583980404	""
+host	pfam00852	TRUE	5.33550695145143	0.238648331803147	""
+host	pfam07992	TRUE	5.04285696537883	0.317421642459617	""
+host	pfam18406	TRUE	3.86723332264309	0.311695504444801	""
+host	pfam04991	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam00881	TRUE	4.76643805250599	0.480810343104641	""
+host	pfam13632	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam00464	TRUE	5.87126758063446	0.257049413539165	""
+host	pfam09411	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam10111	TRUE	4.11661639884863	0.381548596581748	""
+host	pfam02627	TRUE	6.51131017295003	0.346169535165003	""
+host	pfam00512	TRUE	2.14356298601371	0.362391266443839	""
+host	pfam13733	TRUE	3.70948141001666	0.337640285278002	""
+host	pfam00912	TRUE	9.55500196931449	0.751314079385302	""
+host	pfam01596	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam04127	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam00069	TRUE	5.64501939803618	0.303911607881363	""
+host	pfam04765	TRUE	2.7556789683232	0.273460486614593	""
+host	pfam08757	TRUE	1.83363711631548	0.30198949814523	""
+host	pfam05908	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam00697	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam03031	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam13091	TRUE	3.03133950145207	0.344396650486708	""
+host	pfam04577	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam01636	TRUE	5.06952083548842	0.493451333948908	""
+host	pfam03162	TRUE	3.3235042574382	0.591765786004453	""
+host	pfam08282	TRUE	4.69415559391157	0.319166511465743	""
+host	pfam00587	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam21995	TRUE	4.90373204828167	0.558961036191059	""
+host	pfam00255	TRUE	5.30786872103021	0.4087182241906	""
+host	pfam00254	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam06831	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam03720	TRUE	5.55977024107473	0.382351608913959	""
+host	pfam02801	TRUE	2.94583608471061	0.303707896834387	""
+host	pfam13242	TRUE	4.91091927845554	0.40122146986978	""
+host	pfam08139	TRUE	1.98888318798367	0.528747651151928	""
+host	pfam09334	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam13090	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam07859	TRUE	3.38217898371896	0.639814105335003	""
+host	pfam08240	TRUE	4.34880565529233	0.468324345686938	""
+host	pfam18724	TRUE	3.00457086876464	0.449674202330755	""
+host	pfam01374	TRUE	3.22914962351449	0.548628838147121	""
+host	pfam02894	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam17767	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam08759	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam01923	TRUE	5.29731369101061	0.446625671681479	""
+host	pfam04226	TRUE	4.629013957816	0.532819293082489	""
+host	pfam00749	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	pfam01261	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	dam	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	vcrx093	TRUE	-2.46014986638363	0.142909054793204	""
+host	lar	TRUE	1.51784825463612	0.223804139887457	""
+host	tad1	TRUE	2.54882691576359	0.157909414035995	""
+host	acb2	TRUE	2.3103879087903	0.216192512041634	""
+host	rad	TRUE	5.85003655828348	0.315916302861993	""
+host	acb1	TRUE	5.93495677892821	0.195605614059845	""
+host	ardc	TRUE	0.538744199456243	0.192357012668684	""
+host	acriia21	TRUE	0.441084147293966	0.50628844652288	""
+host	aca11	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	vcrx089	TRUE	4.43921452813871	0.14506463566405	""
+host	vcrx092	TRUE	-1.80084524289361	0.392080557381004	""
+host	acriia7	TRUE	1.3668090097732	0.121032488137636	""
+host	tad2	TRUE	1.23331832269407	0.129329982978596	""
+host	vcrx091	TRUE	-0.0949218802469758	0.142845587373139	""
+host	ulx	TRUE	3.45693213020621	0.355400685198154	""
+host	ddra	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	hdf	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	adnd_p0020	TRUE	-0.554875217528013	0.426586036531041	""
+host	darb	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	atd1	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	apyc1	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	gp4.5	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	samase	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	ardu	TRUE	-0.211017138254949	0.424112149222079	""
+host	ntase	TRUE	6.08350952672646	0.266157069991609	""
+host	aca13	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	aca10	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	aca1	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	ocr	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	gad1	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	gad2	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	mom	TRUE	-3.45116021574737	0.550239367503323	""
+host	adnd_p0021	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	acriii1	TRUE	2.68514602743248	0.394435555109953	""
+host	acric5	TRUE	1.70058041315739	0.304286759213696	""
+host	acriia9	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred
+host	acrva1	FALSE			glm.fit: fitted probabilities numerically 0 or 1 occurred

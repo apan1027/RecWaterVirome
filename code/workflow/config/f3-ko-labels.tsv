@@ -1,0 +1,12 @@
+KO	short_label	label_type	italic	basis
+K00558	DNA m5C MTase	protein_function_abbreviation	FALSE	Short form of the annotated function DNA (cytosine-5)-methyltransferase (EC 2.1.1.37); the KO identity and full annotation aliases are retained in the label table.
+K13381	chiA	gene_symbol	TRUE	Gene symbol in the KO name; bifunctional chitinase/lysozyme; annotation only, not experimentally verified
+K00820	glmS	gene_symbol	TRUE	First gene symbol in the KO name, used as display name only; GFPT and the full function stay in annotation_full
+K01939	Adenylosuccinate synthase	protein_function	FALSE	Display uses the annotated enzyme function; no gene-symbol alias is selected for this row label.
+K00560	Thymidylate synthase	protein_function	FALSE	Display uses the annotated enzyme function; no gene-symbol alias is selected for this row label.
+K01858	Inositol-P synthase	protein_function_short	FALSE	Short form of myo-inositol-1-phosphate synthase (EC 5.5.1.4); the cross-species names INO1/ISYNA1 stay in annotation_full and are not assigned as viral gene names
+K00390	cysH	gene_symbol	TRUE	Gene symbol in the KO name; phosphoadenosine phosphosulfate reductase
+K13010	Perosamine synthetase	protein_function	FALSE	Annotated function; the alternative names per/rfbE stay in annotation_full
+K06217	phoH	gene_symbol	TRUE	Gene symbol in the KO name; phosphate starvation-inducible protein; the name does not indicate phosphate limitation in the samples
+K03462	NAMPT	protein_abbreviation	FALSE	Protein/enzyme abbreviation of nicotinamide phosphoribosyltransferase
+K13522	nadM	gene_symbol	TRUE	Gene symbol in the KO name; bifunctional NMN adenylyltransferase/Nudix hydrolase; shown as the prespecified NARP-related case outside the top-ten set.

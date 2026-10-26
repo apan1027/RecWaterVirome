@@ -1,0 +1,723 @@
+{
+  "figure": "fig1",
+  "label": "Figure 1",
+  "scientific_content": true,
+  "run_id": "20261020T001926-86706",
+  "width_mm": 180,
+  "height_mm": 175,
+  "png_dpi": 300,
+  "tiff_dpi": 600,
+  "files": [
+    {
+      "format": "pdf",
+      "file": "fig1.pdf",
+      "device": "quartz_pdf",
+      "bytes": 826492,
+      "sha256": "8b469c1c8efa7273a90fbf2f6357866ac2e9ee5899a52c8d29fc941050335fae"
+    },
+    {
+      "format": "svg",
+      "file": "fig1.svg",
+      "device": "svglite",
+      "bytes": 831277,
+      "sha256": "bea5ce466ebd65b9cd784b9904f714ba587d31a4c3e27e582e2fbab65d1de517"
+    },
+    {
+      "format": "png",
+      "file": "fig1.png",
+      "device": "ragg::agg_png",
+      "bytes": 320335,
+      "sha256": "1562f276e3f26106b663be987e6cb0280f9e5391928854d43f73709240873d84"
+    },
+    {
+      "format": "tiff",
+      "file": "fig1.tiff",
+      "device": "ragg::agg_tiff (LZW)",
+      "bytes": 991058,
+      "sha256": "767ac29304c1f2ce79685e5c85fdff18ff4c0efe8ab18e576f74085a444f5770"
+    }
+  ],
+  "device_probes": {
+    "pdf": "cairo_pdf: unable to load shared object '/Library/Frameworks/R.framework/Resources/modules//R_X11.so': dlopen(/Library/Frameworks/R.framework/Resources/modules//R_X11.so, 0x0006): Library not loaded: /opt/X11/lib/libSM.6.dylib Referenced from: <7ECC4104-EC6A-38FD-9BEA-BFE0B870925C> /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/modules/R_X11.so Reason: tried: '/opt/X11/lib/libSM.6.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/X11/lib/libSM.6.dylib' (no such file), '/opt/X11/lib/libSM.6.dylib' (no such file), '/Library/Frameworks/R.framework/Resources/lib/libSM.6.dylib' (no such file), '/Library/Java/JavaVirtualMachines/jdk-11.0.18+10/Contents/Home/lib/server/libSM.6.dylib' (no such file); quartz_pdf: ok",
+    "svg": "svglite: ok",
+    "png": "agg_png: ok",
+    "tiff": "agg_tiff: ok"
+  },
+  "fonts": [
+    {
+      "role": "text",
+      "family": "Arial",
+      "weight": "normal",
+      "resolved_family": "Arial",
+      "style": "Regular",
+      "postscript_name": "ArialMT",
+      "path": "/System/Library/Fonts/Supplemental/Arial.ttf",
+      "index": 0,
+      "sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+    },
+    {
+      "role": "text-bold",
+      "family": "Arial",
+      "weight": "bold",
+      "resolved_family": "Arial",
+      "style": "Bold",
+      "postscript_name": "Arial-BoldMT",
+      "path": "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
+      "index": 0,
+      "sha256": "d72db21f9242aedd6b917d8549ad5921766b24d5f8d0becfda2ff4c620b3c2e0"
+    }
+  ],
+  "qa": [
+    {
+      "format": "pdf",
+      "check": "pages",
+      "expected": "1",
+      "observed": "1",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "page size (mm)",
+      "expected": "180.00 x 175.00",
+      "observed": "180.00 x 175.00",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "all fonts embedded",
+      "expected": "TRUE",
+      "observed": "TRUE",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "embedded fonts are resolved fonts (no substitution)",
+      "expected": "ArialMT, Arial-BoldMT",
+      "observed": "Arial-BoldMT, ArialMT",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "a",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "b",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "c",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "d",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "e",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Beijing",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Garching",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Oberschleissheim",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "bc1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "bd1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "bc2",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "gc1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "gd1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "oc1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "od1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Each sample",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Viral metagenome",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "16S rRNA amplicons",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "18S rRNA amplicons",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "7 water samples",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Samples",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU relative",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Retained 16S reads (%)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Retained microeukaryotic",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "18S reads (%)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "0–15% detail",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Catalogue vOTUs (%)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Viral class",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Phylum",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Division",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Caudoviricetes",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Pseudomonadota",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Opisthokonta (non-metazoan)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Class unassigned (Bamfordvirae)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Unclassified",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Other",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Undetermined 47 (1.5%)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "page size (mm)",
+      "expected": "180.00 x 175.00",
+      "observed": "180.00 x 175.00",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "font families are the resolved fonts",
+      "expected": "Arial",
+      "observed": "Arial",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "smallest text (pt)",
+      "expected": ">= 9.2",
+      "observed": "9.2",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "no embedded raster images",
+      "expected": "0",
+      "observed": "0",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "a",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "b",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "c",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "d",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "e",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Beijing",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Garching",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Oberschleissheim",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "bc1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "bd1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "bc2",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "gc1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "gd1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "oc1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "od1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Each sample",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Viral metagenome",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "16S rRNA amplicons",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "18S rRNA amplicons",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "7 water samples",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Samples",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU relative",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Retained 16S reads (%)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Retained microeukaryotic",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "18S reads (%)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "0–15% detail",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Catalogue vOTUs (%)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Viral class",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Phylum",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Division",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Caudoviricetes",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Pseudomonadota",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Opisthokonta (non-metazoan)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Class unassigned (Bamfordvirae)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Unclassified",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Other",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Undetermined 47 (1.5%)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "main stroke width (pt)",
+      "expected": "0.85 (0.30 mm)",
+      "observed": "0.57, 0.85",
+      "pass": true
+    },
+    {
+      "format": "png",
+      "check": "pixels (w x h)",
+      "expected": "2126 x 2067",
+      "observed": "2125 x 2066",
+      "pass": true
+    },
+    {
+      "format": "png",
+      "check": "resolution (dpi)",
+      "expected": "300",
+      "observed": "300.00",
+      "pass": true
+    },
+    {
+      "format": "png",
+      "check": "opaque (no transparency)",
+      "expected": "TRUE",
+      "observed": "TRUE",
+      "pass": true
+    },
+    {
+      "format": "png",
+      "check": "white corners",
+      "expected": "1",
+      "observed": "1",
+      "pass": true
+    },
+    {
+      "format": "tiff",
+      "check": "pixels (w x h)",
+      "expected": "4252 x 4134",
+      "observed": "4251 x 4133",
+      "pass": true
+    },
+    {
+      "format": "tiff",
+      "check": "resolution (dpi)",
+      "expected": "600",
+      "observed": "600.00 x 600.00",
+      "pass": true
+    },
+    {
+      "format": "tiff",
+      "check": "LZW compression (code 5)",
+      "expected": "5",
+      "observed": "5",
+      "pass": true
+    },
+    {
+      "format": "tiff",
+      "check": "RGB without alpha (3 samples per pixel)",
+      "expected": "3",
+      "observed": "3",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text >= 2.5 mm from every page edge (mm)",
+      "expected": ">= 2.5",
+      "observed": "2.55",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "no forbidden strings on the page",
+      "expected": "none",
+      "observed": "none",
+      "pass": true
+    }
+  ]
+}

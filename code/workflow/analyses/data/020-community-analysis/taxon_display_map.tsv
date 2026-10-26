@@ -1,0 +1,60 @@
+omic	taxon	mean_relative_abundance	rank_among_named	display_category	rule
+virome	Caudoviricetes	0.9739768790454811	1	Caudoviricetes	all classes kept; Unclassified separate
+virome	Polintoviricetes	0.016794394247797256	2	Polintoviricetes	all classes kept; Unclassified separate
+virome	Maveriviricetes	0.0013420901832464896	3	Maveriviricetes	all classes kept; Unclassified separate
+virome	[Novel_Class]_{kingdom}_Bamfordvirae	6.060797970568388e-4	4	[Novel_Class]_{kingdom}_Bamfordvirae	all classes kept; Unclassified separate
+virome	Pokkesviricetes	2.711827685109893e-4	5	Pokkesviricetes	all classes kept; Unclassified separate
+virome	Tectiliviricetes	2.3236003385763935e-4	6	Tectiliviricetes	all classes kept; Unclassified separate
+virome	Malgrandaviricetes	6.98446710895903e-5	7	Malgrandaviricetes	all classes kept; Unclassified separate
+virome	Unclassified	0.006707169252960128	NA	Unclassified	all classes kept; Unclassified separate
+bact_16s	Pseudomonadota	0.6597810217002454	1	Pseudomonadota	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Bacillota	0.05809200021006979	2	Bacillota	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Bacteroidota	0.05071617042163057	3	Bacteroidota	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Actinomycetota	0.03240593607442926	4	Actinomycetota	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Bdellovibrionota	0.017039726470009932	5	Bdellovibrionota	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Verrucomicrobiota	0.013977354579959602	6	Verrucomicrobiota	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Planctomycetota	0.013038947776033502	7	Planctomycetota	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Myxococcota	0.007068731987051056	8	Myxococcota	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Patescibacteriota	0.006823434589897635	9	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Acidobacteriota	0.0038939471188050192	10	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Armatimonadota	0.0026730481821416936	11	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Chloroflexota	0.0022885809070604655	12	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Campylobacterota	0.0012208669910914465	13	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Cyanobacteriota	0.0011424700902059903	14	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Bacteroidota_A	0.0010429252204859551	15	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Bdellovibrionota_B	8.931396931423408e-4	16	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Gemmatimonadota	5.632825350472329e-4	17	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Chlamydiota	5.248876299305884e-4	18	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Hydrogenedentota	5.102370801309987e-4	19	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Caldisericota	2.609541793930932e-4	20	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Fibrobacterota	2.2837123436982013e-4	21	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Babelota	1.7594089034430157e-4	22	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Desulfobacterota_B	1.7479673238079342e-4	23	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Methanobacteriota	1.716822178112736e-4	24	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Nitrospirota	1.648256915182125e-4	25	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Desulfobacterota	1.608359865745013e-4	26	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Vulcanimicrobiota	1.5150937853354758e-4	27	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Spirochaetota	1.3664557295144677e-4	28	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Synergistota	1.338455751478673e-4	29	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Myxococcota_A	1.0875068432061976e-4	30	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Desulfobacterota_I	8.404354269556167e-5	31	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Coprothermobacterota	7.983342826777939e-5	32	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	UBA10199	4.9859396501864746e-5	33	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Bdellovibrionota_G	2.2792866972281026e-5	34	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Desulfobacterota_G	1.9943758600745902e-5	35	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Atribacterota	1.573217544522057e-5	36	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Desulfobacterota_D	1.123726817515755e-5	37	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+bact_16s	Unclassified	0.12415169016262743	NA	Unclassified	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+euk_18s_microeuk	Opisthokonta	0.5313808636749467	1	Opisthokonta	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+euk_18s_microeuk	Alveolata	0.15380519900196243	2	Alveolata	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+euk_18s_microeuk	Rhizaria	0.1280670167106239	3	Rhizaria	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+euk_18s_microeuk	Stramenopiles	0.10191935327983737	4	Stramenopiles	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+euk_18s_microeuk	Chlorophyta	0.03629052057507328	5	Chlorophyta	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+euk_18s_microeuk	Tubulinea	0.02470745430888724	6	Tubulinea	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+euk_18s_microeuk	Streptophyta	0.0022915233910278136	7	Streptophyta	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+euk_18s_microeuk	Malawimonadidae	0.0015405879373025764	8	Malawimonadidae	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+euk_18s_microeuk	Evosea	0.0011095717781581047	9	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+euk_18s_microeuk	Ancyromonadida	1.6328112027453372e-4	10	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+euk_18s_microeuk	Apusomonada	1.116751269035533e-4	11	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+euk_18s_microeuk	Breviatea	3.520190128281917e-5	12	Other	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate
+euk_18s_microeuk	Unclassified	0.018577751193719575	NA	Unclassified	top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate

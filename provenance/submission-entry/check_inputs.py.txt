@@ -1,0 +1,96 @@
+#!/usr/bin/env python3
+"""Pre-run input check for the supplied code (no analysis is run).
+
+Authors (project order): Jinlong Ru, Cunli Pan. Implementer: Claude.
+
+For both entry points, lists every declared input and classifies it as
+  supplied   present in this folder with the registered SHA256 (when one is registered)
+  raw        registered staged input absent from the supplied package
+  MISSING    required, not raw, not supplied           -> exit status 1
+  CHANGED    supplied but the SHA256 differs from the register -> exit status 1
+Reports integrity separately from staged-input readiness and lists available
+software. A present raw/display input with a wrong hash is an integrity error.
+Writes INPUT-CHECK.md and INPUT-CHECK.json beside this script. Software
+discovery is not version/graphics-device certification.
+
+    python3 check_inputs.py --require-raw
+"""
+from pathlib import Path
+import argparse, csv, hashlib, importlib.util, json, shutil, sys
+parser = argparse.ArgumentParser(description="Verify package integrity and staged-input readiness without running analysis.")
+parser.add_argument("--require-raw", action="store_true")
+args = parser.parse_args()
+
+HERE = Path(__file__).resolve().parent
+WF = HERE / 'workflow'; S2 = HERE / 'supplementary-figure-3'
+sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+rd = lambda p: list(csv.DictReader(p.open(encoding='utf-8'), delimiter='\t'))
+lines, bad, absent = [], 0, []
+
+def row(kind, path, status, note=''):
+    global bad
+    if status == 'raw': absent.append(path)
+    bad += status in ('MISSING', 'CHANGED')
+    lines.append(f'| {kind} | `{path}` | {status} | {note} |')
+
+try:
+    import yaml
+except ImportError:
+    sys.exit('PyYAML is needed to read workflow/config/workflow.yml')
+
+# ---- workflow
+raw = {r['path']: r['sha256'] for r in rd(WF / 'metadata/raw-inputs.tsv')}
+frozen = {r['path']: r['sha256'] for r in rd(WF / 'metadata/frozen-files.tsv')}
+wf = yaml.safe_load((WF / 'config/workflow.yml').read_text(encoding='utf-8'))
+declared = {}
+for st in wf['steps']:
+    for f in st.get('project_inputs') or []:
+        declared.setdefault(f, []).append(st['id'])
+for f in sorted(set(declared) | set(frozen)):
+    p = WF / f
+    if f in raw:
+        row('workflow', f, 'raw', 'obtain separately')
+    elif not p.is_file():
+        row('workflow', f, 'MISSING', ', '.join(declared.get(f, ['frozen register'])))
+    elif f in frozen and sha(p) != frozen[f]:
+        row('workflow', f, 'CHANGED', 'differs from metadata/frozen-files.tsv')
+    else:
+        row('workflow', f, 'supplied', 'hash matches frozen register' if f in frozen else '')
+n_raw_present = sum((WF / f).is_file() for f in raw)
+for f, h in sorted(raw.items()):
+    p = WF / f
+    row('staged input', f, 'raw' if not p.is_file() else 'supplied' if sha(p) == h else 'CHANGED', 'registered raw/display input')
+lines.append(f'| workflow | `metadata/raw-inputs.tsv` | {len(raw)} raw files registered | {n_raw_present} present here |')
+for st in wf['steps']:
+    if not (WF / st['qmd']).is_file():
+        row('workflow', st['qmd'], 'MISSING', st['id'])
+
+# ---- Historical Supplementary Figure 3 materials
+man = json.loads((S2 / 'input-manifest.json').read_text())
+for f, h in man.items():
+    p = S2 / 'inputs' / f
+    if '00-raw/' in f:
+        row('historical S3', f, 'raw' if not p.is_file() else ('supplied' if sha(p) == h else 'CHANGED'), 'raw SQLite snapshot')
+    elif not p.is_file():
+        row('historical S3', f, 'MISSING')
+    else:
+        row('historical S3', f, 'supplied' if sha(p) == h else 'CHANGED')
+for f in ['candidates/structure-v2026.10.15.1/continuation-2026-10-16/compare/orf102_full_gemmi.cif',
+          'candidates/structure-v2026.10.15.1/continuation-2026-10-16/compare/1MK0.cif']:
+    row('historical S3 overlay', f, 'supplied' if (S2 / 'inputs' / f).is_file() else 'MISSING')
+
+# ---- software on this machine (reported, not required for the check to pass)
+soft = []
+for exe in ['Rscript', 'quarto', 'pandoc']:
+    soft.append(f'- {exe}: {"found" if shutil.which(exe) else "not found"}')
+for mod in ['fitz', 'numpy', 'yaml', 'PIL', 'pymol']:
+    soft.append(f'- Python module {mod}: {"found" if importlib.util.find_spec(mod) else "not found"}')
+arial = Path('/System/Library/Fonts/Supplemental/Arial.ttf')
+soft.append(f'- Arial (default path for S2): {"found" if arial.is_file() else "not found; set RWV_ARIAL"}')
+
+report = ['# Input check', '', f'Integrity: {"PASS" if bad == 0 else "FAIL"} ({bad} missing or changed required inputs).', f'Input readiness: {"READY" if bad == 0 and not absent else "NOT READY"} ({len(absent)} missing registered raw/display inputs).', '', 'Scope: staged scientific/display inputs, not an analysis from raw sequencing reads. Software discovery does not certify compatible versions; see workflow/environment/README.md.', '',
+          '| Entry | Input | Status | Note |', '|---|---|---|---|'] + lines + ['', '## Software found on this machine', ''] + soft + ['']
+(HERE / 'INPUT-CHECK.md').write_text('\n'.join(report), encoding='utf-8')
+print('\n'.join(report[:4]))
+(HERE / 'INPUT-CHECK.json').write_text(json.dumps(dict(integrity='FAIL' if bad else 'PASS', input_readiness='READY' if not bad and not absent else 'NOT READY', integrity_errors=bad, missing_registered_inputs=absent, registered_workflow_inputs=len(raw), supplied_workflow_inputs=n_raw_present), indent=2) + '\n')
+sys.exit(1 if bad else 2 if args.require_raw and absent else 0)

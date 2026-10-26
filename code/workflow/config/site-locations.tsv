@@ -1,0 +1,4 @@
+site	country	lat	lon	coordinate_kind	source	accessed
+Beijing	China	39.90667	116.39750	city representative coordinate (not a sampling point)	https://en.wikipedia.org/wiki/Beijing (infobox, GeoHack)	2026-10-07
+Garching	Germany	48.250	11.650	municipality representative coordinate (not a sampling point)	https://en.wikipedia.org/wiki/Garching_bei_M%C3%BCnchen (infobox)	2026-10-07
+Oberschleissheim	Germany	48.250	11.567	municipality representative coordinate (not a sampling point)	https://en.wikipedia.org/wiki/Oberschlei%C3%9Fheim (infobox)	2026-10-07

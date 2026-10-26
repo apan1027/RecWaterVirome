@@ -1,0 +1,7 @@
+comparison	site	sample_id	opposite_sample_id	position	qualifying_vOTUs	shared_vOTUs	position_only_vOTUs	shared_catalogue_percent	position_only_catalogue_percent	catalogue_percent	catalogue_masked_depth_sum	position_only_opposite_subthreshold_n	position_only_opposite_no_signal_n	position_only_opposite_breadth_pass_zero_depth_n	position_only_subthreshold_catalogue_percent
+bd1-bc1	Beijing	bd1	bc1	process_water	793	70	723	1.3097644054752722	98.69023559452478	100.00000000000007	32696.826804100005	356	367	0	48.61156923462344
+bd1-bc1	Beijing	bc1	bd1	nearby_water	991	70	921	44.77544386392466	55.224556136075464	100.0000000000002	50834.297735099935	905	16	0	54.92441761582863
+gd1-gc1	Garching	gd1	gc1	process_water	533	59	474	12.900002450557986	87.09999754944207	100.0000000000001	18230.227711299995	464	10	0	85.74446929760994
+gd1-gc1	Garching	gc1	gd1	nearby_water	60	59	1	99.59029590691311	0.4097040930868801	100	8045.622574	1	0	0	0.4097040930868801
+od1-oc1	Oberschleissheim	od1	oc1	process_water	274	60	214	38.79263188799559	61.20736811200444	99.99999999999999	7936.189455999996	213	1	0	61.04212339257444
+od1-oc1	Oberschleissheim	oc1	od1	nearby_water	124	60	64	70.69830986068692	29.30169013931317	100.00000000000006	8721.518329999995	64	0	0	29.30169013931317

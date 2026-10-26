@@ -1,0 +1,32 @@
+panel	window	primary_set	host_percent	constructs	flagged	flagged_fraction
+B	fraction 0.25	True	0	60	0	0.0
+B	fraction 0.25	True	10	60	14	0.233333
+B	fraction 0.25	True	20	60	37	0.616667
+B	fraction 0.5	True	0	60	0	0.0
+B	fraction 0.5	True	10	60	29	0.483333
+B	fraction 0.5	True	20	60	53	0.883333
+B	fraction 0.75	True	0	60	0	0.0
+B	fraction 0.75	True	10	60	42	0.7
+B	fraction 0.75	True	20	60	57	0.95
+B	fraction 0.9	True	0	60	0	0.0
+B	fraction 0.9	True	10	60	50	0.833333
+B	fraction 0.9	True	20	60	58	0.966667
+B	fraction 1.0	True	0	30	0	0.0
+B	fraction 1.0	True	10	30	26	0.866667
+B	fraction 1.0	True	20	30	29	0.966667
+C	12500 bp window	True	0	60	0	0.0
+C	12500 bp window	True	10	120	17	0.141667
+C	12500 bp window	True	20	120	68	0.566667
+C	17500 bp window	True	0	60	0	0.0
+C	17500 bp window	True	10	120	39	0.325
+C	17500 bp window	True	20	120	93	0.775
+C	30000 bp window	True	0	60	0	0.0
+C	30000 bp window	True	10	120	77	0.641667
+C	30000 bp window	True	20	120	111	0.925
+C	60000 bp window	False	0	24	0	0.0
+C	60000 bp window	False	10	48	40	0.833333
+C	60000 bp window	False	20	48	43	0.895833
+C	120000 bp window	False	0	8	0	0.0
+C	120000 bp window	False	10	16	14	0.875
+C	120000 bp window	False	20	16	14	0.875
+C	full parent baseline	False	0	30	0	0.0

@@ -1,0 +1,75 @@
+check	expected	observed	tolerance	pass	source
+label table covers the 11 displayed KOs, one row each	K00390, K00558, K00560, K00820, K01858, K01939, K03462, K06217, K13010, K13381, K13522	K00390, K00558, K00560, K00820, K01858, K01939, K03462, K06217, K13010, K13381, K13522	0	TRUE	config/f3-ko-labels.tsv
+carriers per displayed KO equal Figure 3	146,   1,  33,  10,  13,   3,  33,  16,   3,  11,   7	146,   1,  33,  10,  13,   3,  33,  16,   3,  11,   7	0	TRUE	f3_display.tsv
+host statuses are the three record classes or no record	TRUE	TRUE	0	TRUE	
+carriers with an iPHoP >= 90 record (all displayed KOs)	23	23	0	TRUE	regression constant (17 + 5 + 1 in f3_carrier_hosts.tsv)
+largest record count fits the axis	TRUE	TRUE	0	TRUE	
+definitions.tsv:narp1_df	3	3	0	TRUE	narp_definitions.tsv
+definitions.tsv:narp2_df	5	5	0	TRUE	narp_definitions.tsv
+definitions.tsv:narp_ko_cooccurrence	6	6	0	TRUE	narp_definitions.tsv
+definitions.tsv:dbapis_narp_targeting	19	19	0	TRUE	narp_definitions.tsv
+every row belongs to at least one definition	TRUE	TRUE	0	TRUE	
+NARP definition table keeps all 19 NARP-related vOTUs (S3a)	19	19	0	TRUE	
+CheckV classes have a short mark	TRUE	TRUE	0	TRUE	
+DefenseFinder hits on vOTU0052 (Data 1 S27; legend claim)	ORF101, ORF103, ORF166	ORF101, ORF103, ORF166	0	TRUE	
+ORF101/ORF103 are the NARP2 profiles	narp2_nmnat, narp2_nampt	narp2_nmnat, narp2_nampt	0	TRUE	
+the five DefenseFinder NARP2 calls all carry K13522	TRUE	TRUE	0	TRUE	
+nadM (K13522) carriers without a DefenseFinder NARP2 call	vOTU0863, vOTU1898	vOTU0863, vOTU1898	0	TRUE	f3_carrier_hosts.tsv; narp_definitions.tsv
+sample table holds the case set in panel order	vOTU0052, vOTU0113, vOTU0131, vOTU0544, vOTU1643, vOTU0863, vOTU1898	vOTU0052, vOTU0113, vOTU0131, vOTU0544, vOTU1643, vOTU0863, vOTU1898	0	TRUE	030/narp_carrier_sample_abundance.tsv
+sample table: every vOTU x configured sample once	49	49	0	TRUE	
+percent equals masked trimmed TPM / 10,000	0.00000000000, 0.00000000000, 0.00000000000, 0.00000000000, 0.00000000000, ... (49 values)	0.00000000000, 0.00000000000, 0.00000000000, 0.00000000000, 0.00000000000, ... (49 values)	1e-12	TRUE	
+non-zero cells are exactly the detected vOTU-sample pairs (covered fraction >= 0.75; checked in 030)	TRUE	TRUE	0	TRUE	
+non-zero abundances fall inside the colour limits	TRUE	TRUE	0	TRUE	
+carrier abundance: 8 detected cells and 41 dashes (S3b)	 8, 41	 8, 41	0	TRUE	030/narp_carrier_sample_abundance.tsv
+ORF102 length (aa)	211	211	0	TRUE	narp_case_evidence.tsv; 030 anchors it to the gene coordinates
+GIY-YIG and NUMOD-like boundaries	  3,  87, 153, 184, 143, 188	  3,  87, 153, 184, 143, 188	0	TRUE	document transcription (doc_votu0052_orf102.md line 138); no independent source
+ORF102 domain matches (envelope excluded)	  3,  87, 153, 184	  3,  87, 153, 184	0	TRUE	
+vOTU0052 locus relative depth	1	1	0	TRUE	document transcription (doc_votu0052_coverage_spike.md line 63); no independent source
+coverage rows (vOTU0052 + 4 comparison loci)	5	5	0	TRUE	
+strict-site observed versus expected	0.00, 0.45	0.00, 0.45	0	TRUE	document transcription (doc_votu0052_he_targeting.md line 66); no independent source
+coverage samples parsed from the source rows (gd1v, od1v, gc1v, gd1v, gd1v)	gd1v, od1v, gc1v, gd1v, gd1v	gd1v, od1v, gc1v, gd1v, gd1v	0	TRUE	doc_votu0052_coverage_spike.md lines 63-67
+reported Poisson p (strict, +-10 ORF)	1.00, 0.79	1.00, 0.79	0	TRUE	document transcription (doc_votu0052_he_targeting.md lines 66, 69)
+HE reference cohort (NAMPT-positive, NARP2)	1369,  104	1369,  104	0	TRUE	document transcription (lines 25, 27)
+reference ORFs between the two genes: none, 1, 2-4, 6-9	48, 42,  5,  9	48, 42,  5,  9	0	TRUE	document transcription (doc_votu0052_he_targeting.md lines 75-76); no independent source
+references with >= 1 ORF between the genes equal the strict-window assessable genomes	56	56	0	TRUE	
+historical reported strict-window power (percent; source label odds ratio 3, scenario = threefold Poisson mean)	16	16	0	TRUE	document transcription (doc_votu0052_he_targeting.md line 62)
+each local NARP2 call has one NMNAT and one NAMPT row	2, 2, 2, 2, 2	2, 2, 2, 2, 2	0	TRUE	narp_gene_pairs.tsv
+local ORFs between the two genes (vOTU0052, 0113, 0131, 0544, 1643)	1, 1, 4, 0, 0	1, 1, 4, 0, 0	0	TRUE	narp_gene_pairs.tsv gene positions
+only the vOTU1643 locus lies within 100 bp of a contig end	vOTU1643	vOTU1643	0	TRUE	
+four of the five local NARP2 calls are on Low-quality sequences	4	4	0	TRUE	narp_definitions.tsv
+global NARP1 / NARP2 module calls	566, 166	566, 166	0	TRUE	definitions.tsv global_narp = 566/166
+every coverage contig maps to a vOTU through the gene-pair table	FALSE	FALSE	0	TRUE	narp_gene_pairs.tsv
+coverage labels resolved	FALSE	FALSE	0	TRUE	
+HE windows: assessable, observed, expected	 56.00, 104.00,   0.00,   7.00,   0.45,   9.00	 56.00, 104.00,   0.00,   7.00,   0.45,   9.00	0	TRUE	document transcription (lines 66, 69); no independent source
+adopted figure assembly checks all passed (build_s2.py record)	TRUE	TRUE	0	TRUE	
+S3a membership = narp_definitions.tsv (19 vOTUs x 4 definitions)	1, 0, 0, 0, 1, ... (76 values)	1, 0, 0, 0, 1, ... (76 values)	0	TRUE	030/narp_definitions.tsv
+S3b abundance cells = narp_carrier_sample_abundance.tsv (49 cells)	0.00000000000, 0.00000000000, 0.00000000000, 0.00000000000, 0.00000000000, ... (49 values)	0.00000000000, 0.00000000000, 0.00000000000, 0.00000000000, 0.00000000000, ... (49 values)	1e-12	TRUE	030/narp_carrier_sample_abundance.tsv
+S3c: every gene row of the five DefenseFinder NARP2 carriers is drawn	TRUE	TRUE	0	TRUE	
+S3c member-gene coordinates = narp_gene_pairs.tsv	42702, 44422, 23869, 25552, 10691, ... (20 values)	42702, 44422, 23869, 25552, 10691, ... (20 values)	0	TRUE	030/narp_gene_pairs.tsv
+S3d ORF102 length and domain boundaries = narp_case_evidence.tsv	211,   3,  87, 153, 184	211,   3,  87, 153, 184	0	TRUE	
+S3c draws the 34 registered neighbourhood ORFs of the five NARP2 calls	34,  5	34,  5	0	TRUE	
+S3c neighbourhood vOTUs are the five DefenseFinder NARP2 calls	vOTU0052, vOTU0113, vOTU0131, vOTU0544, vOTU1643	vOTU0052, vOTU0113, vOTU0131, vOTU0544, vOTU1643	0	TRUE	
+S3c neighbourhood start/end = registered plot values C (68 coordinates)	42042, 42287, 42702, 43790, 44422, ... (68 values)	42042, 42287, 42702, 43790, 44422, ... (68 values)	0	TRUE	narp-v35-plot-values.tsv
+S3c anchor genes: one K13522 and one K03462 row per neighbourhood	1, 1, 1, 1, 1, 1, 1, 1, 1, 1	1, 1, 1, 1, 1, 1, 1, 1, 1, 1	0	TRUE	
+S3b/S3d colour ramps have 256 steps	256, 256	256, 256	0	TRUE	
+S3a draws all 19 NARP-related vOTUs once, the five NARP2 calls first	19, 19	19, 19	0	TRUE	
+S3a column totals drawn (NARP1, NARP2, KO rule, dbAPIS)	 3,  5,  6, 19	 3,  5,  6, 19	0	TRUE	narp_definitions.tsv
+S3 note: NARP1 shares none with NARP2 or the KO rule and all are dbAPIS vOTUs	0, 0, 3	0, 0, 3	0	TRUE	narp_definitions.tsv
+page size of the adopted layout H (mm)	180, 265	180, 265	0	TRUE	config/figures.yml
+S3b grey below-detection tiles / detected tiles (v50, no dashes)	41,  8	41,  8	0	TRUE	
+ORF102 domain rows share one source line	1	1	0	TRUE	narp_case_evidence.tsv
+reported independent E-values (GIY-YIG, NUMOD-like) in the source text	2.5e-05, 2.8e-05	2.5e-05, 2.8e-05	0	TRUE	doc_votu0052_orf102.md line 138 (verbatim in Data 1 S28)
+vOTU0052 is the only Medium-quality DefenseFinder NARP2 call	vOTU0052	vOTU0052	0	TRUE	narp_definitions.tsv
+vOTU0113 is also detected in gd1 (its depth row uses gc1)	TRUE	TRUE	0	TRUE	030/narp_carrier_sample_abundance.tsv
+Supplementary Note 1: Table A rows (vOTU, sample, ratio)	vOTU0052 gd1 1.00, vOTU0131 od1 1.09, vOTU0113 gc1 1.28, vOTU1643 gd1 0.91, vOTU0544 gd1 1.19	vOTU0052 gd1 1.00, vOTU0131 od1 1.09, vOTU0113 gc1 1.28, vOTU1643 gd1 0.91, vOTU0544 gd1 1.19	0	TRUE	narp_case_evidence.tsv coverage rows; contig to vOTU through narp_gene_pairs.tsv
+Supplementary Note 1: Table B (assessable, observed, expected, p) per window	56, 0, 0.45, 1.00, 104, 7, 9.00, 0.79	56, 0, 0.45, 1.00, 104, 7, 9.00, 0.79	0	TRUE	
+Supplementary Note 1 does not call the historical power an odds-ratio calculation	TRUE	TRUE	0	TRUE	
+NARP case has one retained primary-host register row	1	1	0	TRUE	
+NARP primary host and co-detection agree with the saved endpoints	TRUE	TRUE	0	TRUE	030/amg_host_register.tsv
+values leaving the figure are all recorded for the note (E 5 + F 15 + envelope 2)	22	22	0	TRUE	
+every listed vOTU carries a dbAPIS NARP-targeting hit (legend claim)	TRUE	TRUE	0	TRUE	
+comparison-locus depth range quoted in Supplementary Note 1	0.91, 1.28	0.91, 1.28	0	TRUE	
+plot values of the adopted figure: A 76 + B 49 + C 73 + D 9; former E/F and the envelope (22) are in the note values	76, 49, 73,  9, 22	76, 49, 73,  9, 22	0	TRUE	
+adopted caption title (v35)	NARP candidates, local neighbourhoods and ORF102 structural context	NARP candidates, local neighbourhoods and ORF102 structural context	0	TRUE	
+adopted caption has no section after the English legend	1	1	0	TRUE	
+layout-H caption: each v39/v50 phrase replaced exactly once (6 phrases)	1, 1, 1, 1, 1, 1	1, 1, 1, 1, 1, 1	0	TRUE	

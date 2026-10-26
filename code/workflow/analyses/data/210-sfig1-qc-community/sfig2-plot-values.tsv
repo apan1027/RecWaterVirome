@@ -1,0 +1,128 @@
+panel	item	value	unit	n
+A	1000000	861	vOTUs in one exact seven-sample qualification pattern	1
+A	0100000	695	vOTUs in one exact seven-sample qualification pattern	1
+A	0010000	509	vOTUs in one exact seven-sample qualification pattern	1
+A	0000100	453	vOTUs in one exact seven-sample qualification pattern	1
+A	0000001	190	vOTUs in one exact seven-sample qualification pattern	1
+A	1100000	64	vOTUs in one exact seven-sample qualification pattern	2
+A	1010000	57	vOTUs in one exact seven-sample qualification pattern	2
+A	0000010	56	vOTUs in one exact seven-sample qualification pattern	1
+A	0000011	55	vOTUs in one exact seven-sample qualification pattern	2
+A	0001100	51	vOTUs in one exact seven-sample qualification pattern	2
+A	0110000	25	vOTUs in one exact seven-sample qualification pattern	2
+A	0000101	15	vOTUs in one exact seven-sample qualification pattern	2
+A	0001110	5	vOTUs in one exact seven-sample qualification pattern	3
+A	0010001	5	vOTUs in one exact seven-sample qualification pattern	2
+A	1110000	5	vOTUs in one exact seven-sample qualification pattern	3
+A	0000111	2	vOTUs in one exact seven-sample qualification pattern	3
+A	0001111	2	vOTUs in one exact seven-sample qualification pattern	4
+A	1000100	2	vOTUs in one exact seven-sample qualification pattern	2
+A	0000110	1	vOTUs in one exact seven-sample qualification pattern	2
+A	0001010	1	vOTUs in one exact seven-sample qualification pattern	2
+A	0001101	1	vOTUs in one exact seven-sample qualification pattern	3
+A	0100010	1	vOTUs in one exact seven-sample qualification pattern	2
+A	0100011	1	vOTUs in one exact seven-sample qualification pattern	3
+A	0110001	1	vOTUs in one exact seven-sample qualification pattern	3
+A	1000001	1	vOTUs in one exact seven-sample qualification pattern	2
+A	1100101	1	vOTUs in one exact seven-sample qualification pattern	4
+A	shared members, host phylum Bacteroidota	8	shared members (>= 2 samples) with a retained iPHoP record, by host phylum	296
+A	shared members, host phylum Pseudomonadota	7	shared members (>= 2 samples) with a retained iPHoP record, by host phylum	296
+A	shared members, host phylum Asgardarchaeota	2	shared members (>= 2 samples) with a retained iPHoP record, by host phylum	296
+A	shared members, host phylum Bacillota	1	shared members (>= 2 samples) with a retained iPHoP record, by host phylum	296
+B	bc1 sample-only	50.60879014314844	percent of sample whole masked catalogue depth	861
+B	bd1 sample-only	96.4785831405034	percent of sample whole masked catalogue depth	695
+B	bc2 sample-only	63.55299665842774	percent of sample whole masked catalogue depth	509
+B	gc1 sample-only	0	percent of sample whole masked catalogue depth	0
+B	gd1 sample-only	82.81148697853241	percent of sample whole masked catalogue depth	453
+B	oc1 sample-only	24.99531017439254	percent of sample whole masked catalogue depth	56
+B	od1 sample-only	55.84191945732201	percent of sample whole masked catalogue depth	190
+B	bc1 shared	49.39120985685164	percent of sample whole masked catalogue depth	130
+B	bd1 shared	3.5214168594966577	percent of sample whole masked catalogue depth	98
+B	bc2 shared	36.44700334157219	percent of sample whole masked catalogue depth	93
+B	gc1 shared	100	percent of sample whole masked catalogue depth	60
+B	gd1 shared	17.188513021467628	percent of sample whole masked catalogue depth	80
+B	oc1 shared	75.00468982560754	percent of sample whole masked catalogue depth	68
+B	od1 shared	44.15808054267802	percent of sample whole masked catalogue depth	84
+C	vOTU0663 Acidovorax bc2	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	97.8
+C	vOTU2237 Acinetobacter bc2	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	92.7
+C	vOTU0135 Aestuariivirga bc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90.3
+C	vOTU3294 Agitococcus gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	92.5
+C	vOTU0895 Alistipes gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	96.3
+C	vOTU2793 Azonexus gd1;od1	2	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	91.1
+C	vOTU2926 Azonexus bc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90.7
+C	vOTU3510 Azonexus gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	91.5
+C	vOTU2203 Bifidobacterium bd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	95.2
+C	vOTU0730 Bradyrhizobium bc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	93.9
+C	vOTU0998 Bradyrhizobium bc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90.3
+C	vOTU1317 Bradyrhizobium bc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	92.1
+C	vOTU1821 Cellvibrio bd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	93.9
+C	vOTU1673 Cypionkella gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90.7
+C	vOTU2046 Cypionkella gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	94.5
+C	vOTU3454 Cypionkella od1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	91.4
+C	vOTU2527 ELB16-189 bc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	94.5
+C	vOTU2627 Erythrobacter bc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	93.1
+C	vOTU3101 Ferruginibacter gc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	94
+C	vOTU0365 Flavobacterium bd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	95.3
+C	vOTU0518 Flavobacterium gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	93.1
+C	vOTU0690 Flavobacterium od1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	92.6
+C	vOTU0950 Flavobacterium gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	96.9
+C	vOTU0977 Flavobacterium gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	95.9
+C	vOTU1816 Flavobacterium gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90.7
+C	vOTU2372 Flavobacterium oc1;od1	2	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	93.5
+C	vOTU2902 Flavobacterium gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	92.6
+C	vOTU3247 Flavobacterium gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	97.3
+C	vOTU3382 Flavobacterium gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	94.5
+C	vOTU0482 Gemmobacter_B bd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	92.3
+C	vOTU2139 M3007 oc1;od1	2	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	93.5
+C	vOTU2386 Mesorhizobium bc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	93.1
+C	vOTU0710 Mycobacterium bc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	98.5
+C	vOTU1186 Mycobacterium bc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	94.2
+C	vOTU1505 Mycobacterium bc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	96
+C	vOTU2595 Mycobacterium bc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	91
+C	vOTU3319 Mycobacterium bc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	95.3
+C	vOTU1426 Neoroseomonas bc2	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	93.9
+C	vOTU1507 Nitrospira_D bc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90.2
+C	vOTU1128 Nocardioides bd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90.6
+C	vOTU0052 Novosphingobium gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90.8
+C	vOTU1008 Novosphingobium bd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	91.4
+C	vOTU0723 Phenylobacterium bc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	92.5
+C	vOTU2490 Phenylobacterium gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90
+C	vOTU1335 PHOS-HE28 oc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	91.8
+C	vOTU3525 Phosphoribacter gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	95.2
+C	vOTU3028 Piscinibacter bc2	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	96
+C	vOTU3554 Polaromonas gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90.9
+C	vOTU0634 Polynucleobacter bd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	91
+C	vOTU1503 Polynucleobacter bd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	92.6
+C	vOTU2961 Polynucleobacter bd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90.3
+C	vOTU1180 Prosthecobacter bc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	93.5
+C	vOTU2828 Prosthecobacter bc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	94.5
+C	vOTU0342 Pseudomonas_E bd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	93.5
+C	vOTU1773 RBC074 bc2	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	91.4
+C	vOTU0471 Rhodoferax bc2	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90.7
+C	vOTU0769 Rhodoferax gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	91.1
+C	vOTU1725 Rhodoferax gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	91.8
+C	vOTU1781 Rhodoferax gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	95.3
+C	vOTU2126 Rhodoferax gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	91.8
+C	vOTU2154 Rhodoferax gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	95.3
+C	vOTU2299 Rhodoferax gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90.3
+C	vOTU2724 Rhodoferax gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	95.3
+C	vOTU3423 Rhodoferax gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	92.2
+C	vOTU0362 Roseococcus gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90.9
+C	vOTU0034 Rubrivivax gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	93.9
+C	vOTU0197 Rubrivivax bc2	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90.7
+C	vOTU0407 Rubrivivax bc2	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90.2
+C	vOTU0757 Rubrivivax bc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	92.9
+C	vOTU2370 Rubrivivax bc2	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90.2
+C	vOTU0921 Simplicispira od1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	93.2
+C	vOTU3038 Simplicispira gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90.6
+C	vOTU3296 Sphingobium bc2	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90.3
+C	vOTU0096 Sphingomonas bc2	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	91.6
+C	vOTU1074 Sphingopyxis bc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90.3
+C	vOTU0075 SXXK01 gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	95.9
+C	vOTU0355 SXXK01 gd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	94.9
+C	vOTU1026 SXXK01 bd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	94.5
+C	vOTU3392 SXXK01 bc2	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90.3
+C	vOTU0056 SZUA-430 bc2	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	90.7
+C	vOTU1828 UBA7672 bc1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	93.5
+C	vOTU0880 Variovorax bc2	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	94.2
+C	vOTU0141 Vicinibacter bd1	1	samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)	97.9

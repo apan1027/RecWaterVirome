@@ -1,0 +1,59 @@
+{
+  "qmd_entrypoints": 21,
+  "source_code_echo": false,
+  "methods_checks_and_files": "collapsed native details",
+  "runtime_warnings": "unique text and occurrence counts visible; all original events retained in expandable diagnostics",
+  "errors": "not hidden; execution remains fail-fast",
+  "saved_html_markdown_pairs_reorganized": 13,
+  "saved_reports_reexecuted": false,
+  "run_records_rewritten": false,
+  "checked_reports": 26,
+  "checked_image_references": 50,
+  "broken_or_staging_image_references": 0,
+  "font_warning_cause": "grid.grabExpr default offscreen PostScript device, despite installed Arial TrueType fonts",
+  "font_fix": "capture on the same probed PDF backend as final export; embedded Arial regular/bold verified, no font alias or warning suppression",
+  "drawing_only_replay": {
+    "130-fig3-functions": {
+      "warnings": [],
+      "export_checks": 111,
+      "all_export_checks_passed": true,
+      "png_byte_identical": true
+    },
+    "140-fig4-vf-context": {
+      "warnings": [],
+      "export_checks": 117,
+      "all_export_checks_passed": true,
+      "png_byte_identical": true
+    },
+    "150-fig5-global-reference": {
+      "warnings": [],
+      "export_checks": 61,
+      "all_export_checks_passed": true,
+      "png_byte_identical": true
+    },
+    "220-sfig2-function-context": {
+      "warnings": [],
+      "export_checks": 125,
+      "all_export_checks_passed": true,
+      "png_byte_identical": true
+    },
+    "230-sfig3-vf-calibration": {
+      "warnings": [],
+      "export_checks": 63,
+      "all_export_checks_passed": true,
+      "png_byte_identical": true
+    }
+  },
+  "drawing_only_export_checks_passed": 477,
+  "checkv_missing_token": {
+    "rows": 3060,
+    "literal_missing_tokens": 47,
+    "missing_values": 47,
+    "numeric_values_and_missingness_identical": true,
+    "old_warnings": "NAs introduced by coercion",
+    "new_warnings": []
+  },
+  "scientific_warning_retained": "vegan rrarefy observed-count advisory; underlying calculation unchanged; 100 repetitions summarized with full diagnostics retained",
+  "source_freshness": "Shared R and rendering sources changed. Start a new ordered run at 010 to create current source-matched records. Previous record hashes are never retrofitted.",
+  "post_render_test_boundary": "Actual R post-render script and native Pandoc tested with an isolated Markdown-only launcher; no full Quarto render claimed."
+}

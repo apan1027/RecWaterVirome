@@ -1,0 +1,573 @@
+sheet	field	meaning	unit_or_code	missing_rule
+*	vOTU_id	Identifier of a viral operational taxonomic unit in this catalogue	identifier	never empty
+*	vcontig_id	Identifier of the representative contig of that vOTU	identifier	never empty
+*	sample_id	Water sample, one of bc1, bd1, bc2, gc1, gd1, oc1, od1	identifier	never empty
+*	site	Sampling site (Beijing, Garching, Oberschleissheim)	category	never empty
+*	omic	Assay: virome, bact_16s or euk_18s_microeuk	category	never empty
+*	experiment	Assay as named by the source analysis (virome, bact_16s, euk_18s_microeuk)	category	never empty
+*	bc1	Value for sample bc1; the quantity and its unit are given by this sheet's units_and_limits	see sheet units	empty only where the source table is empty
+*	bd1	Value for sample bd1; the quantity and its unit are given by this sheet's units_and_limits	see sheet units	empty only where the source table is empty
+*	bc2	Value for sample bc2; the quantity and its unit are given by this sheet's units_and_limits	see sheet units	empty only where the source table is empty
+*	gc1	Value for sample gc1; the quantity and its unit are given by this sheet's units_and_limits	see sheet units	empty only where the source table is empty
+*	gd1	Value for sample gd1; the quantity and its unit are given by this sheet's units_and_limits	see sheet units	empty only where the source table is empty
+*	oc1	Value for sample oc1; the quantity and its unit are given by this sheet's units_and_limits	see sheet units	empty only where the source table is empty
+*	od1	Value for sample od1; the quantity and its unit are given by this sheet's units_and_limits	see sheet units	empty only where the source table is empty
+*	note	Free-text note carried from the producing step	text	may be empty
+*	definition	Free-text definition of the row, carried from the producing step	text	may be empty
+*	unit	Unit of the value in the same row	text	may be empty
+*	source_file	File the row was read from	path	never empty
+*	source_line	Line number in source_file	line number	empty when the value did not come from a document line
+*	source_text	The source line quoted verbatim	text	may be empty
+*	warnings	Fitting warnings exactly as the source run saved them	text	empty when the fit produced no warning
+*	valid	Whether the source run accepted the fit or the replicate	TRUE / FALSE	never empty
+*	slope	Coefficient on the log-odds scale per 10-fold increase in CDS count	log-odds per 10-fold CDS	empty where valid is FALSE
+*	se	Standard error of slope on the same scale	log-odds per 10-fold CDS	empty where valid is FALSE
+*	carriers	Reference genomes carrying the feature	genomes	never empty
+*	feat	Feature identifier (Pfam domain or anti-defense profile)	identifier	never empty
+*	feature_id	Feature identifier at this sheet's feature level (KO, curated pathway or database entry)	identifier	never empty
+*	feature_name	Human-readable name of that feature	text	may be empty
+*	group	Which fixed set the feature belongs to (METAB = metabolic Pfam domains; ADF_profile = anti-defense profiles)	codes: ADF_profile, METAB	never empty
+*	mode	Resampling or adjustment mode as named by the source run	category	never empty
+*	rep	Replicate number within its mode	count	never empty
+*	p	Nominal p value, not adjusted for multiple comparisons	unitless probability	may be empty
+*	total_TPM	Summed vOTU TPM (breadth-masked trimmed-mean coverage normalized to one million per sample; viral abundance, not expression) of the carrying vOTUs across the seven samples	TPM	never empty
+*	votu_total_TPM	Summed TPM of this vOTU across the seven samples for this feature	TPM	never empty
+*	feature_total_TPM	Summed TPM of all carriers of this feature	TPM	never empty
+*	contribution_fraction	This vOTU's share of feature_total_TPM; sums to 1 within a feature	fraction (0-1)	never empty
+*	driver_rank	Rank of this vOTU within its own feature row, 1 = largest contribution	rank	never empty
+*	start_bp	Start coordinate on the representative sequence, 1-based inclusive	base pairs	never empty
+*	end_bp	End coordinate on the representative sequence, 1-based inclusive	base pairs	never empty
+*	length_bp	Length	base pairs	never empty
+*	contig_length_bp	Length of the representative sequence	base pairs	never empty
+*	record_length_bp	Length of the CheckV record	base pairs	never empty
+*	checkv_completeness_pct	CheckV estimated completeness	per cent	empty for the 47 records CheckV could not estimate
+*	checkv_quality	CheckV quality class (Complete, High-quality, Medium-quality, Low-quality, Undetermined)	category	never empty
+*	shannon	Shannon index on the natural-log scale	nats	never empty
+*	observed	Observed features	features	never empty
+*	localization	Where a hit sits relative to CheckV-predicted regions (host, viral, boundary_crossing, no_host_region_detected)	category	never empty
+*	irr	Incidence rate ratio, temperate versus virulent	ratio	never empty
+*	lo	Lower bound of the 95% Wald confidence interval of irr	ratio	never empty
+*	hi	Upper bound of the 95% Wald confidence interval of irr	ratio	never empty
+*	theta	Dispersion parameter of the negative-binomial fit	unitless	never empty
+*	n	Number of units in the row; the unit is given by this sheet's units_and_limits	count	never empty
+*	k	Number of units meeting the row's condition	count	never empty
+*	rate	k divided by n	fraction (0-1)	never empty
+*	percent	rate expressed as a percentage	per cent	never empty
+*	constructs	Controlled constructs in this stratum	constructs	never empty
+*	flagged	Constructs that CheckV flagged as a provirus	constructs	never empty
+*	flagged_fraction	flagged divided by constructs	fraction (0-1)	never empty
+*	profile	Anti-defense profile name	identifier	never empty
+*	carrier_clusters	Gene-sharing clusters containing at least one carrier genome; not a phylogeny	clusters	never empty
+*	stratum	Stratum label used by one of the two separate adjustments	category	never empty
+*	covariate	Which covariate the adjustment used (unadjusted, ecosystem, host)	category	never empty
+S41_construct_strata	requested_viral_length	Length of the viral window requested when the construct was built	base pairs	never empty
+S41_construct_strata	host_percent_requested	Requested host flank as a percentage of the construct	per cent (10 or 20)	never empty
+S41_construct_strata	metric	Which quantity the row summarises: viral_retention (share of viral bases kept) or host_removed (share of host flank removed)	codes: host_removed, viral_retention	never empty
+S41_construct_strata	mean	Mean of that metric over the constructs of this stratum	fraction (0-1)	never empty
+S41_construct_strata	low	Lower bound of the resampling interval saved by the source run; not a confidence interval	fraction (0-1)	never empty
+S41_construct_strata	high	Upper bound of the resampling interval saved by the source run; not a confidence interval	fraction (0-1)	never empty
+S41_construct_strata	background	Background sequence set the construct was built against	category	never empty
+S41_construct_strata	treatment	Sequence kept before the metric is computed: whole = the whole construct; truth_trim = only the known viral span; predicted_trim = only the CheckV-predicted viral region; whole_drop = the construct is dropped if CheckV calls it a provirus and kept whole otherwise	codes: predicted_trim, truth_trim, whole, whole_drop	never empty
+S41_construct_strata	viral_genera	Number of distinct viral genera of the source genomes contributing constructs to this stratum (not the host genus in column genus)	genera	never empty
+S41_construct_strata	mothers	Distinct source genomes contributing constructs to this stratum	genomes	never empty
+S41_construct_strata	engineering_guidepost_pass	Whether the stratum mean met the source guidepost for its own metric: mean >= 0.95 for viral_retention, mean >= 0.50 for host_removed; a stratum mean, not a per-construct guarantee	TRUE / FALSE	never empty
+S41_construct_strata	primary_length	Whether the stratum belongs to the primary length series shown in Supplementary Figure 3b	TRUE / FALSE	never empty
+S41_construct_strata	genus	Bacterial host genus whose chromosome supplied the host flank; not a viral genus	codes: Bacillus, Escherichia, Pseudomonas	never empty
+S41_construct_strata	mode	VFDB hit threshold used to count VF hits on the constructs: filtered (identity >= 30%, coverage >= 0.70) or strict (identity >= 40%, coverage >= 0.80); the nucleotide endpoints are the same under both	codes: filtered, strict	never empty
+S36_construct_below95	viral_retention	Share of the construct's viral bases still present after predicted trimming	fraction (0-1)	never empty
+S36_construct_below95	host_removed	Share of the construct's host flank removed by predicted trimming	fraction (0-1)	never empty
+S36_construct_below95	requested_viral_length_bp	Length of the viral window requested when the construct was built	base pairs	never empty
+S36_construct_below95	host_percent_requested	Requested host flank as a percentage of the construct	per cent (10 or 20)	never empty
+S32_vf_models	hits_rule	Which VF hits the model counts	text	never empty
+S32_vf_models	offset_rule	Which length the model uses as its log offset	text	never empty
+S32_vf_models	label_rule	Which annotators define the temperate label	text	never empty
+S32_vf_models	label_definition	Short name of the lifestyle-label rule of this model	category	never empty
+S32_vf_models	region_definition	Short name of the hit-and-offset rule of this model	category	never empty
+S32_vf_models	temperate	vOTUs labelled temperate under this model's label rule	vOTUs	never empty
+S32_vf_models	hits	VF hits counted by this model	hits	never empty
+S32_vf_models	temperate_hits	Of those hits, the ones on temperate-labelled vOTUs	hits	never empty
+G07_resampling	valid_replicates	Replicates in which every fixed feature was estimable in both sets	replicates	never empty
+G07_resampling	replicates	Replicates attempted	replicates	never empty
+G07_resampling	median	Median over valid replicates of (METAB median minus ADF median); not the coefficient median of one set	log-odds per 10-fold CDS	never empty
+G17_resample_contrasts	difference	METAB median minus ADF median in this replicate	log-odds per 10-fold CDS	empty where valid is FALSE
+G12_firth_feature_fits	raw_slope	The same Firth-penalised coefficient as slope, before the validity filter; not an unpenalised estimate	log-odds per 10-fold CDS	empty only where the fit did not return
+G12_firth_feature_fits	max_conv	Largest convergence criterion reported by logistf for this fit	unitless	empty where the fit did not return
+G12_firth_feature_fits	named	Whether the feature belongs to the named25 subset, i.e. was named by the old direct category join; this grouping is withdrawn and kept for audit only (G19_result_status); the per-feature fits themselves are current	TRUE / FALSE	never empty
+G06_firth	metab_median	Median Firth coefficient of the 285 metabolic domains under this row's covariate	log-odds per 10-fold CDS	never empty
+G06_firth	adf_median	Median Firth coefficient of the anti-defense profiles in the set named by this row's definition (all38 = the fixed 38 non-NARP profiles; named25 = its 25 named profiles)	log-odds per 10-fold CDS	never empty
+G06_firth	difference	metab_median minus adf_median	log-odds per 10-fold CDS	never empty
+G11_adjusted_fits	slope	Coefficient of the separate adjustment, unpenalised	log-odds per 10-fold CDS	empty where valid is FALSE
+G18_resample_features	slope	Coefficient of this feature in this replicate	log-odds per 10-fold CDS	empty where valid is FALSE
+G18_resample_features	carriers	Reference genomes carrying the feature within this replicate's resampled set	genomes	never empty
+G06_firth	definition	Fixed-set definition the row applies to (all38 = all 38 anti-defense profiles; named25 = the 25 named ones). named25 rows are a historical subset formed by the old direct category join (the 25 fixed profiles that join named); withdrawn, kept for audit only (status index G19_result_status). all38 rows are current.	category	never empty
+G07_resampling	definition	Fixed-set definition the row applies to (all38 = all 38 anti-defense profiles; named25 = the 25 named ones). named25 rows are a historical subset formed by the old direct category join (the 25 fixed profiles that join named); withdrawn, kept for audit only (status index G19_result_status). all38 rows are current.	category	never empty
+G17_resample_contrasts	definition	Fixed-set definition the row applies to (all38 = all 38 anti-defense profiles; named25 = the 25 named ones). named25 rows are a historical subset formed by the old direct category join (the 25 fixed profiles that join named); withdrawn, kept for audit only (status index G19_result_status). all38 rows are current.	category	never empty
+S32_vf_models	model	Row number of the model within this four-model sensitivity analysis	index	never empty
+S36_construct_below95	id	Identifier of the individual construct	identifier	never empty
+S36_construct_below95	mother	Accession of the reference genome the viral window was taken from	identifier	never empty
+S36_construct_below95	genus	Bacterial host genus whose chromosome supplied the host flank; not a viral genus	codes: Bacillus, Escherichia, Pseudomonas	never empty
+S36_construct_below95	background	Background sequence set the construct was built against	category	never empty
+G01_feature_fits	feature	Feature identifier (Pfam domain or anti-defense profile)	identifier	never empty
+G01_feature_fits	cluster_se	Sandwich standard error of slope clustered on the gene-sharing cluster of the carrier genome	log-odds per 10-fold CDS	never empty
+G01_feature_fits	model	Model formula the coefficient comes from	text	never empty
+G06_firth	analysis	Which sensitivity analysis the row belongs to	text	never empty
+*	F_stat	F statistic of the PERMANOVA term	unitless	may be empty
+*	R2	Share of variance attributed to the term in a marginal PERMANOVA; not a test of causal importance	fraction (0-1)	never empty
+*	df	Degrees of freedom of the term	count	never empty
+*	PCoA1	Coordinate on the first principal-coordinate axis, as saved by the source ordination	ordination score	never empty
+*	PCoA2	Coordinate on the second principal-coordinate axis, as saved by the source ordination	ordination score	never empty
+*	axis1_percent	Variance explained by the first axis	per cent	never empty
+*	axis2_percent	Variance explained by the second axis	per cent	never empty
+*	mantel_r	Mantel statistic (Spearman) between two distance matrices	unitless correlation	never empty
+*	mantel_p	Nominal permutation p of the Mantel statistic, 999 permutations, not adjusted	unitless probability	never empty
+*	proc_corr	Procrustes correlation on all available principal-coordinate dimensions	unitless correlation	never empty
+*	proc_p	Nominal permutation p of the Procrustes statistic, not adjusted	unitless probability	never empty
+*	proc_m2	Procrustes sum of squares	unitless	never empty
+*	rv_coef	RV coefficient between two configurations	unitless (0-1)	never empty
+*	p_betadisper	Dispersion p value quoted by the source package (parametric column)	unitless probability	never empty
+*	p_betadisper_parametric	Parametric betadisper p value	unitless probability	never empty
+*	p_betadisper_permutation	Permutation betadisper p value, 9,999 requested permutations; 1/5,040 is the smallest attainable value for seven samples	unitless probability	never empty
+*	p_betadisper_parametric_bias_adjusted	Parametric betadisper p value with the bias adjustment	unitless probability	never empty
+*	p_betadisper_permutation_bias_adjusted	Permutation betadisper p value with the bias adjustment	unitless probability	never empty
+*	shannon_clean	Shannon index of the sample carrying the c record label	nats	never empty
+*	shannon_dirty	Shannon index of the sample carrying the d record label	nats	never empty
+*	shannon_diff_dirty_minus_clean	shannon_dirty minus shannon_clean; a record-label contrast, not a treatment effect	nats	never empty
+*	shannon_sd	Spread of Shannon over the 100 rarefactions; technical, not a biological interval	nats	never empty
+*	shannon_unrarefied	Shannon computed without rarefaction	nats	never empty
+*	observed_sd	Spread of observed richness over the 100 rarefactions; technical	features	never empty
+*	observed_unrarefied	Observed richness without rarefaction	features	never empty
+*	observed_taxa	Observed taxa in the retained count table	taxa	never empty
+*	chao1	Chao1 richness estimate for the retained count table, not the environmental truth	taxa	never empty
+*	pct_of_chao1	Observed taxa as a percentage of chao1	per cent	never empty
+*	goods_coverage	Good's coverage of the retained count table	fraction (0-1)	never empty
+*	singletons	Taxa observed exactly once	taxa	never empty
+*	doubletons	Taxa observed exactly twice	taxa	never empty
+*	new_taxa_per_1Mr	Slope of the saved accumulation diagnostic	taxa per million reads	never empty
+*	rarefy_depth	Depth each sample was rarefied to	reads	never empty
+*	masked_reads	Reads retained after the breadth mask	reads	never empty
+*	mapped_viral_reads	Reads mapped to the viral catalogue	reads	never empty
+*	masked_richness	vOTUs detected after the breadth mask	vOTUs	never empty
+*	clean_reads	Reads after quality filtering	reads	never empty
+*	clean_reads_virome	Virome reads after quality filtering	reads	never empty
+*	raw_reads_virome	Virome reads before quality filtering	reads	never empty
+*	total_reads	Reads in the retained count table	reads	never empty
+*	relative_abundance	Share of the sample total within one assay	fraction (0-1)	never empty
+*	abundance_sum	Summed abundance in the assay's own unit before normalisation	assay units	never empty
+*	mean_relative_abundance	Mean of relative_abundance over the seven samples, used only to rank display categories	fraction (0-1)	never empty
+*	sample_order	Position of the sample in the fixed display order	index	never empty
+*	display_order	Position of the category in the fixed display order	index	never empty
+*	checkv_contamination_pct	CheckV estimated contamination	per cent	may be empty
+*	checkv_quality_score_db	Numeric quality score stored with the CheckV class in the source database	score	may be empty
+*	total_genes	Genes predicted on the record by CheckV	genes	never empty
+*	viral_genes	Genes CheckV assigned to the viral region	genes	never empty
+*	host_genes	Genes CheckV assigned to the host region	genes	never empty
+*	genomad_n_genes	Genes predicted on the recovered sequence by geNomad; the gene count used for the Figure 5a bins	genes	never empty
+*	proviral_length_bp	Length CheckV assigned to the proviral portion	base pairs	may be empty
+*	host_length_bp	Length CheckV assigned to the host portion	base pairs	may be empty
+*	length	Length of the region	base pairs	never empty
+*	start	Start coordinate, 1-based inclusive	base pairs	never empty
+*	end	End coordinate, 1-based inclusive	base pairs	never empty
+*	start_position	Start coordinate of the gene, 1-based inclusive	base pairs	never empty
+*	end_position	End coordinate of the gene, 1-based inclusive	base pairs	never empty
+*	gene_position	Index of the gene along the contig	index	never empty
+*	strand	Coding strand, 1 = plus	1 / -1	never empty
+*	strandedness	Coding strand, 1 = plus	1 / -1	never empty
+*	aa_length	Protein length excluding the stop codon	amino acids	never empty
+*	hsp_start_bp	Start of the aligned segment on the contig	base pairs	never empty
+*	hsp_end_bp	End of the aligned segment on the contig	base pairs	never empty
+*	hsp_host_nt	Bases of the aligned segment inside a predicted host region	base pairs	never empty
+*	hsp_viral_nt	Bases of the aligned segment inside a predicted viral region	base pairs	never empty
+*	evalue	Alignment E-value as saved by the search tool	unitless	never empty
+*	pident	Percentage identity of the alignment	per cent	never empty
+*	viral_eVal	E-value of the best viral database hit	unitless	may be empty
+*	viral_identity	Identity of the best viral database hit	fraction (0-1)	may be empty
+*	viral_RBH	Whether the viral hit is a reciprocal best hit	1 / 0	may be empty
+*	auxiliary_score	geNomad or DRAM-v auxiliary score of the AMG call	score	may be empty
+*	hit_i_eval	Independent E-value of the profile hit	unitless	never empty
+*	hit_score	Bit score of the profile hit	bits	never empty
+*	hit_profile_cov	Share of the profile covered by the hit	fraction (0-1)	never empty
+*	hit_seq_cov	Share of the sequence covered by the hit	fraction (0-1)	never empty
+*	hit_pos	Position of the hit gene along the contig	index	never empty
+*	iphop_confidence	iPHoP host-prediction score; only records at 90 or above are used	score (0-100)	never empty
+*	overall_confidence	iPHoP overall score of the prediction the CRISPR edge was taken from	score (0-100)	never empty
+*	crispr_component_score	iPHoP CRISPR component score of that prediction	score (0-100)	never empty
+*	min_mismatches	Fewest mismatches among the spacer hits of this edge; zero only for a perfect match	nucleotides	never empty
+*	n_codetected_masked	Samples in which vOTU and host genus are both detected under the breadth-masked table	samples	never empty
+*	n_codetected_raw	The same count under the unmasked table	samples	never empty
+*	n_codetected_saved	Co-detection count as saved by the source step	samples	never empty
+*	host_prevalence_saved	Prevalence of the host genus as saved by the source step	fraction (0-1)	may be empty
+*	n_vf_hits	Virulence-factor hits on the record	hits	never empty
+*	carries_VF	Whether the vOTU carries at least one VF hit	1 / 0	never empty
+*	n_carriers	Carrier vOTUs of the feature	vOTUs	never empty
+*	antidefense_union	vOTUs in the deduplicated anti-defense union	vOTUs	never empty
+*	dbapis_filtered	vOTUs with a filtered dbAPIS hit	vOTUs	never empty
+*	dbapis_narp_targeting	Whether the vOTU carries a filtered dbAPIS NARP-targeting hit	1 / 0	never empty
+*	df_defense	Whether DefenseFinder called a defense system on the vOTU	1 / 0	never empty
+*	df_antidefense	Whether DefenseFinder called an anti-defense gene on the vOTU	1 / 0	never empty
+*	df_narp1	Whether DefenseFinder called the NARP1 system on the vOTU	1 / 0	never empty
+*	df_narp2	Whether DefenseFinder called the NARP2 system on the vOTU	1 / 0	never empty
+*	ko_K03462_K13522	Whether the vOTU carries both K03462 and K13522	1 / 0	never empty
+*	padloc	vOTUs with a PADLOC call	vOTUs	never empty
+*	single_carrier_cluster	Whether every carrier genome of the profile falls in one gene-sharing cluster	1 / 0	never empty
+*	median_slope	Median coefficient of the set	log-odds per 10-fold CDS	never empty
+*	n_features	Features in the set	features	never empty
+*	n_positive	Features with a positive coefficient	features	never empty
+*	n_negative	Features with a negative coefficient	features	never empty
+*	n_member_profiles	Profiles aggregated into this unit	profiles	never empty
+*	rank_in_metab	Rank of the domain among the 285 metabolic domains by coefficient	rank	may be empty
+*	rank_total_TPM	Rank of the feature among the 138 KOs by total_TPM	rank	never empty
+*	rank_among_named	Rank of the taxon among the named taxa of its assay	rank	may be empty
+*	samples_detected	Samples in which the feature is present	samples	never empty
+*	lo_inclusive	Lower edge of the bin, inclusive	predicted genes	never empty
+*	hi_exclusive	Upper edge of the bin, exclusive	predicted genes	never empty
+*	viral_window_bp	Length of the viral window of the construct stratum	base pairs	never empty
+*	flank_percent	Host flank as a percentage of the construct	per cent (10 or 20)	never empty
+*	fraction	Share of constructs meeting the row's condition	fraction (0-1)	never empty
+*	threshold	Threshold the row applies	see the same row's unit column	may be empty
+*	value	Value of the item named in the same row; its unit is in the unit column	see the row's unit	never empty
+*	denominator	Denominator the value is counted against	count	may be empty
+*	has_resolved_genus	Whether the host prediction resolves to a named genus	1 / 0	never empty
+*	host_in_16s_clean	Whether that genus appears in the filtered 16S table	1 / 0	never empty
+*	in_127_named_visible_set	Whether the record is one of the 127 named genera visible in 16S	1 / 0	never empty
+*	was_in_070_130_set	Whether the record was in the superseded 130-record host set	1 / 0	never empty
+*	best_source_line	Line number in the document the value was read from	line number	may be empty
+*	matched_source_line	Line number of the matched source statement	line number	may be empty
+*	original_070_source_line	Line number in the superseded source	line number	may be empty
+*	n_invalid_metab	Metabolic features that could not be fitted in that replicate	features	never empty
+*	n_invalid_adf	Anti-defense profiles that could not be fitted in that replicate	features	never empty
+S12_host_iphop	host_prevalence_saved	Number of the seven samples in which the host genus was detected in the filtered 16S table, as saved by the source step	samples (1-7)	empty where the genus is unresolved (3) or not detected in the 16S table (70)
+S12_host_iphop	host_in_16s_clean	Whether the resolved host genus appears in the filtered 16S table	1 / 0	empty where the genus is unresolved (3)
+S12_host_iphop	n_codetected_saved	Samples in which the vOTU and its host genus were both detected, as saved by the source step	samples	empty where co-detection is undefined: genus unresolved (3) or not detected in the 16S table (70)
+S28_narp_case_evidence	group	Which case document the value comes from: coverage (NARP2-locus depth), he_targeting (homing-endonuclease windows), orf102_domains (ORF102 domain boundaries), global_narp (global NARP module calls)	codes: coverage, global_narp, he_targeting, orf102_domains	never empty
+S24_defense_membership	df_antidefense	Membership flag: 1 if DefenseFinder called an anti-defense system on the vOTU, 0 otherwise	0 / 1	never empty
+S24_defense_membership	dbapis_filtered	Membership flag: 1 if the vOTU has a filtered dbAPIS hit, 0 otherwise	0 / 1	never empty
+S24_defense_membership	antidefense_union	Membership flag: 1 if the vOTU has a DefenseFinder anti-defense call or a filtered dbAPIS hit (union), 0 otherwise	0 / 1	never empty
+S24_defense_membership	df_defense	Membership flag: 1 if DefenseFinder called a defense system on the vOTU, 0 otherwise	0 / 1	never empty
+S24_defense_membership	padloc	Membership flag: 1 if PADLOC called a defense system on the vOTU, 0 otherwise	0 / 1	never empty
+S21_f3_carrier_ranks	vOTU_id	vOTU occupying this rank class for the KO	identifier	empty where the KO has no carrier in this rank class (fraction 0)
+G09_nad_leaveout	carriers	Reference genomes carrying the feature	genomes	empty on the summary rows (METAB median and shift), which are not a single feature
+G01_feature_fits	group	Which fixed feature set the row belongs to, by its display name (the metabolic Pfam domains or the non-NARP anti-defense profiles)	codes: 285 metabolic-related Pfam domains, 38 non-NARP anti-defense profiles	never empty
+G02_group_medians	group	Which fixed feature set the row belongs to, by its display name (the metabolic Pfam domains or the non-NARP anti-defense profiles)	codes: 285 metabolic-related Pfam domains, 38 non-NARP anti-defense profiles	never empty
+S11_betadisper	dispersion_status	Dispersion status from the two permutation tests (plain and bias-adjusted median): flagged_both = both p < 0.05; method_dependent = one of them; not_flagged = neither; undetermined = a test did not return a finite p value (not a negative result)	codes: flagged_both, method_dependent, not_flagged; may be absent: undetermined	never empty
+S11_betadisper	dispersion_status_reason	Why a status is undetermined: which permutation test failed and its error message; empty when the status was determined	text	empty unless dispersion_status is undetermined; column present only in the rebuilt analysis version
+S46_vf_sample_abundance	catalogue_detected	Catalogue representatives with a positive breadth-masked depth in that sample	count	none
+S46_vf_sample_abundance	F0_percent_of_catalogue	Filtered-annotation candidate carriers as a share of that sample's whole breadth-masked catalogue; each carrier counted once	% of the full catalogue of that sample	none; 0 means no eligible carrier passed detection
+S46_vf_sample_abundance	F1_percent_of_catalogue	As F0 after excluding matches in predicted host regions and across a region boundary; membership changes only, abundance and denominator do not	% of the full catalogue	none; 0 as above
+S46_vf_sample_abundance	S0_percent_of_catalogue	As F0 under the strict annotation criteria (identity >= 40%, query coverage >= 0.80)	% of the full catalogue	none; 0 as above
+S46_vf_sample_abundance	S1_percent_of_catalogue	Strict criteria with the region exclusion applied as well	% of the full catalogue	none; 0 as above
+S46_vf_sample_abundance	top_two_share_of_F0_carrier_abundance	Share of the two largest carriers WITHIN that sample's summed carrier abundance; a different denominator from every other percentage in this sheet	% of that sample's carrier abundance	NA when no carrier was detected
+S46_vf_sample_abundance	F0_carrier_pmcr_sum_exploratory	EXPLORATORY technical diagnostic: masked depth divided by recorded clean reads, times 1e6, summed over F0 carriers	per million recorded clean reads	none; not used for ranking, load or concentration
+S46_vf_sample_abundance	recorded_clean_reads	Clean read count as recorded for that virome library	count as recorded	none; the read/read-pair rule behind it and the original read length are NOT recovered
+S47_vf_carrier_abundance	trimmed_mean_depth	Saved trimmed mean coverage depth of the whole contig before the breadth mask	mean depth per base	none
+S47_vf_carrier_abundance	covered_fraction	Fraction of the representative covered in that sample	fraction 0-1	none
+S47_vf_carrier_abundance	masked_depth	trimmed_mean_depth where covered_fraction >= 0.75, otherwise 0	mean depth per base	none; 0 means below the detection threshold, not absence of the gene
+S47_vf_carrier_abundance	detected	masked_depth > 0; a contig-level threshold that does not establish coverage of an annotated locus	TRUE/FALSE	none
+S47_vf_carrier_abundance	percent_of_catalogue	masked_depth divided by the sum over all catalogue representatives of the same sample, times 100	% of the full catalogue	none
+S47_vf_carrier_abundance	eligible_F0	Carrier is eligible under the filtered criteria (the same under every sample)	TRUE/FALSE	none
+S47_vf_carrier_abundance	eligible_S1	Carrier keeps at least one strict match after the region exclusion	TRUE/FALSE	none
+S47_vf_carrier_abundance	functions_F0	VFDB reference function(s) of that carrier's filtered matches, homology-based	text, semicolon separated	NA when the source record carries no function name
+S47_vf_carrier_abundance	heatmap_rank	Rank in the deterministic top-18 selection of Figure 4b	integer 1-18	NA for carriers outside the selection
+S48_vf_match_evidence	hit_key	vOTU_id, query and target joined by a bar; unique across the 143 matches	text	none
+S48_vf_match_evidence	query	Original protein identifier of the annotation run, in its cat_1/cat_2 form; it is NOT the normalized protein_id of S31	text	none
+S48_vf_match_evidence	localization	Saved region class of that match: host, boundary_crossing, viral, or no_region_prediction	categorical	no_region_prediction means no coordinate record in this batch, NOT a confirmed viral position
+S48_vf_match_evidence	region_excluded	Match falls in a predicted host region or crosses a boundary and is therefore dropped from F1 and S1	TRUE/FALSE	none
+S48_vf_match_evidence	in_strict	Match is also present in the strict annotation table	TRUE/FALSE	none
+S46_vf_sample_abundance	F0_carriers_detected	Filtered-annotation carriers that passed the detection threshold in that sample	count	none
+S46_vf_sample_abundance	F1_carriers_detected	As F0_carriers_detected after the region exclusion	count	none
+S46_vf_sample_abundance	S0_carriers_detected	As F0_carriers_detected under the strict criteria	count	none; 0 in oc1 and od1
+S46_vf_sample_abundance	S1_carriers_detected	Strict criteria with the region exclusion applied as well	count	none; 0 in oc1 and od1
+S46_vf_sample_abundance	top_carrier_percent_of_catalogue	Catalogue share of the single largest filtered-annotation carrier in that sample	% of the full catalogue	none
+S47_vf_carrier_abundance	hits_F0	Filtered matches on that carrier; the same value in every sample, since annotation is per sequence	count	none
+S47_vf_carrier_abundance	hits_F1	Filtered matches left after the region exclusion	count	none; 0 means every match of that carrier was excluded
+S47_vf_carrier_abundance	hits_S0	Strict matches on that carrier	count	none; 0 for carriers without a strict match
+S47_vf_carrier_abundance	hits_S1	Strict matches left after the region exclusion	count	none; 0 as above
+S47_vf_carrier_abundance	breadth_threshold	Covered-fraction threshold used for detection, from config/community.yml	fraction 0-1	none; constant 0.75
+S48_vf_match_evidence	pident	Protein identity of the match as saved by the annotation run	% identity	none; >= 30 by the filtered criteria
+S48_vf_match_evidence	qcov	Query coverage of the match as saved	fraction 0-1	none; >= 0.70 by the filtered criteria
+S46_vf_sample_abundance	record_label	Recorded clean/dirty water label of the sample as supplied with the sampling record (sample descriptions: dirty = d, treatment-process water; clean = c, nearby water after facility outflow); it is NOT a verified treatment stage or hydraulic pair	code: clean | dirty	never empty
+S46_vf_sample_abundance	top_carrier	vOTU with the highest candidate-carrier abundance in that sample under the F0 definition	identifier	never empty
+S46_vf_sample_abundance	top_two_denominator	Text naming the denominator of top_two_share_of_F0_carrier_abundance: the summed F0 carrier abundance of that sample, not the full catalogue	text	never empty
+S46_vf_sample_abundance	catalogue_masked_depth_sum	Sum of breadth-masked trimmed mean depth over the whole detected catalogue of that sample; this is the denominator behind the percent_of_catalogue columns	trimmed mean depth (unitless ratio), summed	never empty
+S46_vf_sample_abundance	F0_masked_depth_sum	Numerator of F0_percent_of_catalogue: summed breadth-masked depth of the F0 candidate carriers of that sample	trimmed mean depth, summed	never empty
+S46_vf_sample_abundance	F1_masked_depth_sum	Numerator of F1_percent_of_catalogue (filtered annotations after regional exclusion)	trimmed mean depth, summed	never empty
+S46_vf_sample_abundance	S0_masked_depth_sum	Numerator of S0_percent_of_catalogue (strict annotations)	trimmed mean depth, summed	never empty
+S46_vf_sample_abundance	S1_masked_depth_sum	Numerator of S1_percent_of_catalogue (strict annotations after regional exclusion)	trimmed mean depth, summed	never empty
+S46_vf_sample_abundance	pmcr_definition	Text of the PMCR formula actually applied, kept with the values so the diagnostic cannot be re-read under another definition	text	never empty
+S46_vf_sample_abundance	pmcr_limits	Text of the recorded limits of the PMCR diagnostic: the read/read-pair rule behind recorded clean reads and the original read length are not recovered, and equal relative shares do not imply equal concentration	text	never empty
+S46_vf_sample_abundance	breadth_threshold	Covered-fraction threshold a vOTU must reach in a sample to count as detected in that sample	fraction of the representative contig (0-1)	never empty
+S47_vf_carrier_abundance	eligible_F1	TRUE if the vOTU qualifies as a candidate carrier under definition F1 (filtered annotations, hits in predicted host or boundary regions excluded). Sequence-level and identical across the seven samples	boolean	never empty
+S47_vf_carrier_abundance	eligible_S0	TRUE if the vOTU qualifies under definition S0 (strict annotations, no regional exclusion). Sequence-level and identical across the seven samples	boolean	never empty
+S47_vf_carrier_abundance	functions_S1	VFDB reference function(s) of the hits that remain under definition S1, as recorded in VFDB; several functions are separated by a semicolon. Homology-based annotation, not functional validation	text; semicolon-separated	empty when the vOTU has no S1 hit
+S47_vf_carrier_abundance	in_heatmap	TRUE if the vOTU is one of the 18 carriers drawn in Figure 4b	boolean	never empty
+S47_vf_carrier_abundance	max_percent_of_catalogue	Highest catalogue-relative percentage the vOTU reaches in any single sample; this is the value the heatmap selection ranks on	% of the detected catalogue of the best single sample	empty for carriers outside the heatmap selection
+S47_vf_carrier_abundance	selection_rule	Text of the rule that produced the heatmap selection: top 18 F0 carriers by the highest catalogue-relative percentage reached in any one sample, ties broken by ascending vOTU identifier	text	empty for carriers outside the heatmap selection
+S48_vf_match_evidence	target	VFDB entry the query matched, as the VFG accession with its source database identifier in brackets, exactly as recorded in VFDB	identifier	never empty
+S48_vf_match_evidence	vf_function	VFDB reference function of the matched entry, as recorded in VFDB	text	empty when VFDB records no function for that entry
+S48_vf_match_evidence	vf_id	VFDB virulence-factor identifier of the matched entry	identifier	empty when VFDB records no VF id for that entry
+S48_vf_match_evidence	vf_category	VFDB category of the matched entry, as recorded in VFDB	text	empty when VFDB records no category
+S48_vf_match_evidence	vf_organism	Organism the VFDB reference entry was described in; it is the source of the reference sequence, NOT an inferred host of the vOTU	text	empty when VFDB records no organism
+S48_vf_match_evidence	region_prediction_available	TRUE if a CheckV region coordinate record exists for this hit in this batch. FALSE means no coordinate record was available, which is not the same as the hit lying in a viral region	boolean	never empty
+S48_vf_match_evidence	in_F0	TRUE if the hit is counted under definition F0 (all filtered annotations). TRUE for every row by construction	boolean	never empty
+S48_vf_match_evidence	in_F1	TRUE if the hit is counted under definition F1, i.e. it is filtered and was not excluded by the region rule	boolean	never empty
+S48_vf_match_evidence	in_S0	TRUE if the hit is counted under definition S0, i.e. it meets the strict identity and coverage thresholds	boolean	never empty
+S48_vf_match_evidence	in_S1	TRUE if the hit is counted under definition S1, i.e. strict and not excluded by the region rule	boolean	never empty
+S48_vf_match_evidence	source_record	Which saved record the row was assembled from: the annotation table alone, or the annotation table together with the coordinate file that carries the region localization	code: annotation table only | annotation table + vf20_coordinates.tsv	never empty
+S49_host_codetection_by_sample	endpoint	Which Figure 2d row the record belongs to: an iPHoP record (score >= 90) or a strict CRISPR edge; the two overlap and are not additive	category	never empty
+S49_host_codetection_by_sample	host_genus	Predicted host genus of the record or edge, with the GTDB g__ prefix	GTDB genus name	empty where the iPHoP genus is unresolved
+S49_host_codetection_by_sample	vOTU_detected_masked	vOTU detected in this sample on the breadth-masked table (count > 0 and covered fraction >= 0.75)	TRUE/FALSE	never empty
+S49_host_codetection_by_sample	genus_detected_16s	Host genus has 16S count > 0 in this sample, in the genus table of this endpoint	TRUE/FALSE	NA where the genus is unresolved
+S49_host_codetection_by_sample	codetected	vOTU and host genus both detected in this sample (same-sample co-occurrence, not infection)	TRUE/FALSE	NA where the genus is unresolved
+S49_host_codetection_by_sample	genus_table	16S genus table used for this endpoint (each endpoint keeps the table of its original analysis)	text	never empty
+S50_rarefaction_curves	layer	Count table of the curve: virome_unmasked (all mapped counts), virome_masked (breadth-masked counts of the alpha analysis), bact_16s (filtered ASVs before rarefaction), euk_18s_microeuk (non-metazoan ASVs, reads drawn from all 18S reads)	category	never empty
+S50_rarefaction_curves	depth_reads	Number of reads drawn in the subsample (for euk_18s_microeuk, reads of the full 18S table)	reads	never empty
+S50_rarefaction_curves	expected_features	Expected number of features (vOTUs or ASVs) observed in a random subsample of depth_reads reads; analytical expectation, not a random draw	features	never empty
+S50_rarefaction_curves	sample_total_reads	Total reads of the sample in this count table; curves stop here	reads	never empty
+S50_rarefaction_curves	observed_features	Features with a count > 0 at full depth (curve end)	features	never empty
+S50_rarefaction_curves	common_depth	Common rarefaction depth of the alpha analysis for this layer (virome masked 1,648,195; 16S 63,564; 18S 53,257 of all 18S reads); none for unmasked virome counts	reads	NA for virome_unmasked
+S50_rarefaction_curves	is_common_depth	TRUE for the row at the common depth	TRUE/FALSE	never empty
+S51_f3_ko_labels	KO	KEGG Orthology identifier of the Figure 3a row; the row identity	identifier	never empty
+S51_f3_ko_labels	display_order	Row position in Figure 3a from top (1-10 by summed carrier TPM, 11 the prespecified case)	integer 1-11	never empty
+S51_f3_ko_labels	selection	Why the row is shown: top 10 by summed carrier TPM, or the prespecified NARP-related case	category	never empty
+S51_f3_ko_labels	short_label	Display name used on the Figure 3a axis; a label, not a re-annotation	text	never empty
+S51_f3_ko_labels	label_type	Kind of display name: gene_symbol, protein_abbreviation, protein_function, protein_function_short or protein_function_abbreviation	category	never empty
+S51_f3_ko_labels	italic	TRUE where the display name is a gene symbol set in italics	boolean	never empty
+S51_f3_ko_labels	annotation_full	Full KO name with all synonyms and EC numbers, as used for the figure selection	text	never empty
+S51_f3_ko_labels	basis	Why this display name was chosen and what it does not claim	text	never empty
+S52_narp_sample_abundance	vOTU_id	vOTU of the NARP2 case set	identifier	never empty
+S52_narp_sample_abundance	sample_id	Sample	identifier	never empty
+S52_narp_sample_abundance	group	DefenseFinder NARP2 call, or nadM (K13522) carrier without a NARP2 call	category	never empty
+S52_narp_sample_abundance	ko_rule_K03462_K13522	1 where the vOTU meets the K03462-K13522 co-occurrence rule	0/1	never empty
+S52_narp_sample_abundance	trimmed_tpm_masked	Masked trimmed TPM of the vOTU in the sample (012 TSE)	TPM (whole catalogue sums to 1e6 per sample)	never empty; 0 below the breadth threshold
+S52_narp_sample_abundance	catalogue_percent	Percent of the whole breadth-masked catalogue (trimmed_tpm_masked / 10,000)	%	never empty; 0 below the breadth threshold
+S52_narp_sample_abundance	covered_fraction	Fraction of the vOTU covered by reads in the sample	fraction (0-1)	never empty
+S52_narp_sample_abundance	detected	TRUE where covered_fraction >= 0.75 (the catalogue detection criterion)	boolean	never empty
+S52_narp_sample_abundance	checkv_quality	CheckV quality class of the vOTU	category	never empty
+S52_narp_sample_abundance	checkv_completeness_pct	CheckV estimated completeness	%	never empty
+S52_narp_sample_abundance	definition	How catalogue_percent is defined	text	never empty
+S53_defense_type_inventory	tool	Annotation tool	DefenseFinder or PADLOC	never empty
+S53_defense_type_inventory	activity	Tool-reported activity class	Antidefense, Defense or Defense-related	never empty
+S53_defense_type_inventory	category	DefenseFinder subtype or PADLOC system type	category	never empty
+S53_defense_type_inventory	n_saved_records	Saved annotation records of this type	records	never empty
+S53_defense_type_inventory	n_system_calls	System calls of this type	calls	never empty
+S53_defense_type_inventory	n_votu	vOTUs carrying at least one call of this type (not additive across types)	vOTUs	never empty
+S53_defense_type_inventory	n_same_protein_dbapis_votu	DefenseFinder carriers whose called protein also has a filtered dbAPIS hit	vOTUs	empty for PADLOC (not applicable)
+S53_defense_type_inventory	Complete	Carriers with CheckV class Complete	vOTUs	never empty
+S53_defense_type_inventory	High-quality	Carriers with CheckV class High-quality	vOTUs	never empty
+S53_defense_type_inventory	Medium-quality	Carriers with CheckV class Medium-quality	vOTUs	never empty
+S53_defense_type_inventory	Low-quality	Carriers with CheckV class Low-quality	vOTUs	never empty
+S53_defense_type_inventory	Undetermined	Carriers whose CheckV class was not determined	vOTUs	never empty
+S53_defense_type_inventory	note	Recorded boundaries for selected types (naming conflicts, coordinates, selection)	text	empty where no note
+S53_defense_type_inventory	scope	What the table covers and does not cover	text	never empty
+G05_adjusted	definition	Fixed-set definition the row applies to (all38 = all 38 anti-defense profiles; named25 = the 25 named ones). named25 rows are a historical subset formed by the old direct category join (the 25 fixed profiles that join named); withdrawn, kept for audit only (status index G19_result_status). all38 rows are current.	codes: all38, named25	never empty
+G14_aggregation_fits	mode	How the historical aggregation units were formed: fixed38 = the old direct join applied to the fixed 38 profiles (21 units); all_profiles_then_threshold = the old join over all observed profiles, then the carrier threshold (22 units, = legacy_mixed). Both are withdrawn, kept for audit only (G19_result_status); post hoc corrected categories are in G21	codes: all_profiles_then_threshold, fixed38	never empty
+G14_aggregation_fits	unit	Historical aggregation unit (old direct-join category or a bare profile name where that join returned nothing); not a corrected category	identifier	never empty
+G14_aggregation_fits	n_member_profiles	Profiles pooled into the historical unit	profiles	never empty
+G15_aggregation_members	category	Category returned by the old direct string join for this profile (empty or NA where the join returned nothing); historical, withdrawn, audit only	text	empty or NA where the old join returned no category
+G15_aggregation_members	unit	Historical aggregation unit of the profile under the old join (equals G22 old_unit); not a corrected category	identifier	never empty
+G15_aggregation_members	selected38	Whether the profile is one of the fixed 38	TRUE / FALSE	never empty
+G01_feature_fits	converged	Whether the ordinary logit fit of this row converged (source run)	TRUE / FALSE	never empty
+G01_feature_fits	boundary	Whether the ordinary logit fit ended at a parameter boundary (source run)	TRUE / FALSE	never empty
+G01_feature_fits	warnings	Warnings captured for the ordinary logit fit, as saved	text	empty when the fit produced no warning
+G01_feature_fits	null_valid	Validity of the fixed-opportunity null model only: binomial cloglog(p) = a0 + offset(ln N), i.e. p = 1 - exp(-lambda N) with N the CDS count. Says nothing about the free-exponent gamma fit or the logit projection	TRUE / FALSE	never empty
+G01_feature_fits	null_warnings	Warnings captured for the fixed-opportunity null model, as saved	text	empty when the fit produced no warning
+G01_feature_fits	null_logit_equivalent	Saved descriptive projection: expected carrier counts of the fixed-opportunity model on the original CDS bins, refitted on the same logit ~ log10(N) scale weighted by bin totals. Depends on the CDS distribution and the feature frequency (not a universal ln(10) or 2.30). Its own validity, warnings and convergence were not saved	log-odds per 10-fold CDS	never empty
+G01_feature_fits	residual_slope	slope minus null_logit_equivalent: saved descriptive difference of two slopes on the logit scale. Not gamma, not a residualised refit, not a test and not a selection index	log-odds per 10-fold CDS	never empty
+G01_feature_fits	gamma	Exponent of the free-exponent model cloglog(p) = a1 + gamma ln N (fixed-opportunity model: gamma = 1). Dimensionless; not the logit slope and not residual_slope. Empty where the source run did not accept the fit	dimensionless	empty where gamma_valid is FALSE (gp4.5, ocr, samase)
+G01_feature_fits	gamma_unaccepted_estimate	Raw value returned by the free-exponent fit before the acceptance rule, kept for audit only; where gamma_valid is FALSE it is not a scientific estimate and must not replace gamma	dimensionless (audit only)	never empty
+G01_feature_fits	gamma_se	Ordinary model standard error of gamma (not cluster-robust; cluster_se belongs to the logit slope only)	dimensionless	empty where gamma_valid is FALSE
+G01_feature_fits	gamma_valid	Whether the source run accepted the free-exponent fit (converged, not at a boundary, finite, no captured warning): 285/285 metabolic domains, 35/38 anti-defense profiles	TRUE / FALSE	never empty
+G01_feature_fits	gamma_converged	Whether the free-exponent fit converged	TRUE / FALSE	never empty
+G01_feature_fits	gamma_warnings	Warnings captured for the free-exponent fit, as saved	text	empty when the fit produced no warning
+G19_result_status	sheet	Data 2 sheet the status row refers to	identifier	never empty
+G19_result_status	rows_covered	Rows or columns of that sheet covered by the status row (filter expression in words)	text	never empty
+G19_result_status	n_rows	Rows of that sheet covered	rows	never empty
+G19_result_status	status	Status label. DESCRIPTIVE_FIXED_BASELINE, POST_HOC_CORRECTED_DEFINITION and WITHDRAWN_BUG_AFFECTED_AUDIT_ONLY are the repair run's own labels; WITHDRAWN_HISTORICAL_JOIN_AUDIT_ONLY and SAVED_DESCRIPTIVE_DIAGNOSTIC summarise saved records where no machine label was saved (see label_origin). No label is a validation grade	codes: DESCRIPTIVE_FIXED_BASELINE, POST_HOC_CORRECTED_DEFINITION, SAVED_DESCRIPTIVE_DIAGNOSTIC, WITHDRAWN_BUG_AFFECTED_AUDIT_ONLY, WITHDRAWN_HISTORICAL_JOIN_AUDIT_ONLY	never empty
+G19_result_status	label_origin	Where the status label comes from	text	never empty
+G19_result_status	current_use	How the covered rows are used in the current manuscript	text	never empty
+G20_repair_scenarios	scenario	Repair-run scenario: METAB285 and profile38 reproduce the fixed sets; corrected_fixed38_category (fixed 38 profiles pooled by corrected category) and corrected_all_profiles_category (all observed profiles pooled, then carriers ≥ 30) are post hoc; legacy_mixed reproduces the withdrawn old join	codes: METAB285, corrected_all_profiles_category, corrected_fixed38_category, legacy_mixed, profile38	never empty
+G20_repair_scenarios	n_units	Statistical units of the scenario (domains, profiles or categories)	units	never empty
+G20_repair_scenarios	n_valid	Units with a valid logit fit	units	never empty
+G20_repair_scenarios	all_valid	Whether every logit fit of the scenario was valid; logit only, not the opportunity or gamma fits	TRUE / FALSE	never empty
+G20_repair_scenarios	median_slope	Median logit slope over the scenario's units	log-odds per 10-fold CDS	never empty
+G20_repair_scenarios	minimum_carrier_clusters	Smallest number of gene-sharing clusters among carriers of any unit	clusters	never empty
+G20_repair_scenarios	largest_single_cluster_fraction	Largest share of a unit's carriers that fall in one gene-sharing cluster	fraction (0-1)	never empty
+G20_repair_scenarios	metab_median	Median slope of the fixed 285 metabolic domains (the same reference for every scenario)	log-odds per 10-fold CDS	never empty
+G20_repair_scenarios	class_difference	metab_median minus median_slope; descriptive, not a test. Changed units and weights make the scenarios non-equivalent	log-odds per 10-fold CDS	NA for METAB285
+G20_repair_scenarios	status	Status label saved by the repair run	codes: DESCRIPTIVE_FIXED_BASELINE, POST_HOC_CORRECTED_DEFINITION, WITHDRAWN_BUG_AFFECTED_AUDIT_ONLY	never empty
+G20_repair_scenarios	warning	Scope warning saved by the repair run with every scenario	text	never empty
+G21_repair_feature_fits	scenario	Repair-run scenario of the fit (see G20)	codes: METAB285, corrected_all_profiles_category, corrected_fixed38_category, legacy_mixed, profile38	never empty
+G21_repair_feature_fits	feature	Domain, profile or category fitted	identifier	never empty
+G21_repair_feature_fits	n_genomes	Reference genomes in the fit	genomes	never empty
+G21_repair_feature_fits	carrier_clusters	Gene-sharing clusters among the carrier genomes	clusters	never empty
+G21_repair_feature_fits	max_cluster_fraction	Share of carriers in the largest carrier cluster	fraction (0-1)	never empty
+G21_repair_feature_fits	intercept	Logit intercept	log-odds	never empty
+G21_repair_feature_fits	converged	Whether the logit fit converged	TRUE / FALSE	never empty
+G21_repair_feature_fits	boundary	Whether the logit fit ended at a boundary	TRUE / FALSE	never empty
+G21_repair_feature_fits	iterations	IRLS iterations of the logit fit	iterations	never empty
+G21_repair_feature_fits	null_valid	Validity of the fixed-opportunity cloglog model (computed for the 19 corrected categories only)	TRUE / FALSE	empty for the METAB285, profile38 and legacy_mixed rows
+G21_repair_feature_fits	null_intercept	Intercept a0 of the fixed-opportunity model	cloglog scale	empty for non-corrected rows
+G21_repair_feature_fits	null_lambda	lambda = exp(a0): per-CDS opportunity rate of the fixed-opportunity model	per CDS	empty for non-corrected rows
+G21_repair_feature_fits	null_warnings	Warnings of the fixed-opportunity model, as saved	text	empty when no warning or not computed
+G21_repair_feature_fits	null_converged	Whether the fixed-opportunity model converged	TRUE / FALSE	empty for non-corrected rows
+G21_repair_feature_fits	null_boundary	Whether the fixed-opportunity model ended at a boundary	TRUE / FALSE	empty for non-corrected rows
+G21_repair_feature_fits	null_iterations	Iterations of the fixed-opportunity model	iterations	empty for non-corrected rows
+G21_repair_feature_fits	gamma	Exponent of the free-exponent cloglog model (as saved; for the one invalid fit this is an unaccepted value, not an estimate)	dimensionless	empty for non-corrected rows
+G21_repair_feature_fits	gamma_se	Ordinary model SE of gamma, as saved	dimensionless	empty for non-corrected rows
+G21_repair_feature_fits	gamma_valid	Whether the repair run accepted the free-exponent fit (18/19 corrected; corrected_fixed38_category / Anti_TA not accepted)	TRUE / FALSE	empty for non-corrected rows
+G21_repair_feature_fits	gamma_warnings	Warnings of the free-exponent fit, as saved	text	empty when no warning or not computed
+G21_repair_feature_fits	gamma_converged	Whether the free-exponent fit converged	TRUE / FALSE	empty for non-corrected rows
+G21_repair_feature_fits	gamma_boundary	Whether the free-exponent fit ended at a boundary	TRUE / FALSE	empty for non-corrected rows
+G21_repair_feature_fits	gamma_iterations	Iterations of the free-exponent fit	iterations	empty for non-corrected rows
+G21_repair_feature_fits	null_equivalent_valid	Validity flag of the logit projection of the fixed-opportunity model; recorded FALSE for all 19 corrected categories	TRUE / FALSE	empty for non-corrected rows
+G21_repair_feature_fits	null_logit_equivalent	Logit projection of the fixed-opportunity model, as saved; its validity flag is FALSE for every corrected row	log-odds per 10-fold CDS	empty for non-corrected rows
+G21_repair_feature_fits	observed_minus_null_slope	Difference slope minus projection; source NA for the 19 corrected fits whose projection was not accepted, and not computed for the other 345 fits	log-odds per 10-fold CDS	always NA in the source record
+G21_repair_feature_fits	null_equivalent_warnings	Warning saved for the projection fit (non-integer counts in a binomial glm! for every corrected row)	text	empty for non-corrected rows
+G21_repair_feature_fits	expected_count_warning_suppressed	Warning text the repair script intended to suppress for the projection, as saved (empty: the saved warning string did not match the suppressed one)	text	always empty in the source record
+G22_repair_members	profile	Observed anti-defense profile (104 observed in the reference set)	identifier	never empty
+G22_repair_members	carriers	Reference genomes carrying the profile	genomes	never empty
+G22_repair_members	category	Corrected category from the census profile-subtype-category expansion	identifier	never empty
+G22_repair_members	n_categories	Corrected categories the profile maps to	categories	never empty
+G22_repair_members	census_sets	Census sets of the profile	text	never empty
+G22_repair_members	old_direct_join	Category the old direct string join returned (historical; empty where it returned nothing)	text	empty where the old join returned no category
+G22_repair_members	selected38	Whether the profile is one of the fixed 38	TRUE / FALSE	never empty
+G22_repair_members	old_unit	Historical aggregation unit under the old join (equals G15 unit)	identifier	never empty
+G22_repair_members	mapping_changed	Whether the corrected category differs from the historical unit	TRUE / FALSE	never empty
+G23_repair_scenario_members	scenario	Scenario of the membership row (profile38, legacy_mixed or a corrected category scenario)	codes: corrected_all_profiles_category, corrected_fixed38_category, legacy_mixed, profile38	never empty
+G23_repair_scenario_members	feature	Unit (profile or category) the profile belongs to in that scenario	identifier	never empty
+G23_repair_scenario_members	carriers	Distinct reference genomes carrying the scenario unit (profile or union of member profiles in a category); repeated across its member rows, not additive	genomes	never empty
+G23_repair_scenario_members	included	Whether the scenario unit reaches the saved carrier threshold of ≥ 30 genomes; repeated across its member rows	TRUE / FALSE	never empty
+G24_repair_mapping	profile	Census profile (356; observed or not)	identifier	never empty
+G24_repair_mapping	n_subtypes	Census subtypes containing the profile	subtypes	never empty
+G24_repair_mapping	subtypes	Those subtypes, comma separated	text	never empty
+G24_repair_mapping	n_categories	Categories reached through the subtypes	categories	never empty
+G24_repair_mapping	categories	Those categories, comma separated	text	never empty
+G24_repair_mapping	category	Single corrected category where the mapping is unique	identifier	empty where status is ambiguous
+G24_repair_mapping	census_sets	Census sets of the profile	text	never empty
+G24_repair_mapping	observed	Whether the profile occurs in the reference set	TRUE / FALSE	never empty
+G24_repair_mapping	selected38	Whether the profile is one of the fixed 38	TRUE / FALSE	never empty
+G24_repair_mapping	status	Whether the profile maps to one category (unique) or several (ambiguous)	codes: ambiguous, unique	never empty
+G25_repair_eligibility	category	Category in the complete comparison of membership and carrier eligibility between the two corrected scenarios, including unchanged categories	identifier	never empty
+G25_repair_eligibility	n_all_profiles	Observed profiles of the category (all-profile scenario)	profiles	never empty
+G25_repair_eligibility	n_fixed38_profiles	Fixed-38 profiles of the category	profiles	never empty
+G25_repair_eligibility	all_profiles	Those observed profiles, comma separated	text	never empty
+G25_repair_eligibility	fixed38_profiles	Those fixed-38 profiles, comma separated	text	empty where the category has no fixed-38 profile
+G25_repair_eligibility	added_profiles	Profiles present only in the all-profile scenario	text	empty where none are added
+G25_repair_eligibility	carriers_fixed38	Carrier genomes of the category under the fixed-38 scenario	genomes	never empty
+G25_repair_eligibility	included_fixed38	Whether the category passes carriers ≥ 30 under the fixed-38 scenario	TRUE / FALSE	never empty
+G25_repair_eligibility	carriers_all	Carrier genomes of the category under the all-profile scenario	genomes	never empty
+G25_repair_eligibility	included_all	Whether the category passes carriers ≥ 30 under the all-profile scenario	TRUE / FALSE	never empty
+G25_repair_eligibility	added_carrier_genomes	Carrier genomes added by the extra profiles	genomes	never empty
+G25_repair_eligibility	newly_eligible_category	Whether the category becomes eligible only under the all-profile scenario	TRUE / FALSE	never empty
+S54_process_community	comparison	Designated process/nearby sample combination, not hydraulic tracing	identifier	never empty
+S54_process_community	site	Geographic grouping of the two related positions	category	never empty
+S54_process_community	sample_id	Sample summarized by this row	identifier	never empty
+S54_process_community	opposite_sample_id	Other sample of the designated comparison	identifier	never empty
+S54_process_community	position	Process-water or nearby-water position from available descriptions	process_water; nearby_water	never empty
+S54_process_community	qualifying_vOTUs	Members with positive trimmed depth after the fixed full-depth breadth mask	vOTUs	never empty
+S54_process_community	shared_vOTUs	Members qualifying in both samples of this comparison	vOTUs	never empty
+S54_process_community	position_only_vOTUs	Members qualifying here but not at the opposite position; not biological absence	vOTUs	never empty
+S54_process_community	shared_catalogue_percent	Shared qualifying members contribution using this sample whole masked catalogue	percent of sample masked catalogue	never empty
+S54_process_community	position_only_catalogue_percent	Position-only qualifying members contribution using the same full denominator	percent of sample masked catalogue	never empty
+S54_process_community	catalogue_percent	Sum over every qualifying catalogue representative; closure check	percent of sample masked catalogue	never empty
+S54_process_community	catalogue_masked_depth_sum	Actual normalization denominator: summed masked trimmed mean depth, not member count	summed depth	never empty
+S54_process_community	position_only_opposite_subthreshold_n	Position-only members with any saved opposite mapping signal and breadth below 0.75	vOTUs	never empty
+S54_process_community	position_only_opposite_no_signal_n	Position-only members whose opposite count, trimmed depth and breadth are all zero	vOTUs	never empty
+S54_process_community	position_only_opposite_breadth_pass_zero_depth_n	Position-only members with opposite breadth passing but zero trimmed depth	vOTUs	never empty
+S54_process_community	position_only_subthreshold_catalogue_percent	Contribution here from position-only members with opposite subthreshold breadth signal	percent of sample masked catalogue	never empty
+S55_process_VF_contribution	comparison	Designated process/nearby sample combination, not hydraulic tracing	identifier	never empty
+S55_process_VF_contribution	site	Geographic grouping of the two related positions	category	never empty
+S55_process_VF_contribution	sample_id	Sample summarized by this row	identifier	never empty
+S55_process_VF_contribution	opposite_sample_id	Other sample of the designated comparison	identifier	never empty
+S55_process_VF_contribution	position	Process-water or nearby-water position from available descriptions	process_water; nearby_water	never empty
+S55_process_VF_contribution	definition	Existing VF annotation/region eligibility definition; no new rule	F0; F1; S0; S1	never empty
+S55_process_VF_contribution	shared_carriers	Eligible VF carriers qualifying in both samples, each vOTU counted once	vOTUs	never empty
+S55_process_VF_contribution	position_only_carriers	Eligible VF carriers qualifying only at this position under the current mask	vOTUs	never empty
+S55_process_VF_contribution	shared_catalogue_percent	Shared qualifying members contribution using this sample whole masked catalogue	percent of sample masked catalogue	never empty
+S55_process_VF_contribution	position_only_catalogue_percent	Position-only qualifying members contribution using the same full denominator	percent of sample masked catalogue	never empty
+S55_process_VF_contribution	total_VF_catalogue_percent	Shared plus position-only candidate carrier contributions, reproducing S46	percent of sample masked catalogue	never empty
+S55_process_VF_contribution	shared_percent_of_VF	Shared contribution divided by this row VF total, a conditional denominator distinct from catalogue	percent of VF-carrier abundance	NA if total_VF_catalogue_percent is zero
+S55_process_VF_contribution	position_only_opposite_subthreshold_n	Position-only members with any saved opposite mapping signal and breadth below 0.75	vOTUs	never empty
+S55_process_VF_contribution	position_only_opposite_no_signal_n	Position-only members whose opposite count, trimmed depth and breadth are all zero	vOTUs	never empty
+S55_process_VF_contribution	position_only_opposite_breadth_pass_zero_depth_n	Position-only members with opposite breadth passing but zero trimmed depth	vOTUs	never empty
+S55_process_VF_contribution	position_only_subthreshold_catalogue_percent	Contribution here from position-only members with opposite subthreshold breadth signal	percent of sample masked catalogue	never empty
+S56_sharing_patterns	pattern_id	Display identifier for the observed exact intersection	identifier	never empty
+S56_sharing_patterns	pattern	Exact seven-character qualification pattern in configured bc1,bd1,bc2,gc1,gd1,oc1,od1 order; 1 qualifies and 0 does not	seven-bit identifier string	never empty; preserve leading zero bits
+S56_sharing_patterns	display_order	Order of the intersection columns in the figure	integer rank	never empty
+S56_sharing_patterns	n_qualifying_samples	Number of samples passing the existing detection criterion for this member or pattern	samples, 0-7	never empty
+S56_sharing_patterns	samples	Configured sample IDs participating in this exact pattern	sample IDs separated by semicolon	empty only for the all-zero pattern
+S56_sharing_patterns	n_vOTUs	Unique representatives in this exact nonempty membership pattern	vOTUs	never empty
+S56_sharing_patterns	bc1_percent	Abundance of the stated members divided by the entire sample masked-depth denominator; not a member-count fraction	% of whole sample catalogue	never empty; zero retained
+S56_sharing_patterns	bd1_percent	Abundance of the stated members divided by the entire sample masked-depth denominator; not a member-count fraction	% of whole sample catalogue	never empty; zero retained
+S56_sharing_patterns	bc2_percent	Abundance of the stated members divided by the entire sample masked-depth denominator; not a member-count fraction	% of whole sample catalogue	never empty; zero retained
+S56_sharing_patterns	gc1_percent	Abundance of the stated members divided by the entire sample masked-depth denominator; not a member-count fraction	% of whole sample catalogue	never empty; zero retained
+S56_sharing_patterns	gd1_percent	Abundance of the stated members divided by the entire sample masked-depth denominator; not a member-count fraction	% of whole sample catalogue	never empty; zero retained
+S56_sharing_patterns	oc1_percent	Abundance of the stated members divided by the entire sample masked-depth denominator; not a member-count fraction	% of whole sample catalogue	never empty; zero retained
+S56_sharing_patterns	od1_percent	Abundance of the stated members divided by the entire sample masked-depth denominator; not a member-count fraction	% of whole sample catalogue	never empty; zero retained
+S57_sharing_samples	sample_id	Configured biological water sample	sample identifier	never empty
+S57_sharing_samples	qualifying_vOTUs	Representatives with breadth at least the fixed threshold and positive masked depth in this sample	vOTUs	never empty
+S57_sharing_samples	sample_only_vOTUs	Representatives qualifying only in this sample across all seven profiles	vOTUs	never empty; zero retained
+S57_sharing_samples	shared_vOTUs	Representatives qualifying in this and at least one other of seven profiles	vOTUs	never empty; zero retained
+S57_sharing_samples	sample_only_catalogue_percent	Abundance of the stated members divided by the entire sample masked-depth denominator; not a member-count fraction	% of whole sample catalogue	never empty; zero retained
+S57_sharing_samples	shared_catalogue_percent	Abundance of the stated members divided by the entire sample masked-depth denominator; not a member-count fraction	% of whole sample catalogue	never empty; zero retained
+S57_sharing_samples	masked_depth_denominator	Sum of masked trimmed mean depth over the entire sample catalogue, used for every percent	trimmed mean coverage depth	never empty
+S57_sharing_samples	catalogue_vOTUs	Full representative catalogue size, including any member unqualified in all samples	vOTUs	never empty
+S57_sharing_samples	union_qualifying_vOTUs	Unique representatives qualifying in at least one of all seven samples	vOTUs	never empty
+S57_sharing_samples	no_qualifying_vOTUs	Representatives not qualifying in any of seven samples; not a statement of absence from water	vOTUs	never empty; zero retained
+S57_sharing_samples	all_samples_shared_vOTUs	Representatives qualifying in every one of the seven samples	vOTUs	never empty; zero retained
+S57_sharing_samples	breadth_threshold	Existing minimum contig-level covered fraction; no new cutoff chosen	fraction	never empty
+S58_sharing_members	vOTU_id	Catalogue representative identifier	identifier	never empty
+S58_sharing_members	pattern	Exact seven-character qualification pattern in configured bc1,bd1,bc2,gc1,gd1,oc1,od1 order; 1 qualifies and 0 does not	seven-bit identifier string	never empty; preserve leading zero bits
+S58_sharing_members	n_qualifying_samples	Number of samples passing the existing detection criterion for this member or pattern	samples, 0-7	never empty
+S58_sharing_members	bc1_qualified	Whether this representative qualifies in the named sample under the fixed contig breadth and positive masked-depth rule	boolean	never empty
+S58_sharing_members	bd1_qualified	Whether this representative qualifies in the named sample under the fixed contig breadth and positive masked-depth rule	boolean	never empty
+S58_sharing_members	bc2_qualified	Whether this representative qualifies in the named sample under the fixed contig breadth and positive masked-depth rule	boolean	never empty
+S58_sharing_members	gc1_qualified	Whether this representative qualifies in the named sample under the fixed contig breadth and positive masked-depth rule	boolean	never empty
+S58_sharing_members	gd1_qualified	Whether this representative qualifies in the named sample under the fixed contig breadth and positive masked-depth rule	boolean	never empty
+S58_sharing_members	oc1_qualified	Whether this representative qualifies in the named sample under the fixed contig breadth and positive masked-depth rule	boolean	never empty
+S58_sharing_members	od1_qualified	Whether this representative qualifies in the named sample under the fixed contig breadth and positive masked-depth rule	boolean	never empty
+S58_sharing_members	bc1_percent	Abundance of the stated members divided by the entire sample masked-depth denominator; not a member-count fraction	% of whole sample catalogue	never empty; zero retained
+S58_sharing_members	bd1_percent	Abundance of the stated members divided by the entire sample masked-depth denominator; not a member-count fraction	% of whole sample catalogue	never empty; zero retained
+S58_sharing_members	bc2_percent	Abundance of the stated members divided by the entire sample masked-depth denominator; not a member-count fraction	% of whole sample catalogue	never empty; zero retained
+S58_sharing_members	gc1_percent	Abundance of the stated members divided by the entire sample masked-depth denominator; not a member-count fraction	% of whole sample catalogue	never empty; zero retained
+S58_sharing_members	gd1_percent	Abundance of the stated members divided by the entire sample masked-depth denominator; not a member-count fraction	% of whole sample catalogue	never empty; zero retained
+S58_sharing_members	oc1_percent	Abundance of the stated members divided by the entire sample masked-depth denominator; not a member-count fraction	% of whole sample catalogue	never empty; zero retained
+S58_sharing_members	od1_percent	Abundance of the stated members divided by the entire sample masked-depth denominator; not a member-count fraction	% of whole sample catalogue	never empty; zero retained
+S59_AMG_host_register	vOTU_id	Unique AMG-export KO carrier; all 544 carriers retained.	text or identifier	never empty; zero retained
+S59_AMG_host_register	KO_count	Number of distinct exported KOs assigned to this vOTU.	records	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S59_AMG_host_register	KO_list	Sorted semicolon-separated original KO identifiers.	text or identifier	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S59_AMG_host_register	KO_annotation_list	Original KO identifier = full feature_name strings; not newly curated functions.	text or identifier	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S59_AMG_host_register	has_iphop90_record	Whether this carrier has the retained primary iPHoP score >=90 record.	boolean	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S59_AMG_host_register	iphop_confidence	Retained primary overall iPHoP confidence; NA without a record.	iPHoP score	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S59_AMG_host_register	host_genus_clean	Primary normalized genus string, including source g__ prefix where present; NA without a record.	text or identifier	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S59_AMG_host_register	host_genus_full	Full primary taxonomic string as retained in host_iphop.tsv.	text or identifier	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S59_AMG_host_register	host_methods	Retained iPHoP source methods string.	text or identifier	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S59_AMG_host_register	host_genus_resolved	Primary genus resolved in retained record; FALSE when no primary record.	boolean	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S59_AMG_host_register	host_in_16s	Primary genus detected in the retained unrarefied 16S object; source NA retained for unresolved genus, NA without a primary record.	boolean	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S59_AMG_host_register	codetected	Primary vOTU and predicted genus co-detected in >=1 same sample by the saved masked-table criterion.	boolean	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S59_AMG_host_register	n_codetected_samples	Count of qualifying same-sample primary-host co-detections.	records	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S59_AMG_host_register	codetected_samples	Semicolon-separated co-detected sample IDs in configured order; empty without co-detection.	configured sample identifiers	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S59_AMG_host_register	strict_crispr_same_genus	A strict CRISPR edge for this vOTU and same normalized genus; subset evidence, not independent validation.	boolean	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S59_AMG_host_register	strict_crispr_record_count	Number of same-vOTU same-genus strict CRISPR records.	records	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S59_AMG_host_register	status	no_highscore_host_record / unresolved_host_genus / host_genus_not_detected / host_visible_without_codetection / codetected_primary_host.	text or identifier	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S60_KO_host_paths	KO	KO identifier; one KO-vOTU association per row.	text or identifier	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S60_KO_host_paths	KO_annotation_full	Unabridged original feature_name from the KO carrier export.	text or identifier	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S60_KO_host_paths	vOTU_id	Carrier with a retained primary predicted genus and same-sample co-detection.	text or identifier	never empty; zero retained
+S60_KO_host_paths	host_genus	Genus string without g__ prefix for display; not a validated infection.	text or identifier	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S60_KO_host_paths	host_genus_clean	Unchanged normalized source primary genus string.	text or identifier	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S60_KO_host_paths	sample_id	Actual sample with primary-host same-sample co-detection; not pooled location.	text or identifier	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S60_KO_host_paths	site	Configured location of sample_id.	text or identifier	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S60_KO_host_paths	iphop_confidence	Retained primary iPHoP confidence >=90.	iPHoP score	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S60_KO_host_paths	strict_crispr_same_genus	Same-vOTU same-genus strict CRISPR subset record.	boolean	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S60_KO_host_paths	association_weight	1 per KO-carrier association; not genes, carrier abundance, infection or flux.	KO-carrier associations	never empty; zero retained
+S61_lifestyle_carriage	lifestyle_rule	including_CheckV or without_CheckV; other branches unchanged.	text or identifier	never empty; zero retained
+S61_lifestyle_carriage	lifestyle	Predicted temperate or virulent label; not experimental activity.	text or identifier	never empty; zero retained
+S61_lifestyle_carriage	function_set	AMG_export / anti_defense_union / F0 / F1 / S0 / S1, all saved set definitions.	text or identifier	never empty; zero retained
+S61_lifestyle_carriage	group_n	All catalogue vOTUs in this operational lifestyle group; two groups total 3060 per rule.	records	never empty; zero retained
+S61_lifestyle_carriage	carrier_n	Group members with >=1 qualifying annotation under function_set; each vOTU counted once.	records	never empty; zero retained
+S61_lifestyle_carriage	carrier_percent	100*carrier_n/group_n; unadjusted binary carrier proportion, not model IRR.	%	never empty; zero retained
+S61_lifestyle_carriage	group_median_length_bp	Median recovered contig length across all group members, not just carriers.	bp	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S61_lifestyle_carriage	group_completeness_available_n	Group members with a finite CheckV completeness estimate.	records	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S61_lifestyle_carriage	group_median_completeness_pct	Median finite CheckV completeness across all group members.	%	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S61_lifestyle_carriage	carrier_median_length_bp	Median recovered contig length among group carriers.	bp	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S61_lifestyle_carriage	carrier_completeness_available_n	Carriers with a finite CheckV completeness estimate.	records	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+S61_lifestyle_carriage	carrier_median_completeness_pct	Median finite CheckV completeness among group carriers.	%	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence

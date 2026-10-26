@@ -1,0 +1,25 @@
+{
+  "authors": [
+    "Jinlong Ru",
+    "Cunli Pan"
+  ],
+  "candidate_date": "2026-10-26",
+  "source_package": "BMC_Microbiology_submission_clean_2026-10-26",
+  "changed_or_added_entry_files": {
+    "code/verify_publication.py": "Current clean authority; historical build followed by registered packaging consolidation and independent source-table checks",
+    "code/sync_publication.py": "Compatibility wrapper to the public-candidate entry",
+    "code/test_publication_sync.py": "Original seven publication regression checks; only entry module and reference roots relocated",
+    "check_candidate.py": "New read-only file/register/input/record check; no scientific execution",
+    "code/verify_v58_2.py": "Original candidate publication verifier preserved byte-identically for historical regression checks",
+    "code/build_v58_2.py": "Same historical reconstruction with an empty temporary output-directory option only",
+    "code/publication/bmc_clean_release.py": "Validated workbook ZIP-part consolidation, source-table comparisons and final-asset checks; no science execution",
+    "code/workflow/analyses/README.md": "Added navigation only; no original workflow file changed",
+    "FIGURE_CODE_MAP.tsv": "Correct S2/S3/S4 code assignments; explicitly map Note4 and clean Data3/4"
+  },
+  "scientific_source_files_changed": false,
+  "source_workflow_sha_policy": "byte-identical except .gitignore",
+  "word_documents_copied": false,
+  "new_analysis": false,
+  "push": false,
+  "historical_scientific_source": "RecWaterVirome_v58.2_2026-10-25"
+}

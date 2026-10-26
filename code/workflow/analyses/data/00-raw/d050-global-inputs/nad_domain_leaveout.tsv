@@ -1,0 +1,10 @@
+row_type	key	label	carriers	value	rank_in_metab	note	source_job	domain_list_source
+left-out domain	pfam02540	NAD_synthase	345	8.221703	10	NAD pathway; all six lie above the METAB median	j42 (603), j42-feature_slopes.tsv	outputs/paper-plan-2026-09-15/CRITIQUE-RESOLUTION.md (2026-09-15 re-derivation)
+left-out domain	pfam04095	NAPRTase	1136	8.21756	11	NAD pathway; all six lie above the METAB median	j42 (603), j42-feature_slopes.tsv	outputs/paper-plan-2026-09-15/CRITIQUE-RESOLUTION.md (2026-09-15 re-derivation)
+left-out domain	pfam01467	CTP_transf_like	1364	6.775449	28	NAD pathway; all six lie above the METAB median	j42 (603), j42-feature_slopes.tsv	outputs/paper-plan-2026-09-15/CRITIQUE-RESOLUTION.md (2026-09-15 re-derivation)
+left-out domain	pfam18127	NAMPT_N	285	6.480678	37	NAD pathway; all six lie above the METAB median	j42 (603), j42-feature_slopes.tsv	outputs/paper-plan-2026-09-15/CRITIQUE-RESOLUTION.md (2026-09-15 re-derivation)
+left-out domain	pfam00156	Pribosyltran	636	6.123022	55	NAD pathway; all six lie above the METAB median	j42 (603), j42-feature_slopes.tsv	outputs/paper-plan-2026-09-15/CRITIQUE-RESOLUTION.md (2026-09-15 re-derivation)
+left-out domain	pfam04973	NMN_transporter	332	4.796312	111	NAD pathway; all six lie above the METAB median	j42 (603), j42-feature_slopes.tsv	outputs/paper-plan-2026-09-15/CRITIQUE-RESOLUTION.md (2026-09-15 re-derivation)
+METAB median	all_285	median slope, all 285 METAB domains	NA	4.04835	NA	j42 (603) / j44 (618) / j38 (472), identical to 15 digits	j42 (603), j42-feature_slopes.tsv	outputs/paper-plan-2026-09-15/CRITIQUE-RESOLUTION.md (2026-09-15 re-derivation)
+METAB median	excl_NAD6_279	median slope, 279 METAB domains after leaving out the six	NA	3.982495	NA	recomputed here from j42-feature_slopes.tsv	j42 (603), j42-feature_slopes.tsv	outputs/paper-plan-2026-09-15/CRITIQUE-RESOLUTION.md (2026-09-15 re-derivation)
+shift	delta	change in median caused by the leave-out	NA	-0.065855	NA	the metabolic median does not depend on the NAD pathway	j42 (603), j42-feature_slopes.tsv	outputs/paper-plan-2026-09-15/CRITIQUE-RESOLUTION.md (2026-09-15 re-derivation)

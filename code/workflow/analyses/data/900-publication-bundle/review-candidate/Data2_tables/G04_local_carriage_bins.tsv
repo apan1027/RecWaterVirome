@@ -1,0 +1,7 @@
+lo_inclusive	hi_exclusive	n	k	rate	label	percent	unit
+3	20	1077	76	0.07056638811513463	3-19	7.056638811513463	predicted genes per recovered vOTU; interval [lo, hi)
+20	40	1232	277	0.2248376623376623	20-39	22.483766233766232	predicted genes per recovered vOTU; interval [lo, hi)
+40	60	411	180	0.43795620437956206	40-59	43.79562043795621	predicted genes per recovered vOTU; interval [lo, hi)
+60	80	237	117	0.4936708860759494	60-79	49.36708860759494	predicted genes per recovered vOTU; interval [lo, hi)
+80	120	85	55	0.6470588235294118	80-119	64.70588235294117	predicted genes per recovered vOTU; interval [lo, hi)
+120	300	18	17	0.9444444444444444	120-299	94.44444444444444	predicted genes per recovered vOTU; interval [lo, hi)

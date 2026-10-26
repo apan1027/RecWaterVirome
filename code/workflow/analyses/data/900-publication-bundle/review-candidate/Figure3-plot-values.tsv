@@ -1,0 +1,135 @@
+panel	item	value	value2	unit
+A	K00558 bc1	74028.33811357268	4.869403866430587	summed carrier TPM; value2 = log10(TPM + 1)
+A	K13381 bc1	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00820 bc1	14374.036222703086	4.15760894771299	summed carrier TPM; value2 = log10(TPM + 1)
+A	K01939 bc1	199.46391416358313	2.3020362059332267	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00560 bc1	6144.273471183145	3.788541214217287	summed carrier TPM; value2 = log10(TPM + 1)
+A	K01858 bc1	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00390 bc1	7515.510846453693	3.8760162884929743	summed carrier TPM; value2 = log10(TPM + 1)
+A	K13010 bc1	32260.34612587289	4.508682484653738	summed carrier TPM; value2 = log10(TPM + 1)
+A	K06217 bc1	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K03462 bc1	1239.1351470663956	3.0934690161516842	summed carrier TPM; value2 = log10(TPM + 1)
+A	K13522 bc1	720.3618743948015	2.8581531851441047	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00558 bd1	33682.711976866834	4.527419945126899	summed carrier TPM; value2 = log10(TPM + 1)
+A	K13381 bd1	117560.75973458074	5.070266078228222	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00820 bd1	27511.30896858785	4.439527040052956	summed carrier TPM; value2 = log10(TPM + 1)
+A	K01939 bd1	1244.0892274873363	3.0952004756219833	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00560 bd1	3069.7832270198733	3.487249159773612	summed carrier TPM; value2 = log10(TPM + 1)
+A	K01858 bd1	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00390 bd1	48556.33920417375	4.686254880690655	summed carrier TPM; value2 = log10(TPM + 1)
+A	K13010 bd1	2194.081319567202	3.3414506138652125	summed carrier TPM; value2 = log10(TPM + 1)
+A	K06217 bd1	1052.4912465109544	3.0226309313937785	summed carrier TPM; value2 = log10(TPM + 1)
+A	K03462 bd1	1422.6907485152951	3.153415662896943	summed carrier TPM; value2 = log10(TPM + 1)
+A	K13522 bd1	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00558 bc2	80979.77748332047	4.908381942043348	summed carrier TPM; value2 = log10(TPM + 1)
+A	K13381 bc2	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00820 bc2	47966.28574020899	4.680945144327888	summed carrier TPM; value2 = log10(TPM + 1)
+A	K01939 bc2	1053.5728397995906	3.0230765820181467	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00560 bc2	978.4758348960678	2.9909937257817485	summed carrier TPM; value2 = log10(TPM + 1)
+A	K01858 bc2	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00390 bc2	6297.370234941257	3.7992281860347332	summed carrier TPM; value2 = log10(TPM + 1)
+A	K13010 bc2	25399.22804301908	4.404837615729396	summed carrier TPM; value2 = log10(TPM + 1)
+A	K06217 bc2	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K03462 bc2	382.6514851623054	2.5839368837476093	summed carrier TPM; value2 = log10(TPM + 1)
+A	K13522 bc2	262.19215055434086	2.420272932731546	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00558 gc1	61297.357098719905	4.787448834836169	summed carrier TPM; value2 = log10(TPM + 1)
+A	K13381 gc1	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00820 gc1	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K01939 gc1	76393.53752265635	4.883062306107358	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00560 gc1	56071.02195644208	4.748746217034693	summed carrier TPM; value2 = log10(TPM + 1)
+A	K01858 gc1	81689.89832109914	4.9121736718430915	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00390 gc1	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K13010 gc1	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K06217 gc1	55481.655508241594	4.74415723908071	summed carrier TPM; value2 = log10(TPM + 1)
+A	K03462 gc1	33391.381155285104	4.523647388977378	summed carrier TPM; value2 = log10(TPM + 1)
+A	K13522 gc1	33391.381155285104	4.523647388977378	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00558 gd1	43984.11962802745	4.643305777475871	summed carrier TPM; value2 = log10(TPM + 1)
+A	K13381 gd1	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00820 gd1	2366.150367571246	3.374225846324635	summed carrier TPM; value2 = log10(TPM + 1)
+A	K01939 gd1	2616.8790130048283	3.4179495714742694	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00560 gd1	1552.2112201845962	3.1912305191690495	summed carrier TPM; value2 = log10(TPM + 1)
+A	K01858 gd1	916.6132186951388	2.9626596611759126	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00390 gd1	10894.269185507475	4.037237964672804	summed carrier TPM; value2 = log10(TPM + 1)
+A	K13010 gd1	703.2172720505102	2.847706672628852	summed carrier TPM; value2 = log10(TPM + 1)
+A	K06217 gd1	2953.4142882168408	3.470471394994508	summed carrier TPM; value2 = log10(TPM + 1)
+A	K03462 gd1	3426.6602968035754	3.534997774005508	summed carrier TPM; value2 = log10(TPM + 1)
+A	K13522 gd1	3426.6602968035754	3.534997774005508	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00558 oc1	74716.3897779712	4.873421691583594	summed carrier TPM; value2 = log10(TPM + 1)
+A	K13381 oc1	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00820 oc1	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K01939 oc1	6844.725280764275	3.835419466896212	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00560 oc1	713.9526358135859	2.8542772716106675	summed carrier TPM; value2 = log10(TPM + 1)
+A	K01858 oc1	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00390 oc1	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K13010 oc1	9516.06209603644	3.9785029029647108	summed carrier TPM; value2 = log10(TPM + 1)
+A	K06217 oc1	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K03462 oc1	12139.394311173804	4.08423279253709	summed carrier TPM; value2 = log10(TPM + 1)
+A	K13522 oc1	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00558 od1	62926.307363093794	4.798839148839988	summed carrier TPM; value2 = log10(TPM + 1)
+A	K13381 od1	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00820 od1	1457.4121578279023	3.163880276090942	summed carrier TPM; value2 = log10(TPM + 1)
+A	K01939 od1	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00560 od1	14922.482087479042	4.173870168641848	summed carrier TPM; value2 = log10(TPM + 1)
+A	K01858 od1	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K00390 od1	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K13010 od1	2479.2676774020815	3.3944985536267698	summed carrier TPM; value2 = log10(TPM + 1)
+A	K06217 od1	0	0	summed carrier TPM; value2 = log10(TPM + 1)
+A	K03462 od1	7204.88306346703	3.8576872101452695	summed carrier TPM; value2 = log10(TPM + 1)
+A	K13522 od1	7204.88306346703	3.8576872101452695	summed carrier TPM; value2 = log10(TPM + 1)
+B	K00558 Top 1 vOTU2575	0.14088632464321918	NA	fraction of row TPM
+B	K00558 Top 2 vOTU1948	0.13205790040599508	NA	fraction of row TPM
+B	K00558 Top 3 vOTU0010	0.10322317090374196	NA	fraction of row TPM
+B	K00558 Other carriers 143 others	0.6238326040470441	NA	fraction of row TPM
+B	K13381 Top 1 vOTU1191	1	NA	fraction of row TPM
+B	K13381 Top 2 NA	0	NA	fraction of row TPM
+B	K13381 Top 3 NA	0	NA	fraction of row TPM
+B	K13381 Other carriers NA	0	NA	fraction of row TPM
+B	K00820 Top 1 vOTU0008	0.31150639240699546	NA	fraction of row TPM
+B	K00820 Top 2 vOTU3540	0.08994850238595148	NA	fraction of row TPM
+B	K00820 Top 3 vOTU0169	0.05762552211149112	NA	fraction of row TPM
+B	K00820 Other carriers 30 others	0.5409195830955618	NA	fraction of row TPM
+B	K01939 Top 1 vOTU0004	0.500069276626989	NA	fraction of row TPM
+B	K01939 Top 2 vOTU0073	0.3739057434577599	NA	fraction of row TPM
+B	K01939 Top 3 vOTU0158	0.04885942249914104	NA	fraction of row TPM
+B	K01939 Other carriers 7 others	0.07716555741610995	NA	fraction of row TPM
+B	K00560 Top 1 vOTU0035	0.6783835028148915	NA	fraction of row TPM
+B	K00560 Top 2 vOTU0461	0.1398577715053343	NA	fraction of row TPM
+B	K00560 Top 3 vOTU1138	0.06720418381993043	NA	fraction of row TPM
+B	K00560 Other carriers 10 others	0.11455454185984364	NA	fraction of row TPM
+B	K01858 Top 1 vOTU0004	0.5348519604868412	NA	fraction of row TPM
+B	K01858 Top 2 vOTU1151	0.28921951267880197	NA	fraction of row TPM
+B	K01858 Top 3 vOTU2231	0.17592852683435678	NA	fraction of row TPM
+B	K01858 Other carriers NA	0	NA	fraction of row TPM
+B	K00390 Top 1 vOTU0399	0.2061770594370123	NA	fraction of row TPM
+B	K00390 Top 2 vOTU0258	0.1388380685839757	NA	fraction of row TPM
+B	K00390 Top 3 vOTU2359	0.11686408366449352	NA	fraction of row TPM
+B	K00390 Other carriers 30 others	0.5381207883145183	NA	fraction of row TPM
+B	K13010 Top 1 vOTU0016	0.35343672817257543	NA	fraction of row TPM
+B	K13010 Top 2 vOTU2009	0.31191087573949955	NA	fraction of row TPM
+B	K13010 Top 3 vOTU0931	0.13116158798326957	NA	fraction of row TPM
+B	K13010 Other carriers 13 others	0.20349080810465536	NA	fraction of row TPM
+B	K06217 Top 1 vOTU0011	0.9411623031221028	NA	fraction of row TPM
+B	K06217 Top 2 vOTU1563	0.04114506957803684	NA	fraction of row TPM
+B	K06217 Top 3 vOTU0145	0.017692627299860438	NA	fraction of row TPM
+B	K06217 Other carriers NA	0	NA	fraction of row TPM
+B	K03462 Top 1 vOTU0113	0.5706248794198269	NA	fraction of row TPM
+B	K03462 Top 2 vOTU1767	0.2050337982929311	NA	fraction of row TPM
+B	K03462 Top 3 vOTU0131	0.12169013567664684	NA	fraction of row TPM
+B	K03462 Other carriers 8 others	0.10265118661059516	NA	fraction of row TPM
+B	K13522 Top 1 vOTU0113	0.7506835177036839	NA	fraction of row TPM
+B	K13522 Top 2 vOTU0131	0.160089022428295	NA	fraction of row TPM
+B	K13522 Top 3 vOTU0052	0.028162726473874813	NA	fraction of row TPM
+B	K13522 Other carriers 4 others	0.06106473339414642	NA	fraction of row TPM
+C	DefenseFinder anti-defense	106	3060	vOTUs (value2 = denominator)
+C	filtered dbAPIS	715	3060	vOTUs (value2 = denominator)
+C	Both (overlap)	99	3060	vOTUs (value2 = denominator)
+C	Union: DefenseFinder or dbAPIS	722	3060	vOTUs (value2 = denominator)
+C	DefenseFinder defense	5	3060	vOTUs (value2 = denominator)
+C	PADLOC	31	3060	vOTUs (value2 = denominator)
+C	NARP1	3	3060	vOTUs (value2 = denominator)
+C	NARP2	5	3060	vOTUs (value2 = denominator)
+D	ORF101	42702	43781	bp (start, end)
+D	ORF102	43790	44425	bp (start, end)
+D	ORF103	44422	45891	bp (start, end)
+D	vOTU0052 sequence (overview)	1	132528	bp (start, end)
+D	displayed window (overview)	42702	45891	bp (start, end)

@@ -1,0 +1,46 @@
+[
+  {
+    "source_relative_to_code": "workflow/analyses/data/040-vf-inputs/process_input_diagnostics.tsv",
+    "public_filename": "Supplementary_Data_1_input_diagnostics.tsv",
+    "sha256": "7d6789a8f67f0e872abcb3af70c9ef77b29aa13cdb9a8707124baf35dee25524",
+    "rows": 7,
+    "columns": [
+      "sample_id",
+      "count_positive_vOTUs",
+      "count_positive_zero_trimmed_depth_vOTUs",
+      "positive_trimmed_depth_vOTUs",
+      "qualifying_vOTUs",
+      "unmasked_depth_sum",
+      "masked_depth_sum",
+      "breadth_threshold"
+    ]
+  },
+  {
+    "source_relative_to_code": "workflow/analyses/data/040-vf-inputs/process_comparison_members.tsv",
+    "public_filename": "Supplementary_Data_1_comparison_members.tsv",
+    "sha256": "2dea900eb9140ccfce3aa96bf254d373d404dfe56fcd2bfc934096d65d1f12b6",
+    "rows": 9180,
+    "columns": [
+      "comparison",
+      "site",
+      "vOTU_id",
+      "process_sample",
+      "nearby_sample",
+      "detected_D",
+      "detected_C",
+      "percent_D",
+      "percent_C",
+      "count_D",
+      "count_C",
+      "trimmed_depth_D",
+      "trimmed_depth_C",
+      "breadth_D",
+      "breadth_C",
+      "member_set",
+      "eligible_F0",
+      "eligible_F1",
+      "eligible_S0",
+      "eligible_S1"
+    ]
+  }
+]

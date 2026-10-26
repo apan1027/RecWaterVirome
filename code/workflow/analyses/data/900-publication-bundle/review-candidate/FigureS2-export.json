@@ -1,0 +1,972 @@
+{
+  "figure": "sfig2",
+  "label": "Supplementary Figure 2",
+  "scientific_content": true,
+  "run_id": "20261020T001926-86706",
+  "width_mm": 180,
+  "height_mm": 274,
+  "png_dpi": 300,
+  "tiff_dpi": 600,
+  "files": [
+    {
+      "format": "pdf",
+      "file": "sfig2.pdf",
+      "device": "quartz_pdf",
+      "bytes": 100956,
+      "sha256": "4c3e5764994c23fa57f29affa4e6e1a4c37479a19a35f9ab363f0c484750ab45"
+    },
+    {
+      "format": "svg",
+      "file": "sfig2.svg",
+      "device": "svglite",
+      "bytes": 130577,
+      "sha256": "5269d88899fb11b6e6be83a8076e93cc3c77e1eeda33a465b07353f6dc63da99"
+    },
+    {
+      "format": "png",
+      "file": "sfig2.png",
+      "device": "ragg::agg_png",
+      "bytes": 416764,
+      "sha256": "57e8eb3e43241742934c7a1d5c509b039fa1bbbf41e5617aea903ea32ea1f16b"
+    },
+    {
+      "format": "tiff",
+      "file": "sfig2.tiff",
+      "device": "ragg::agg_tiff (LZW)",
+      "bytes": 1012354,
+      "sha256": "c0478d3681432185f0d05b890a67ccc8dd175fa3537cf26a2ea7d249c8d7a581"
+    }
+  ],
+  "device_probes": {
+    "pdf": "cairo_pdf: unable to load shared object '/Library/Frameworks/R.framework/Resources/library/grDevices/libs//cairo.so': dlopen(/Library/Frameworks/R.framework/Resources/library/grDevices/libs//cairo.so, 0x0006): Library not loaded: /opt/X11/lib/libXrender.1.dylib Referenced from: <263B701F-2238-3478-A7D2-B7513231EF98> /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/library/grDevices/libs/cairo.so Reason: tried: '/opt/X11/lib/libXrender.1.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/X11/lib/libXrender.1.dylib' (no such file), '/opt/X11/lib/libXrender.1.dylib' (no such file), '/Library/Frameworks/R.framework/Resources/lib/libXrender.1.dylib' (no such file), '/Library/Java/JavaVirtualMachines/jdk-11.0.18+10/Contents/Home/lib/server/libXrender.1.dylib' (no such file); quartz_pdf: ok",
+    "svg": "svglite: ok",
+    "png": "agg_png: ok",
+    "tiff": "agg_tiff: ok"
+  },
+  "fonts": [
+    {
+      "role": "text",
+      "family": "Arial",
+      "weight": "normal",
+      "resolved_family": "Arial",
+      "style": "Regular",
+      "postscript_name": "ArialMT",
+      "path": "/System/Library/Fonts/Supplemental/Arial.ttf",
+      "index": 0,
+      "sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+    },
+    {
+      "role": "text-bold",
+      "family": "Arial",
+      "weight": "bold",
+      "resolved_family": "Arial",
+      "style": "Bold",
+      "postscript_name": "Arial-BoldMT",
+      "path": "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
+      "index": 0,
+      "sha256": "d72db21f9242aedd6b917d8549ad5921766b24d5f8d0becfda2ff4c620b3c2e0"
+    },
+    {
+      "role": "text-italic",
+      "family": "Arial",
+      "weight": "normal",
+      "resolved_family": "Arial",
+      "style": "Italic",
+      "postscript_name": "Arial-ItalicMT",
+      "path": "/System/Library/Fonts/Supplemental/Arial Italic.ttf",
+      "index": 0,
+      "sha256": "ce1d2f1ab89db45f9796100eee960f5702a40e84c225c2b48c3ec3e81d153f98"
+    }
+  ],
+  "qa": [
+    {
+      "format": "pdf",
+      "check": "pages",
+      "expected": "1",
+      "observed": "1",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "page size (mm)",
+      "expected": "180.00 x 274.00",
+      "observed": "180.00 x 274.00",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "all fonts embedded",
+      "expected": "TRUE",
+      "observed": "TRUE",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "embedded fonts are resolved fonts (no substitution)",
+      "expected": "ArialMT, Arial-BoldMT, Arial-ItalicMT",
+      "observed": "Arial-BoldMT, Arial-ItalicMT, ArialMT",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "a",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "b",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "c",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "bc1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "bd1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "bc2",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "gc1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "gd1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "oc1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "od1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Only this sample",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Also qualifies elsewhere",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Acidovorax",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Acinetobacter",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Aestuariivirga",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Agitococcus",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Alistipes",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Azonexus",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Bifidobacterium",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Bradyrhizobium",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Cellvibrio",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Cypionkella",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Erythrobacter",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Ferruginibacter",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Flavobacterium",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Gemmobacter_B",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "M3007",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Mesorhizobium",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Mycobacterium",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Neoroseomonas",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Nitrospira_D",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Nocardioides",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Novosphingobium",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Phenylobacterium",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "PHOS-HE28",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Phosphoribacter",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Piscinibacter",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Polaromonas",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Polynucleobacter",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Prosthecobacter",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Pseudomonas_E",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "RBC074",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Rhodoferax",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Roseococcus",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Rubrivivax",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Simplicispira",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Sphingobium",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Sphingomonas",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Sphingopyxis",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "SXXK01",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "SZUA-430",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "UBA7672",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Variovorax",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Vicinibacter",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "page size (mm)",
+      "expected": "180.00 x 274.00",
+      "observed": "180.00 x 274.00",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "font families are the resolved fonts",
+      "expected": "Arial",
+      "observed": "Arial",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "smallest text (pt)",
+      "expected": ">= 9.2",
+      "observed": "9.2",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "no embedded raster images",
+      "expected": "0",
+      "observed": "0",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "a",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "b",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "c",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "bc1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "bd1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "bc2",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "gc1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "gd1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "oc1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "od1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Only this sample",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Also qualifies elsewhere",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Acidovorax",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Acinetobacter",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Aestuariivirga",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Agitococcus",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Alistipes",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Azonexus",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Bifidobacterium",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Bradyrhizobium",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Cellvibrio",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Cypionkella",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Erythrobacter",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Ferruginibacter",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Flavobacterium",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Gemmobacter_B",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "M3007",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Mesorhizobium",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Mycobacterium",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Neoroseomonas",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Nitrospira_D",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Nocardioides",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Novosphingobium",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Phenylobacterium",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "PHOS-HE28",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Phosphoribacter",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Piscinibacter",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Polaromonas",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Polynucleobacter",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Prosthecobacter",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Pseudomonas_E",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "RBC074",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Rhodoferax",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Roseococcus",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Rubrivivax",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Simplicispira",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Sphingobium",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Sphingomonas",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Sphingopyxis",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "SXXK01",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "SZUA-430",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "UBA7672",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Variovorax",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Vicinibacter",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "main stroke width (pt)",
+      "expected": "0.85 (0.30 mm)",
+      "observed": "0.57, 0.71, 0.74, 0.85",
+      "pass": true
+    },
+    {
+      "format": "png",
+      "check": "pixels (w x h)",
+      "expected": "2126 x 3236",
+      "observed": "2125 x 3236",
+      "pass": true
+    },
+    {
+      "format": "png",
+      "check": "resolution (dpi)",
+      "expected": "300",
+      "observed": "300.00",
+      "pass": true
+    },
+    {
+      "format": "png",
+      "check": "opaque (no transparency)",
+      "expected": "TRUE",
+      "observed": "TRUE",
+      "pass": true
+    },
+    {
+      "format": "png",
+      "check": "white corners",
+      "expected": "1",
+      "observed": "1",
+      "pass": true
+    },
+    {
+      "format": "tiff",
+      "check": "pixels (w x h)",
+      "expected": "4252 x 6472",
+      "observed": "4251 x 6472",
+      "pass": true
+    },
+    {
+      "format": "tiff",
+      "check": "resolution (dpi)",
+      "expected": "600",
+      "observed": "600.00 x 600.00",
+      "pass": true
+    },
+    {
+      "format": "tiff",
+      "check": "LZW compression (code 5)",
+      "expected": "5",
+      "observed": "5",
+      "pass": true
+    },
+    {
+      "format": "tiff",
+      "check": "RGB without alpha (3 samples per pixel)",
+      "expected": "3",
+      "observed": "3",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text >= 2.5 mm from every page edge (mm)",
+      "expected": ">= 2.5",
+      "observed": "5.64",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "no forbidden strings on the page",
+      "expected": "none",
+      "observed": "none",
+      "pass": true
+    }
+  ]
+}

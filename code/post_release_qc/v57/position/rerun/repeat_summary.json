@@ -1,0 +1,62 @@
+{
+  "catalogue_contigs": 3060,
+  "VF_hits": 143,
+  "VF_carriers": 114,
+  "DTR_ITR_contigs": 220,
+  "repeat_VF_hits": 29,
+  "repeat_VF_carriers": 18,
+  "repeat_topology_hit_counts": {
+    "DTR": 27,
+    "ITR": 2
+  },
+  "repeat_topology_carrier_counts": {
+    "DTR": 17,
+    "ITR": 1
+  },
+  "repeat_completeness_median_per_carrier": 100.0,
+  "repeat_completeness_median_per_hit": 100.0,
+  "repeat_completeness_range_per_carrier": [
+    26.64,
+    100.0
+  ],
+  "repeat_carriers_completeness_100": 14,
+  "repeat_region_counts": {
+    "no_region_prediction": 21,
+    "host": 8
+  },
+  "repeat_host_region_carriers": [
+    {
+      "vOTU_id": "vOTU0016",
+      "vcontig_id": "vctg1107",
+      "contig_length": 50407,
+      "genomad_topology": "DTR",
+      "checkv_provirus": "Yes",
+      "checkv_quality_score": 3.0,
+      "checkv_completeness": 65.0,
+      "checkv_completeness_method": "AAI-based (medium-confidence)",
+      "checkv_contamination": 32.8,
+      "VF_hits": 5,
+      "predicted_host_VF_hits": 5,
+      "unlocalized_VF_hits": 0
+    },
+    {
+      "vOTU_id": "vOTU0446",
+      "vcontig_id": "vctg3531",
+      "contig_length": 38183,
+      "genomad_topology": "DTR",
+      "checkv_provirus": "Yes",
+      "checkv_quality_score": 4.0,
+      "checkv_completeness": 26.64,
+      "checkv_completeness_method": "AAI-based (medium-confidence)",
+      "checkv_contamination": 27.92,
+      "VF_hits": 3,
+      "predicted_host_VF_hits": 3,
+      "unlocalized_VF_hits": 0
+    }
+  ],
+  "VF_pident_median": 37.3,
+  "VF_pident_lt40": 98,
+  "repeat_VF_pident_median": 36.1,
+  "frozen_hit_key_identity_function_match": true,
+  "database_sha256_after": "9ec593c30f317c7d0d4edfc054444dbd83b91c2747f8a12e13a20814fc40e58a"
+}

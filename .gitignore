@@ -1,0 +1,19 @@
+# Local execution state; all publication files are explicitly manifested.
+.DS_Store
+.Rproj.user/
+.Rhistory
+.RData
+.Rdata
+.quarto/
+__pycache__/
+*.pyc
+.env
+.env.*
+.Renviron
+code/publication/current-v58.2/
+
+# Required historical model inputs; these are not disposable temporary files.
+!code/model_archive/original-layout/tmp/
+!code/model_archive/original-layout/tmp/**
+
+code/publication/current-bmc-clean-2026-10-26/

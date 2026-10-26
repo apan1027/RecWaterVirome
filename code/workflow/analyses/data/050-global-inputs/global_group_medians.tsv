@@ -1,0 +1,3 @@
+group	n_features	median_slope	n_positive	n_negative	note
+38 non-NARP anti-defense profiles	38	1.35694834072366	26	12	median describes the fixed set only; it is not a test between the sets
+285 metabolic-related Pfam domains	285	4.04834979821829	269	16	median describes the fixed set only; it is not a test between the sets

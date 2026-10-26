@@ -1,0 +1,7 @@
+panel	window	viral_window_bp	flank_percent	constructs	flagged	flagged_fraction	endpoint
+C	12500 bp window	12500	10	120	17	0.141667	provirus-flagged by CheckV
+C	12500 bp window	12500	20	120	68	0.566667	provirus-flagged by CheckV
+C	17500 bp window	17500	10	120	39	0.325	provirus-flagged by CheckV
+C	17500 bp window	17500	20	120	93	0.775	provirus-flagged by CheckV
+C	30000 bp window	30000	10	120	77	0.641667	provirus-flagged by CheckV
+C	30000 bp window	30000	20	120	111	0.925	provirus-flagged by CheckV

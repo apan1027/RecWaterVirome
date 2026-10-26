@@ -1,0 +1,116 @@
+{
+  "step": "310-table1-definitions",
+  "status": "complete",
+  "run_id": "20261020T001926-86706",
+  "mode": "launcher",
+  "qmd": "analyses/310-table1-definitions.qmd",
+  "source_contract": "rwv-source-v1",
+  "sources": [
+    {
+      "path": "analyses/_quarto.yml",
+      "sha256": "f0a3aa48cc56e27741842f9b2de3347ce9248fe5f891412a3574bd30eae244a3"
+    },
+    {
+      "path": "analyses/310-table1-definitions.qmd",
+      "sha256": "f3f28aa950af669689b926cd4ff0aec01a8c3341b5174ddb924f084fcd447abd"
+    },
+    {
+      "path": "DESCRIPTION",
+      "sha256": "542f81044f872f6abab362c51697985b128b55c5a1eae811ab9aaf63a0d41d12"
+    },
+    {
+      "path": "NAMESPACE",
+      "sha256": "53248d066122bbbf7fefbbca5b547a05a2ef79b4d01f8adce5487c937d37351f"
+    },
+    {
+      "path": "R/community.R",
+      "sha256": "e43790efd903763a406173508ab07c3e875e61aa6ab006b8efc32a5669018bef"
+    },
+    {
+      "path": "R/export.R",
+      "sha256": "b7cc60626548945b094ab3b70e59feae0eed56289ed081c9233fbf0fe16d1951"
+    },
+    {
+      "path": "R/figures.R",
+      "sha256": "b8c4a6f75680a85b60ee94752ece28837afed188a77be4511b068d82909a601b"
+    },
+    {
+      "path": "R/fonts.R",
+      "sha256": "5423a0f88176e82fd1f8ada882972dc56adeb330d692101318af6318783d5adf"
+    },
+    {
+      "path": "R/literature-summary.R",
+      "sha256": "9b225ec26f45adaf1597bb3f0851143466b28537dbc99dbeb636107dee16a079"
+    },
+    {
+      "path": "R/report.R",
+      "sha256": "3eb3fbd7a788c9b4d4cd8e61403415637b4bcde87faad9d5069be57d20f1b4ea"
+    },
+    {
+      "path": "R/sfig-sharing-hosts.R",
+      "sha256": "2428b3b776a1ea14cd26d7df769519b85e244bf7c69869eab19c83d793e9bf57"
+    },
+    {
+      "path": "R/style.R",
+      "sha256": "e03dbf78ae81c5108c6a28abe2638e06c70b49c3f3fee20fbe50f4292efc97b2"
+    },
+    {
+      "path": "R/workflow.R",
+      "sha256": "f235287b127dc0411c60b883ddc44ad25592b07efe2dd9f3a7fcc019b66a46f1"
+    },
+    {
+      "path": "scripts/gfm-from-knit.R",
+      "sha256": "9e8f8570c3f8a07f9e7208a0e26cd501e44dfc00e03331a44eff78f0b01dc29a"
+    },
+    {
+      "path": "scripts/render-step.R",
+      "sha256": "3632f5636861fd03d4ffbee5e2b51724abe6ced71f38e933613901272a1b820a"
+    },
+    {
+      "path": "scripts/render.R",
+      "sha256": "c8dbba5879978f032ddf8d7104987b9d548370555844dc411445f59810216654"
+    }
+  ],
+  "started": "2026-10-20T00:24:27+0200",
+  "finished": "2026-10-20T00:24:27+0200",
+  "inputs": [
+    {
+      "kind": "upstream",
+      "path": "010-input-manifest/input-manifest.tsv",
+      "sha256": "70ee8c390a17b829c9918447651b445edf633ac557ff7822648889529dea4536"
+    },
+    {
+      "kind": "project",
+      "path": "config/definitions.tsv",
+      "sha256": "bc592e0d61475b88436abc3d64e13c47d63ae99796a4c1f8dc8a7e7e75bfc725"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "table1.tsv",
+      "bytes": 3773,
+      "sha256": "75e5fe2c8bf808070e37c16fabe6b52f1a3321fdcc0e2e4fa1de8a9e793d2adc"
+    },
+    {
+      "file": "table1.md",
+      "bytes": 4180,
+      "sha256": "ad1ee8f0bd34e8ea6ed10953b1a5d6e55e1da60f25ea34c34e24f59a06a35e26"
+    },
+    {
+      "file": "table1-full-definitions.tsv",
+      "bytes": 16631,
+      "sha256": "9876f14cab8888205b3f1012bc8982ec0453e910d594f7b169f8c78c66e6a5c1"
+    },
+    {
+      "file": "table1-checks.tsv",
+      "bytes": 502,
+      "sha256": "5d2893b00dadb6ed3bc9a17c9666bba4e703b74dd3bff411c6db41a23c28bdab"
+    },
+    {
+      "file": "session-info.txt",
+      "bytes": 13701,
+      "sha256": "d93b44b0bd8165e6dfedae2f84cc61e4345ac8aa561ac6e725aa31249757eaee"
+    }
+  ],
+  "output_dir_files": []
+}

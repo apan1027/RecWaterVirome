@@ -1,0 +1,15 @@
+stage	label	n	denominator	note	pct	source_module	built_from
+S1_catalogue	vOTU catalogue	3060	3060	the starting denominator; NOT the pre-filter FASTA record count	100	analyses/116-denominator_ledger	frozen tables inside this repository, not from sequencing data
+S2_checkv_Complete	CheckV Complete	167	3060	five classes; Complete and High-quality must not be merged	5.457516339869281	analyses/116-denominator_ledger	frozen tables inside this repository, not from sequencing data
+S2_checkv_High-quality	CheckV High-quality	142	3060	five classes; Complete and High-quality must not be merged	4.640522875816994	analyses/116-denominator_ledger	frozen tables inside this repository, not from sequencing data
+S2_checkv_Medium-quality	CheckV Medium-quality	450	3060	five classes; Complete and High-quality must not be merged	14.705882352941176	analyses/116-denominator_ledger	frozen tables inside this repository, not from sequencing data
+S2_checkv_Low-quality	CheckV Low-quality	2254	3060	five classes; Complete and High-quality must not be merged	73.66013071895425	analyses/116-denominator_ledger	frozen tables inside this repository, not from sequencing data
+S2_checkv_Not-determined	CheckV Not-determined	47	3060	five classes; Complete and High-quality must not be merged	1.5359477124183007	analyses/116-denominator_ledger	frozen tables inside this repository, not from sequencing data
+S3_temperate	called temperate	262	3060	an OR over four annotators; the call rate is completeness-dependent (module 101)	8.562091503267974	analyses/116-denominator_ledger	frozen tables inside this repository, not from sequencing data
+S3_virulent	called virulent	2798	3060	an OR over four annotators; the call rate is completeness-dependent (module 101)	91.43790849673202	analyses/116-denominator_ledger	frozen tables inside this repository, not from sequencing data
+S4_cargo_dbAPIS	dbAPIS	715	3060	the six libraries are not comparable to one another	23.366013071895424	analyses/116-denominator_ledger	frozen tables inside this repository, not from sequencing data
+S4_cargo_DefenseFinder__anti_defence_	DefenseFinder (anti-defence)	106	3060	the six libraries are not comparable to one another	3.4640522875816995	analyses/116-denominator_ledger	frozen tables inside this repository, not from sequencing data
+S4_cargo_DefenseFinder__defence_	DefenseFinder (defence)	5	3060	the six libraries are not comparable to one another	0.16339869281045752	analyses/116-denominator_ledger	frozen tables inside this repository, not from sequencing data
+S4_cargo_PADLOC	PADLOC	31	3060	the six libraries are not comparable to one another	1.0130718954248366	analyses/116-denominator_ledger	frozen tables inside this repository, not from sequencing data
+S4_cargo_VFDB_A__filtered_	VFDB-A (filtered)	114	3060	the six libraries are not comparable to one another	3.725490196078431	analyses/116-denominator_ledger	frozen tables inside this repository, not from sequencing data
+S4_cargo_VFDB_A__strict_	VFDB-A (strict)	31	3060	the six libraries are not comparable to one another	1.0130718954248366	analyses/116-denominator_ledger	frozen tables inside this repository, not from sequencing data

@@ -1,0 +1,958 @@
+{
+  "figure": "sfig3",
+  "label": "Supplementary Figure 3",
+  "scientific_content": true,
+  "run_id": "20261020T001926-86706",
+  "width_mm": 180,
+  "height_mm": 265,
+  "png_dpi": 300,
+  "tiff_dpi": 600,
+  "files": [
+    {
+      "format": "pdf",
+      "file": "sfig3.pdf",
+      "device": "quartz_pdf",
+      "bytes": 1104172,
+      "sha256": "81b609655ad7e215a3ae914221e107215f9d85172b70dd81700b5c27a569fe0c"
+    },
+    {
+      "format": "svg",
+      "file": "sfig3.svg",
+      "device": "svglite",
+      "bytes": 1266140,
+      "sha256": "a5a4e0996164374e6be2568e4023008d4c4cca90f27941ac05dbffacc3910e07"
+    },
+    {
+      "format": "png",
+      "file": "sfig3.png",
+      "device": "ragg::agg_png",
+      "bytes": 557870,
+      "sha256": "085d1bbe6369454052aaf300d74f29a8a297ee2e5c0848b6351372224d34b3df"
+    },
+    {
+      "format": "tiff",
+      "file": "sfig3.tiff",
+      "device": "ragg::agg_tiff (LZW)",
+      "bytes": 2121824,
+      "sha256": "075f57a53f5f6e23aaf547e1993fd7d9980d02efda373704e266cbeae97a9210"
+    }
+  ],
+  "device_probes": {
+    "pdf": "cairo_pdf: unable to load shared object '/Library/Frameworks/R.framework/Resources/library/grDevices/libs//cairo.so': dlopen(/Library/Frameworks/R.framework/Resources/library/grDevices/libs//cairo.so, 0x0006): Library not loaded: /opt/X11/lib/libXrender.1.dylib Referenced from: <263B701F-2238-3478-A7D2-B7513231EF98> /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/library/grDevices/libs/cairo.so Reason: tried: '/opt/X11/lib/libXrender.1.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/X11/lib/libXrender.1.dylib' (no such file), '/opt/X11/lib/libXrender.1.dylib' (no such file), '/Library/Frameworks/R.framework/Resources/lib/libXrender.1.dylib' (no such file), '/Library/Java/JavaVirtualMachines/jdk-11.0.18+10/Contents/Home/lib/server/libXrender.1.dylib' (no such file); quartz_pdf: ok",
+    "svg": "svglite: ok",
+    "png": "agg_png: ok",
+    "tiff": "agg_tiff: ok"
+  },
+  "fonts": [
+    {
+      "role": "text",
+      "family": "Arial",
+      "weight": "normal",
+      "resolved_family": "Arial",
+      "style": "Regular",
+      "postscript_name": "ArialMT",
+      "path": "/System/Library/Fonts/Supplemental/Arial.ttf",
+      "index": 0,
+      "sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+    },
+    {
+      "role": "text-bold",
+      "family": "Arial",
+      "weight": "bold",
+      "resolved_family": "Arial",
+      "style": "Bold",
+      "postscript_name": "Arial-BoldMT",
+      "path": "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
+      "index": 0,
+      "sha256": "d72db21f9242aedd6b917d8549ad5921766b24d5f8d0becfda2ff4c620b3c2e0"
+    },
+    {
+      "role": "text-italic",
+      "family": "Arial",
+      "weight": "normal",
+      "resolved_family": "Arial",
+      "style": "Italic",
+      "postscript_name": "Arial-ItalicMT",
+      "path": "/System/Library/Fonts/Supplemental/Arial Italic.ttf",
+      "index": 0,
+      "sha256": "ce1d2f1ab89db45f9796100eee960f5702a40e84c225c2b48c3ec3e81d153f98"
+    }
+  ],
+  "qa": [
+    {
+      "format": "pdf",
+      "check": "pages",
+      "expected": "1",
+      "observed": "1",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "page size (mm)",
+      "expected": "180.00 x 265.00",
+      "observed": "180.00 x 265.00",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "all fonts embedded",
+      "expected": "TRUE",
+      "observed": "TRUE",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "embedded fonts are resolved fonts (no substitution)",
+      "expected": "ArialMT, Arial-BoldMT, Arial-ItalicMT",
+      "observed": "Arial-BoldMT, ArialMT",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "a",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "b",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "c",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "d",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU0052",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU0113",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU0131",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU0544",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU1643",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU0012",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU0058",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU0060",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU0093",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU0435",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU0475",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU0515",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU0691",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU0863",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU1159",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU1365",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU1767",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU1898",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "vOTU2844",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "CheckV / %",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "MQ 88.8%",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "(3)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "(5)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "(6)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "(19)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "bc1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "bd1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "bc2",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "gc1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "gd1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "oc1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "od1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Whole catalogue (%)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Below detection rule",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "NMNAT",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "NAMPT",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "ORF102",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "ORF22",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "ORF27",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "end",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "bp relative to NMNAT start",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "NARP2 member",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "ORF102: domain candidate",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "ORF22/27: VOGdb annotation",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Other ORF",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Predicted model (211 aa)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "GIY-YIG reference comparison",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "pLDDT",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "I-TevI (1MK0)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "page size (mm)",
+      "expected": "180.00 x 265.00",
+      "observed": "180.00 x 265.00",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "font families are the resolved fonts",
+      "expected": "Arial",
+      "observed": "Arial",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "smallest text (pt)",
+      "expected": ">= 9.2",
+      "observed": "9.2",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "embedded raster images are exactly the registered renders (pixel-identical RGB)",
+      "expected": "2",
+      "observed": "2 (2 matched)",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "a",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "b",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "c",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "d",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU0052",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU0113",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU0131",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU0544",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU1643",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU0012",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU0058",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU0060",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU0093",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU0435",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU0475",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU0515",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU0691",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU0863",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU1159",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU1365",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU1767",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU1898",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "vOTU2844",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "CheckV / %",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "MQ 88.8%",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "(3)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "(5)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "(6)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "(19)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "bc1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "bd1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "bc2",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "gc1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "gd1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "oc1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "od1",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Whole catalogue (%)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Below detection rule",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "NMNAT",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "NAMPT",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "ORF102",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "ORF22",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "ORF27",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "end",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "bp relative to NMNAT start",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "NARP2 member",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "ORF102: domain candidate",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "ORF22/27: VOGdb annotation",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Other ORF",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Predicted model (211 aa)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "GIY-YIG reference comparison",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "pLDDT",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "I-TevI (1MK0)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "main stroke width (pt)",
+      "expected": "0.85 (0.30 mm)",
+      "observed": "0.57, 0.85, 1.70",
+      "pass": true
+    },
+    {
+      "format": "png",
+      "check": "pixels (w x h)",
+      "expected": "2126 x 3130",
+      "observed": "2125 x 3129",
+      "pass": true
+    },
+    {
+      "format": "png",
+      "check": "resolution (dpi)",
+      "expected": "300",
+      "observed": "300.00",
+      "pass": true
+    },
+    {
+      "format": "png",
+      "check": "opaque (no transparency)",
+      "expected": "TRUE",
+      "observed": "TRUE",
+      "pass": true
+    },
+    {
+      "format": "png",
+      "check": "white corners",
+      "expected": "1",
+      "observed": "1",
+      "pass": true
+    },
+    {
+      "format": "tiff",
+      "check": "pixels (w x h)",
+      "expected": "4252 x 6260",
+      "observed": "4251 x 6259",
+      "pass": true
+    },
+    {
+      "format": "tiff",
+      "check": "resolution (dpi)",
+      "expected": "600",
+      "observed": "600.00 x 600.00",
+      "pass": true
+    },
+    {
+      "format": "tiff",
+      "check": "LZW compression (code 5)",
+      "expected": "5",
+      "observed": "5",
+      "pass": true
+    },
+    {
+      "format": "tiff",
+      "check": "RGB without alpha (3 samples per pixel)",
+      "expected": "3",
+      "observed": "3",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text >= 2.5 mm from every page edge (mm)",
+      "expected": ">= 2.5",
+      "observed": "2.82",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "no forbidden strings on the page",
+      "expected": "none",
+      "observed": "none",
+      "pass": true
+    }
+  ]
+}

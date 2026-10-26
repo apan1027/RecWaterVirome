@@ -1,0 +1,481 @@
+genus	mode	host_percent	treatment	metric	estimate	low	high	valid_bootstrap	requested_bootstrap	supported_bins	mothers
+all	filtered	0	predicted_trim	viral_retention	0.9999999999999999	0.9999999999999999	0.9999999999999999	500	500	5	30
+all	filtered	0	predicted_trim	host_removed				0	500	0	30
+all	filtered	0	predicted_trim	host_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	filtered	0	predicted_trim	viral_vf_hits	0.01193674136321195	0.0	0.03226495726495727	500	500	5	30
+all	filtered	0	predicted_trim	crossing_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	filtered	0	truth_trim	viral_retention	0.9999999999999999	0.9999999999999999	0.9999999999999999	500	500	5	30
+all	filtered	0	truth_trim	host_removed				0	500	0	30
+all	filtered	0	truth_trim	host_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	filtered	0	truth_trim	viral_vf_hits	0.01193674136321195	0.0	0.03222112650597866	500	500	5	30
+all	filtered	0	truth_trim	crossing_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	filtered	0	whole	viral_retention	0.9999999999999999	0.9999999999999999	0.9999999999999999	500	500	5	30
+all	filtered	0	whole	host_removed				0	500	0	30
+all	filtered	0	whole	host_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	filtered	0	whole	viral_vf_hits	0.01193674136321195	0.0	0.033978669841183	500	500	5	30
+all	filtered	0	whole	crossing_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	filtered	0	whole_drop	viral_retention	0.9999999999999999	0.9999999999999999	0.9999999999999999	500	500	5	30
+all	filtered	0	whole_drop	host_removed				0	500	0	30
+all	filtered	0	whole_drop	host_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	filtered	0	whole_drop	viral_vf_hits	0.01193674136321195	0.0	0.03423127373479036	500	500	5	30
+all	filtered	0	whole_drop	crossing_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	filtered	10	predicted_trim	viral_retention	0.9988601170333722	0.9984168869859795	0.999255154500336	500	500	5	30
+all	filtered	10	predicted_trim	host_removed	0.20003661106876214	0.15807227977551333	0.2448595982138139	500	500	5	30
+all	filtered	10	predicted_trim	host_vf_hits	0.05867522564581388	0.025175030534099162	0.1011517094017094	500	500	5	30
+all	filtered	10	predicted_trim	viral_vf_hits	0.027665732959850607	0.0	0.08248644890648565	500	500	5	30
+all	filtered	10	predicted_trim	crossing_vf_hits	0.04572481585226683	0.02175915841727201	0.07329163718906366	500	500	5	30
+all	filtered	10	truth_trim	viral_retention	0.9999999999999999	0.9999999999999999	0.9999999999999999	500	500	5	30
+all	filtered	10	truth_trim	host_removed	0.9999999999999999	0.9999999999999999	0.9999999999999999	500	500	5	30
+all	filtered	10	truth_trim	host_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	filtered	10	truth_trim	viral_vf_hits	0.027665732959850607	0.0	0.08614710774460861	500	500	5	30
+all	filtered	10	truth_trim	crossing_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	filtered	10	whole	viral_retention	0.9999999999999999	0.9999999999999999	0.9999999999999999	500	500	5	30
+all	filtered	10	whole	host_removed	0.0	0.0	0.0	500	500	5	30
+all	filtered	10	whole	host_vf_hits	0.15226086730988692	0.10807588945640415	0.19827232487011898	500	500	5	30
+all	filtered	10	whole	viral_vf_hits	0.027665732959850607	0.0	0.08579041078294207	500	500	5	30
+all	filtered	10	whole	crossing_vf_hits	0.07798054777466543	0.045595922663937374	0.12153604594615622	500	500	5	30
+all	filtered	10	whole_drop	viral_retention	0.6984553376906317	0.627596369426602	0.7621579195756584	500	500	5	30
+all	filtered	10	whole_drop	host_removed	0.30154466230936816	0.23784208042434146	0.3724036305733979	500	500	5	30
+all	filtered	10	whole_drop	host_vf_hits	0.022362278244631183	0.0020172511312217195	0.04925119406737051	500	500	5	30
+all	filtered	10	whole_drop	viral_vf_hits	0.015779645191409897	0.0	0.05008351488743641	500	500	5	30
+all	filtered	10	whole_drop	crossing_vf_hits	0.034260711692084236	0.011697246296637778	0.06282902430760487	500	500	5	30
+all	filtered	20	predicted_trim	viral_retention	0.995891928824842	0.9938841803720936	0.9978150793144664	500	500	5	30
+all	filtered	20	predicted_trim	host_removed	0.4684848226440753	0.3970870986529315	0.542558525199137	500	500	5	30
+all	filtered	20	predicted_trim	host_vf_hits	0.10331704041769965	0.02727904847709835	0.19830791477218904	500	500	5	30
+all	filtered	20	predicted_trim	viral_vf_hits	0.025745976072421305	0.0	0.08269723643162902	500	500	5	30
+all	filtered	20	predicted_trim	crossing_vf_hits	0.010962972353692434	0.0027874774622492675	0.01991070538095394	500	500	5	30
+all	filtered	20	truth_trim	viral_retention	0.9999999999999999	0.9999999999999999	0.9999999999999999	500	500	5	30
+all	filtered	20	truth_trim	host_removed	0.9999999999999999	0.9999999999999999	0.9999999999999999	500	500	5	30
+all	filtered	20	truth_trim	host_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	filtered	20	truth_trim	viral_vf_hits	0.025745976072421305	0.0	0.08347879937036828	500	500	5	30
+all	filtered	20	truth_trim	crossing_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	filtered	20	whole	viral_retention	0.9999999999999999	0.9999999999999999	0.9999999999999999	500	500	5	30
+all	filtered	20	whole	host_removed	0.0	0.0	0.0	500	500	5	30
+all	filtered	20	whole	host_vf_hits	0.456533553076403	0.31837320593331764	0.6162640033577533	500	500	5	30
+all	filtered	20	whole	viral_vf_hits	0.025745976072421305	0.0	0.07264344895566922	500	500	5	30
+all	filtered	20	whole	crossing_vf_hits	0.06404400026294042	0.03408791293926943	0.10087556011788495	500	500	5	30
+all	filtered	20	whole_drop	viral_retention	0.3779590971126637			499	500	5	30
+all	filtered	20	whole_drop	host_removed	0.6220409028873363			499	500	5	30
+all	filtered	20	whole_drop	host_vf_hits	0.05268715723837428			499	500	5	30
+all	filtered	20	whole_drop	viral_vf_hits	0.0			499	500	5	30
+all	filtered	20	whole_drop	crossing_vf_hits	0.003957605551799264			499	500	5	30
+all	strict	0	predicted_trim	viral_retention	0.9999999999999999	0.9999999999999999	0.9999999999999999	500	500	5	30
+all	strict	0	predicted_trim	host_removed				0	500	0	30
+all	strict	0	predicted_trim	host_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	strict	0	predicted_trim	viral_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	strict	0	predicted_trim	crossing_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	strict	0	truth_trim	viral_retention	0.9999999999999999			499	500	5	30
+all	strict	0	truth_trim	host_removed				0	500	0	30
+all	strict	0	truth_trim	host_vf_hits	0.0			499	500	5	30
+all	strict	0	truth_trim	viral_vf_hits	0.0			499	500	5	30
+all	strict	0	truth_trim	crossing_vf_hits	0.0			499	500	5	30
+all	strict	0	whole	viral_retention	0.9999999999999999			499	500	5	30
+all	strict	0	whole	host_removed				0	500	0	30
+all	strict	0	whole	host_vf_hits	0.0			499	500	5	30
+all	strict	0	whole	viral_vf_hits	0.0			499	500	5	30
+all	strict	0	whole	crossing_vf_hits	0.0			499	500	5	30
+all	strict	0	whole_drop	viral_retention	0.9999999999999999	0.9999999999999999	0.9999999999999999	500	500	5	30
+all	strict	0	whole_drop	host_removed				0	500	0	30
+all	strict	0	whole_drop	host_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	strict	0	whole_drop	viral_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	strict	0	whole_drop	crossing_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	strict	10	predicted_trim	viral_retention	0.9988601170333722	0.9984227112217987	0.9992556009519884	500	500	5	30
+all	strict	10	predicted_trim	host_removed	0.20003661106876214	0.15768731658251345	0.24766266477306512	500	500	5	30
+all	strict	10	predicted_trim	host_vf_hits	0.03789086004772279	0.014371218310556544	0.06936720896452452	500	500	5	30
+all	strict	10	predicted_trim	viral_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	strict	10	predicted_trim	crossing_vf_hits	0.02962708787218591	0.009839257389650392	0.05434164651615631	500	500	5	30
+all	strict	10	truth_trim	viral_retention	0.9999999999999999	0.9999999999999999	0.9999999999999999	500	500	5	30
+all	strict	10	truth_trim	host_removed	0.9999999999999999	0.9999999999999999	0.9999999999999999	500	500	5	30
+all	strict	10	truth_trim	host_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	strict	10	truth_trim	viral_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	strict	10	truth_trim	crossing_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	strict	10	whole	viral_retention	0.9999999999999999	0.9999999999999999	0.9999999999999999	500	500	5	30
+all	strict	10	whole	host_removed	0.0	0.0	0.0	500	500	5	30
+all	strict	10	whole	host_vf_hits	0.07620121381886089	0.0428625703633944	0.11998521989992576	500	500	5	30
+all	strict	10	whole	viral_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	strict	10	whole	crossing_vf_hits	0.039120811287477956	0.016403613215074213	0.06692851045332662	500	500	5	30
+all	strict	10	whole_drop	viral_retention	0.6984553376906317			499	500	5	30
+all	strict	10	whole_drop	host_removed	0.30154466230936816			499	500	5	30
+all	strict	10	whole_drop	host_vf_hits	0.018540305010893245			499	500	5	30
+all	strict	10	whole_drop	viral_vf_hits	0.0			499	500	5	30
+all	strict	10	whole_drop	crossing_vf_hits	0.021121278140885984			499	500	5	30
+all	strict	20	predicted_trim	viral_retention	0.995891928824842	0.9941328105850455	0.9975945598250069	500	500	5	30
+all	strict	20	predicted_trim	host_removed	0.4684848226440753	0.3968131500847098	0.5438139834489748	500	500	5	30
+all	strict	20	predicted_trim	host_vf_hits	0.08243405360228383	0.00735854872251931	0.17103616441315583	500	500	5	30
+all	strict	20	predicted_trim	viral_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	strict	20	predicted_trim	crossing_vf_hits	0.008151857486289535	0.0014698369769363686	0.017141472182251403	500	500	5	30
+all	strict	20	truth_trim	viral_retention	0.9999999999999999	0.9999999999999999	0.9999999999999999	500	500	5	30
+all	strict	20	truth_trim	host_removed	0.9999999999999999	0.9999999999999999	0.9999999999999999	500	500	5	30
+all	strict	20	truth_trim	host_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	strict	20	truth_trim	viral_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	strict	20	truth_trim	crossing_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	strict	20	whole	viral_retention	0.9999999999999999	0.9999999999999999	0.9999999999999999	500	500	5	30
+all	strict	20	whole	host_removed	0.0	0.0	0.0	500	500	5	30
+all	strict	20	whole	host_vf_hits	0.27795442522475144	0.14169216293377745	0.4487011474510999	500	500	5	30
+all	strict	20	whole	viral_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	strict	20	whole	crossing_vf_hits	0.043584887499060934	0.01741467860994005	0.08621632367027267	500	500	5	30
+all	strict	20	whole_drop	viral_retention	0.3779590971126637	0.28501415596223	0.4722034441376966	500	500	5	30
+all	strict	20	whole_drop	host_removed	0.6220409028873363	0.5277965558623033	0.71498584403777	500	500	5	30
+all	strict	20	whole_drop	host_vf_hits	0.03853614961310195	0.0008769063180827893	0.08570691088407871	500	500	5	30
+all	strict	20	whole_drop	viral_vf_hits	0.0	0.0	0.0	500	500	5	30
+all	strict	20	whole_drop	crossing_vf_hits	0.003957605551799264	0.0	0.009512138188608776	500	500	5	30
+Escherichia	filtered	0	predicted_trim	viral_retention	0.9999999999999999			474	500	5	10
+Escherichia	filtered	0	predicted_trim	host_removed				0	500	0	10
+Escherichia	filtered	0	predicted_trim	host_vf_hits	0.0			474	500	5	10
+Escherichia	filtered	0	predicted_trim	viral_vf_hits	0.008394607843137255			474	500	5	10
+Escherichia	filtered	0	predicted_trim	crossing_vf_hits	0.0			474	500	5	10
+Escherichia	filtered	0	truth_trim	viral_retention	0.9999999999999999			463	500	5	10
+Escherichia	filtered	0	truth_trim	host_removed				0	500	0	10
+Escherichia	filtered	0	truth_trim	host_vf_hits	0.0			463	500	5	10
+Escherichia	filtered	0	truth_trim	viral_vf_hits	0.008394607843137255			463	500	5	10
+Escherichia	filtered	0	truth_trim	crossing_vf_hits	0.0			463	500	5	10
+Escherichia	filtered	0	whole	viral_retention	0.9999999999999999			480	500	5	10
+Escherichia	filtered	0	whole	host_removed				0	500	0	10
+Escherichia	filtered	0	whole	host_vf_hits	0.0			480	500	5	10
+Escherichia	filtered	0	whole	viral_vf_hits	0.008394607843137255			480	500	5	10
+Escherichia	filtered	0	whole	crossing_vf_hits	0.0			480	500	5	10
+Escherichia	filtered	0	whole_drop	viral_retention	0.9999999999999999			463	500	5	10
+Escherichia	filtered	0	whole_drop	host_removed				0	500	0	10
+Escherichia	filtered	0	whole_drop	host_vf_hits	0.0			463	500	5	10
+Escherichia	filtered	0	whole_drop	viral_vf_hits	0.008394607843137255			463	500	5	10
+Escherichia	filtered	0	whole_drop	crossing_vf_hits	0.0			463	500	5	10
+Escherichia	filtered	10	predicted_trim	viral_retention	0.9983707825403936			468	500	5	10
+Escherichia	filtered	10	predicted_trim	host_removed	0.24705734759957187			468	500	5	10
+Escherichia	filtered	10	predicted_trim	host_vf_hits	0.05015659041394335			468	500	5	10
+Escherichia	filtered	10	predicted_trim	viral_vf_hits	0.007679738562091503			468	500	5	10
+Escherichia	filtered	10	predicted_trim	crossing_vf_hits	0.07805351307189543			468	500	5	10
+Escherichia	filtered	10	truth_trim	viral_retention	0.9999999999999999			477	500	5	10
+Escherichia	filtered	10	truth_trim	host_removed	0.9999999999999999			477	500	5	10
+Escherichia	filtered	10	truth_trim	host_vf_hits	0.0			477	500	5	10
+Escherichia	filtered	10	truth_trim	viral_vf_hits	0.007679738562091503			477	500	5	10
+Escherichia	filtered	10	truth_trim	crossing_vf_hits	0.0			477	500	5	10
+Escherichia	filtered	10	whole	viral_retention	0.9999999999999999			468	500	5	10
+Escherichia	filtered	10	whole	host_removed	0.0			468	500	5	10
+Escherichia	filtered	10	whole	host_vf_hits	0.15648624727668844			468	500	5	10
+Escherichia	filtered	10	whole	viral_vf_hits	0.007679738562091503			468	500	5	10
+Escherichia	filtered	10	whole	crossing_vf_hits	0.14909109477124183			468	500	5	10
+Escherichia	filtered	10	whole_drop	viral_retention	0.6610702614379085			467	500	5	10
+Escherichia	filtered	10	whole_drop	host_removed	0.3389297385620915			467	500	5	10
+Escherichia	filtered	10	whole_drop	host_vf_hits	0.000326797385620915			467	500	5	10
+Escherichia	filtered	10	whole_drop	viral_vf_hits	0.0			467	500	5	10
+Escherichia	filtered	10	whole_drop	crossing_vf_hits	0.063630174291939			467	500	5	10
+Escherichia	filtered	20	predicted_trim	viral_retention	0.9963484838992777			460	500	5	10
+Escherichia	filtered	20	predicted_trim	host_removed	0.5764553337904068			460	500	5	10
+Escherichia	filtered	20	predicted_trim	host_vf_hits	0.22885620915032678			460	500	5	10
+Escherichia	filtered	20	predicted_trim	viral_vf_hits	0.006617647058823529			460	500	5	10
+Escherichia	filtered	20	predicted_trim	crossing_vf_hits	0.01157096171802054			460	500	5	10
+Escherichia	filtered	20	truth_trim	viral_retention	0.9999999999999999			462	500	5	10
+Escherichia	filtered	20	truth_trim	host_removed	0.9999999999999999			462	500	5	10
+Escherichia	filtered	20	truth_trim	host_vf_hits	0.0			462	500	5	10
+Escherichia	filtered	20	truth_trim	viral_vf_hits	0.006617647058823529			462	500	5	10
+Escherichia	filtered	20	truth_trim	crossing_vf_hits	0.0			462	500	5	10
+Escherichia	filtered	20	whole	viral_retention	0.9999999999999999			477	500	5	10
+Escherichia	filtered	20	whole	host_removed	0.0			477	500	5	10
+Escherichia	filtered	20	whole	host_vf_hits	0.6768923124805477			477	500	5	10
+Escherichia	filtered	20	whole	viral_vf_hits	0.006617647058823529			477	500	5	10
+Escherichia	filtered	20	whole	crossing_vf_hits	0.13458138811079987			477	500	5	10
+Escherichia	filtered	20	whole_drop	viral_retention	0.2815904139433551			475	500	5	10
+Escherichia	filtered	20	whole_drop	host_removed	0.7184095860566448			475	500	5	10
+Escherichia	filtered	20	whole_drop	host_vf_hits	0.07363834422657951			475	500	5	10
+Escherichia	filtered	20	whole_drop	viral_vf_hits	0.0			475	500	5	10
+Escherichia	filtered	20	whole_drop	crossing_vf_hits	0.0			475	500	5	10
+Escherichia	strict	0	predicted_trim	viral_retention	0.9999999999999999			465	500	5	10
+Escherichia	strict	0	predicted_trim	host_removed				0	500	0	10
+Escherichia	strict	0	predicted_trim	host_vf_hits	0.0			465	500	5	10
+Escherichia	strict	0	predicted_trim	viral_vf_hits	0.0			465	500	5	10
+Escherichia	strict	0	predicted_trim	crossing_vf_hits	0.0			465	500	5	10
+Escherichia	strict	0	truth_trim	viral_retention	0.9999999999999999			471	500	5	10
+Escherichia	strict	0	truth_trim	host_removed				0	500	0	10
+Escherichia	strict	0	truth_trim	host_vf_hits	0.0			471	500	5	10
+Escherichia	strict	0	truth_trim	viral_vf_hits	0.0			471	500	5	10
+Escherichia	strict	0	truth_trim	crossing_vf_hits	0.0			471	500	5	10
+Escherichia	strict	0	whole	viral_retention	0.9999999999999999			466	500	5	10
+Escherichia	strict	0	whole	host_removed				0	500	0	10
+Escherichia	strict	0	whole	host_vf_hits	0.0			466	500	5	10
+Escherichia	strict	0	whole	viral_vf_hits	0.0			466	500	5	10
+Escherichia	strict	0	whole	crossing_vf_hits	0.0			466	500	5	10
+Escherichia	strict	0	whole_drop	viral_retention	0.9999999999999999			466	500	5	10
+Escherichia	strict	0	whole_drop	host_removed				0	500	0	10
+Escherichia	strict	0	whole_drop	host_vf_hits	0.0			466	500	5	10
+Escherichia	strict	0	whole_drop	viral_vf_hits	0.0			466	500	5	10
+Escherichia	strict	0	whole_drop	crossing_vf_hits	0.0			466	500	5	10
+Escherichia	strict	10	predicted_trim	viral_retention	0.9983707825403936			466	500	5	10
+Escherichia	strict	10	predicted_trim	host_removed	0.24705734759957187			466	500	5	10
+Escherichia	strict	10	predicted_trim	host_vf_hits	0.013289760348583876			466	500	5	10
+Escherichia	strict	10	predicted_trim	viral_vf_hits	0.0			466	500	5	10
+Escherichia	strict	10	predicted_trim	crossing_vf_hits	0.06140727124183006			466	500	5	10
+Escherichia	strict	10	truth_trim	viral_retention	0.9999999999999999			471	500	5	10
+Escherichia	strict	10	truth_trim	host_removed	0.9999999999999999			471	500	5	10
+Escherichia	strict	10	truth_trim	host_vf_hits	0.0			471	500	5	10
+Escherichia	strict	10	truth_trim	viral_vf_hits	0.0			471	500	5	10
+Escherichia	strict	10	truth_trim	crossing_vf_hits	0.0			471	500	5	10
+Escherichia	strict	10	whole	viral_retention	0.9999999999999999			468	500	5	10
+Escherichia	strict	10	whole	host_removed	0.0			468	500	5	10
+Escherichia	strict	10	whole	host_vf_hits	0.0490556917211329			468	500	5	10
+Escherichia	strict	10	whole	viral_vf_hits	0.0			468	500	5	10
+Escherichia	strict	10	whole	crossing_vf_hits	0.06827001633986929			468	500	5	10
+Escherichia	strict	10	whole_drop	viral_retention	0.6610702614379085			471	500	5	10
+Escherichia	strict	10	whole_drop	host_removed	0.3389297385620915			471	500	5	10
+Escherichia	strict	10	whole_drop	host_vf_hits	0.0			471	500	5	10
+Escherichia	strict	10	whole_drop	viral_vf_hits	0.0			471	500	5	10
+Escherichia	strict	10	whole_drop	crossing_vf_hits	0.046983932461873636			471	500	5	10
+Escherichia	strict	20	predicted_trim	viral_retention	0.9963484838992777			468	500	5	10
+Escherichia	strict	20	predicted_trim	host_removed	0.5764553337904068			468	500	5	10
+Escherichia	strict	20	predicted_trim	host_vf_hits	0.22885620915032678			468	500	5	10
+Escherichia	strict	20	predicted_trim	viral_vf_hits	0.0			468	500	5	10
+Escherichia	strict	20	predicted_trim	crossing_vf_hits	0.01157096171802054			468	500	5	10
+Escherichia	strict	20	truth_trim	viral_retention	0.9999999999999999			478	500	5	10
+Escherichia	strict	20	truth_trim	host_removed	0.9999999999999999			478	500	5	10
+Escherichia	strict	20	truth_trim	host_vf_hits	0.0			478	500	5	10
+Escherichia	strict	20	truth_trim	viral_vf_hits	0.0			478	500	5	10
+Escherichia	strict	20	truth_trim	crossing_vf_hits	0.0			478	500	5	10
+Escherichia	strict	20	whole	viral_retention	0.9999999999999999			472	500	5	10
+Escherichia	strict	20	whole	host_removed	0.0			472	500	5	10
+Escherichia	strict	20	whole	host_vf_hits	0.45182384064737			472	500	5	10
+Escherichia	strict	20	whole	viral_vf_hits	0.0			472	500	5	10
+Escherichia	strict	20	whole	crossing_vf_hits	0.12301042639277933			472	500	5	10
+Escherichia	strict	20	whole_drop	viral_retention	0.2815904139433551			468	500	5	10
+Escherichia	strict	20	whole_drop	host_removed	0.7184095860566448			468	500	5	10
+Escherichia	strict	20	whole_drop	host_vf_hits	0.07363834422657951			468	500	5	10
+Escherichia	strict	20	whole_drop	viral_vf_hits	0.0			468	500	5	10
+Escherichia	strict	20	whole_drop	crossing_vf_hits	0.0			468	500	5	10
+Pseudomonas	filtered	0	predicted_trim	viral_retention	0.9999999999999999			317	500	5	10
+Pseudomonas	filtered	0	predicted_trim	host_removed				0	500	0	10
+Pseudomonas	filtered	0	predicted_trim	host_vf_hits	0.0			317	500	5	10
+Pseudomonas	filtered	0	predicted_trim	viral_vf_hits	0.0			317	500	5	10
+Pseudomonas	filtered	0	predicted_trim	crossing_vf_hits	0.0			317	500	5	10
+Pseudomonas	filtered	0	truth_trim	viral_retention	0.9999999999999999			291	500	5	10
+Pseudomonas	filtered	0	truth_trim	host_removed				0	500	0	10
+Pseudomonas	filtered	0	truth_trim	host_vf_hits	0.0			291	500	5	10
+Pseudomonas	filtered	0	truth_trim	viral_vf_hits	0.0			291	500	5	10
+Pseudomonas	filtered	0	truth_trim	crossing_vf_hits	0.0			291	500	5	10
+Pseudomonas	filtered	0	whole	viral_retention	0.9999999999999999			338	500	5	10
+Pseudomonas	filtered	0	whole	host_removed				0	500	0	10
+Pseudomonas	filtered	0	whole	host_vf_hits	0.0			338	500	5	10
+Pseudomonas	filtered	0	whole	viral_vf_hits	0.0			338	500	5	10
+Pseudomonas	filtered	0	whole	crossing_vf_hits	0.0			338	500	5	10
+Pseudomonas	filtered	0	whole_drop	viral_retention	0.9999999999999999			313	500	5	10
+Pseudomonas	filtered	0	whole_drop	host_removed				0	500	0	10
+Pseudomonas	filtered	0	whole_drop	host_vf_hits	0.0			313	500	5	10
+Pseudomonas	filtered	0	whole_drop	viral_vf_hits	0.0			313	500	5	10
+Pseudomonas	filtered	0	whole_drop	crossing_vf_hits	0.0			313	500	5	10
+Pseudomonas	filtered	10	predicted_trim	viral_retention	0.9993692684140818			312	500	5	10
+Pseudomonas	filtered	10	predicted_trim	host_removed	0.18860898023073092			312	500	5	10
+Pseudomonas	filtered	10	predicted_trim	host_vf_hits	0.08199891067538126			312	500	5	10
+Pseudomonas	filtered	10	predicted_trim	viral_vf_hits	0.0			312	500	5	10
+Pseudomonas	filtered	10	predicted_trim	crossing_vf_hits	0.020866013071895426			312	500	5	10
+Pseudomonas	filtered	10	truth_trim	viral_retention	0.9999999999999999			324	500	5	10
+Pseudomonas	filtered	10	truth_trim	host_removed	0.9999999999999999			324	500	5	10
+Pseudomonas	filtered	10	truth_trim	host_vf_hits	0.0			324	500	5	10
+Pseudomonas	filtered	10	truth_trim	viral_vf_hits	0.0			324	500	5	10
+Pseudomonas	filtered	10	truth_trim	crossing_vf_hits	0.0			324	500	5	10
+Pseudomonas	filtered	10	whole	viral_retention	0.9999999999999999			329	500	5	10
+Pseudomonas	filtered	10	whole	host_removed	0.0			329	500	5	10
+Pseudomonas	filtered	10	whole	host_vf_hits	0.1663235294117647			329	500	5	10
+Pseudomonas	filtered	10	whole	viral_vf_hits	0.0			329	500	5	10
+Pseudomonas	filtered	10	whole	crossing_vf_hits	0.04428104575163398			329	500	5	10
+Pseudomonas	filtered	10	whole_drop	viral_retention	0.713937908496732			332	500	5	10
+Pseudomonas	filtered	10	whole_drop	host_removed	0.28606209150326795			332	500	5	10
+Pseudomonas	filtered	10	whole_drop	host_vf_hits	0.044199346405228754			332	500	5	10
+Pseudomonas	filtered	10	whole_drop	viral_vf_hits	0.0			332	500	5	10
+Pseudomonas	filtered	10	whole_drop	crossing_vf_hits	0.008877995642701525			332	500	5	10
+Pseudomonas	filtered	20	predicted_trim	viral_retention	0.9947195503596563			443	500	5	10
+Pseudomonas	filtered	20	predicted_trim	host_removed	0.4761554242042326			443	500	5	10
+Pseudomonas	filtered	20	predicted_trim	host_vf_hits	0.09655228758169934			443	500	5	10
+Pseudomonas	filtered	20	predicted_trim	viral_vf_hits	0.0			443	500	5	10
+Pseudomonas	filtered	20	predicted_trim	crossing_vf_hits	0.013864379084967321			443	500	5	10
+Pseudomonas	filtered	20	truth_trim	viral_retention	0.9999999999999999			441	500	5	10
+Pseudomonas	filtered	20	truth_trim	host_removed	0.9999999999999999			441	500	5	10
+Pseudomonas	filtered	20	truth_trim	host_vf_hits	0.0			441	500	5	10
+Pseudomonas	filtered	20	truth_trim	viral_vf_hits	0.0			441	500	5	10
+Pseudomonas	filtered	20	truth_trim	crossing_vf_hits	0.0			441	500	5	10
+Pseudomonas	filtered	20	whole	viral_retention	0.9999999999999999			421	500	5	10
+Pseudomonas	filtered	20	whole	host_removed	0.0			421	500	5	10
+Pseudomonas	filtered	20	whole	host_vf_hits	0.4641530501089325			421	500	5	10
+Pseudomonas	filtered	20	whole	viral_vf_hits	0.0			421	500	5	10
+Pseudomonas	filtered	20	whole	crossing_vf_hits	0.03616830065359477			421	500	5	10
+Pseudomonas	filtered	20	whole_drop	viral_retention	0.31891339869281043			429	500	5	10
+Pseudomonas	filtered	20	whole_drop	host_removed	0.6810866013071895			429	500	5	10
+Pseudomonas	filtered	20	whole_drop	host_vf_hits	0.06264705882352942			429	500	5	10
+Pseudomonas	filtered	20	whole_drop	viral_vf_hits	0.0			429	500	5	10
+Pseudomonas	filtered	20	whole_drop	crossing_vf_hits	0.010089869281045752			429	500	5	10
+Pseudomonas	strict	0	predicted_trim	viral_retention	0.9999999999999999			324	500	5	10
+Pseudomonas	strict	0	predicted_trim	host_removed				0	500	0	10
+Pseudomonas	strict	0	predicted_trim	host_vf_hits	0.0			324	500	5	10
+Pseudomonas	strict	0	predicted_trim	viral_vf_hits	0.0			324	500	5	10
+Pseudomonas	strict	0	predicted_trim	crossing_vf_hits	0.0			324	500	5	10
+Pseudomonas	strict	0	truth_trim	viral_retention	0.9999999999999999			312	500	5	10
+Pseudomonas	strict	0	truth_trim	host_removed				0	500	0	10
+Pseudomonas	strict	0	truth_trim	host_vf_hits	0.0			312	500	5	10
+Pseudomonas	strict	0	truth_trim	viral_vf_hits	0.0			312	500	5	10
+Pseudomonas	strict	0	truth_trim	crossing_vf_hits	0.0			312	500	5	10
+Pseudomonas	strict	0	whole	viral_retention	0.9999999999999999			316	500	5	10
+Pseudomonas	strict	0	whole	host_removed				0	500	0	10
+Pseudomonas	strict	0	whole	host_vf_hits	0.0			316	500	5	10
+Pseudomonas	strict	0	whole	viral_vf_hits	0.0			316	500	5	10
+Pseudomonas	strict	0	whole	crossing_vf_hits	0.0			316	500	5	10
+Pseudomonas	strict	0	whole_drop	viral_retention	0.9999999999999999			332	500	5	10
+Pseudomonas	strict	0	whole_drop	host_removed				0	500	0	10
+Pseudomonas	strict	0	whole_drop	host_vf_hits	0.0			332	500	5	10
+Pseudomonas	strict	0	whole_drop	viral_vf_hits	0.0			332	500	5	10
+Pseudomonas	strict	0	whole_drop	crossing_vf_hits	0.0			332	500	5	10
+Pseudomonas	strict	10	predicted_trim	viral_retention	0.9993692684140818			288	500	5	10
+Pseudomonas	strict	10	predicted_trim	host_removed	0.18860898023073092			288	500	5	10
+Pseudomonas	strict	10	predicted_trim	host_vf_hits	0.07534041394335511			288	500	5	10
+Pseudomonas	strict	10	predicted_trim	viral_vf_hits	0.0			288	500	5	10
+Pseudomonas	strict	10	predicted_trim	crossing_vf_hits	0.01880718954248366			288	500	5	10
+Pseudomonas	strict	10	truth_trim	viral_retention	0.9999999999999999			334	500	5	10
+Pseudomonas	strict	10	truth_trim	host_removed	0.9999999999999999			334	500	5	10
+Pseudomonas	strict	10	truth_trim	host_vf_hits	0.0			334	500	5	10
+Pseudomonas	strict	10	truth_trim	viral_vf_hits	0.0			334	500	5	10
+Pseudomonas	strict	10	truth_trim	crossing_vf_hits	0.0			334	500	5	10
+Pseudomonas	strict	10	whole	viral_retention	0.9999999999999999			323	500	5	10
+Pseudomonas	strict	10	whole	host_removed	0.0			323	500	5	10
+Pseudomonas	strict	10	whole	host_vf_hits	0.1344880174291939			323	500	5	10
+Pseudomonas	strict	10	whole	viral_vf_hits	0.0			323	500	5	10
+Pseudomonas	strict	10	whole	crossing_vf_hits	0.04016339869281045			323	500	5	10
+Pseudomonas	strict	10	whole_drop	viral_retention	0.713937908496732			324	500	5	10
+Pseudomonas	strict	10	whole_drop	host_removed	0.28606209150326795			324	500	5	10
+Pseudomonas	strict	10	whole_drop	host_vf_hits	0.044199346405228754			324	500	5	10
+Pseudomonas	strict	10	whole_drop	viral_vf_hits	0.0			324	500	5	10
+Pseudomonas	strict	10	whole_drop	crossing_vf_hits	0.008877995642701525			324	500	5	10
+Pseudomonas	strict	20	predicted_trim	viral_retention	0.9947195503596563			427	500	5	10
+Pseudomonas	strict	20	predicted_trim	host_removed	0.4761554242042326			427	500	5	10
+Pseudomonas	strict	20	predicted_trim	host_vf_hits	0.07657679738562091			427	500	5	10
+Pseudomonas	strict	20	predicted_trim	viral_vf_hits	0.0			427	500	5	10
+Pseudomonas	strict	20	predicted_trim	crossing_vf_hits	0.012148692810457516			427	500	5	10
+Pseudomonas	strict	20	truth_trim	viral_retention	0.9999999999999999			437	500	5	10
+Pseudomonas	strict	20	truth_trim	host_removed	0.9999999999999999			437	500	5	10
+Pseudomonas	strict	20	truth_trim	host_vf_hits	0.0			437	500	5	10
+Pseudomonas	strict	20	truth_trim	viral_vf_hits	0.0			437	500	5	10
+Pseudomonas	strict	20	truth_trim	crossing_vf_hits	0.0			437	500	5	10
+Pseudomonas	strict	20	whole	viral_retention	0.9999999999999999			436	500	5	10
+Pseudomonas	strict	20	whole	host_removed	0.0			436	500	5	10
+Pseudomonas	strict	20	whole	host_vf_hits	0.359349128540305			436	500	5	10
+Pseudomonas	strict	20	whole	viral_vf_hits	0.0			436	500	5	10
+Pseudomonas	strict	20	whole	crossing_vf_hits	0.0323937908496732			436	500	5	10
+Pseudomonas	strict	20	whole_drop	viral_retention	0.31891339869281043			433	500	5	10
+Pseudomonas	strict	20	whole_drop	host_removed	0.6810866013071895			433	500	5	10
+Pseudomonas	strict	20	whole_drop	host_vf_hits	0.05598856209150327			433	500	5	10
+Pseudomonas	strict	20	whole_drop	viral_vf_hits	0.0			433	500	5	10
+Pseudomonas	strict	20	whole_drop	crossing_vf_hits	0.010089869281045752			433	500	5	10
+Bacillus	filtered	0	predicted_trim	viral_retention	0.9999999999999999			439	500	5	10
+Bacillus	filtered	0	predicted_trim	host_removed				0	500	0	10
+Bacillus	filtered	0	predicted_trim	host_vf_hits	0.0			439	500	5	10
+Bacillus	filtered	0	predicted_trim	viral_vf_hits	0.03043884220354809			439	500	5	10
+Bacillus	filtered	0	predicted_trim	crossing_vf_hits	0.0			439	500	5	10
+Bacillus	filtered	0	truth_trim	viral_retention	0.9999999999999999			449	500	5	10
+Bacillus	filtered	0	truth_trim	host_removed				0	500	0	10
+Bacillus	filtered	0	truth_trim	host_vf_hits	0.0			449	500	5	10
+Bacillus	filtered	0	truth_trim	viral_vf_hits	0.03043884220354809			449	500	5	10
+Bacillus	filtered	0	truth_trim	crossing_vf_hits	0.0			449	500	5	10
+Bacillus	filtered	0	whole	viral_retention	0.9999999999999999			442	500	5	10
+Bacillus	filtered	0	whole	host_removed				0	500	0	10
+Bacillus	filtered	0	whole	host_vf_hits	0.0			442	500	5	10
+Bacillus	filtered	0	whole	viral_vf_hits	0.03043884220354809			442	500	5	10
+Bacillus	filtered	0	whole	crossing_vf_hits	0.0			442	500	5	10
+Bacillus	filtered	0	whole_drop	viral_retention	0.9999999999999999			425	500	5	10
+Bacillus	filtered	0	whole_drop	host_removed				0	500	0	10
+Bacillus	filtered	0	whole_drop	host_vf_hits	0.0			425	500	5	10
+Bacillus	filtered	0	whole_drop	viral_vf_hits	0.03043884220354809			425	500	5	10
+Bacillus	filtered	0	whole_drop	crossing_vf_hits	0.0			425	500	5	10
+Bacillus	filtered	10	predicted_trim	viral_retention	0.9986297306994176			437	500	5	10
+Bacillus	filtered	10	predicted_trim	host_removed	0.16572399636506063			437	500	5	10
+Bacillus	filtered	10	predicted_trim	host_vf_hits	0.03656532057267351			437	500	5	10
+Bacillus	filtered	10	predicted_trim	viral_vf_hits	0.0760749299719888			437	500	5	10
+Bacillus	filtered	10	predicted_trim	crossing_vf_hits	0.042833800186741364			437	500	5	10
+Bacillus	filtered	10	truth_trim	viral_retention	0.9999999999999999			427	500	5	10
+Bacillus	filtered	10	truth_trim	host_removed	0.9999999999999999			427	500	5	10
+Bacillus	filtered	10	truth_trim	host_vf_hits	0.0			427	500	5	10
+Bacillus	filtered	10	truth_trim	viral_vf_hits	0.0760749299719888			427	500	5	10
+Bacillus	filtered	10	truth_trim	crossing_vf_hits	0.0			427	500	5	10
+Bacillus	filtered	10	whole	viral_retention	0.9999999999999999			432	500	5	10
+Bacillus	filtered	10	whole	host_removed	0.0			432	500	5	10
+Bacillus	filtered	10	whole	host_vf_hits	0.13888791627762215			432	500	5	10
+Bacillus	filtered	10	whole	viral_vf_hits	0.0760749299719888			432	500	5	10
+Bacillus	filtered	10	whole	crossing_vf_hits	0.054444833488951135			432	500	5	10
+Bacillus	filtered	10	whole_drop	viral_retention	0.7243199502023032			443	500	5	10
+Bacillus	filtered	10	whole_drop	host_removed	0.2756800497976969			443	500	5	10
+Bacillus	filtered	10	whole_drop	host_vf_hits	0.019116674447556797			443	500	5	10
+Bacillus	filtered	10	whole_drop	viral_vf_hits	0.044183006535947714			443	500	5	10
+Bacillus	filtered	10	whole_drop	crossing_vf_hits	0.0355119825708061			443	500	5	10
+Bacillus	filtered	20	predicted_trim	viral_retention	0.9969187075954573			425	500	5	10
+Bacillus	filtered	20	predicted_trim	host_removed	0.3712618645609955			425	500	5	10
+Bacillus	filtered	20	predicted_trim	host_vf_hits	0.04931917211328976			425	500	5	10
+Bacillus	filtered	20	predicted_trim	viral_vf_hits	0.06513305322128851			425	500	5	10
+Bacillus	filtered	20	predicted_trim	crossing_vf_hits	0.007609710550887022			425	500	5	10
+Bacillus	filtered	20	truth_trim	viral_retention	0.9999999999999999			428	500	5	10
+Bacillus	filtered	20	truth_trim	host_removed	0.9999999999999999			428	500	5	10
+Bacillus	filtered	20	truth_trim	host_vf_hits	0.0			428	500	5	10
+Bacillus	filtered	20	truth_trim	viral_vf_hits	0.06513305322128851			428	500	5	10
+Bacillus	filtered	20	truth_trim	crossing_vf_hits	0.0			428	500	5	10
+Bacillus	filtered	20	whole	viral_retention	0.9999999999999999			429	500	5	10
+Bacillus	filtered	20	whole	host_removed	0.0			429	500	5	10
+Bacillus	filtered	20	whole	host_vf_hits	0.36157018362900717			429	500	5	10
+Bacillus	filtered	20	whole	viral_vf_hits	0.06513305322128851			429	500	5	10
+Bacillus	filtered	20	whole	crossing_vf_hits	0.05334189231248054			429	500	5	10
+Bacillus	filtered	20	whole_drop	viral_retention	0.5251882975412387			425	500	5	10
+Bacillus	filtered	20	whole_drop	host_removed	0.4748117024587613			425	500	5	10
+Bacillus	filtered	20	whole_drop	host_vf_hits	0.045506535947712416			425	500	5	10
+Bacillus	filtered	20	whole_drop	viral_vf_hits	0.0			425	500	5	10
+Bacillus	filtered	20	whole_drop	crossing_vf_hits	0.0			425	500	5	10
+Bacillus	strict	0	predicted_trim	viral_retention	0.9999999999999999			445	500	5	10
+Bacillus	strict	0	predicted_trim	host_removed				0	500	0	10
+Bacillus	strict	0	predicted_trim	host_vf_hits	0.0			445	500	5	10
+Bacillus	strict	0	predicted_trim	viral_vf_hits	0.0			445	500	5	10
+Bacillus	strict	0	predicted_trim	crossing_vf_hits	0.0			445	500	5	10
+Bacillus	strict	0	truth_trim	viral_retention	0.9999999999999999			427	500	5	10
+Bacillus	strict	0	truth_trim	host_removed				0	500	0	10
+Bacillus	strict	0	truth_trim	host_vf_hits	0.0			427	500	5	10
+Bacillus	strict	0	truth_trim	viral_vf_hits	0.0			427	500	5	10
+Bacillus	strict	0	truth_trim	crossing_vf_hits	0.0			427	500	5	10
+Bacillus	strict	0	whole	viral_retention	0.9999999999999999			432	500	5	10
+Bacillus	strict	0	whole	host_removed				0	500	0	10
+Bacillus	strict	0	whole	host_vf_hits	0.0			432	500	5	10
+Bacillus	strict	0	whole	viral_vf_hits	0.0			432	500	5	10
+Bacillus	strict	0	whole	crossing_vf_hits	0.0			432	500	5	10
+Bacillus	strict	0	whole_drop	viral_retention	0.9999999999999999			429	500	5	10
+Bacillus	strict	0	whole_drop	host_removed				0	500	0	10
+Bacillus	strict	0	whole_drop	host_vf_hits	0.0			429	500	5	10
+Bacillus	strict	0	whole_drop	viral_vf_hits	0.0			429	500	5	10
+Bacillus	strict	0	whole_drop	crossing_vf_hits	0.0			429	500	5	10
+Bacillus	strict	10	predicted_trim	viral_retention	0.9986297306994176			428	500	5	10
+Bacillus	strict	10	predicted_trim	host_removed	0.16572399636506063			428	500	5	10
+Bacillus	strict	10	predicted_trim	host_vf_hits	0.01618036103330221			428	500	5	10
+Bacillus	strict	10	predicted_trim	viral_vf_hits	0.0			428	500	5	10
+Bacillus	strict	10	predicted_trim	crossing_vf_hits	0.007609710550887022			428	500	5	10
+Bacillus	strict	10	truth_trim	viral_retention	0.9999999999999999			420	500	5	10
+Bacillus	strict	10	truth_trim	host_removed	0.9999999999999999			420	500	5	10
+Bacillus	strict	10	truth_trim	host_vf_hits	0.0			420	500	5	10
+Bacillus	strict	10	truth_trim	viral_vf_hits	0.0			420	500	5	10
+Bacillus	strict	10	truth_trim	crossing_vf_hits	0.0			420	500	5	10
+Bacillus	strict	10	whole	viral_retention	0.9999999999999999			437	500	5	10
+Bacillus	strict	10	whole	host_removed	0.0			437	500	5	10
+Bacillus	strict	10	whole	host_vf_hits	0.04441332088390912			437	500	5	10
+Bacillus	strict	10	whole	viral_vf_hits	0.0			437	500	5	10
+Bacillus	strict	10	whole	crossing_vf_hits	0.007936507936507938			437	500	5	10
+Bacillus	strict	10	whole_drop	viral_retention	0.7243199502023032			433	500	5	10
+Bacillus	strict	10	whole_drop	host_removed	0.2756800497976969			433	500	5	10
+Bacillus	strict	10	whole_drop	host_vf_hits	0.006341425459072517			433	500	5	10
+Bacillus	strict	10	whole_drop	viral_vf_hits	0.0			433	500	5	10
+Bacillus	strict	10	whole_drop	crossing_vf_hits	0.007609710550887022			433	500	5	10
+Bacillus	strict	20	predicted_trim	viral_retention	0.9969187075954573			438	500	5	10
+Bacillus	strict	20	predicted_trim	host_removed	0.3712618645609955			438	500	5	10
+Bacillus	strict	20	predicted_trim	host_vf_hits	0.0			438	500	5	10
+Bacillus	strict	20	predicted_trim	viral_vf_hits	0.0			438	500	5	10
+Bacillus	strict	20	predicted_trim	crossing_vf_hits	0.0			438	500	5	10
+Bacillus	strict	20	truth_trim	viral_retention	0.9999999999999999			438	500	5	10
+Bacillus	strict	20	truth_trim	host_removed	0.9999999999999999			438	500	5	10
+Bacillus	strict	20	truth_trim	host_vf_hits	0.0			438	500	5	10
+Bacillus	strict	20	truth_trim	viral_vf_hits	0.0			438	500	5	10
+Bacillus	strict	20	truth_trim	crossing_vf_hits	0.0			438	500	5	10
+Bacillus	strict	20	whole	viral_retention	0.9999999999999999			411	500	5	10
+Bacillus	strict	20	whole	host_removed	0.0			411	500	5	10
+Bacillus	strict	20	whole	host_vf_hits	0.1113056333644569			411	500	5	10
+Bacillus	strict	20	whole	viral_vf_hits	0.0			411	500	5	10
+Bacillus	strict	20	whole	crossing_vf_hits	0.000326797385620915			411	500	5	10
+Bacillus	strict	20	whole_drop	viral_retention	0.5251882975412387			422	500	5	10
+Bacillus	strict	20	whole_drop	host_removed	0.4748117024587613			422	500	5	10
+Bacillus	strict	20	whole_drop	host_vf_hits	0.0			422	500	5	10
+Bacillus	strict	20	whole_drop	viral_vf_hits	0.0			422	500	5	10
+Bacillus	strict	20	whole_drop	crossing_vf_hits	0.0			422	500	5	10

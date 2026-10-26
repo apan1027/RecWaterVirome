@@ -1,0 +1,8 @@
+sample_id	mapped_viral_reads	clean_reads	viral_fraction	desc	location	water_condition
+bc1	11001978	30229342	0.36395029703259835	Beijing Tsinghua clean water	Beijing	clean
+bc2	4173361	29015900	0.14383014140522954	Beijing Gaobeidian clean water	Beijing	clean
+bd1	6804199	32130344	0.21176863216901756	Beijing Tsinghua dirty water	Beijing	dirty
+gc1	2084276	24667388	0.08449520476184993	Garching clean water	Garching	clean
+gd1	3100195	21361738	0.14512840668675928	Garching dirty water	Garching	dirty
+oc1	1738051	26252368	0.06620549430055224	Oberschleissheim clean water	Oberschleissheim	clean
+od1	1648195	21368992	0.07713021746650474	Oberschleissheim dirty water	Oberschleissheim	dirty

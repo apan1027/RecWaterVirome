@@ -1,0 +1,18 @@
+{
+  "target": "local observed whole-contig length; no claim of matched viral fractions",
+  "bins_bp": [
+    10000,
+    15000,
+    20000,
+    40000,
+    80000,
+    "infinity"
+  ],
+  "bootstrap": "500 mother resamples; no CI unless all replicates have all target bins",
+  "weighting": "window mean within mother/bin, then mean available mothers/bin, then local target weights",
+  "limitations": [
+    "post-B analysis, not independent validation",
+    "length matching does not fix background or lineage differences",
+    "host/background mix is conditional on available mothers within bins"
+  ]
+}

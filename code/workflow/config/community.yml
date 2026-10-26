@@ -1,0 +1,40 @@
+# Scientific parameters of the community rebuild (analysis-v2026.09.28.1).
+# Authors (display order): Jinlong Ru, Cunli Pan
+# Every value reproduces the historical specification of the source project;
+# sources are listed in docs/ANALYSIS-REBUILD-PLAN.md section 3. Changing a
+# value is a method change and needs a new analysis version.
+calculation_sample_order: [bc1, bc2, bd1, gc1, gd1, oc1, od1]   # historical column order used for all random draws
+virome:
+  detect_covered_fraction: 0.75        # breadth mask: cells below are set to zero
+  tpm_scale: 1000000
+  clr_pseudocount: 1
+  alpha_seed: 42
+  alpha_iterations: 100                # vegan::rrarefy repeats; mean and SD reported
+  alpha_depth: minimum                 # minimum masked read total over samples
+amplicon:
+  filter_min_reads: 5                  # keep a feature with >= 5 reads ...
+  filter_min_samples: 1                # ... in >= 1 sample
+  rarefy_seed: 20260502
+  rarefy_replace: false
+  rarefy_depth: minimum                # post-filter minimum over samples
+  rarefy_row_order: legacy             # legacy = registered historical row order; input_table = ASV table order
+  clr_pseudocount: 1
+  metazoa_subdivision: Metazoa         # 18S rows removed for the microeukaryote view (NA kept)
+diversity:
+  alpha_indices: [observed, shannon, pielou, faith]
+  pcoa_k: 2
+  permanova_formula: "~ location + water_condition"
+  permanova_by: margin
+  permanova_permutations: 999
+  permanova_seed: 42                   # set once per assay before its distances, as in the source
+  betadisper_groups: [water_condition, location]
+  betadisper_permutations: 9999
+  betadisper_seed: 42                  # reset before every permutest call, as in the source
+crossomics:
+  assays: [virome, bact_16s, euk_18s_microeuk]
+  seed: 42                             # set once before all pairs
+  permutations: 999
+  mantel_method: spearman
+  pcoa_k: full_rank                    # n - 1 = 6
+hosts:
+  iphop_min_confidence: 90

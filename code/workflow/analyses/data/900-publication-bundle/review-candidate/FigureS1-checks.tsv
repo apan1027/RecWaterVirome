@@ -1,0 +1,13 @@
+check	expected	observed	tolerance	pass	source
+Supplementary Figures 1 and 2 share one text-size override (v40)	9.2, 9.2, 9.2	9.2, 9.2, 9.2	0	TRUE	config/style.yml
+definitions.tsv:catalogue_votu	3060	3060	0	TRUE	checkv_catalogue.tsv
+five CheckV classes (167/142/450/2254/47)	 167,  142,  450, 2254,   47	 167,  142,  450, 2254,   47	0	TRUE	regression constant; class totals also checked in 110 against definitions.tsv
+rarefaction curve columns are numeric or the literal NA	0	0	0	TRUE	rarefaction_curves.tsv
+curve layers and samples (4 layers x 7 samples)	28	28	0	TRUE	
+each curve ends at its own observed total (no extrapolation)	28	28	0	TRUE	
+curve end equals the observed feature count	TRUE	TRUE	0	TRUE	
+masked-virome curve ends equal the masked richness of panel b	991, 793, 602,  60, 533, 124, 274	991, 793, 602,  60, 533, 124, 274	0	TRUE	depth.tsv
+Spearman rho shown (3 dp)	0.857	0.857	0	TRUE	regression constant (dev/390 depth check)
+depth points	7	7	0	TRUE	
+plot-values panel letters follow the plot tags (length, depth, subsampling curves)	a, b, c	a, b, c	0	TRUE	plot objects
+S1 plot-values cover panels a-c	A, B, C	A, B, C	0	TRUE	

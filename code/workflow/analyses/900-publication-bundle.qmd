@@ -1,0 +1,466 @@
+---
+title: "900-publication-bundle"
+subtitle: "Review bundle and local overview; review scope and findings are recorded in metadata/review-log.tsv"
+author:
+  - name: Jinlong Ru
+    orcid: "0000-0002-6757-6018"
+  - name: Cunli Pan
+    orcid: "0000-0002-2595-7533"
+date: today
+params:
+  name: "900-publication-bundle"
+---
+
+**Updated: `r format(Sys.time(), '%Y-%m-%d %H:%M:%S %Z %z', tz = 'Europe/Berlin')`.**
+
+```{r}
+#| label: params
+#| eval: !expr interactive()
+#| include: false
+params <- list(name = "900-publication-bundle")
+```
+
+```{r}
+#| label: setup
+#| include: false
+#| message: false
+#| warning: false
+#| cache: false
+wd <- "analyses"
+if (basename(getwd()) != wd) {
+    setwd(here::here(wd))
+}
+here::i_am(paste0(params$name, ".qmd"), uuid = "09740201-c4bb-4530-ad75-4018679bd869")
+qproj::proj_create_dir_target(params$name, clean = FALSE)
+
+# convenience helpers
+path_target <- qproj::proj_path_target(params$name)
+path_source <- qproj::proj_path_source(params$name)
+path_raw <- path_source("00-raw")
+path_resource <- here::here(path_raw, "d00-resource")
+path_data <- here::here(path_raw, paste0("d", params$name))
+dir.create(path_raw, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_data, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_resource, recursive = TRUE, showWarnings = FALSE)
+```
+
+```{r}
+#| label: packages
+#| message: false
+#| warning: false
+#| cache: false
+# qproj template chunk, trimmed: this step uses base R plus the project
+# helpers in R/ (no tidyverse/data.table stack).
+suppressPackageStartupMessages({
+  devtools::load_all()
+})
+```
+
+```{r}
+#| label: step-guard
+#| cache: false
+# Checks params$name, path_target() and here() against config/workflow.yml
+# and opens a staging folder for this run's outputs.
+step <- rwv_step_begin(params$name, path_target)
+# New outputs are staged; the previous result stays until rwv_step_finish()
+# has checked and published the new one.
+path_target <- step$path_target
+```
+
+```{r}
+#| label: report-presentation
+#| include: false
+rwv_report_setup(step)
+```
+
+<!-- RWV_REPORT_SUMMARY_POSITION -->
+
+<details class="rwv-analysis-details">
+<summary>Analysis steps, methods and full verification</summary>
+
+## Tasks
+
+Copy the generated, self-checked figures and tables into review-candidate/, compare every source/copy SHA256 and build a local overview HTML. Copying does not refit, rescale or relabel figures.
+
+Review status is read from metadata/review-log.tsv, including the scope and exclusions of each historical review. Current author acceptance and engineering checks are recorded separately in CODE-CHANGELOG.md; historical implementer/reviewer verdicts are not retroactively rewritten. A successful packaging step does not establish complete scientific/manuscript final review or submission readiness.
+
+### Task 1: Inputs
+
+```{r}
+#| label: inputs
+manifest <- rwv_read_tsv(rwv_step_input(step, path_source, "010-input-manifest", "input-manifest.tsv"))
+figures <- rwv_figures_read(rwv_project_input(step, "config/figures.yml", manifest))
+# Register of the figures actually looked at, with the sha256 of the PNG that
+# was viewed; the status matrix below is derived from it rather than asserted.
+visual <- as.data.frame(rwv_read_tsv(rwv_project_input(step, "metadata/visual-review.tsv", manifest)))
+# Register of independent reviews: what each one covered and what it did not.
+# The per-figure review status is derived from it, never hard-coded.
+reviews <- as.data.frame(rwv_read_tsv(rwv_project_input(step, "metadata/review-log.tsv", manifest)))
+defs <- rwv_definitions_read(rwv_project_input(step, "config/definitions.tsv", manifest))
+checks <- rwv_checks_new()
+src <- function(from, file) rwv_step_input(step, path_source, from, file)
+```
+
+### Task 2: Copy figures/tables and verify hashes
+
+```{r}
+#| label: copy
+bundle <- path_target("review-candidate")
+dir.create(bundle, showWarnings = FALSE)
+plan <- list()
+add <- function(from, file, target, kind) plan[[length(plan) + 1L]] <<- list(from = from, file = file, target = target, kind = kind)
+# 2026-10-17 numbering: S1 quality (210), S2 sharing and host links (210), S3 NARP (220, adopted v35 figure),
+# S4 VF calibration (230). The former global six-panel S4 stays Supplementary Note 4.
+journal_name <- c(fig1 = "Figure1", fig2 = "Figure2", fig3 = "Figure3", fig4 = "Figure4", fig5 = "Figure5",
+                  sfig1 = "FigureS1", sfig2 = "FigureS2", sfig3 = "FigureS3", sfig4 = "FigureS4")
+for (key in names(journal_name)) {
+  spec <- figures[[key]]
+  for (ext in c("pdf", "svg", "png", "tiff")) {
+    add(spec$step, paste0(key, ".", ext), paste0(journal_name[[key]], ".", ext), "figure")
+  }
+  add(spec$step, paste0(key, "-legend.md"), paste0(journal_name[[key]], "-legend.md"), "legend")
+  add(spec$step, paste0(key, "-plot-values.tsv"), paste0(journal_name[[key]], "-plot-values.tsv"), "plot values")
+  add(spec$step, paste0(key, "-checks.tsv"), paste0(journal_name[[key]], "-checks.tsv"), "numeric checks")
+  add(spec$step, paste0(key, "-export.json"), paste0(journal_name[[key]], "-export.json"), "export record")
+}
+# No figure runs onto a second page since 2026-10-17 (the former S1 continuation is Supplementary Figure 2).
+extra_pages <- setNames(character(0), character(0))
+for (key in names(extra_pages)) {
+  spec <- figures[[key]]
+  for (ext in c("pdf", "svg", "png", "tiff")) {
+    add(spec$step, paste0(key, ".", ext), paste0(extra_pages[[key]], ".", ext), "figure")
+  }
+  add(spec$step, paste0(key, "-export.json"), paste0(extra_pages[[key]], "-export.json"), "export record")
+}
+# Supplementary Note 1: generated by 220 (Supplementary Figure 3 since 2026-10-17); it carries the former
+# e/f results (Tables A and B). Copied as its own file, linked from the navigation and the S3 card.
+# The 83 co-detected host links drawn in Supplementary Figure 2c, one row each (for the learning page and readers).
+add("210-sfig1-qc-community", "sfig2-links.tsv", "FigureS2-links.tsv", "plot values")
+add("220-sfig2-function-context", "supplementary-note-1-narp.md", "Supplementary_Note_1_NARP.md", "supplementary note")
+add("230-sfig3-vf-calibration", "supplementary-note-3-vf-context.md", "Supplementary_Note_3_VF_context.md", "supplementary note")
+add("240-sfig4-global-sensitivity", "supplementary-note-4-global.md", "Supplementary_Note_4_Global.md", "supplementary note")
+add("240-sfig4-global-sensitivity", "supplementary-note-4-global.html", "Supplementary_Note_4_Global.html", "supplementary note")
+add("240-sfig4-global-sensitivity", "supplementary-note-4-firth-summary.tsv", "Supplementary_Note_4_Firth_summary.tsv", "supplementary note")
+add("240-sfig4-global-sensitivity", "supplementary-note-4-data-navigation.tsv", "Supplementary_Note_4_Data_navigation.tsv", "supplementary note")
+add("240-sfig4-global-sensitivity", "global-note-gaps.tsv", "Supplementary_Note_4_gaps.tsv", "supplementary note")
+add("240-sfig4-global-sensitivity", "global-note-checks.tsv", "Supplementary_Note_4_checks.tsv", "supplementary note")
+add("040-vf-inputs", "supplementary-note-5-process-ecology.md", "Supplementary_Note_5_Process_ecology.md", "supplementary note")
+add("040-vf-inputs", "process_comparison_members.tsv", "Process_comparison_members.tsv", "ecology member register")
+add("040-vf-inputs", "process_input_diagnostics.tsv", "Process_input_diagnostics.tsv", "ecology input diagnostics")
+add("020-community-analysis", "community-version.tsv", "analysis-version.tsv", "analysis version")
+add("310-table1-definitions", "table1.tsv", "Table1.tsv", "table")
+add("310-table1-definitions", "table1.md", "Table1.md", "table")
+add("310-table1-definitions", "table1-full-definitions.tsv", "Table1_full_definitions.tsv", "definition ledger")
+add("320-data1-local", "Data1_local.xlsx", "Data1_local.xlsx", "data workbook")
+add("320-data1-local", "data1-index.tsv", "Data1_sheet_index.tsv", "data index")
+add("320-data1-local", "data1-README.md", "Data1_README.md", "data index")
+add("330-data2-global", "Data2_global.xlsx", "Data2_global.xlsx", "data workbook")
+add("330-data2-global", "data2-index.tsv", "Data2_sheet_index.tsv", "data index")
+add("330-data2-global", "data2-README.md", "Data2_README.md", "data index")
+add("320-data1-local", "data1-field-dictionary.tsv", "Data1_field_dictionary.tsv", "data dictionary")
+add("330-data2-global", "data2-field-dictionary.tsv", "Data2_field_dictionary.tsv", "data dictionary")
+# One machine-readable TSV per workbook sheet, as the two READMEs promise. The
+# list comes from each sheet index, so a new sheet is packaged without editing
+# this step (it only has to be declared as an upstream input in workflow.yml).
+sheet_sets <- list(list(from = "320-data1-local", index = "data1-index.tsv", dir = "Data1_tables", book = "Data1_local.xlsx"),
+                   list(from = "330-data2-global", index = "data2-index.tsv", dir = "Data2_tables", book = "Data2_global.xlsx"))
+for (ss in sheet_sets) {
+  ss$sheets <- as.data.frame(rwv_read_tsv(src(ss$from, ss$index)))$sheet
+  dir.create(file.path(bundle, ss$dir), showWarnings = FALSE)
+  for (sh in ss$sheets) add(ss$from, paste0(sh, ".tsv"), file.path(ss$dir, paste0(sh, ".tsv")), "sheet table")
+}
+
+rows <- list()
+for (p in plan) {
+  from_path <- src(p$from, p$file)
+  to_path <- file.path(bundle, p$target)
+  ok <- file.copy(from_path, to_path, overwrite = TRUE)
+  if (!ok) rwv_fail("Could not copy ", p$file)
+  sha_src <- rwv_sha256(from_path)
+  sha_dst <- rwv_sha256(to_path)
+  rows[[length(rows) + 1L]] <- data.frame(
+    target = p$target, kind = p$kind, source_step = p$from, source_file = p$file,
+    bytes = file.size(to_path), source_sha256 = sha_src, copy_sha256 = sha_dst, identical = identical(sha_src, sha_dst))
+}
+copies <- do.call(rbind, rows)
+rwv_check(checks, "every copy is byte-identical to its source", TRUE, all(copies$identical))
+# Nine figure pages (5 main, 4 supplementary); global sensitivity is supplied as Supplementary Note 4.
+rwv_check(checks, "nine logical figures on nine pages, four formats each (PDF, SVG, PNG, TIFF)",
+          4L * (length(journal_name) + length(extra_pages)), sum(copies$kind == "figure"))
+rwv_check(checks, "Supplementary Note 1 is packaged once, byte-identical to its 220 source", 1L,
+          sum(copies$target == "Supplementary_Note_1_NARP.md" & copies$identical))
+# Every data sheet has exactly one packaged TSV, and each TSV has the same
+# rows and columns as the sheet read back from the packaged workbook.
+for (ss in sheet_sets) {
+  sheets <- as.data.frame(rwv_read_tsv(src(ss$from, ss$index)))$sheet
+  book <- file.path(bundle, ss$book)
+  rwv_check(checks, paste(ss$book, "sheets = INDEX, FIELDS + one packaged TSV each"), c("INDEX", "FIELDS", sort(sheets)),
+            c(readxl::excel_sheets(book)[1:2], sort(sub("\\.tsv$", "", list.files(file.path(bundle, ss$dir), pattern = "\\.tsv$")))))
+  dims <- vapply(sheets, function(sh) {
+    x <- as.data.frame(readxl::read_xlsx(book, sheet = sh, guess_max = 1e6))
+    y <- as.data.frame(rwv_read_tsv(file.path(bundle, ss$dir, paste0(sh, ".tsv"))))
+    identical(dim(x), dim(y)) && identical(names(x), names(y))
+  }, logical(1))
+  rwv_check(checks, paste(ss$dir, "TSVs match their workbook sheets (rows, columns, names)"), TRUE, all(dims),
+            source = paste("readxl on", ss$book))
+}
+# Supplementary figure notes (figure-expression revision 2026-10-07): the detailed notes moved out of
+# the short captions are compiled from the same generated legends into one shareable file in the bundle.
+notes_legends <- setNames(vapply(names(journal_name), function(key) src(figures[[key]]$step, paste0(key, "-legend.md")), ""),
+                          vapply(names(journal_name), function(key) figures[[key]]$label, ""))
+notes_file <- file.path(bundle, "Supplementary_figure_notes.md")
+writeLines(rwv_figure_notes_compile(notes_legends), notes_file, useBytes = TRUE)
+notes_txt <- readLines(notes_file, warn = FALSE, encoding = "UTF-8")
+rwv_check(checks, "supplementary figure notes have one section per figure, in figure order", unname(names(notes_legends)),
+          sub("^## ", "", grep("^## ", notes_txt, value = TRUE)), source = "Supplementary_figure_notes.md")
+rwv_check(checks, "every caption points to its section of the supplementary figure notes", TRUE,
+          all(vapply(names(journal_name), function(key) {
+            any(grepl(paste0("Supplementary figure notes, ", figures[[key]]$label, "[.;]"),
+                      readLines(notes_legends[[figures[[key]]$label]], warn = FALSE, encoding = "UTF-8")))
+          }, logical(1))))
+rwv_check(checks, "Supplementary Figure 4 is the VF calibration figure of 230, not the retired global S4", TRUE,
+          all(copies$source_step[grepl("^FigureS4", copies$target)] == "230-sfig3-vf-calibration") && sum(grepl("^FigureS4[.]", copies$target)) == 4L)
+rwv_check(checks, "all six Note 4 deliverables packaged", 6L, sum(grepl("^Supplementary_Note_4_", copies$target)))
+note_links <- c("Data2_global.xlsx", "Data2_sheet_index.tsv", "Data2_field_dictionary.tsv")
+rwv_check(checks, "Note 4 data links resolve in bundle", TRUE, all(file.exists(file.path(bundle,note_links))))
+# Author-approved Note5 adds one unique overview link and two complete data tables.
+ecology_targets <- c("Supplementary_Note_5_Process_ecology.md", "Data1_tables/S54_process_community.tsv",
+                     "Data1_tables/S55_process_VF_contribution.tsv", "Process_comparison_members.tsv", "Process_input_diagnostics.tsv")
+rwv_check(checks, "Note5 and complete symmetric ecology evidence packaged", TRUE,
+          all(ecology_targets %in% copies$target) && all(file.exists(file.path(bundle, ecology_targets))))
+rwv_write_tsv(copies, path_target("bundle-manifest.tsv"))
+knitr::kable(head(copies[, c("target", "kind", "bytes", "identical")], 12))
+```
+
+### Task 3: Collect checks and historically scoped reviews
+
+```{r}
+#| label: status
+# Each review row names its report; the report must still be the file that
+# was reviewed (sha256), otherwise the row cannot be cited.
+for (i in which(nzchar(reviews$report) & !is.na(reviews$report))) {
+  rp <- rwv_project_input(step, reviews$report[i], manifest)
+  rwv_check(checks, paste("review report unchanged:", reviews$scope[i]), reviews$report_sha256[i],
+            rwv_sha256(rp), source = "metadata/review-log.tsv")
+}
+rwv_check(checks, "review log has the twelve registered scopes", c("community-migration-evidence", "fig345-d-adoption", "fig345-v39-fixes", "figure-cleanup-v50", "figure-final-review", "figure-polish-v44", "figure2-supplement-adoption", "release-closeout-v50", "s4-note-adoption", "supp34-h-fonts", "text-s1-v45", "workflow-revision"),
+          sort(reviews$scope), source = "metadata/review-log.tsv")
+fin <- reviews[reviews$scope == "figure-final-review", , drop = FALSE]
+wf_rev <- reviews[reviews$scope == "workflow-revision", , drop = FALSE]
+review_state <- paste0(
+  if (identical(fin$verdict, "passed")) sprintf("figure final review passed (%s, %s)", fin$reviewer, fin$date) else "figure final review not done",
+  "; workflow revision ", wf_rev$verdict, " (", wf_rev$reviewer, ", ", wf_rev$date, ")")
+adoption <- reviews[reviews$scope == "s4-note-adoption", , drop=FALSE]
+review_state <- paste0(review_state, "; S4-to-Note adoption: ", adoption$verdict, " (", adoption$reviewer, "; current adoption not independently certified)")
+# 2026-10-17: Figure 2 and Supplementary Figures 1-4 adoption; the earlier figure final review does not cover it.
+f2 <- reviews[reviews$scope == "figure2-supplement-adoption", , drop = FALSE]
+review_state <- paste0(review_state, "; Figure 2 / Supplementary Figures 1-4 adoption 2026-10-17: ", f2$verdict, " (", f2$reviewer, ")")
+# 2026-10-18 (v38): Figures 3-5 redrawn as the panel-consult version D; not covered by the earlier figure final review.
+f345 <- reviews[reviews$scope == "fig345-d-adoption", , drop = FALSE]
+review_state <- paste0(review_state, "; Figures 3-5 version-D adoption 2026-10-18: ", f345$verdict, " (", f345$reviewer, ")")
+f39 <- reviews[reviews$scope == "fig345-v39-fixes", , drop = FALSE]
+review_state <- paste0(review_state, "; Figures 3-5 v39 fixes 2026-10-18: ", f39$verdict, " (", f39$reviewer, ")")
+f40 <- reviews[reviews$scope == "supp34-h-fonts", , drop = FALSE]
+review_state <- paste0(review_state, "; Supplementary Figures 3-4 layout H and six-figure type size 2026-10-18: ", f40$verdict, " (", f40$reviewer, ")")
+f44 <- reviews[reviews$scope == "figure-polish-v44", , drop = FALSE]
+review_state <- paste0(review_state, "; four figure fixes (Figures 1, 3, Supplementary Figure 1) 2026-10-18: ", f44$verdict, " (", f44$reviewer, ")")
+f45 <- reviews[reviews$scope == "text-s1-v45", , drop = FALSE]
+review_state <- paste0(review_state, "; text fixes and Supplementary Figure 1 trimming 2026-10-18: ", f45$verdict, " (", f45$reviewer, ")")
+# 2026-10-19 (v50): nine-figure cleanup content review (Codex) and the release engineering (implementer, pending).
+f50 <- reviews[reviews$scope == "figure-cleanup-v50", , drop = FALSE]
+r50 <- reviews[reviews$scope == "release-closeout-v50", , drop = FALSE]
+review_state <- paste0(review_state, "; nine-figure cleanup content review 2026-10-19: ", f50$verdict, " (", f50$reviewer,
+                       "); release engineering 2026-10-19: ", r50$verdict, " (", r50$reviewer, ")")
+rwv_write_tsv(reviews[, c("scope", "reviewer", "date", "verdict", "covers", "does_not_cover", "report")], path_target("review-status.tsv"))
+knitr::kable(reviews[, c("scope", "reviewer", "date", "verdict")])
+
+qa <- list()
+for (key in names(journal_name)) {
+  spec <- figures[[key]]
+  rec <- jsonlite::read_json(src(spec$step, paste0(key, "-export.json")))
+  checks_tbl <- as.data.frame(rwv_read_tsv(src(spec$step, paste0(key, "-checks.tsv"))))
+  # Visual status: only the PNG whose hash is registered counts as reviewed.
+  png_sha <- rwv_sha256(src(spec$step, paste0(key, ".png")))
+  # A figure may have one registered row per reviewed PNG (for example the R3
+  # baseline and an analysis-version candidate); the current PNG must match one.
+  # v50 (2026-10-19): the matching rule is rwv_visual_review_state() so that it is unit-tested
+  # (scripts/selftest-reuse-validation.R); a hash registered twice is rejected, as before.
+  vis <- rwv_visual_review_state(visual, key, png_sha)
+  # HTML status: the rendered page of the step that built the figure.
+  html <- file.path(step$root, "analyses", paste0(spec$step, ".html"))
+  qa[[length(qa) + 1L]] <- data.frame(
+    figure = spec$label, step = spec$step,
+    size_mm = sprintf("%g x %g", rec$width_mm, rec$height_mm),
+    numeric_checks = sprintf("%d passed", nrow(checks_tbl)),
+    export_checks = sprintf("%d passed", length(rec$qa)),
+    design = "complete", implementation = "complete",
+    numeric_verification = sprintf("%d assertions passed in %s", nrow(checks_tbl), paste0(key, "-checks.tsv")),
+    visual_verification = vis,
+    html_render = if (file.exists(html)) sprintf("%s present (%s)", basename(html), format(file.mtime(html), "%Y-%m-%d")) else "not rendered",
+    codex_review = review_state, png_sha256 = png_sha)
+}
+status <- do.call(rbind, qa)
+rwv_check(checks, "every figure has a current registered visual review", length(journal_name),
+          sum(grepl("^viewed", status$visual_verification)), source = "metadata/visual-review.tsv")
+rwv_check(checks, "every step has a rendered HTML page", length(journal_name), sum(!grepl("^not rendered", status$html_render)))
+# A continuation page is its own image and therefore needs its own registered
+# visual review; the first page's signature does not cover it.
+cont_vis <- vapply(names(extra_pages), function(kk) {
+  sha <- rwv_sha256(src(figures[[kk]]$step, paste0(kk, ".png")))
+  vv <- visual[visual$figure_key == kk & visual$png_sha256 == sha, , drop = FALSE]
+  nrow(vv) == 1L && isTRUE(grepl("^viewed", vv$verdict[[1]]))
+}, logical(1))
+rwv_check(checks, "every continuation page has a current registered visual review", TRUE, all(cont_vis),
+          source = "metadata/visual-review.tsv")
+rwv_write_tsv(status, path_target("figure-status.tsv"))
+rwv_check(checks, "status covers nine figures", length(journal_name), nrow(status))
+rwv_check(checks, "figure review status follows the review log", review_state, unique(status$codex_review),
+          source = "metadata/review-log.tsv")
+knitr::kable(status[, c("figure", "size_mm", "numeric_checks", "export_checks", "codex_review")])
+```
+
+### Task 4: Build overview HTML
+
+```{r}
+#| label: overview
+legend_of <- function(key) {
+  spec <- figures[[key]]
+  rwv_read_legend(src(spec$step, paste0(key, "-legend.md")))
+}
+esc <- function(x) {
+  x <- gsub("&", "&amp;", x, fixed = TRUE); x <- gsub("<", "&lt;", x, fixed = TRUE)
+  gsub(">", "&gt;", x, fixed = TRUE)
+}
+# Which logical figure each continuation page belongs to, and the block that
+# puts that page inside the same overview card.
+page_parent <- setNames(character(0), character(0))
+cont_block <- function(key) {
+  k2 <- names(page_parent)[page_parent == key]
+  if (!length(k2)) return("")
+  paste0(vapply(k2, function(kk) {
+    jn2 <- extra_pages[[kk]]; sp2 <- figures[[kk]]
+    paste0("<p class='meta'>", esc(sp2$label), " &middot; ", sp2$width_mm, " &times; ", sp2$height_mm,
+           " mm &middot; same legend and numeric checks as the first page</p>\n",
+           "<a href='review-candidate/", jn2, ".png'><img src='review-candidate/", jn2, ".png' alt='", esc(sp2$label), "'></a>\n",
+           "<p class='meta'>Continuation page files: <a href='review-candidate/", jn2, ".pdf'>PDF</a>, ",
+           "<a href='review-candidate/", jn2, ".svg'>SVG</a>, ",
+           "<a href='review-candidate/", jn2, "-export.json'>export record</a></p>\n")
+  }, character(1)), collapse = "")
+}
+cards <- vapply(names(journal_name), function(key) {
+  spec <- figures[[key]]
+  lg <- legend_of(key)
+  jn <- journal_name[[key]]
+  paste0(
+    "<section id='", jn, "'>\n<h2>", esc(lg$title), "</h2>\n",
+    "<p class='meta'>", esc(spec$label), " &middot; ", spec$width_mm, " &times; ", spec$height_mm,
+    " mm &middot; built by <code>analyses/", spec$step, ".qmd</code></p>\n",
+    "<a href='review-candidate/", jn, ".png'><img src='review-candidate/", jn, ".png' alt='", esc(spec$label), "'></a>\n",
+    # A figure that runs onto a second page shows both pages in the same card.
+    cont_block(key),
+    if (key == "sfig2") "<p class='meta'>All 83 links drawn in c, one row each: <a href='review-candidate/FigureS2-links.tsv'>FigureS2-links.tsv</a>.</p>\n" else "",
+    # S3 (NARP): direct link to Supplementary Note 1 (former panels e/f), outside the collapsed details.
+    if (key == "sfig3") paste0("<p class='meta'>Locus-depth and reference-position checks (formerly panels e and f) and the host background: ",
+                               "<a href='review-candidate/Supplementary_Note_1_NARP.md'>Supplementary Note 1</a>.</p>\n") else "",
+    if (key == "sfig4") "<p class='meta'>Detailed strata, retention and model scope: <a href='review-candidate/Supplementary_Note_3_VF_context.md'>Supplementary Note 3</a>.</p>" else "",
+    "<p class='reading-guide'>", paste(esc(lg$guide), collapse = "<br>"), "</p>\n",
+    "<details><summary>Full legend (English)</summary><p>", esc(lg$en), "</p>",
+    "<p class='meta'>Complete legend file: <a href='review-candidate/", jn, "-legend.md'>", jn, "-legend.md</a></p></details>\n",
+    "<details><summary>Supplementary figure notes</summary><ul>", paste0("<li>", esc(lg$notes), "</li>", collapse = ""),
+    "</ul><p class='meta'>Also in <a href='review-candidate/Supplementary_figure_notes.md'>Supplementary_figure_notes.md</a>.</p></details>\n",
+    "<details><summary>Sources and files</summary><ul>",
+    paste0("<li>", esc(lg$sources), "</li>", collapse = ""),
+    "<li>Vector files: <a href='review-candidate/", jn, ".pdf'>PDF</a>, <a href='review-candidate/", jn,
+    ".svg'>SVG</a>; plotted values: <a href='review-candidate/", jn, "-plot-values.tsv'>TSV</a>; ",
+    "checks: <a href='review-candidate/", jn, "-checks.tsv'>numeric</a>, <a href='review-candidate/", jn,
+    "-export.json'>export</a></li></ul></details>\n</section>\n")
+}, character(1))
+nav <- paste0("<a href='#", journal_name, "'>", journal_name, "</a>", collapse = " ")
+cv <- as.data.frame(rwv_read_tsv(src("020-community-analysis", "community-version.tsv")))
+rwv_check(checks, "community results come from one active version", 1L, length(unique(paste(cv$active_version, cv$source))))
+version_line <- paste0("<p>Community results (Figures 1, 2, S1; Data 1): analysis version <code>", cv$active_version[1], "</code> (",
+                       if (cv$source[1] == "rebuilt") "computed in this project: TSEs built by step 012 from the migrated SQLite snapshot and amplicon tables, community tables computed by step 020" else
+                         "archived tables of the source project", "); other modules use archived results. <a href='review-candidate/analysis-version.tsv'>Version record</a>.</p>")
+html <- c(
+  "<!DOCTYPE html>", "<html lang='en'><head><meta charset='utf-8'>",
+  "<title>RecWaterVirome figures: review candidate</title>",
+  "<style>body{font-family:Arial,Helvetica,sans-serif;max-width:1100px;margin:0 auto;padding:1.5rem;line-height:1.5;color:#111}",
+  "h1{font-size:1.5rem} h2{font-size:1.1rem;margin-bottom:.2rem} img{max-width:100%;border:1px solid #ddd}",
+  ".meta{color:#555;font-size:.85rem;margin-top:0} .zh{background:#f6f6f6;padding:.6rem;border-left:3px solid #999}",
+  "nav{margin:.8rem 0;font-size:.9rem} nav a{margin-right:.6rem} section{margin-bottom:2.5rem}",
+  "details{font-size:.9rem;margin-top:.4rem} table{border-collapse:collapse;font-size:.85rem}",
+  "td,th{border:1px solid #ddd;padding:.25rem .5rem;text-align:left}</style></head><body>",
+  "<h1>RecWaterVirome: figures, tables and data</h1>",
+  paste0("<p><strong>Status: ", esc(review_state), ".</strong> ",
+         "The workflow review covers the pipeline and the community migration evidence, not the full manuscript or every scientific conclusion; ",
+         "see the <a href='review-status.tsv'>review record</a>. ",
+         "This is a review candidate, not an accepted submission package. Generated ", format(Sys.time(), "%Y-%m-%d %H:%M %Z"),
+         " from run <code>", step$run_id, "</code>.</p>"),
+  version_line,
+  "<p>Previews below are the 300 dpi PNGs; the vector PDF and SVG of the same assembled object are linked under each figure.</p>",
+  paste0("<nav>", nav, " &middot; <a href='#tables'>Table 1 and data</a> &middot; ",
+         "<a href='review-candidate/Supplementary_figure_notes.md'>Supplementary figure notes</a> &middot; ",
+         "<a href='review-candidate/Supplementary_Note_1_NARP.md'>Supplementary Note 1</a> &middot; <a href='review-candidate/Supplementary_Note_3_VF_context.md'>Supplementary Note 3</a> &middot; <a href='review-candidate/Supplementary_Note_4_Global.html'>Supplementary Note 4</a> &middot; <a href='review-candidate/Supplementary_Note_5_Process_ecology.md'>Supplementary Note 5: process-water comparisons</a></nav>"),
+  cards,
+  "<section id='Note4'><h2>Global reference analysis: Supplementary Note 4</h2><p>The former six-panel global S4 is no longer a submission figure (the current Supplementary Figure 4 is the VF calibration). <a href='review-candidate/Supplementary_Note_4_Global.html'>View Note 4</a> · <a href='review-candidate/Supplementary_Note_4_Global.md'>Markdown</a> · <a href='review-candidate/Supplementary_Note_4_Firth_summary.tsv'>Firth summary</a> · <a href='review-candidate/Supplementary_Note_4_Data_navigation.tsv'>Data navigation</a> · <a href='review-candidate/Supplementary_Note_4_gaps.tsv'>Unresolved records</a> · <a href='review-candidate/Supplementary_Note_4_checks.tsv'>Numeric checks</a></p></section>",
+  "<section id='tables'><h2>Table 1, Data 1 and Data 2</h2><ul>",
+  "<li><a href='review-candidate/Table1.md'>Table 1</a> (also <a href='review-candidate/Table1.tsv'>TSV</a>): the 12 core study units, counts and limits; all registered definitions with sources in the <a href='review-candidate/Table1_full_definitions.tsv'>full definition table</a>.</li>",
+  "<li><a href='review-candidate/Data1_local.xlsx'>Data 1 (local)</a> &middot; <a href='review-candidate/Data1_sheet_index.tsv'>sheet index</a> &middot; <a href='review-candidate/Data1_field_dictionary.tsv'>field dictionary</a> &middot; <a href='review-candidate/Data1_tables/'>one TSV per sheet</a> &middot; <a href='review-candidate/Data1_README.md'>README</a></li>",
+  "<li><a href='review-candidate/Data2_global.xlsx'>Data 2 (global reference)</a> &middot; <a href='review-candidate/Data2_sheet_index.tsv'>sheet index</a> &middot; <a href='review-candidate/Data2_field_dictionary.tsv'>field dictionary</a> &middot; <a href='review-candidate/Data2_tables/'>one TSV per sheet</a> &middot; <a href='review-candidate/Data2_README.md'>README</a></li>",
+  "<li><a href='bundle-manifest.tsv'>Bundle manifest</a> (source and copy SHA256) &middot; <a href='figure-status.tsv'>Per-figure status</a> &middot; <a href='review-status.tsv'>Review record</a></li>",
+  "</ul></section>", "</body></html>")
+writeLines(html, path_target("overview.html"), useBytes = TRUE)
+rwv_check(checks, "overview links one section per figure", length(journal_name), length(cards))
+# Every relative link of the overview must resolve to a file that exists.
+hrefs <- unlist(regmatches(html, gregexpr("(?<=href=')[^']+", html, perl = TRUE)))
+hrefs <- unique(hrefs[!startsWith(hrefs, "#")])
+missing <- hrefs[!file.exists(file.path(path_target(), hrefs))]
+rwv_check(checks, "every overview link resolves to a file that exists", character(0), missing)
+# Eight logical figures x seven distinct files (PNG, PDF, SVG, plot values, checks, export record,
+# complete legend) plus each continuation page (PNG, PDF,
+# SVG, export record; its legend, plot values and checks belong to the first page),
+# plus Table 1 (table, TSV, full definition table), Data 1 and Data 2 (workbook,
+# sheet index, field dictionary, table folder, README each), the two manifests,
+# the analysis-version record, the review record and the Supplementary figure notes
+# (one file, linked from the navigation and every card; counted once after unique()).
+# Figure-expression revision 2026-10-07: 75 -> 85 (nine legend links + the notes file).
+# S2 adoption 2026-10-14: 85 -> 86 (Supplementary Note 1, linked from the navigation and the S2 card).
+# 2026-10-17: nine figures, no continuation page, plus the S2c link table (FigureS2-links.tsv).
+rwv_check(checks, "overview links the figures, their files, the tables and the manifests",
+          length(journal_name) * 7 + 4 * length(extra_pages) + 3 + 5 + 5 + 2 + 1 + 1 + 1 + 2 + 6 + 1L + 1L, length(hrefs))
+```
+
+### Task 5: Record checks and the run
+
+```{r}
+#| label: checks
+check_table <- rwv_checks_finish(checks, path_target("bundle-checks.tsv"))
+knitr::kable(check_table[, c("check", "expected", "observed", "pass")])
+rwv_write_session_info(path_target("session-info.txt"),
+                       c(step = params$name, run_id = step$run_id, mode = step$mode, quarto = rwv_quarto_version()))
+```
+
+```{r}
+#| label: step-record
+outputs <- rwv_step_finish(step, path_target)
+knitr::kable(transform(outputs, sha256 = substr(outputs$sha256, 1, 16)), caption = "Outputs recorded in step-record.json")
+rwv_report_complete(step, outputs)
+```
+
+</details>
+
+<details class="rwv-file-details">
+<summary>All output files</summary>
+
+```{r}
+#| label: list-files-target
+rwv_report_files(step, outputs)
+```
+
+</details>
+
+```{r}
+#| label: report-summary
+#| results: asis
+cat(rwv_report_summary(step))
+```

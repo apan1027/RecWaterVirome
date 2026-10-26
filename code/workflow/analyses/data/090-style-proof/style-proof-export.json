@@ -1,0 +1,374 @@
+{
+  "figure": "style-proof",
+  "scientific_content": false,
+  "note": "NON-SCIENTIFIC STYLE PROOF: illustrative deterministic values only",
+  "run_id": "20261020T001926-86706",
+  "width_mm": 180,
+  "height_mm": 160,
+  "png_dpi": 300,
+  "files": [
+    {
+      "format": "pdf",
+      "file": "style-proof.pdf",
+      "device": "quartz_pdf",
+      "bytes": 53081,
+      "sha256": "b2082256c1c6cdbe722ede55669a3f97c2086f1e1c1b56c73e5b70a98582a2fc"
+    },
+    {
+      "format": "svg",
+      "file": "style-proof.svg",
+      "device": "svglite",
+      "bytes": 31880,
+      "sha256": "0a08dd5fbb3c4764b6c6179248171f46470892c46e4ef345a47d9929fdf24db5"
+    },
+    {
+      "format": "png",
+      "file": "style-proof.png",
+      "device": "ragg::agg_png",
+      "bytes": 220958,
+      "sha256": "31d79a3436aa9716b162337087902acf37f27f17f6f1f2163c470a008d28156e"
+    },
+    {
+      "format": "tiff",
+      "file": "style-proof.tiff",
+      "device": "ragg::agg_tiff (LZW)",
+      "bytes": 548214,
+      "sha256": "de2238b858b4ed62927131afe54d586537ec18d5e99f103b173125e58e753bb8"
+    }
+  ],
+  "device_probes": {
+    "pdf": "cairo_pdf: unable to load shared object '/Library/Frameworks/R.framework/Resources/modules//R_X11.so': dlopen(/Library/Frameworks/R.framework/Resources/modules//R_X11.so, 0x0006): Library not loaded: /opt/X11/lib/libSM.6.dylib Referenced from: <7ECC4104-EC6A-38FD-9BEA-BFE0B870925C> /Library/Frameworks/R.framework/Versions/4.5-arm64/Resources/modules/R_X11.so Reason: tried: '/opt/X11/lib/libSM.6.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/X11/lib/libSM.6.dylib' (no such file), '/opt/X11/lib/libSM.6.dylib' (no such file), '/Library/Frameworks/R.framework/Resources/lib/libSM.6.dylib' (no such file), '/Library/Java/JavaVirtualMachines/jdk-11.0.18+10/Contents/Home/lib/server/libSM.6.dylib' (no such file); quartz_pdf: ok",
+    "svg": "svglite: ok",
+    "png": "agg_png: ok",
+    "tiff": "agg_tiff: ok"
+  },
+  "fonts": [
+    {
+      "role": "text",
+      "family": "Arial",
+      "weight": "normal",
+      "resolved_family": "Arial",
+      "style": "Regular",
+      "postscript_name": "ArialMT",
+      "path": "/System/Library/Fonts/Supplemental/Arial.ttf",
+      "index": 0,
+      "sha256": "525979822591a3447cfc49d943d6f7683508e25543407871c0ed8fed05fd2bd9"
+    },
+    {
+      "role": "text-bold",
+      "family": "Arial",
+      "weight": "bold",
+      "resolved_family": "Arial",
+      "style": "Bold",
+      "postscript_name": "Arial-BoldMT",
+      "path": "/System/Library/Fonts/Supplemental/Arial Bold.ttf",
+      "index": 0,
+      "sha256": "d72db21f9242aedd6b917d8549ad5921766b24d5f8d0becfda2ff4c620b3c2e0"
+    }
+  ],
+  "text_pt": {
+    "ordinary": 9,
+    "minimum": 8,
+    "title": 10,
+    "tag": 11,
+    "annotation": 8
+  },
+  "line_mm": {
+    "main": 0.3,
+    "thin": 0.2,
+    "hairline": 0.12,
+    "emphasis": 0.6
+  },
+  "point_mm": {
+    "sample": 1.6,
+    "feature": 0.9
+  },
+  "site_colours": {
+    "Beijing": "#0072B2",
+    "Garching": "#E69F00",
+    "Oberschleissheim": "#009E73"
+  },
+  "sample_order": ["bc1", "bd1", "bc2", "gc1", "gd1", "oc1", "od1"],
+  "qa": [
+    {
+      "format": "pdf",
+      "check": "pages",
+      "expected": "1",
+      "observed": "1",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "page size (mm)",
+      "expected": "180.00 x 160.00",
+      "observed": "180.00 x 160.00",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "all fonts embedded",
+      "expected": "TRUE",
+      "observed": "TRUE",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "embedded fonts are resolved fonts (no substitution)",
+      "expected": "ArialMT, Arial-BoldMT",
+      "observed": "Arial-BoldMT, ArialMT",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "NON-SCIENTIFIC STYLE PROOF",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Deterministic illustration; no research observations",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "A",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "B",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "C",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "D",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Sample order and site colours (config/samples.tsv)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Axes, line, points and legend",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Facet strips and shared axes",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "Type sizes and physical scale",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "pdf",
+      "check": "text present",
+      "expected": "50 mm",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "page size (mm)",
+      "expected": "180.00 x 160.00",
+      "observed": "180.00 x 160.00",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "font families are the resolved fonts",
+      "expected": "Arial",
+      "observed": "Arial",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "smallest text (pt)",
+      "expected": ">= 8",
+      "observed": "8",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "no embedded raster images",
+      "expected": "0",
+      "observed": "0",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "NON-SCIENTIFIC STYLE PROOF",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Deterministic illustration; no research observations",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "A",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "B",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "C",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "D",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Sample order and site colours (config/samples.tsv)",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Axes, line, points and legend",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Facet strips and shared axes",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "Type sizes and physical scale",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "text present",
+      "expected": "50 mm",
+      "observed": "found",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "main stroke width (pt)",
+      "expected": "0.85 (0.30 mm)",
+      "observed": "0.85",
+      "pass": true
+    },
+    {
+      "format": "svg",
+      "check": "ruler length (mm)",
+      "expected": "50",
+      "observed": "49.999",
+      "pass": true
+    },
+    {
+      "format": "png",
+      "check": "pixels (w x h)",
+      "expected": "2126 x 1890",
+      "observed": "2125 x 1889",
+      "pass": true
+    },
+    {
+      "format": "png",
+      "check": "resolution (dpi)",
+      "expected": "300",
+      "observed": "300.00",
+      "pass": true
+    },
+    {
+      "format": "png",
+      "check": "opaque (no transparency)",
+      "expected": "TRUE",
+      "observed": "TRUE",
+      "pass": true
+    },
+    {
+      "format": "png",
+      "check": "white corners",
+      "expected": "1",
+      "observed": "1",
+      "pass": true
+    },
+    {
+      "format": "tiff",
+      "check": "pixels (w x h)",
+      "expected": "4252 x 3780",
+      "observed": "4251 x 3779",
+      "pass": true
+    },
+    {
+      "format": "tiff",
+      "check": "resolution (dpi)",
+      "expected": "600",
+      "observed": "600.00 x 600.00",
+      "pass": true
+    },
+    {
+      "format": "tiff",
+      "check": "LZW compression (code 5)",
+      "expected": "5",
+      "observed": "5",
+      "pass": true
+    },
+    {
+      "format": "tiff",
+      "check": "RGB without alpha (3 samples per pixel)",
+      "expected": "3",
+      "observed": "3",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+model	metabolic_domains	anti_defense_profiles	metabolic_median	anti_defense_median	difference	unit
+Unadjusted Firth	285	38	4.05650545931977	1.36091311308802	2.69559234623175	log-odds per tenfold increase in CDS count
+Firth, ecosystem adjusted separately	285	38	4.11118909299541	1.20844454649343	2.90274454650197	log-odds per tenfold increase in CDS count
+Firth, host phylum adjusted separately	285	38	3.97015691219657	1.44606645087647	2.5240904613201	log-odds per tenfold increase in CDS count

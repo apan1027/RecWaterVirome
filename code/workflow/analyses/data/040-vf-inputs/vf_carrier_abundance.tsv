@@ -1,0 +1,799 @@
+vOTU_id	sample_id	trimmed_mean_depth	covered_fraction	masked_depth	detected	percent_of_catalogue	eligible_F0	eligible_F1	eligible_S0	eligible_S1	hits_F0	hits_F1	hits_S0	hits_S1	functions_F0	functions_S1	breadth_threshold	denominator	heatmap_rank	in_heatmap
+vOTU0001	bc1	0	1.0834138e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	SodB	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	6	TRUE
+vOTU0001	bd1	0	1.3542673e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	SodB	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	6	TRUE
+vOTU0001	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	SodB	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	6	TRUE
+vOTU0001	gc1	129.69067	0.99960274	129.69067	TRUE	1.611940764150491	TRUE	TRUE	FALSE	FALSE	1	1	0	0	SodB	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	6	TRUE
+vOTU0001	gd1	21.145132	0.9997111	21.145132	TRUE	0.11598940142087859	TRUE	TRUE	FALSE	FALSE	1	1	0	0	SodB	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	6	TRUE
+vOTU0001	oc1	0.8750691	0.41321403	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	SodB	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	6	TRUE
+vOTU0001	od1	0	0.021713419	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	SodB	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	6	TRUE
+vOTU0012	bc1	0	2.3422914e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	9	TRUE
+vOTU0012	bd1	0	9.0247113e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	9	TRUE
+vOTU0012	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	9	TRUE
+vOTU0012	gc1	66.14084	0.97596395	66.14084	TRUE	0.822072367820718	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	9	TRUE
+vOTU0012	gd1	26.988138	1	26.988138	TRUE	0.14804059733862468	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	9	TRUE
+vOTU0012	oc1	0	0.0019840586	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	9	TRUE
+vOTU0012	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	9	TRUE
+vOTU0016	bc1	1272.0127	1	1272.0127	TRUE	2.502272592863428	TRUE	FALSE	TRUE	FALSE	5	0	2	0	Capsule; Flagella; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	4	TRUE
+vOTU0016	bd1	20.268343	0.9997024	20.268343	TRUE	0.061988715667841074	TRUE	FALSE	TRUE	FALSE	5	0	2	0	Capsule; Flagella; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	4	TRUE
+vOTU0016	bc2	0.038423274	0.08429385	0	FALSE	0	TRUE	FALSE	TRUE	FALSE	5	0	2	0	Capsule; Flagella; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	4	TRUE
+vOTU0016	gc1	0	4.3644733e-4	0	FALSE	0	TRUE	FALSE	TRUE	FALSE	5	0	2	0	Capsule; Flagella; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	4	TRUE
+vOTU0016	gd1	0	0	0	FALSE	0	TRUE	FALSE	TRUE	FALSE	5	0	2	0	Capsule; Flagella; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	4	TRUE
+vOTU0016	oc1	0	0	0	FALSE	0	TRUE	FALSE	TRUE	FALSE	5	0	2	0	Capsule; Flagella; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	4	TRUE
+vOTU0016	od1	0	1.9838514e-4	0	FALSE	0	TRUE	FALSE	TRUE	FALSE	5	0	2	0	Capsule; Flagella; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	4	TRUE
+vOTU0022	bc1	1574.6749	1	1574.6749	TRUE	3.097662346405786	TRUE	TRUE	TRUE	TRUE	3	3	3	3	Capsule	Capsule	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	3	TRUE
+vOTU0022	bd1	29.634645	0.99862164	29.634645	TRUE	0.09063462083814193	TRUE	TRUE	TRUE	TRUE	3	3	3	3	Capsule	Capsule	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	3	TRUE
+vOTU0022	bc2	0	0.013131845	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	3	3	3	3	Capsule	Capsule	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	3	TRUE
+vOTU0022	gc1	0	7.017016e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	3	3	3	3	Capsule	Capsule	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	3	TRUE
+vOTU0022	gd1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	3	3	3	3	Capsule	Capsule	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	3	TRUE
+vOTU0022	oc1	0	3.0072927e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	3	3	3	3	Capsule	Capsule	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	3	TRUE
+vOTU0022	od1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	3	3	3	3	Capsule	Capsule	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	3	TRUE
+vOTU0053	bc1	0	2.2693932e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T6SS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0053	bd1	0	0.002318023	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T6SS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0053	bc2	0	0.017198758	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T6SS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0053	gc1	0.19598049	0.07570047	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T6SS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0053	gd1	29.505144	0.9999838	29.505144	TRUE	0.16184736947477213	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T6SS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0053	oc1	0.070859894	0.09486874	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T6SS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0053	od1	1.059373	0.44618702	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T6SS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0056	bc1	0	6.1765313e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	RelA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0056	bd1	0.008192876	0.05727507	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	RelA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0056	bc2	41.34746	0.9999902	41.34746	TRUE	0.15862939171826274	TRUE	TRUE	FALSE	FALSE	1	1	0	0	RelA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0056	gc1	0	2.4510044e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	RelA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0056	gd1	0	0.010500103	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	RelA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0056	oc1	0	1.1764821e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	RelA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0056	od1	0	0.0012843263	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	RelA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0073	bc1	0	3.313773e-4	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	1	0	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	2	TRUE
+vOTU0073	bd1	0	0	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	1	0	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	2	TRUE
+vOTU0073	bc2	0	0	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	1	0	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	2	TRUE
+vOTU0073	gc1	262.4613	1	262.4613	TRUE	3.262162717502587	TRUE	FALSE	FALSE	FALSE	1	0	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	2	TRUE
+vOTU0073	gd1	7.5435443	0.99446326	7.5435443	TRUE	0.04137932021180481	TRUE	FALSE	FALSE	FALSE	1	0	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	2	TRUE
+vOTU0073	oc1	0	0	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	1	0	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	2	TRUE
+vOTU0073	od1	0	0	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	1	0	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	2	TRUE
+vOTU0077	bc1	51.37109	0.9999715	51.37109	TRUE	0.10105596474981778	TRUE	TRUE	FALSE	FALSE	2	2	0	0	LPS; PDIM	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0077	bd1	0.2965665	0.2333395	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	LPS; PDIM	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0077	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	LPS; PDIM	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0077	gc1	0	3.5606956e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	LPS; PDIM	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0077	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	LPS; PDIM	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0077	oc1	0	1.4242783e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	LPS; PDIM	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0077	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	LPS; PDIM	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0086	bc1	0	0.024113243	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	Flagella; GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0086	bd1	20.696806	0.9996428	20.696806	TRUE	0.06329912723336423	TRUE	TRUE	FALSE	FALSE	2	2	0	0	Flagella; GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0086	bc2	0	0.004078413	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	Flagella; GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0086	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	Flagella; GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0086	gd1	0	0.0019498981	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	Flagella; GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0086	oc1	0	1.7861661e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	Flagella; GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0086	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	Flagella; GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0097	bc1	0	7.9035456e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0097	bd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0097	bc2	0	7.748574e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0097	gc1	0	0.021928465	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0097	gd1	17.936798	0.99919415	17.936798	TRUE	0.09839042212776031	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0097	oc1	0	0.0022160923	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0097	od1	0	0.005625465	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0113	bc1	0	1.7771171e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	FbpABC	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	1	TRUE
+vOTU0113	bd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	FbpABC	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	1	TRUE
+vOTU0113	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	FbpABC	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	1	TRUE
+vOTU0113	gc1	268.65445	1	268.65445	TRUE	3.33913811552851	TRUE	TRUE	FALSE	FALSE	1	1	0	0	FbpABC	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	1	TRUE
+vOTU0113	gd1	7.1734085	0.99190605	7.1734085	TRUE	0.03934897914387305	TRUE	TRUE	FALSE	FALSE	1	1	0	0	FbpABC	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	1	TRUE
+vOTU0113	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	FbpABC	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	1	TRUE
+vOTU0113	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	FbpABC	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	1	TRUE
+vOTU0118	bc1	28.658207	0.99983656	28.658207	TRUE	0.05637573110449828	TRUE	TRUE	TRUE	TRUE	3	3	1	1	Capsule I; LPS; O-antigen	O-antigen	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0118	bd1	0.36203915	0.28389755	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	3	3	1	1	Capsule I; LPS; O-antigen	O-antigen	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0118	bc2	0.23075102	0.20962127	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	3	3	1	1	Capsule I; LPS; O-antigen	O-antigen	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0118	gc1	0	4.4134233e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	3	3	1	1	Capsule I; LPS; O-antigen	O-antigen	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0118	gd1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	3	3	1	1	Capsule I; LPS; O-antigen	O-antigen	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0118	oc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	3	3	1	1	Capsule I; LPS; O-antigen	O-antigen	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0118	od1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	3	3	1	1	Capsule I; LPS; O-antigen	O-antigen	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0131	bc1	0	0.0044934573	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	10	TRUE
+vOTU0131	bd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	10	TRUE
+vOTU0131	bc2	0	0.0044934573	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	10	TRUE
+vOTU0131	gc1	0	0.0025211382	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	10	TRUE
+vOTU0131	gd1	0	0.016944792	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	10	TRUE
+vOTU0131	oc1	0.8054372	0.3539712	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	10	TRUE
+vOTU0131	od1	57.179317	0.9999314	57.179317	TRUE	0.720488306346703	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	10	TRUE
+vOTU0155	bc1	0	3.8474222e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	HSI-2	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	15	TRUE
+vOTU0155	bd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	HSI-2	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	15	TRUE
+vOTU0155	bc2	0	2.9313692e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	HSI-2	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	15	TRUE
+vOTU0155	gc1	0	4.0306328e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	HSI-2	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	15	TRUE
+vOTU0155	gd1	0	0.0047085118	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	HSI-2	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	15	TRUE
+vOTU0155	oc1	0.7470504	0.31523213	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	HSI-2	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	15	TRUE
+vOTU0155	od1	30.522024	0.9997618	30.522024	TRUE	0.3845929355545366	TRUE	TRUE	FALSE	FALSE	1	1	0	0	HSI-2	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	15	TRUE
+vOTU0163	bc1	16.361313	0.9999811	16.361313	TRUE	0.0321855788886071	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0163	bd1	0.045114048	0.09032368	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0163	bc2	0	2.6438042e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0163	gc1	0	5.2876084e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0163	gd1	0	2.4549608e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0163	oc1	0	2.4549608e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0163	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0165	bc1	20.2915	0.999848	20.2915	TRUE	0.03991694762016782	TRUE	TRUE	TRUE	TRUE	1	1	1	1	CsrA	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0165	bd1	0.040626653	0.08629567	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	CsrA	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0165	bc2	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	CsrA	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0165	gc1	0	2.0899436e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	CsrA	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0165	gd1	0	2.2799385e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	CsrA	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0165	oc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	CsrA	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0165	od1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	CsrA	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0171	bc1	18.185862	0.99957216	18.185862	TRUE	0.03577478751603383	TRUE	TRUE	TRUE	TRUE	2	2	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0171	bd1	0.17056045	0.18269867	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0171	bc2	0	4.667626e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0171	gc1	0	4.278657e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0171	gd1	0	2.333813e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0171	oc1	0	8.36283e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0171	od1	0	5.056595e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0208	bc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Hsp60	Hsp60	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0208	bd1	82.825874	0.9999377	82.825874	TRUE	0.25331471612289325	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Hsp60	Hsp60	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0208	bc2	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Hsp60	Hsp60	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0208	gc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Hsp60	Hsp60	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0208	gd1	0	0.0028246827	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Hsp60	Hsp60	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0208	oc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Hsp60	Hsp60	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0208	od1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Hsp60	Hsp60	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0211	bc1	23.701975	0.9999373	23.701975	TRUE	0.04662595148557412	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0211	bd1	0.09220519	0.1325349	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0211	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0211	gc1	0	0.0015466934	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0211	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0211	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0211	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0223	bc1	39.171085	1	39.171085	TRUE	0.07705641022941337	TRUE	TRUE	TRUE	TRUE	3	3	1	1	CsrA; LOS	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0223	bd1	0.22042985	0.22630145	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	3	3	1	1	CsrA; LOS	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0223	bc2	0	2.7667815e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	3	3	1	1	CsrA; LOS	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0223	gc1	0	4.4694165e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	3	3	1	1	CsrA; LOS	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0223	gd1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	3	3	1	1	CsrA; LOS	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0223	oc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	3	3	1	1	CsrA; LOS	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0223	od1	0	4.6822458e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	3	3	1	1	CsrA; LOS	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0238	bc1	52.94262	1	52.94262	TRUE	0.10414744052506958	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule I	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0238	bd1	0.514387	0.39738625	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule I	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0238	bc2	0	0.005906917	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule I	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0238	gc1	0	2.163706e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule I	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0238	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule I	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0238	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule I	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0238	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule I	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0256	bc1	10.370618	1	10.370618	TRUE	0.02040082869648718	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0256	bd1	0.03885445	0.086321175	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0256	bc2	0	2.8914592e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0256	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0256	gd1	0	2.6690392e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0256	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0256	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0263	bc1	27.351406	0.9993483	27.351406	TRUE	0.053805023809966934	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0263	bd1	0.18286817	0.18122163	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0263	bc2	0	0.006764349	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0263	gc1	0	2.6967505e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0263	gd1	0	2.4720212e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0263	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0263	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0267	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0267	bd1	24.725584	0.9993218	24.725584	TRUE	0.07562074493693544	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0267	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0267	gc1	0	2.9388492e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0267	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0267	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0267	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0273	bc1	16.409483	1	16.409483	TRUE	0.0322803377465951	TRUE	FALSE	FALSE	FALSE	1	0	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0273	bd1	0.010544949	0.05924649	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	1	0	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0273	bc2	0	6.1242544e-4	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	1	0	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0273	gc1	0	2.721891e-4	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	1	0	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0273	gd1	0	0	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	1	0	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0273	oc1	0	0	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	1	0	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0273	od1	0	0	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	1	0	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0290	bc1	60.921974	0.99995375	60.921974	TRUE	0.11984423256413898	TRUE	TRUE	TRUE	TRUE	2	2	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0290	bd1	4.306577	0.81300604	4.306577	TRUE	0.013171238376746636	TRUE	TRUE	TRUE	TRUE	2	2	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0290	bc2	0	0.02058946	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0290	gc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0290	gd1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0290	oc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0290	od1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0327	bc1	48.251220000000004	0.9994051	48.251220000000004	TRUE	0.09491863200597267	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Quorum-sensing	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0327	bd1	0.6343664	0.38594612	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Quorum-sensing	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0327	bc2	0	7.376737e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Quorum-sensing	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0327	gc1	0	2.8555113e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Quorum-sensing	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0327	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Quorum-sensing	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0327	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Quorum-sensing	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0327	od1	0	3.569389e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Quorum-sensing	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0351	bc1	62.36703	0.9998779	62.36703	TRUE	0.12268691174804403	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0351	bd1	0.5176573	0.35605636	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0351	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0351	gc1	0	5.3714874e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0351	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0351	oc1	0	3.1740605e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0351	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0366	bc1	45.30656	1	45.30656	TRUE	0.08912596813296161	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0366	bd1	0.6987554	0.45580247	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0366	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0366	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0366	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0366	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0366	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0382	bc1	35.719425	0.9998997	35.719425	TRUE	0.07026638822893888	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0382	bd1	0.24443325	0.2173673	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0382	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0382	gc1	0	2.759105e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0382	gd1	0	3.2607606e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0382	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0382	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0385	bc1	40.266663	1	40.266663	TRUE	0.07921160475124805	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0385	bd1	0.2360733	0.21217382	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0385	bc2	1.4700979	0.5937948	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0385	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0385	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0385	oc1	0	2.7679224e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0385	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0387	bc1	0	9.824915e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0387	bd1	0	0.024940168	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0387	bc2	14.516788	0.9999244	14.516788	TRUE	0.05569360851048591	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0387	gc1	0	3.2749717e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0387	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0387	oc1	0	3.2749717e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0387	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0395	bc1	0	5.819249e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0395	bd1	26.257011	0.9999747	26.257011	TRUE	0.08030446244009071	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0395	bc2	0	0.005212023	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0395	gc1	0	0.0017963769	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0395	gd1	1.5399572	0.29594678	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0395	oc1	0.09907444	0.09723206	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0395	od1	4.8011174	0.34004655	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0397	bc1	0	3.0398217e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0397	bd1	11.795728	0.999544	11.795728	TRUE	0.03607606349898419	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0397	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0397	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0397	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0397	oc1	0	6.332962e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0397	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0400	bc1	0	3.802667e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0400	bd1	18.415403	0.99982256	18.415403	TRUE	0.05632168256061719	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0400	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0400	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0400	gd1	0	2.5351113e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0400	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0400	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0418	bc1	9.417461	1	9.417461	TRUE	0.018525801318383227	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0418	bd1	0	0.039343	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0418	bc2	0	3.079687e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0418	gc1	0	3.8496088e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0418	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0418	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0418	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0446	bc1	0	0.037739307	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	3	0	0	0	GroEL; LOS; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0446	bd1	0	0	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	3	0	0	0	GroEL; LOS; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0446	bc2	0	0.0068616923	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	3	0	0	0	GroEL; LOS; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0446	gc1	0	8.6425897e-4	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	3	0	0	0	GroEL; LOS; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0446	gd1	0	3.14276e-4	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	3	0	0	0	GroEL; LOS; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0446	oc1	1.5859894	0.5647278	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	3	0	0	0	GroEL; LOS; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0446	od1	19.675938	0.9996334	19.675938	TRUE	0.24792676774020814	TRUE	FALSE	FALSE	FALSE	3	0	0	0	GroEL; LOS; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0448	bc1	10.481516	1	10.481516	TRUE	0.020618984557669515	TRUE	TRUE	FALSE	FALSE	2	2	0	0	3-hydroxymyristoyl] glucosamine N-acyltransferase [LPS; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0448	bd1	0.16856132	0.18018915	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	3-hydroxymyristoyl] glucosamine N-acyltransferase [LPS; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0448	bc2	0	0.0052919756	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	3-hydroxymyristoyl] glucosamine N-acyltransferase [LPS; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0448	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	3-hydroxymyristoyl] glucosamine N-acyltransferase [LPS; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0448	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	3-hydroxymyristoyl] glucosamine N-acyltransferase [LPS; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0448	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	3-hydroxymyristoyl] glucosamine N-acyltransferase [LPS; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0448	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	3-hydroxymyristoyl] glucosamine N-acyltransferase [LPS; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0463	bc1	12.423056	1	12.423056	TRUE	0.024438335048390294	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0463	bd1	0.03663188	0.08258899	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0463	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0463	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0463	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0463	oc1	0	3.1805772e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0463	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0475	bc1	13.38603	0.9988742	13.38603	TRUE	0.02633267419126211	TRUE	TRUE	TRUE	TRUE	2	2	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0475	bd1	0.102442965	0.14158201	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0475	bc2	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0475	gc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0475	gd1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0475	oc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0475	od1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0478	bc1	67.19665	0.9998928	67.19665	TRUE	0.13218762330536188	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Capsule	Capsule	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0478	bd1	1.0690377	0.5907226	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Capsule	Capsule	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0478	bc2	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Capsule	Capsule	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0478	gc1	0	2.949457e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Capsule	Capsule	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0478	gd1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Capsule	Capsule	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0478	oc1	0	2.949457e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Capsule	Capsule	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0478	od1	0	2.949457e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Capsule	Capsule	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0498	bc1	12.943052	1	12.943052	TRUE	0.02546125859247017	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0498	bd1	0.01530535	0.06550028	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0498	bc2	0	4.6184356e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0498	gc1	0	3.8034178e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0498	gd1	0	7.3351624e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0498	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0498	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0504	bc1	49.897305	0.9995084	49.897305	TRUE	0.09815677057253226	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0504	bd1	1.2504267	0.64148366	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0504	bc2	0	0.003578062	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0504	gc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0504	gd1	0	0.003578062	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0504	oc1	0	3.0044795e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0504	od1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0523	bc1	22.653673	0.9993592	22.653673	TRUE	0.04456375716656778	TRUE	TRUE	FALSE	FALSE	1	1	0	0	TTSS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0523	bd1	0.25524575	0.22502995	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	TTSS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0523	bc2	0	0.0036497368	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	TTSS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0523	gc1	0	0.0010587022	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	TTSS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0523	gd1	0	3.900482e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	TTSS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0523	oc1	0	2.7860585e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	TTSS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0523	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	TTSS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0527	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	3	3	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0527	bd1	19.727154	1	19.727154	TRUE	0.060333542818064294	TRUE	TRUE	FALSE	FALSE	3	3	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0527	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	3	3	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0527	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	3	3	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0527	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	3	3	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0527	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	3	3	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0527	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	3	3	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0538	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0538	bd1	35.245743	0.9989283	35.245743	TRUE	0.1077956072348292	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0538	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0538	gc1	0	3.1023493e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0538	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0538	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0538	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0553	bc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	2	2	LPS; O-antigen	LPS; O-antigen	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	14	TRUE
+vOTU0553	bd1	130.62442	1	130.62442	TRUE	0.3995018256133051	TRUE	TRUE	TRUE	TRUE	2	2	2	2	LPS; O-antigen	LPS; O-antigen	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	14	TRUE
+vOTU0553	bc2	0	0.0037321937	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	2	2	LPS; O-antigen	LPS; O-antigen	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	14	TRUE
+vOTU0553	gc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	2	2	LPS; O-antigen	LPS; O-antigen	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	14	TRUE
+vOTU0553	gd1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	2	2	LPS; O-antigen	LPS; O-antigen	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	14	TRUE
+vOTU0553	oc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	2	2	LPS; O-antigen	LPS; O-antigen	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	14	TRUE
+vOTU0553	od1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	2	2	LPS; O-antigen	LPS; O-antigen	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	14	TRUE
+vOTU0576	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GspA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	12	TRUE
+vOTU0576	bd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GspA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	12	TRUE
+vOTU0576	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GspA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	12	TRUE
+vOTU0576	gc1	0	0.013339965	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GspA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	12	TRUE
+vOTU0576	gd1	0.016127452	0.06418395	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GspA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	12	TRUE
+vOTU0576	oc1	5.1445923	0.84120760000000006	5.1445923	TRUE	0.05898734721801591	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GspA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	12	TRUE
+vOTU0576	od1	45.525677	0.99970746	45.525677	TRUE	0.5736465498008144	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GspA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	12	TRUE
+vOTU0578	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	O-antigen	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0578	bd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	O-antigen	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0578	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	O-antigen	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0578	gc1	1.2212157	0.19660608	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	O-antigen	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0578	gd1	12.819811	1	12.819811	TRUE	0.07032172720505103	TRUE	TRUE	FALSE	FALSE	1	1	0	0	O-antigen	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0578	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	O-antigen	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0578	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	O-antigen	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0583	bc1	27.43914	0.99988174	27.43914	TRUE	0.05397761201106137	TRUE	TRUE	TRUE	TRUE	1	1	1	1	CsrA	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0583	bd1	0.6174811	0.43594596	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	CsrA	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0583	bc2	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	CsrA	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0583	gc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	CsrA	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0583	gd1	0	0.003873104	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	CsrA	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0583	oc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	CsrA	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0583	od1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	CsrA	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0624	bc1	0	9.879897e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	RpoS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0624	bd1	1.9184271	0.38380313	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	RpoS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0624	bc2	35.789295	1	35.789295	TRUE	0.13730551032337807	TRUE	TRUE	FALSE	FALSE	1	1	0	0	RpoS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0624	gc1	0	0.0010497391	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	RpoS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0624	gd1	0	9.571151e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	RpoS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0624	oc1	0	0.0014819846	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	RpoS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0624	od1	0	9.262404e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	RpoS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0631	bc1	119.65938	1	119.65938	TRUE	0.23539103583873824	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0631	bd1	2.568766	0.8077331	2.568766	TRUE	0.007856315890806537	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0631	bc2	0	0.004088129	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0631	gc1	0	7.177631e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0631	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0631	oc1	0	4.6810636e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0631	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0646	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0646	bd1	11.086672	1	11.086672	TRUE	0.033907486088557655	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0646	bc2	0	3.5056408e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0646	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0646	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0646	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0646	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0668	bc1	10.592264	1	10.592264	TRUE	0.02083684534248278	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0668	bd1	0.35842648	0.3004449	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0668	bc2	0	0.0042855274	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0668	gc1	0	3.925674e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0668	gd1	0	0.0042855274	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0668	oc1	0	0.006608218	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0668	od1	0	0.005103376	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0707	bc1	0	4.0672452e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Bsa T3SS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0707	bd1	0	0.017760303	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Bsa T3SS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0707	bc2	11.065064	1	11.065064	TRUE	0.04245108095258202	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Bsa T3SS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0707	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Bsa T3SS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0707	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Bsa T3SS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0707	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Bsa T3SS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0707	od1	0	4.4061823e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Bsa T3SS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0717	bc1	0	3.42912e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0717	bd1	0.043466605	0.088608466	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0717	bc2	66.517006	1	66.517006	TRUE	0.2551922705941316	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0717	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0717	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0717	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0717	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0730	bc1	13.013523	0.9999652	13.013523	TRUE	0.025599887437836005	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0730	bd1	0.025181673	0.07223131	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0730	bc2	0	0.041995756	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0730	gc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0730	gd1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0730	oc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0730	od1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0737	bc1	0	3.8468264e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0737	bd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0737	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0737	gc1	0.60696846	0.11967127	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0737	gd1	14.572595	0.9997902	14.572595	TRUE	0.07993643980084345	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0737	oc1	0	0.01947893	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0737	od1	0	0.01647141	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0739	bc1	0	0.005428121	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	OatA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0739	bd1	0.014903188	0.06303625	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	OatA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0739	bc2	55.667202	0.99996495	55.667202	TRUE	0.21356703391012793	TRUE	TRUE	FALSE	FALSE	1	1	0	0	OatA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0739	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	OatA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0739	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	OatA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0739	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	OatA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0739	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	OatA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0743	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0743	bd1	11.19827	0.9973709	11.19827	TRUE	0.03424879749675219	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0743	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0743	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0743	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0743	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0743	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0751	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Vi antigen	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0751	bd1	0.012594459	0.060958423	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Vi antigen	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0751	bc2	10.665027	0.9994715	10.665027	TRUE	0.040916340342764666	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Vi antigen	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0751	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Vi antigen	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0751	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Vi antigen	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0751	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Vi antigen	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0751	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Vi antigen	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0759	bc1	0	8.8639907e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Quorum-sensing	Quorum-sensing	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0759	bd1	0.2721188	0.22794639	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Quorum-sensing	Quorum-sensing	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0759	bc2	13.314812	1	13.314812	TRUE	0.0510822316147842	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Quorum-sensing	Quorum-sensing	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0759	gc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Quorum-sensing	Quorum-sensing	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0759	gd1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Quorum-sensing	Quorum-sensing	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0759	oc1	0	4.2547157e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Quorum-sensing	Quorum-sensing	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0759	od1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Quorum-sensing	Quorum-sensing	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0772	bc1	11.676487	0.99992836	11.676487	TRUE	0.022969702583178698	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0772	bd1	0.04955568	0.094029956	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0772	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0772	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0772	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0772	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0772	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0790	bc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0790	bd1	10.786158	0.9993463	10.786158	TRUE	0.03298839384208218	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0790	bc2	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0790	gc1	0	4.3577733e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0790	gd1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0790	oc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0790	od1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0879	bc1	0	0.010597004	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Type IV pili	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0879	bd1	16.350773	1	16.350773	TRUE	0.05000721659616737	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Type IV pili	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0879	bc2	0	0.00791864	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Type IV pili	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0879	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Type IV pili	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0879	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Type IV pili	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0879	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Type IV pili	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0879	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Type IV pili	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0907	bc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0907	bd1	0	0.0051914086	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0907	bc2	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0907	gc1	0.14479978	0.07267972	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0907	gd1	15.376551	0.9987715	15.376551	TRUE	0.08434645602626704	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0907	oc1	0	0.0051914086	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0907	od1	0	0.022588572	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0931	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	7	TRUE
+vOTU0931	bd1	0	0.010520375	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	7	TRUE
+vOTU0931	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	7	TRUE
+vOTU0931	gc1	0	4.8369545e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	7	TRUE
+vOTU0931	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	7	TRUE
+vOTU0931	oc1	82.99451	0.99983877	82.99451	TRUE	0.9516062096036442	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	7	TRUE
+vOTU0931	od1	0.96183825	0.60369223	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	7	TRUE
+vOTU0948	bc1	9.735149	1	9.735149	TRUE	0.01915074946196827	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0948	bd1	0.05079264	0.095069274	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0948	bc2	0	0.0010594947	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0948	gc1	0	8.9649553e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0948	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0948	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0948	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0961	bc1	18.074947	0.9992978	18.074947	TRUE	0.035556598212863	TRUE	TRUE	FALSE	FALSE	2	2	0	0	GroEL; LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0961	bd1	0.22729161	0.21306126	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	GroEL; LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0961	bc2	0.0025398291	0.051881533	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	GroEL; LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0961	gc1	0	4.1306953e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	GroEL; LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0961	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	GroEL; LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0961	oc1	0	4.1306953e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	GroEL; LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0961	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	2	2	0	0	GroEL; LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0964	bc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LOS	LOS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0964	bd1	9.270418e-4	0.050456055	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LOS	LOS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0964	bc2	11.386113	0.99879766	11.386113	TRUE	0.04368278436511949	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LOS	LOS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0964	gc1	0	9.535655e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LOS	LOS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0964	gd1	0	0.0054311776	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LOS	LOS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0964	oc1	0	0.0054311776	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LOS	LOS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU0964	od1	0	0.048673302	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LOS	LOS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1009	bc1	0	6.0496066e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	5	1	2	1	Capsule; Flagella; Flagellar glycosylation/Pse biosynthetic pathway; LPS; Polar flagella	Flagellar glycosylation/Pse biosynthetic pathway	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1009	bd1	12.254325	1	12.254325	TRUE	0.03747863691305779	TRUE	TRUE	TRUE	TRUE	5	1	2	1	Capsule; Flagella; Flagellar glycosylation/Pse biosynthetic pathway; LPS; Polar flagella	Flagellar glycosylation/Pse biosynthetic pathway	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1009	bc2	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	5	1	2	1	Capsule; Flagella; Flagellar glycosylation/Pse biosynthetic pathway; LPS; Polar flagella	Flagellar glycosylation/Pse biosynthetic pathway	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1009	gc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	5	1	2	1	Capsule; Flagella; Flagellar glycosylation/Pse biosynthetic pathway; LPS; Polar flagella	Flagellar glycosylation/Pse biosynthetic pathway	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1009	gd1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	5	1	2	1	Capsule; Flagella; Flagellar glycosylation/Pse biosynthetic pathway; LPS; Polar flagella	Flagellar glycosylation/Pse biosynthetic pathway	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1009	oc1	0	6.0496066e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	5	1	2	1	Capsule; Flagella; Flagellar glycosylation/Pse biosynthetic pathway; LPS; Polar flagella	Flagellar glycosylation/Pse biosynthetic pathway	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1009	od1	0	4.7532623e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	5	1	2	1	Capsule; Flagella; Flagellar glycosylation/Pse biosynthetic pathway; LPS; Polar flagella	Flagellar glycosylation/Pse biosynthetic pathway	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1030	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1030	bd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1030	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1030	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1030	gd1	0	0.0057330416	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1030	oc1	1.7397944	0.52118164	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1030	od1	16.548948	1	16.548948	TRUE	0.20852511260915654	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1039	bc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Hsp60	Hsp60	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1039	bd1	0.13293348	0.16040266	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Hsp60	Hsp60	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1039	bc2	29.634876	0.99982417	29.634876	TRUE	0.11369410245577703	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Hsp60	Hsp60	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1039	gc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Hsp60	Hsp60	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1039	gd1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Hsp60	Hsp60	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1039	oc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Hsp60	Hsp60	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1039	od1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Hsp60	Hsp60	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1193	bc1	46.51365	0.9995644	46.51365	TRUE	0.09150052636191602	TRUE	TRUE	FALSE	FALSE	1	1	0	0	MARTX	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1193	bd1	0.14451306	0.16440809	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	MARTX	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1193	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	MARTX	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1193	gc1	0	0.0016455329	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	MARTX	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1193	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	MARTX	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1193	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	MARTX	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1193	od1	0	4.8398026e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	MARTX	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1199	bc1	16.347834	1	16.347834	TRUE	0.03215906332608228	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1199	bd1	0.103562504	0.14208074	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1199	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1199	gc1	0	5.337733e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1199	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1199	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1199	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1205	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1205	bd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1205	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1205	gc1	6.0117006	0.41060054	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1205	gd1	13.0168705	1	13.0168705	TRUE	0.07140267640174072	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1205	oc1	0	0.009628009	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1205	od1	0	0.03185023	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1244	bc1	11.571437	0.9995534	11.571437	TRUE	0.022763050766038583	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1244	bd1	0.26380402	0.23769353	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1244	bc2	0.015664926	0.06356689	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1244	gc1	0	5.954744e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1244	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1244	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1244	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1331	bc1	84.64851	1	84.64851	TRUE	0.16651849985438494	TRUE	TRUE	TRUE	TRUE	1	1	1	1	CsrA	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1331	bd1	0.22511126	0.2345466	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	CsrA	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1331	bc2	0	0.0010982115	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	CsrA	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1331	gc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	CsrA	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1331	gd1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	CsrA	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1331	oc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	CsrA	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1331	od1	0	0.0017257609	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	CsrA	CsrA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1332	bc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	GroEL	GroEL	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1332	bd1	0	0.017257608	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	GroEL	GroEL	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1332	bc2	0	0.007478297	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	GroEL	GroEL	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1332	gc1	0	0.014695115	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	GroEL	GroEL	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1332	gd1	11.893184	0.99968624	11.893184	TRUE	0.06523881208915464	TRUE	TRUE	TRUE	TRUE	1	1	1	1	GroEL	GroEL	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1332	oc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	GroEL	GroEL	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1332	od1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	GroEL	GroEL	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1381	bc1	0	0.007021117	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	2	0	0	0	Flagella; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1381	bd1	0.224997	0.20162933	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	2	0	0	0	Flagella; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1381	bc2	20.547726	0.9985529	20.547726	TRUE	0.07883128193542074	TRUE	FALSE	FALSE	FALSE	2	0	0	0	Flagella; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1381	gc1	0	0	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	2	0	0	0	Flagella; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1381	gd1	0	0.021599313	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	2	0	0	0	Flagella; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1381	oc1	0	0.01918748	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	2	0	0	0	Flagella; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1381	od1	0.32680994	0.2485797	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	2	0	0	0	Flagella; LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1402	bc1	13.375931	1	13.375931	TRUE	0.026312807682920387	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Flagella	Flagella	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1402	bd1	0.056447215	0.099918894	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Flagella	Flagella	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1402	bc2	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Flagella	Flagella	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1402	gc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Flagella	Flagella	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1402	gd1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Flagella	Flagella	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1402	oc1	0	7.5696135e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Flagella	Flagella	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1402	od1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Flagella	Flagella	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1422	bc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1422	bd1	19.121563	0.99961734	19.121563	TRUE	0.05848140284243809	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1422	bc2	0	0.01328377	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1422	gc1	0	6.013229e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1422	gd1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1422	oc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1422	od1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1456	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1456	bd1	17.966227	0.9992228	17.966227	TRUE	0.05494792234011875	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1456	bc2	0	0.021816365	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1456	gc1	0	6.106362e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1456	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1456	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1456	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1491	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1491	bd1	11.012586	1	11.012586	TRUE	0.033680901409732775	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1491	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1491	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1491	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1491	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1491	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1565	bc1	18.88636	0.99848324	18.88636	TRUE	0.03715279022524864	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1565	bd1	0.10173924	0.14309882	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1565	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1565	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1565	gd1	0	7.00035e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1565	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1565	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T4SS secreted effectors	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1608	bc1	10.7331505	0.9978528	10.7331505	TRUE	0.021113993854957897	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1608	bd1	0.009628243	0.05803412	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1608	bc2	0	7.157342e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1608	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1608	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1608	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1608	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1892	bc1	15.330471	0.99960077	15.330471	TRUE	0.030157731458960738	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1892	bd1	0.52385575	0.39417127	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1892	bc2	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1892	gc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1892	gd1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1892	oc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1892	od1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1898	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1898	bd1	0	0.03489611	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1898	bc2	6.8341556	1	6.8341556	TRUE	0.02621921505543409	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1898	gc1	0	0.0015316996	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1898	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1898	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1898	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU1906	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	11	TRUE
+vOTU1906	bd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	11	TRUE
+vOTU1906	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	11	TRUE
+vOTU1906	gc1	29.812426	0.7956063	29.812426	TRUE	0.3705421889455885	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	11	TRUE
+vOTU1906	gd1	112.91592	0.99993324	112.91592	TRUE	0.6193884233821673	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	11	TRUE
+vOTU1906	oc1	6.7242956	0.69397706	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	11	TRUE
+vOTU1906	od1	5.641412	0.72155446	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	11	TRUE
+vOTU2002	bc1	16.082012	0.9993082	16.082012	TRUE	0.03163614472221917	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2002	bd1	0	0.029745435	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2002	bc2	0.77485245	0.25574157	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2002	gc1	0	0.0020752628	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2002	gd1	0	0.0037354731	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2002	oc1	0	8.3010516e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2002	od1	0	0.010791367	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2009	bc1	0	0.0010392129	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Capsule	Capsule	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	5	TRUE
+vOTU2009	bd1	4.6775045	0.85506445	4.6775045	TRUE	0.014305683325249981	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Capsule	Capsule	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	5	TRUE
+vOTU2009	bc2	586.12756	1	586.12756	TRUE	2.2486764195940827	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Capsule	Capsule	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	5	TRUE
+vOTU2009	gc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Capsule	Capsule	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	5	TRUE
+vOTU2009	gd1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Capsule	Capsule	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	5	TRUE
+vOTU2009	oc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Capsule	Capsule	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	5	TRUE
+vOTU2009	od1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Capsule	Capsule	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	5	TRUE
+vOTU2080	bc1	12.769231	0.999929	12.769231	TRUE	0.0251193221288137	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2080	bd1	0.21020328	0.20536666	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2080	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2080	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2080	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2080	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2080	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2103	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2103	bd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2103	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2103	gc1	0	0.046252675	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2103	gd1	10.974748	1	10.974748	TRUE	0.06020082784373181	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2103	oc1	0	8.56531e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2103	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2128	bc1	0	7.1895897e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	WhiB3	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2128	bd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	WhiB3	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2128	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	WhiB3	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2128	gc1	1.8532903	0.16032785	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	WhiB3	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2128	gd1	41.42309	0.99985623	41.42309	TRUE	0.22722201091500316	TRUE	TRUE	FALSE	FALSE	1	1	0	0	WhiB3	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2128	oc1	0	0.017039327	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	WhiB3	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2128	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	WhiB3	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2169	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2169	bd1	0	0.019046234	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2169	bc2	10.032419	0.9975284	10.032419	TRUE	0.03848934187088498	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2169	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2169	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2169	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2169	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2236	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Hsp60	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2236	bd1	0.026355172	0.07281338	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Hsp60	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2236	bc2	7.6814933	1	7.6814933	TRUE	0.029470023301719394	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Hsp60	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2236	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Hsp60	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2236	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Hsp60	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2236	oc1	0	9.6196536e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Hsp60	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2236	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Hsp60	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2239	bc1	1.9745467	0.80460536	1.9745467	TRUE	0.0038842804719944426	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Hsp60	Hsp60	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2239	bd1	0.05082349	0.09455057	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Hsp60	Hsp60	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2239	bc2	7.386874	0.99437284	7.386874	TRUE	0.028339717344655513	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Hsp60	Hsp60	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2239	gc1	0	8.144528e-4	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Hsp60	Hsp60	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2239	gd1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Hsp60	Hsp60	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2239	oc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Hsp60	Hsp60	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2239	od1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	Hsp60	Hsp60	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2286	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T6SS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2286	bd1	18.40059	0.9997747	18.40059	TRUE	0.05627637847013542	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T6SS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2286	bc2	0.050801687	0.09454791	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T6SS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2286	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T6SS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2286	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T6SS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2286	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T6SS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2286	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	T6SS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2361	bc1	156.92453	1	156.92453	TRUE	0.3086981368715696	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	18	TRUE
+vOTU2361	bd1	7.229879	0.9859404	7.229879	TRUE	0.02211186743997253	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	18	TRUE
+vOTU2361	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	18	TRUE
+vOTU2361	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	18	TRUE
+vOTU2361	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	18	TRUE
+vOTU2361	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	18	TRUE
+vOTU2361	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	GroEL	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	18	TRUE
+vOTU2681	bc1	159.56004	1	159.56004	TRUE	0.3138826483479231	TRUE	FALSE	FALSE	FALSE	1	0	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	17	TRUE
+vOTU2681	bd1	1.2882699	0.5593375	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	1	0	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	17	TRUE
+vOTU2681	bc2	31.68527	0.9578468	31.68527	TRUE	0.12156043216509355	TRUE	FALSE	FALSE	FALSE	1	0	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	17	TRUE
+vOTU2681	gc1	0	0	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	1	0	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	17	TRUE
+vOTU2681	gd1	0	0	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	1	0	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	17	TRUE
+vOTU2681	oc1	0	0.0019047619	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	1	0	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	17	TRUE
+vOTU2681	od1	0	0	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	1	0	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	17	TRUE
+vOTU2688	bc1	8.208567	1	8.208567	TRUE	0.016147694304296783	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2688	bd1	0.040780142	0.085517585	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2688	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2688	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2688	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2688	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2688	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2856	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Hsp60	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2856	bd1	0	0.011305774	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Hsp60	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2856	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Hsp60	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2856	gc1	0	0.035643395	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Hsp60	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2856	gd1	9.615347	0.99361354	9.615347	TRUE	0.05274397639059623	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Hsp60	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2856	oc1	0	0.017347027	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Hsp60	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2856	od1	12.376202	0.81789935	12.376202	TRUE	0.1559464031020986	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Hsp60	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2859	bc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	2	2	ClpE; ClpP	ClpE; ClpP	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	13	TRUE
+vOTU2859	bd1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	2	2	ClpE; ClpP	ClpE; ClpP	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	13	TRUE
+vOTU2859	bc2	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	2	2	ClpE; ClpP	ClpE; ClpP	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	13	TRUE
+vOTU2859	gc1	43.72094	0.9835825	43.72094	TRUE	0.5434127638709689	TRUE	TRUE	TRUE	TRUE	2	2	2	2	ClpE; ClpP	ClpE; ClpP	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	13	TRUE
+vOTU2859	gd1	5.9093475	0.98081744	5.9093475	TRUE	0.03241510525036994	TRUE	TRUE	TRUE	TRUE	2	2	2	2	ClpE; ClpP	ClpE; ClpP	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	13	TRUE
+vOTU2859	oc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	2	2	ClpE; ClpP	ClpE; ClpP	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	13	TRUE
+vOTU2859	od1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	2	2	2	2	ClpE; ClpP	ClpE; ClpP	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	13	TRUE
+vOTU2876	bc1	0	0.0025167058	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	WhiB3	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2876	bd1	0	0.011368567	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	WhiB3	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2876	bc2	25.227997	0.9999132	25.227997	TRUE	0.09678712594147637	TRUE	TRUE	FALSE	FALSE	1	1	0	0	WhiB3	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2876	gc1	0	9.546125e-4	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	WhiB3	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2876	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	WhiB3	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2876	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	WhiB3	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2876	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	WhiB3	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2936	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Hsp60	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2936	bd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Hsp60	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2936	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Hsp60	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2936	gc1	0	0.00959507	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Hsp60	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2936	gd1	8.6091175	0.9981514	8.6091175	TRUE	0.04722441011893474	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Hsp60	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2936	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Hsp60	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU2936	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Hsp60	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3047	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3047	bd1	14.74499	0.9999097	14.74499	TRUE	0.045096088645981566	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3047	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3047	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3047	gd1	0	0.04578705	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3047	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3047	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3169	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Cytolysin	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3169	bd1	20.6995	0.99916744	20.6995	TRUE	0.06330736656501601	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Cytolysin	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3169	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Cytolysin	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3169	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Cytolysin	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3169	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Cytolysin	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3169	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Cytolysin	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3169	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Cytolysin	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3178	bc1	13.865712	0.99990726	13.865712	TRUE	0.027276293010390185	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3178	bd1	0.14578326	0.13060012	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3178	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3178	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3178	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3178	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3178	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3291	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	WhiB3	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	16	TRUE
+vOTU3291	bd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	WhiB3	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	16	TRUE
+vOTU3291	bc2	0	0.0013286514	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	WhiB3	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	16	TRUE
+vOTU3291	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	WhiB3	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	16	TRUE
+vOTU3291	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	WhiB3	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	16	TRUE
+vOTU3291	oc1	5.8054338	0.876815	5.8054338	TRUE	0.06656448545238572	TRUE	TRUE	FALSE	FALSE	1	1	0	0	WhiB3	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	16	TRUE
+vOTU3291	od1	28.540165	0.99924076	28.540165	TRUE	0.3596205100474609	TRUE	TRUE	FALSE	FALSE	1	1	0	0	WhiB3	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	16	TRUE
+vOTU3422	bc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3422	bd1	0	0.025501266	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3422	bc2	9.970918	1	9.970918	TRUE	0.038253393490499214	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3422	gc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3422	gd1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3422	oc1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3422	od1	0	0	0	FALSE	0	TRUE	TRUE	TRUE	TRUE	1	1	1	1	LPS	LPS	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3434	bc1	13.663916	0.995998	13.663916	TRUE	0.026879324803901785	TRUE	FALSE	FALSE	FALSE	2	0	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3434	bd1	0.016727192	0.063933626	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	2	0	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3434	bc2	15.2156925	1	15.2156925	TRUE	0.05837495328242973	TRUE	FALSE	FALSE	FALSE	2	0	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3434	gc1	0	0	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	2	0	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3434	gd1	0	0	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	2	0	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3434	oc1	0	0	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	2	0	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3434	od1	0	0.016983895	0	FALSE	0	TRUE	FALSE	FALSE	FALSE	2	0	0	0	LOS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3464	bc1	452.77762	1	452.77762	TRUE	0.8906931740445138	TRUE	TRUE	FALSE	FALSE	1	1	0	0	3-hydroxymyristoyl] glucosamine N-acyltransferase [LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	8	TRUE
+vOTU3464	bd1	2.5208356	0.808058	2.5208356	TRUE	0.0077097255189421034	TRUE	TRUE	FALSE	FALSE	1	1	0	0	3-hydroxymyristoyl] glucosamine N-acyltransferase [LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	8	TRUE
+vOTU3464	bc2	0	0.024017254	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	3-hydroxymyristoyl] glucosamine N-acyltransferase [LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	8	TRUE
+vOTU3464	gc1	0	0.0012743849	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	3-hydroxymyristoyl] glucosamine N-acyltransferase [LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	8	TRUE
+vOTU3464	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	3-hydroxymyristoyl] glucosamine N-acyltransferase [LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	8	TRUE
+vOTU3464	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	3-hydroxymyristoyl] glucosamine N-acyltransferase [LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	8	TRUE
+vOTU3464	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	3-hydroxymyristoyl] glucosamine N-acyltransferase [LPS	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	8	TRUE
+vOTU3519	bc1	13.994651	1	13.994651	TRUE	0.02752993869006871	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3519	bd1	0	0.036067195	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3519	bc2	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3519	gc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3519	gd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3519	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3519	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	CsrA	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3528	bc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3528	bd1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3528	bc2	7.168825	1	7.168825	TRUE	0.0275031730869242	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3528	gc1	0	0.0022772278	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3528	gd1	0	0.0013861386	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3528	oc1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE
+vOTU3528	od1	0	0	0	FALSE	0	TRUE	TRUE	FALSE	FALSE	1	1	0	0	Capsule	NA	0.75	summed masked trimmed mean depth over all catalogue representatives of the same sample	NA	FALSE

@@ -1,0 +1,3 @@
+join	source_rows	source_key_duplicates	catalogue_rows	matched	unmatched	unmatched_ids
+virus_taxonomy_formatted by vcontig_id	3533	FALSE	3060	3046	14	vOTU1454, vOTU1643, vOTU2101, vOTU2461, vOTU2535, vOTU2648, vOTU2816, vOTU2852, vOTU3035, vOTU3237, vOTU3385, vOTU3435, vOTU3453, vOTU3572
+virus_cargo_summary by vOTU_id	3060	FALSE	3060	3060	0	

@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-25",
+  "comparison": [
+    {
+      "file": "position_ratio.tsv",
+      "expected_sha256": "777eb47acede7ebe189523b29ded285610ad41d2d42e26269d69ea6d7e493e59",
+      "rerun_sha256": "777eb47acede7ebe189523b29ded285610ad41d2d42e26269d69ea6d7e493e59",
+      "byte_identical": true,
+      "parsed_table_identical": true,
+      "rows": 3
+    },
+    {
+      "file": "vf_on_complete_genomes.tsv",
+      "expected_sha256": "963b84efa5f46a4934eb6ca644db4a0225f7d1741abafe3b6890b45306124c2a",
+      "rerun_sha256": "963b84efa5f46a4934eb6ca644db4a0225f7d1741abafe3b6890b45306124c2a",
+      "byte_identical": true,
+      "parsed_table_identical": true,
+      "rows": 11
+    },
+    {
+      "file": "vf_by_provirus_flag.tsv",
+      "expected_sha256": "f4a7b07899c41b1ef223eefbd9849326879a03810a074b2a7d216ad826c8ca32",
+      "rerun_sha256": "f4a7b07899c41b1ef223eefbd9849326879a03810a074b2a7d216ad826c8ca32",
+      "byte_identical": true,
+      "parsed_table_identical": true,
+      "rows": 2
+    }
+  ],
+  "all_three_saved_tables_identical": true,
+  "terminal_repeat_function_counts_independently_matched": true,
+  "scope": "Reproduced original analysis. No alternate bootstrap, formal equivalence test or bioinformatics rerun performed."
+}

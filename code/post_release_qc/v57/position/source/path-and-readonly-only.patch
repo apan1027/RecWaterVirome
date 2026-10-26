@@ -1,0 +1,19 @@
+--- server_original
++++ audit_adapter
+@@ -8,11 +8,12 @@
+   library(data.table); library(DBI); library(RSQLite)
+ })
+ 
+-root <- "/home/allen/github/rujinlong/p0061-RecWaterVirome"
+-out  <- file.path(root, "dev/210-vf-position-qc")
+-dir.create(out, showWarnings = FALSE, recursive = TRUE)
++args <- commandArgs(trailingOnly = TRUE)
++if (length(args) != 2L) stop("Usage: vf_position_qc.R <read-only SQLite> <existing audit output directory>")
++db_path <- normalizePath(args[[1L]], mustWork = TRUE)
++out <- normalizePath(args[[2L]], mustWork = TRUE)
+ 
+-con <- dbConnect(SQLite(), file.path(root, "analyses/p0061.sqlite"))
++con <- dbConnect(SQLite(), db_path, flags = RSQLite::SQLITE_RO)
+ genes <- as.data.table(dbGetQuery(con, "
+   SELECT vcontig_id, protein_id, CAST(gene_position AS INTEGER) AS gene_ordinal,
+          CAST(start_position AS INTEGER) AS gene_start,

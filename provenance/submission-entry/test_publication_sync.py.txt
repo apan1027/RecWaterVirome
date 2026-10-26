@@ -1,0 +1,76 @@
+#!/usr/bin/env python3
+"""Isolated tests of the publication edits and rejection of unreviewed changes.
+Authors (code-document order): Jinlong Ru, Cunli Pan.
+"""
+from pathlib import Path
+from lxml import etree as E
+from PIL import Image
+import importlib.util,json,tempfile,zipfile
+CODE=Path(__file__).resolve().parent
+spec=importlib.util.spec_from_file_location('publication',CODE/'sync_publication.py')
+p=importlib.util.module_from_spec(spec);spec.loader.exec_module(p)
+provenance=json.loads((CODE.parent/'08_Manuscript_Source/v2026.09.28.54/editorial-overrides/provenance.json').read_text())
+original=(CODE/'workflow/analyses/data/120-fig2-community-links/fig2.svg').read_bytes()
+fixed=p.patch_svg(original,provenance)
+assert p.patch_svg(fixed,provenance)==fixed
+registered_v56,_=p.patch_v56_figure(fixed,json.loads((CODE/'metadata_release_v56/figure2-patch.json').read_text()))
+assert registered_v56==(CODE.parent/'08_Manuscript_Source/figures/Figure2.svg').read_bytes()
+print('PASS: accepted SVG edit is exact and idempotent')
+try:p.patch_svg(original.replace(b'<svg ',b'<svg data-unreviewed="true" ',1),provenance)
+except RuntimeError:pass
+else:raise AssertionError('Unreviewed SVG source was accepted')
+print('PASS: unreviewed changes outside the legend are rejected')
+with tempfile.TemporaryDirectory(prefix='rwv-publish-test-') as tmp:
+    tmp=Path(tmp);a=tmp/'a.png';b=tmp/'b.png'
+    im=Image.new('RGB',(2,2),'white');im.save(a);im.putpixel((0,0),(0,0,0));im.save(b)
+    assert not p.image_equal(a,b)
+    print('PASS: a one-pixel change fails image comparison')
+    source=CODE/'workflow/analyses/data/320-data1-local/Data1_local.xlsx';dest=tmp/'Data1_local.xlsx'
+    target=p.patch_workbook(source,dest,CODE/'metadata_release_v54')
+    with zipfile.ZipFile(source) as z,zipfile.ZipFile(dest) as zz:
+        changed=[k for k in z.namelist() if z.read(k)!=zz.read(k)]
+        assert set(changed)<=set([target,'docProps/core.xml'])
+        def cells(blob):
+            return {c.get('r'):E.tostring(c) for c in E.fromstring(blob).findall('.//s:c',p.NS)}
+        old,new=cells(z.read(target)),cells(zz.read(target));assert old.keys()==new.keys()
+        assert {k for k in old if old[k]!=new[k]}=={'B2','C2'}
+    v56=tmp/'v56.xlsx';p.patch_v56_workbook(dest,v56,json.loads((CODE/'metadata_release_v56/data1-patch.json').read_text()))
+    v57=tmp/'v57.xlsx';p.extend_workbook(v56,v57,json.loads((CODE/'metadata_release_v57/Data1-append.json').read_text()),CODE/'metadata_release_v57')
+    labels=json.loads((CODE/'metadata_release_v58/workbook-label-patches.json').read_text())['Data1_local.xlsx'];current=tmp/labels['public_filename']
+    p.workbook_labels(v57,current,labels)
+    final=tmp/'Data1-final.xlsx'
+    p.patch_v58_2_workbook(current,final,json.loads((CODE/'metadata_release_v58_2/workbook-label-patches.json').read_text()))
+    assert p.workbook_equal(final,CODE.parent/'05_Supplementary_Data'/labels['public_filename'])
+    print('PASS: only the two approved v54 text cells change; subsequent registered layers reproduce the current workbook')
+    corrupt=tmp/'corrupt-v57.xlsx'
+    with zipfile.ZipFile(v57) as z,zipfile.ZipFile(corrupt,'w') as zz:
+        for name in z.namelist():zz.writestr(name,z.read(name)+(b'\n' if name=='xl/worksheets/sheet3.xml' else b''))
+    try:p.workbook_labels(corrupt,tmp/'untrusted.xlsx',labels)
+    except AssertionError:pass
+    else:raise AssertionError('v58 label patch accepted altered scientific input')
+    print('PASS: v58 naming transform rejects a changed scientific worksheet')
+    global_source=CODE/'workflow/analyses/data/900-publication-bundle/review-candidate/Data2_global.xlsx'
+    altered=tmp/'altered-global.xlsx'
+    with zipfile.ZipFile(global_source) as z,zipfile.ZipFile(altered,'w') as zz:
+        for name in z.namelist():
+            blob=z.read(name)
+            if name=='xl/worksheets/sheet3.xml':blob+=b'\n'
+            zz.writestr(name,blob)
+    metadata=CODE/'metadata_release_v57'
+    reg=json.loads((metadata/'Data2-append.json').read_text())
+    accepted=tmp/'Data2-v57.xlsx';p.extend_workbook(global_source,accepted,reg,metadata)
+    lab2=json.loads((CODE/'metadata_release_v58/workbook-label-patches.json').read_text())['Data2_global.xlsx']
+    published=tmp/lab2['public_filename'];p.workbook_labels(accepted,published,lab2)
+    assert p.workbook_equal(published,CODE.parent/'05_Supplementary_Data'/lab2['public_filename'])
+    try:p.extend_workbook(altered,tmp/'rejected.xlsx',reg,metadata)
+    except AssertionError:pass
+    else:raise AssertionError('Current Data2 layer accepted a changed scientific worksheet')
+    print('PASS: current Data2 append/naming chain is exact and rejects a scientific change')
+spec=importlib.util.spec_from_file_location('current_names',CODE/'metadata_release_v58_2/naming_rules.py')
+names=importlib.util.module_from_spec(spec);spec.loader.exec_module(names)
+original='Figs. 1, 2; Supplementary Figs. 1a, 2a'
+expected='Figs. 1, 2; Supplementary Figs. S1a, S2a'
+assert names.normalize(original)==expected and names.normalize(expected)==expected
+assert names.normalize('Supplementary Fig 1a')=='Supplementary Fig S1a'
+print('PASS: plural figure lists and unpunctuated calls are normalized without changing main-figure calls')
+print('All 7 publication regression tests passed; no scientific execution')

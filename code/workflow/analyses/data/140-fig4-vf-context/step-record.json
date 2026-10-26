@@ -1,0 +1,201 @@
+{
+  "step": "140-fig4-vf-context",
+  "status": "complete",
+  "run_id": "20261020T001926-86706",
+  "mode": "launcher",
+  "qmd": "analyses/140-fig4-vf-context.qmd",
+  "source_contract": "rwv-source-v1",
+  "sources": [
+    {
+      "path": "analyses/_quarto.yml",
+      "sha256": "f0a3aa48cc56e27741842f9b2de3347ce9248fe5f891412a3574bd30eae244a3"
+    },
+    {
+      "path": "analyses/140-fig4-vf-context.qmd",
+      "sha256": "7628dac8dbd039193e78335243f28716b8758193343e6150b4ef38c400dadb6b"
+    },
+    {
+      "path": "DESCRIPTION",
+      "sha256": "542f81044f872f6abab362c51697985b128b55c5a1eae811ab9aaf63a0d41d12"
+    },
+    {
+      "path": "NAMESPACE",
+      "sha256": "53248d066122bbbf7fefbbca5b547a05a2ef79b4d01f8adce5487c937d37351f"
+    },
+    {
+      "path": "R/community.R",
+      "sha256": "e43790efd903763a406173508ab07c3e875e61aa6ab006b8efc32a5669018bef"
+    },
+    {
+      "path": "R/export.R",
+      "sha256": "b7cc60626548945b094ab3b70e59feae0eed56289ed081c9233fbf0fe16d1951"
+    },
+    {
+      "path": "R/figures.R",
+      "sha256": "b8c4a6f75680a85b60ee94752ece28837afed188a77be4511b068d82909a601b"
+    },
+    {
+      "path": "R/fonts.R",
+      "sha256": "5423a0f88176e82fd1f8ada882972dc56adeb330d692101318af6318783d5adf"
+    },
+    {
+      "path": "R/literature-summary.R",
+      "sha256": "9b225ec26f45adaf1597bb3f0851143466b28537dbc99dbeb636107dee16a079"
+    },
+    {
+      "path": "R/report.R",
+      "sha256": "3eb3fbd7a788c9b4d4cd8e61403415637b4bcde87faad9d5069be57d20f1b4ea"
+    },
+    {
+      "path": "R/sfig-sharing-hosts.R",
+      "sha256": "2428b3b776a1ea14cd26d7df769519b85e244bf7c69869eab19c83d793e9bf57"
+    },
+    {
+      "path": "R/style.R",
+      "sha256": "e03dbf78ae81c5108c6a28abe2638e06c70b49c3f3fee20fbe50f4292efc97b2"
+    },
+    {
+      "path": "R/workflow.R",
+      "sha256": "f235287b127dc0411c60b883ddc44ad25592b07efe2dd9f3a7fcc019b66a46f1"
+    },
+    {
+      "path": "scripts/gfm-from-knit.R",
+      "sha256": "9e8f8570c3f8a07f9e7208a0e26cd501e44dfc00e03331a44eff78f0b01dc29a"
+    },
+    {
+      "path": "scripts/render-step.R",
+      "sha256": "3632f5636861fd03d4ffbee5e2b51724abe6ced71f38e933613901272a1b820a"
+    },
+    {
+      "path": "scripts/render.R",
+      "sha256": "c8dbba5879978f032ddf8d7104987b9d548370555844dc411445f59810216654"
+    }
+  ],
+  "started": "2026-10-20T00:23:30+0200",
+  "finished": "2026-10-20T00:23:32+0200",
+  "inputs": [
+    {
+      "kind": "upstream",
+      "path": "010-input-manifest/input-manifest.tsv",
+      "sha256": "70ee8c390a17b829c9918447651b445edf633ac557ff7822648889529dea4536"
+    },
+    {
+      "kind": "project",
+      "path": "config/style.yml",
+      "sha256": "07c316c563f2f4ae746f894f3a5c260481dc553abdd81ed4f70c70617b359326"
+    },
+    {
+      "kind": "project",
+      "path": "config/palettes.yml",
+      "sha256": "4e26369292abab1d9307bd6514fa82aa22ad09ff045ea0275ef2ed3c6fc90bd6"
+    },
+    {
+      "kind": "project",
+      "path": "config/figures.yml",
+      "sha256": "54186035b7061c7294e75cc9854aae30adb0481039691b4d47edaa9bc700d42a"
+    },
+    {
+      "kind": "project",
+      "path": "config/definitions.tsv",
+      "sha256": "bc592e0d61475b88436abc3d64e13c47d63ae99796a4c1f8dc8a7e7e75bfc725"
+    },
+    {
+      "kind": "upstream",
+      "path": "040-vf-inputs/checkv_flagged_records.tsv",
+      "sha256": "96b245c1aaf3a43a6eb8f23fa1a7241af00e44c7433724a2c6b183bc9320e304"
+    },
+    {
+      "kind": "upstream",
+      "path": "040-vf-inputs/vf_carrier_abundance.tsv",
+      "sha256": "ef71342a782202c3f3a528726fa0ae0163f0a502db2950db371a28ae170f73aa"
+    },
+    {
+      "kind": "upstream",
+      "path": "040-vf-inputs/vf_heatmap_selection.tsv",
+      "sha256": "7ab5293a70b4dfc33cac45c18f3e8fdbeefe99d18b3c1172118bfc320a8444a4"
+    },
+    {
+      "kind": "upstream",
+      "path": "040-vf-inputs/vf_hit_catalogue.tsv",
+      "sha256": "3c3bb32ff6de6b753caebfa8b65e907e12c224adc337750bbf3278845f372e27"
+    },
+    {
+      "kind": "upstream",
+      "path": "040-vf-inputs/vf_model_excluded.tsv",
+      "sha256": "dee68183c6f1dae1452b9a4744fefa1ee9c43bf2478cb732d5fa800d295f9bdf"
+    },
+    {
+      "kind": "upstream",
+      "path": "040-vf-inputs/vf_models.tsv",
+      "sha256": "5441aa6c13c6328cbf9de1578324c4ad5bfed2850f957100e91447473231e447"
+    },
+    {
+      "kind": "upstream",
+      "path": "040-vf-inputs/vf_hit_localization.tsv",
+      "sha256": "3f2811ab3c273f7bfb7d590bcf03d55f14628ff6c6eeac5de7ee0a0969406a14"
+    },
+    {
+      "kind": "upstream",
+      "path": "040-vf-inputs/vf_sample_summary.tsv",
+      "sha256": "fbccbd21c019e0f2985ccf5354d40dade3af9984a380baa28266c2b3deffc73e"
+    },
+    {
+      "kind": "project",
+      "path": "config/samples.tsv",
+      "sha256": "d78164d7c020f6f56899cdbb7e22f9bde3b38252493c582b9790976074dc13d5"
+    },
+    {
+      "kind": "upstream",
+      "path": "020-community-analysis/checkv_catalogue.tsv",
+      "sha256": "892da3acdfb61f6c52a970cad9ec2405abc2e2a2dcab18f1ab839e2f9e4c2b5b"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "fig4.pdf",
+      "bytes": 62553,
+      "sha256": "f0ab2e85391407a3d978b5dd46b556e99fd3209a0073f85354413de94ec24d9a"
+    },
+    {
+      "file": "fig4.svg",
+      "bytes": 83623,
+      "sha256": "f2fc7fc203b82b67329fe5e5621e2e1a170719ae0925d61cef46c1f660e331fd"
+    },
+    {
+      "file": "fig4.png",
+      "bytes": 318283,
+      "sha256": "7fa9f4aa07a7fc109fc618133f0c28b51ca6f5eebe8209250cbeb99d361a541c"
+    },
+    {
+      "file": "fig4.tiff",
+      "bytes": 1050966,
+      "sha256": "40e0958d0be6e5ffa55f292244301ad39996a44fd13054e285f2e010e3c3f587"
+    },
+    {
+      "file": "fig4-export.json",
+      "bytes": 19955,
+      "sha256": "eb0645635a1c4351afa03bd42838a0bf5a8d6a98d4525f7a6a38739e4fe4ae2b"
+    },
+    {
+      "file": "fig4-plot-values.tsv",
+      "bytes": 18756,
+      "sha256": "0952c01099a55fd706b92cb890c9672014e8d517460b6e0615218d22932ea56a"
+    },
+    {
+      "file": "fig4-legend.md",
+      "bytes": 8066,
+      "sha256": "ce6510692bbebb385fd28923d00c901933f7b8f408afea27b3040a908c74516c"
+    },
+    {
+      "file": "fig4-checks.tsv",
+      "bytes": 3068,
+      "sha256": "e5f671b95eac6235d13fe399069e0e32977bae51346a0acc893367fd5848a550"
+    },
+    {
+      "file": "session-info.txt",
+      "bytes": 13698,
+      "sha256": "815a4d6826ea50fe80f484421d537d6796e94ce26f5fa9e3c2416e80faaaa3a2"
+    }
+  ],
+  "output_dir_files": []
+}

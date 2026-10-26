@@ -1,0 +1,19 @@
+{
+  "authors_in_document_order": [
+    "Jinlong Ru",
+    "Cunli Pan"
+  ],
+  "source_repository": "https://github.com/rujinlong/p0061-RecWaterVirome",
+  "source_worktree_base_commit": "a72727af6837ff849e527e8a8359b0cfea523bea",
+  "scope": "Prepared publication candidate only; inherited root R/analyses/dev and Git history excluded.",
+  "current_authority": "BMC_Microbiology_submission_clean_2026-10-26",
+  "changed_author_documents_since_previous_receipt": [
+    "RecWaterVirome_Manuscript.docx",
+    "RecWaterVirome_Supplementary_Information.docx"
+  ],
+  "word_embedded_figures_verified": 9,
+  "word_documents_distributed": false,
+  "scientific_execution": false,
+  "licence_note": "Upstream repository licence preserved verbatim in upstream-LICENSE.md; no new licence grant or resolution of imported-workflow scope is asserted.",
+  "network_status_at_preparation": "GitHub API denied by environment domain allowlist, including approved retry. Remote state unverified; no remote creation or push performed."
+}

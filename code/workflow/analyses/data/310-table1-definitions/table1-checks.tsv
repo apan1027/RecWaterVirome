@@ -1,0 +1,7 @@
+check	expected	observed	tolerance	pass	source
+every definition row has a study unit and a definition	TRUE, TRUE	TRUE, TRUE	0	TRUE	
+figure column filled for every row	TRUE	TRUE	0	TRUE	
+full ledger rows equal definition rows	66	66	0	TRUE	
+Table 1 figure pointers use the manuscript form and no former S2A pointer remains	TRUE, FALSE	TRUE, FALSE	0	TRUE	
+the flanked-construct denominators quoted in Table 1	512, 720, 720	512, 720, 720	0	TRUE	
+main Table 1 is compact (rows, columns)	12,  5	12,  5	0	TRUE	

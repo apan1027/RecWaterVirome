@@ -1,0 +1,7 @@
+set	tool	unit	n	denominator
+DefenseFinder anti-defense	DefenseFinder	vOTUs with >= 1 call/hit	106	3060
+filtered dbAPIS	dbAPIS (filtered)	vOTUs with >= 1 call/hit	715	3060
+DefenseFinder anti-defense AND dbAPIS	both	vOTUs with >= 1 call/hit	99	3060
+Anti-defense union (OR)	DefenseFinder OR dbAPIS	vOTUs with >= 1 call/hit	722	3060
+DefenseFinder defense	DefenseFinder	vOTUs with >= 1 call/hit	5	3060
+PADLOC defense	PADLOC	vOTUs with >= 1 call/hit	31	3060

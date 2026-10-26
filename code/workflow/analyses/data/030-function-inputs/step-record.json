@@ -1,0 +1,371 @@
+{
+  "step": "030-function-inputs",
+  "status": "complete",
+  "run_id": "20261020T001926-86706",
+  "mode": "launcher",
+  "qmd": "analyses/030-function-inputs.qmd",
+  "source_contract": "rwv-source-v1",
+  "sources": [
+    {
+      "path": "analyses/_quarto.yml",
+      "sha256": "f0a3aa48cc56e27741842f9b2de3347ce9248fe5f891412a3574bd30eae244a3"
+    },
+    {
+      "path": "analyses/030-function-inputs.qmd",
+      "sha256": "3d5ea432e2d6b6a3316d2d3da62ec70b5eeee8c4f2259d789136f4e89f78aa7d"
+    },
+    {
+      "path": "DESCRIPTION",
+      "sha256": "542f81044f872f6abab362c51697985b128b55c5a1eae811ab9aaf63a0d41d12"
+    },
+    {
+      "path": "NAMESPACE",
+      "sha256": "53248d066122bbbf7fefbbca5b547a05a2ef79b4d01f8adce5487c937d37351f"
+    },
+    {
+      "path": "R/community.R",
+      "sha256": "e43790efd903763a406173508ab07c3e875e61aa6ab006b8efc32a5669018bef"
+    },
+    {
+      "path": "R/export.R",
+      "sha256": "b7cc60626548945b094ab3b70e59feae0eed56289ed081c9233fbf0fe16d1951"
+    },
+    {
+      "path": "R/figures.R",
+      "sha256": "b8c4a6f75680a85b60ee94752ece28837afed188a77be4511b068d82909a601b"
+    },
+    {
+      "path": "R/fonts.R",
+      "sha256": "5423a0f88176e82fd1f8ada882972dc56adeb330d692101318af6318783d5adf"
+    },
+    {
+      "path": "R/literature-summary.R",
+      "sha256": "9b225ec26f45adaf1597bb3f0851143466b28537dbc99dbeb636107dee16a079"
+    },
+    {
+      "path": "R/report.R",
+      "sha256": "3eb3fbd7a788c9b4d4cd8e61403415637b4bcde87faad9d5069be57d20f1b4ea"
+    },
+    {
+      "path": "R/sfig-sharing-hosts.R",
+      "sha256": "2428b3b776a1ea14cd26d7df769519b85e244bf7c69869eab19c83d793e9bf57"
+    },
+    {
+      "path": "R/style.R",
+      "sha256": "e03dbf78ae81c5108c6a28abe2638e06c70b49c3f3fee20fbe50f4292efc97b2"
+    },
+    {
+      "path": "R/workflow.R",
+      "sha256": "f235287b127dc0411c60b883ddc44ad25592b07efe2dd9f3a7fcc019b66a46f1"
+    },
+    {
+      "path": "scripts/gfm-from-knit.R",
+      "sha256": "9e8f8570c3f8a07f9e7208a0e26cd501e44dfc00e03331a44eff78f0b01dc29a"
+    },
+    {
+      "path": "scripts/render-step.R",
+      "sha256": "3632f5636861fd03d4ffbee5e2b51724abe6ced71f38e933613901272a1b820a"
+    },
+    {
+      "path": "scripts/render.R",
+      "sha256": "c8dbba5879978f032ddf8d7104987b9d548370555844dc411445f59810216654"
+    }
+  ],
+  "started": "2026-10-20T00:22:25+0200",
+  "finished": "2026-10-20T00:22:26+0200",
+  "inputs": [
+    {
+      "kind": "upstream",
+      "path": "010-input-manifest/input-manifest.tsv",
+      "sha256": "70ee8c390a17b829c9918447651b445edf633ac557ff7822648889529dea4536"
+    },
+    {
+      "kind": "upstream",
+      "path": "010-input-manifest/raw-input-manifest.tsv",
+      "sha256": "28fbe92253ba4d14f566494b38325c973e24450eff272bd756b654ba1f16e9f7"
+    },
+    {
+      "kind": "project",
+      "path": "config/definitions.tsv",
+      "sha256": "bc592e0d61475b88436abc3d64e13c47d63ae99796a4c1f8dc8a7e7e75bfc725"
+    },
+    {
+      "kind": "project",
+      "path": "config/style.yml",
+      "sha256": "07c316c563f2f4ae746f894f3a5c260481dc553abdd81ed4f70c70617b359326"
+    },
+    {
+      "kind": "project",
+      "path": "config/samples.tsv",
+      "sha256": "d78164d7c020f6f56899cdbb7e22f9bde3b38252493c582b9790976074dc13d5"
+    },
+    {
+      "kind": "upstream",
+      "path": "020-community-analysis/host_iphop.tsv",
+      "sha256": "d51631785bcada5be7fabb98a2c045095db92e9f10b5b3cb60ba66a57567eadd"
+    },
+    {
+      "kind": "upstream",
+      "path": "020-community-analysis/checkv_catalogue.tsv",
+      "sha256": "892da3acdfb61f6c52a970cad9ec2405abc2e2a2dcab18f1ab839e2f9e4c2b5b"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/amg_ko_matrix_tpm.tsv",
+      "sha256": "b19100e40f49818f6278fdd73c7837de554f9bf7819a1da3e8e63db0d1dc67c9"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/amg_pathway_matrix_tpm.tsv",
+      "sha256": "988061073f645254b69e749c03905dc0ffe04342bb5eae811fa3a461fd5d3466"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/amg_carrier_contributions.tsv",
+      "sha256": "a4e9f8ca867a49bc37171ca0f47a610fb6ebaf349a04992003dc1a40f1917da3"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/amg_feature_driver_summary.tsv",
+      "sha256": "23bc0d7d1620f5ba2f59562511a1e27662f8b6155816b43be2e886f2359e859a"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/f3_display_selection.tsv",
+      "sha256": "9b3c610f142996fa9c83b12ac5a7f4ae7632ef9862a524fabcffdae325fbca1a"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/f3_display_selection_provenance.json",
+      "sha256": "1a7d384ec64a6a0e684f4b4e91d5026108bdc86470f50ec43dde07a509f19b88"
+    },
+    {
+      "kind": "upstream",
+      "path": "020-community-analysis/host_codetection_by_sample.tsv",
+      "sha256": "7d607ecab3b31dc389b0e8a08f062748ca486b4ffbce564c4d10c9dadc144821"
+    },
+    {
+      "kind": "upstream",
+      "path": "020-community-analysis/host_crispr_edges.tsv",
+      "sha256": "e66b222e52c618d2032766ff4df15f42d09addaaddbd1bc802ae0587e1ccd0c3"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/local_votu_table.tsv",
+      "sha256": "bb4d50b1077bd21b1795317e37e64764279a8966f1410f06609e383b679551e8"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/cargo_library_tiers.tsv",
+      "sha256": "161cc0fb7fcb743ebc4dda626418b2fd25b61b59fc40b7cfc4310dd2489c36c6"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/narp_votu_detail.tsv",
+      "sha256": "47ec5bfc4c36149dd0986c44f8fe46cb2de23df9596e507b032a3bf57417e7fe"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/narp_ko_cooccurrence.tsv",
+      "sha256": "859fa81aa0202c2d6b3fb53024285c668f6b37d7f53c33468a01c5d54a3bb872"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/narp_thoeris_context.tsv",
+      "sha256": "a9ea2c9f4421d378217d9887ef1aa6e161d7fe84b5370507e036d9a9ef874929"
+    },
+    {
+      "kind": "upstream",
+      "path": "012-tse-construction/tse_virome.rds",
+      "sha256": "51dfe0fbc7a40a600a0eb6adefbb6a05f9189cb8d49595dee227957e46c4e707"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/defense_type_inventory.tsv",
+      "sha256": "41da17766e1977e40431f359977947a8f24684dbd117b455ed0c20a6d84b2048"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/votu0052_context.tsv",
+      "sha256": "ede0222e16e8efb0d1e78ee31cbe8a35fdaa8c84c3ba6ca8941f7ef725eabbcd"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/votu0052_defensefinder_genes.tsv",
+      "sha256": "1e91dcf88761b22c3f0c3656eff0d8bc516d8515427afa5b1d00bed63c97677b"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/narp_gene_annotation_pairs.tsv",
+      "sha256": "b1cd74757775e8a38d18a42dc8893ce9b7ec068fd0b330ddbebe036d230e7118"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/doc_votu0052_coverage_spike.md",
+      "sha256": "51497176515051a9c8c668a3dc43add5bab34dd0de11b72fb696643c18754920"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/doc_votu0052_coverage_spike.md",
+      "sha256": "51497176515051a9c8c668a3dc43add5bab34dd0de11b72fb696643c18754920"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/doc_votu0052_coverage_spike.md",
+      "sha256": "51497176515051a9c8c668a3dc43add5bab34dd0de11b72fb696643c18754920"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/doc_votu0052_coverage_spike.md",
+      "sha256": "51497176515051a9c8c668a3dc43add5bab34dd0de11b72fb696643c18754920"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/doc_votu0052_coverage_spike.md",
+      "sha256": "51497176515051a9c8c668a3dc43add5bab34dd0de11b72fb696643c18754920"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/doc_votu0052_he_targeting.md",
+      "sha256": "311c9c9f5e4f12313ed25e03bd91c0f1ff14014f439587238ce9a49368c4204c"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/doc_votu0052_he_targeting.md",
+      "sha256": "311c9c9f5e4f12313ed25e03bd91c0f1ff14014f439587238ce9a49368c4204c"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/doc_votu0052_he_targeting.md",
+      "sha256": "311c9c9f5e4f12313ed25e03bd91c0f1ff14014f439587238ce9a49368c4204c"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/doc_votu0052_orf102.md",
+      "sha256": "dd197a11358bed70798a7d559de5c6ddaf5add32fa595972e0711f0ae01655b9"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d030-function-inputs/supplementary_information.qmd",
+      "sha256": "95d3d6efdc1dc998f02d26eafa74ab625a1bc8c4a2c4c0f39df006be4ccb05c5"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "amg_ko_matrix.tsv",
+      "bytes": 19856,
+      "sha256": "83d97dbd7b90341387aac354f0bd54a4a1d6d84445a26a21f4a41240756120e2"
+    },
+    {
+      "file": "amg_pathway_matrix.tsv",
+      "bytes": 9909,
+      "sha256": "1c1e869bb6e1d08337b316032aa3e5f6ffc15bcf11a55234cd020b13009c123a"
+    },
+    {
+      "file": "amg_ko_carriers.tsv",
+      "bytes": 124967,
+      "sha256": "4317bff7810bc60d65fb19b6fa43afd5106a13dff627a5e8ded271b5ade8e940"
+    },
+    {
+      "file": "f3_display.tsv",
+      "bytes": 2599,
+      "sha256": "bedac122ef8f4b3a750039b6f103623b241b5e5f702726592af104eb0cef2120"
+    },
+    {
+      "file": "f3_carrier_ranks.tsv",
+      "bytes": 1831,
+      "sha256": "a101e5a145f9c9d2942f0933ac3226e467271c6b7bac0855b9a23a520abf7587"
+    },
+    {
+      "file": "f3_carrier_hosts.tsv",
+      "bytes": 18380,
+      "sha256": "d97750bd61bfbe5659bbfa3146d11dac9727ad3ee4c0d69a88095093a194b76c"
+    },
+    {
+      "file": "defense_membership.tsv",
+      "bytes": 67373,
+      "sha256": "6a01ecc31017f1d29ef2f29bfd44737c36f832a74cb177abb5510e7e48f8cce4"
+    },
+    {
+      "file": "defense_sets.tsv",
+      "bytes": 452,
+      "sha256": "3c6ccbedc53e8ddba9140c12a10df6b063a15b47efacbdf73ccc239bdf1c4825"
+    },
+    {
+      "file": "narp_definitions.tsv",
+      "bytes": 875,
+      "sha256": "39842e01520a9d5a5c3e16206918caddab78dadc29d23d62d8a21a523aa5b31b"
+    },
+    {
+      "file": "votu0052_locus.tsv",
+      "bytes": 713,
+      "sha256": "3ecf8e13ba78aca7613da3b5ef0db0452b80163a4ef212f1c3333c92dbd6fe57"
+    },
+    {
+      "file": "votu0052_defensefinder.tsv",
+      "bytes": 635,
+      "sha256": "1e91dcf88761b22c3f0c3656eff0d8bc516d8515427afa5b1d00bed63c97677b"
+    },
+    {
+      "file": "narp_case_evidence.tsv",
+      "bytes": 12445,
+      "sha256": "bfefff2de548ae5e8868d314a4c8f43bdffd7ede76fc24c7bb51cae8e1f04198"
+    },
+    {
+      "file": "function-gaps.tsv",
+      "bytes": 827,
+      "sha256": "8518c1d918a07627ddc295658905bc2ef736b552a164201180f02f713e760f3f"
+    },
+    {
+      "file": "input-checks.tsv",
+      "bytes": 14204,
+      "sha256": "f55ba0acb7ed5d15da7e9fb3cebe877bb6a82434e53425446c7e8ba5391b2de9"
+    },
+    {
+      "file": "session-info.txt",
+      "bytes": 13698,
+      "sha256": "b9cde83c079fcfd014f63c43a30b2b1ebfda5d5376e095adeb84f9b433a341f9"
+    },
+    {
+      "file": "narp_gene_pairs.tsv",
+      "bytes": 3960,
+      "sha256": "df8096ee257db215a716ead8fc7adeca655f2e9c783d072a009c80b0eef6a397"
+    },
+    {
+      "file": "amg_pathway_carriers.tsv",
+      "bytes": 137022,
+      "sha256": "5c22dc079d3ac3d4fc7a900ebde1784657b781945167e3c2cfa821729a713873"
+    },
+    {
+      "file": "amg_dbid_carriers.tsv",
+      "bytes": 144887,
+      "sha256": "d81982a163c7c515aede35b7b0d2adbeccd3b7c7fda820221c46068a0254d5e4"
+    },
+    {
+      "file": "amg_dbid_only_carriers.tsv",
+      "bytes": 1709,
+      "sha256": "a818d2ccf6f8e2746dd0323561b969618ef7412ae080176143c2bf9ed8a83b3d"
+    },
+    {
+      "file": "narp_carrier_sample_abundance.tsv",
+      "bytes": 11162,
+      "sha256": "4fb53d37e8a0540623015ec313dc23d316314c860b0d8ed9b2c1d64bbd669065"
+    },
+    {
+      "file": "defense_type_inventory.tsv",
+      "bytes": 5698,
+      "sha256": "cd2194909b2b937a9734e8d729d0b5b3a63a0d2009234ea7be43f5aa6fc0bc59"
+    },
+    {
+      "file": "amg_host_register.tsv",
+      "bytes": 107669,
+      "sha256": "58e3eb4b4abf9e9d5cf3f5ef6e6a61e30c7b866ab14fc1ca96d2e619407143c4"
+    },
+    {
+      "file": "ko_carrier_host_paths.tsv",
+      "bytes": 3011,
+      "sha256": "51becb24c2deb28a6f222fb87acfd1f92be6b9d0a295ce259f1cb90e7fe116cf"
+    }
+  ],
+  "output_dir_files": []
+}

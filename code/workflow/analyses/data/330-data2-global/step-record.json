@@ -1,0 +1,381 @@
+{
+  "step": "330-data2-global",
+  "status": "complete",
+  "run_id": "20261020T001926-86706",
+  "mode": "launcher",
+  "qmd": "analyses/330-data2-global.qmd",
+  "source_contract": "rwv-source-v1",
+  "sources": [
+    {
+      "path": "analyses/_quarto.yml",
+      "sha256": "f0a3aa48cc56e27741842f9b2de3347ce9248fe5f891412a3574bd30eae244a3"
+    },
+    {
+      "path": "analyses/330-data2-global.qmd",
+      "sha256": "f8f90d968215b68b326fa61adadff628c769ee8411ae3f102eb592916563610f"
+    },
+    {
+      "path": "DESCRIPTION",
+      "sha256": "542f81044f872f6abab362c51697985b128b55c5a1eae811ab9aaf63a0d41d12"
+    },
+    {
+      "path": "NAMESPACE",
+      "sha256": "53248d066122bbbf7fefbbca5b547a05a2ef79b4d01f8adce5487c937d37351f"
+    },
+    {
+      "path": "R/community.R",
+      "sha256": "e43790efd903763a406173508ab07c3e875e61aa6ab006b8efc32a5669018bef"
+    },
+    {
+      "path": "R/export.R",
+      "sha256": "b7cc60626548945b094ab3b70e59feae0eed56289ed081c9233fbf0fe16d1951"
+    },
+    {
+      "path": "R/figures.R",
+      "sha256": "b8c4a6f75680a85b60ee94752ece28837afed188a77be4511b068d82909a601b"
+    },
+    {
+      "path": "R/fonts.R",
+      "sha256": "5423a0f88176e82fd1f8ada882972dc56adeb330d692101318af6318783d5adf"
+    },
+    {
+      "path": "R/literature-summary.R",
+      "sha256": "9b225ec26f45adaf1597bb3f0851143466b28537dbc99dbeb636107dee16a079"
+    },
+    {
+      "path": "R/report.R",
+      "sha256": "3eb3fbd7a788c9b4d4cd8e61403415637b4bcde87faad9d5069be57d20f1b4ea"
+    },
+    {
+      "path": "R/sfig-sharing-hosts.R",
+      "sha256": "2428b3b776a1ea14cd26d7df769519b85e244bf7c69869eab19c83d793e9bf57"
+    },
+    {
+      "path": "R/style.R",
+      "sha256": "e03dbf78ae81c5108c6a28abe2638e06c70b49c3f3fee20fbe50f4292efc97b2"
+    },
+    {
+      "path": "R/workflow.R",
+      "sha256": "f235287b127dc0411c60b883ddc44ad25592b07efe2dd9f3a7fcc019b66a46f1"
+    },
+    {
+      "path": "scripts/gfm-from-knit.R",
+      "sha256": "9e8f8570c3f8a07f9e7208a0e26cd501e44dfc00e03331a44eff78f0b01dc29a"
+    },
+    {
+      "path": "scripts/render-step.R",
+      "sha256": "3632f5636861fd03d4ffbee5e2b51724abe6ced71f38e933613901272a1b820a"
+    },
+    {
+      "path": "scripts/render.R",
+      "sha256": "c8dbba5879978f032ddf8d7104987b9d548370555844dc411445f59810216654"
+    }
+  ],
+  "started": "2026-10-20T00:24:43+0200",
+  "finished": "2026-10-20T00:24:44+0200",
+  "inputs": [
+    {
+      "kind": "upstream",
+      "path": "010-input-manifest/input-manifest.tsv",
+      "sha256": "70ee8c390a17b829c9918447651b445edf633ac557ff7822648889529dea4536"
+    },
+    {
+      "kind": "project",
+      "path": "config/definitions.tsv",
+      "sha256": "bc592e0d61475b88436abc3d64e13c47d63ae99796a4c1f8dc8a7e7e75bfc725"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_feature_fits.tsv",
+      "sha256": "1c910aa14ca29018fc2826a8db8440afa5d1c42efed8bd71e964eed8011655c2"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_group_medians.tsv",
+      "sha256": "f8c64348d4520b649277d8034f6760e558a4fd52816b98a9d108a096ad75227e"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_profile_support.tsv",
+      "sha256": "c60d8ad40c1713c54fac729825101475adce9f03362f7f4d74c5bf3e0396e92d"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/local_carriage_bins.tsv",
+      "sha256": "e873fd65413a86874b50bb2908505fc4f6fc025c0ddafa034e8adcd2693d7b21"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_adjusted.tsv",
+      "sha256": "02b9f1d279aa9da278c6b5d45fc84f503c7b5a7dc356b14e1ebe15d171247ce0"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_firth.tsv",
+      "sha256": "7077b81bc16a2f7fcc5aca4b609708fa0999ee1cc218391985e144e6cf56b00f"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_resampling.tsv",
+      "sha256": "c359b8e5970eae9d579db2ad5f848ab012ca1fa14c744ef1f896e95809ec3fbe"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_strata.tsv",
+      "sha256": "015f496639fcd5637ea5d1ebcd212c4e140ed15df6409435d4332f694b003a23"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_nad_leaveout.tsv",
+      "sha256": "cd39bc9048349c13ce63b798eb5b010957d014bb98328164ad2663f61ac2132b"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global-gaps.tsv",
+      "sha256": "cba6c590b7f7cda59e61b0d899b00de3c976f013eb70e448eeb906e807604a28"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_adjusted_fits.tsv",
+      "sha256": "ef3053d9431a52ee1eca2fc9d69e9199e77e75a352aa4ab4d90ff74f14d4e6b7"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_firth_feature_fits.tsv",
+      "sha256": "0bdab56c3f36471da53268d3162529c4d6bd277e59241c1ce6a0da7efd78e34e"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_stratum_fits.tsv",
+      "sha256": "48e19385f4977958fe1ba4d4315979198d18d82a9a5d51d9bf6ea21b844780c7"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_aggregation_fits.tsv",
+      "sha256": "05c30ee1aadf0a179b07038ed425d10b0fa28a55641c33125e4e97de2b121c91"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_aggregation_members.tsv",
+      "sha256": "f068fc35817941592f302e71d9024ce0e53b5950f84e698d9f39f327f5fb4479"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_firth_run.tsv",
+      "sha256": "eced2afd5b78f0816cd5491e0b0c3c8de5a1872177d13d73e426a8b842f6fd12"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_resample_contrasts.tsv",
+      "sha256": "d0ef627940e0a0a54f4b9bca4a2e3a8215bfe614229f39b5ce533e7a56444eda"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_resample_features.tsv",
+      "sha256": "1ca5e861d95762b522034eac648ae02c5de6877fce078e228004d253f68f43d8"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_result_status.tsv",
+      "sha256": "de0e7b225c4eb3435fa3edb8113ef098b0bb39f86b59cee4633cb55777c7103e"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_repair_scenario_summary.tsv",
+      "sha256": "5b61f3ed0d1d698245873008f2e2cb5b02eb4b7f742dcc9b80c499de2ea6d653"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_repair_feature_fits.tsv",
+      "sha256": "9773e5b402f7af99659164ec0317ccf4f6f9f3a6102de326d3f2739994b471b0"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_repair_members.tsv",
+      "sha256": "9cbe503f396c8478fefdfeae9c3ea7cf895620265ee30cead83de1e241797af8"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_repair_scenario_members.tsv",
+      "sha256": "d77965fcad4fb30cdcaa4d4f7428233e8c91f5b8cd04d8f20ead1c704ca4ac08"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_repair_mapping.tsv",
+      "sha256": "0e1b4905cbfb73930d6a9cf196e24b089f24e88d836825c04aad7ee8d8b91316"
+    },
+    {
+      "kind": "upstream",
+      "path": "050-global-inputs/global_repair_eligibility_changes.tsv",
+      "sha256": "f5371862a06419ab91a31e604db5d28cb273466522df39be2883cc5651ff1a45"
+    },
+    {
+      "kind": "project",
+      "path": "config/field-notes.tsv",
+      "sha256": "f190356ddff945b1fecca73380bb2e2154d8ad0294816782868783da91481819"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "Data2_global.xlsx",
+      "bytes": 3429594,
+      "sha256": "d62b137015ba1b01d4a29cc43a7b9c02b0d3c2d6c2fe10d6d8ffef602cbfc2c7"
+    },
+    {
+      "file": "data2-index.tsv",
+      "bytes": 8048,
+      "sha256": "ba39909372d6f986ab0c38e11c58ec340c9a108314fb4d9bdf96acd7f169b871"
+    },
+    {
+      "file": "data2-README.md",
+      "bytes": 4803,
+      "sha256": "b83788e0548964a326dbc5741d12b3bd965c76ca245270ee09e8dc1973c70052"
+    },
+    {
+      "file": "data2-workbook-status.tsv",
+      "bytes": 114,
+      "sha256": "6144426261f4ba8b7c9a1162129da81d0bf815f187aa2ded19609b32bc4527ba"
+    },
+    {
+      "file": "data2-checks.tsv",
+      "bytes": 2163,
+      "sha256": "4851700fd82d2bbbfc72ecc86f9a798168b5c9da2ffe5ee4da770de10e978d40"
+    },
+    {
+      "file": "session-info.txt",
+      "bytes": 13695,
+      "sha256": "d5a00bd487a7c3806796cc685acf944a422321dd583c279cef2d9abfdd872b1c"
+    },
+    {
+      "file": "G01_feature_fits.tsv",
+      "bytes": 109191,
+      "sha256": "446890b70b4fc6fa53b94360fbde54ab62a5dd922a8e9cd2550f44d61ddcb696"
+    },
+    {
+      "file": "G02_group_medians.tsv",
+      "bytes": 322,
+      "sha256": "f8c64348d4520b649277d8034f6760e558a4fd52816b98a9d108a096ad75227e"
+    },
+    {
+      "file": "G03_profile_support.tsv",
+      "bytes": 4456,
+      "sha256": "c60d8ad40c1713c54fac729825101475adce9f03362f7f4d74c5bf3e0396e92d"
+    },
+    {
+      "file": "G04_local_carriage_bins.tsv",
+      "bytes": 724,
+      "sha256": "e873fd65413a86874b50bb2908505fc4f6fc025c0ddafa034e8adcd2693d7b21"
+    },
+    {
+      "file": "G05_adjusted.tsv",
+      "bytes": 666,
+      "sha256": "02b9f1d279aa9da278c6b5d45fc84f503c7b5a7dc356b14e1ebe15d171247ce0"
+    },
+    {
+      "file": "G06_firth.tsv",
+      "bytes": 1150,
+      "sha256": "7077b81bc16a2f7fcc5aca4b609708fa0999ee1cc218391985e144e6cf56b00f"
+    },
+    {
+      "file": "G07_resampling.tsv",
+      "bytes": 1171,
+      "sha256": "c359b8e5970eae9d579db2ad5f848ab012ca1fa14c744ef1f896e95809ec3fbe"
+    },
+    {
+      "file": "G08_strata.tsv",
+      "bytes": 356,
+      "sha256": "015f496639fcd5637ea5d1ebcd212c4e140ed15df6409435d4332f694b003a23"
+    },
+    {
+      "file": "G09_nad_leaveout.tsv",
+      "bytes": 2124,
+      "sha256": "cd39bc9048349c13ce63b798eb5b010957d014bb98328164ad2663f61ac2132b"
+    },
+    {
+      "file": "G10_gaps.tsv",
+      "bytes": 1136,
+      "sha256": "cba6c590b7f7cda59e61b0d899b00de3c976f013eb70e448eeb906e807604a28"
+    },
+    {
+      "file": "G11_adjusted_fits.tsv",
+      "bytes": 44075,
+      "sha256": "9bc1415d0efc2723b4a67365c488f9ce1d98a0ce23c442a5431a6e1a8d9f281c"
+    },
+    {
+      "file": "G12_firth_feature_fits.tsv",
+      "bytes": 107510,
+      "sha256": "d60409f08b3d5f2e749b59cd6ede85d467be36ca6cf049d3767e387addfb649d"
+    },
+    {
+      "file": "G13_stratum_fits.tsv",
+      "bytes": 225001,
+      "sha256": "115cab9a96fd461fc65b66c454b67b4e233e51f429db57fa0c95563cc5f49571"
+    },
+    {
+      "file": "G14_aggregation_fits.tsv",
+      "bytes": 2576,
+      "sha256": "39843747667add5330ce73bfb8beeb0f4bf1aecf92be39dada2253a29e27b4d3"
+    },
+    {
+      "file": "G15_aggregation_members.tsv",
+      "bytes": 3214,
+      "sha256": "723580a50d201493b9f7ba93e7a7cd0999ccba41260a327490d2d45b2c1f84a9"
+    },
+    {
+      "file": "G16_firth_run.tsv",
+      "bytes": 225,
+      "sha256": "eced2afd5b78f0816cd5491e0b0c3c8de5a1872177d13d73e426a8b842f6fd12"
+    },
+    {
+      "file": "G17_resample_contrasts.tsv",
+      "bytes": 22649,
+      "sha256": "ea99869b971a336384b4d8b715ca67e6909accd5b4e4034ff2211f92661f09fa"
+    },
+    {
+      "file": "G18_resample_features.tsv",
+      "bytes": 4767454,
+      "sha256": "db512a034f3e5eefb799060d04e7bb3650968aa72bdb7507b745f7d5472a1400"
+    },
+    {
+      "file": "G19_result_status.tsv",
+      "bytes": 3842,
+      "sha256": "de0e7b225c4eb3435fa3edb8113ef098b0bb39f86b59cee4633cb55777c7103e"
+    },
+    {
+      "file": "G20_repair_scenarios.tsv",
+      "bytes": 1618,
+      "sha256": "5b61f3ed0d1d698245873008f2e2cb5b02eb4b7f742dcc9b80c499de2ea6d653"
+    },
+    {
+      "file": "G21_repair_feature_fits.tsv",
+      "bytes": 69043,
+      "sha256": "b427b284ff6e20e4ebad08f62757c3d9fac3eacaaf79102dcc4ccf80de301199"
+    },
+    {
+      "file": "G22_repair_members.tsv",
+      "bytes": 7160,
+      "sha256": "9cbe503f396c8478fefdfeae9c3ea7cf895620265ee30cead83de1e241797af8"
+    },
+    {
+      "file": "G23_repair_scenario_members.tsv",
+      "bytes": 13325,
+      "sha256": "d77965fcad4fb30cdcaa4d4f7428233e8c91f5b8cd04d8f20ead1c704ca4ac08"
+    },
+    {
+      "file": "G24_repair_mapping.tsv",
+      "bytes": 58382,
+      "sha256": "0e1b4905cbfb73930d6a9cf196e24b089f24e88d836825c04aad7ee8d8b91316"
+    },
+    {
+      "file": "G25_repair_eligibility.tsv",
+      "bytes": 2052,
+      "sha256": "d702b2fca0c843820056223279b3c851fc3e08d349bdea1f954ab173686f81b2"
+    },
+    {
+      "file": "data2-field-dictionary.tsv",
+      "bytes": 68722,
+      "sha256": "724fab78bb51ca49b9e6f29a17612fb6cfc74f1f3ee6cb0648d9d59d84ff804b"
+    }
+  ],
+  "output_dir_files": []
+}

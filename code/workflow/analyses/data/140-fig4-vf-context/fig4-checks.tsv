@@ -1,0 +1,36 @@
+check	expected	observed	tolerance	pass	source
+full catalogue localization scope	 18,   1,   1, 123	 18,   1,   1, 123	0	TRUE	040 vf_hit_catalogue.tsv
+full catalogue filtered hits and carriers	143, 114	143, 114	0	TRUE	
+catalogue-to-model single hit bridge	TRUE	TRUE	0	TRUE	040 vf_hit_catalogue.tsv; vf_model_excluded.tsv
+panel B ranks convert to exactly 1:18	TRUE	TRUE	0	TRUE	vf_heatmap_selection.tsv
+panel B draws two independent qualification columns	2	2	0	TRUE	
+panel B vOTU0016 carries both marks at once	2	2	0	TRUE	vf_heatmap_selection.tsv
+definitions.tsv:vf_model_n	3013	3013	0	TRUE	vf_models.tsv
+saved IRR (3 dp)	2.521, 1.050, 0.951, 1.003	2.521, 1.050, 0.951, 1.003	0	TRUE	S34_local_factorial.tsv
+definitions.tsv:vf_model_hits_all	142	142	0	TRUE	vf_models.tsv
+definitions.tsv:vf_model_hits_viral	123	123	0	TRUE	vf_models.tsv
+panel C labels state the saved region and lifestyle choices	TRUE	TRUE	0	TRUE	vf_models.tsv
+panel C first row retains the CheckV provirus branch	TRUE	TRUE	0	TRUE	vf_models.tsv
+page size of the adopted layout (mm)	180, 232	180, 232	0	TRUE	config/figures.yml
+panel A bars (7 samples x 4 definitions)	28	28	0	TRUE	
+panel A zero bars (strict and strict+region in oc1 and od1)	4	4	0	TRUE	
+panel A filtered range (%), 2 dp	1.08, 9.95	1.08, 9.95	0	TRUE	040 vf_sample_summary.tsv
+panel B mark heads spell the full names	Strict match, All hits excluded	Strict match, All hits excluded	0	TRUE	
+panel B rows	18	18	0	TRUE	
+panel B mark strip rows match the heatmap rows	TRUE	TRUE	0	TRUE	
+panel B top row is the highest-ranked carrier	vOTU0113	vOTU0113	0	TRUE	vf_heatmap_selection.tsv
+panel B first five rows follow the numeric rank	TRUE	TRUE	0	TRUE	vf_heatmap_selection.tsv
+panel B cells	126	126	0	TRUE	
+panel B shows no imputed zero for undetected cells	0	0	0	TRUE	
+panel B drawing rows equal the heatmap rows (top to bottom)	vOTU0113, vOTU0073, vOTU0022, vOTU0016, vOTU2009, ... (18 values)	vOTU0113, vOTU0073, vOTU0022, vOTU0016, vOTU2009, ... (18 values)	0	TRUE	
+sample order of panels a and b	bc1, bd1, bc2, gc1, gd1, oc1, od1	bc1, bd1, bc2, gc1, gd1, oc1, od1	0	TRUE	
+panel b CheckV classes are among the four drawn in the key	TRUE	TRUE	0	TRUE	020 checkv_catalogue.tsv
+panel b region info: 3 rows with a prediction, 15 without	 3, 15	 3, 15	0	TRUE	040 vf_hit_catalogue.tsv
+panel b region info rows are not mixed (all or none of a row's filtered hits predicted)	TRUE	TRUE	0	TRUE	
+panel B grey below-detection tiles / detected tiles (v50, no dashes)	94, 32	94, 32	0	TRUE	040 vf_carrier_abundance.tsv
+panel B detected tiles below 0.01% keep their text label	1	1	0	TRUE	
+panel B region prediction rows equal the All hits excluded rows in the displayed selection	vOTU0073, vOTU0016, vOTU2681	vOTU0073, vOTU0016, vOTU2681	0	TRUE	040 vf_hit_catalogue.tsv; vf_heatmap_selection.tsv
+panel B no row has a region prediction without the exclusion mark, or vice versa	0	0	0	TRUE	
+plot-values panels equal the figure tags	A, B, C	A, B, C	0	TRUE	
+plot-values panel B has every heatmap cell	126	126	0	TRUE	
+all four model intervals recorded	TRUE	TRUE	0	TRUE	

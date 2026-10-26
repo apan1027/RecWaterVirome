@@ -1,0 +1,112 @@
+{
+  "n_genomes": 77951,
+  "n_clusters": 30079,
+  "groups": [
+    {
+      "definition": "METAB285",
+      "n": 285,
+      "median_slope": 4.0483497982182906,
+      "median_gamma": 1.7282299288429448,
+      "median_residual": 1.7443563398004578
+    },
+    {
+      "definition": "ADF38",
+      "n": 38,
+      "median_slope": 1.3569483407236609,
+      "median_residual": -0.97354405044350412
+    },
+    {
+      "definition": "ADF25",
+      "n": 25,
+      "median_slope": 2.7881103548712765,
+      "median_residual": 0.48301302808390112
+    }
+  ],
+  "max_slope_difference": 4.9973063021013786e-07,
+  "aggregation": [
+    {
+      "mode": "fixed38",
+      "units": 21,
+      "median": 0.63120843954224815
+    },
+    {
+      "mode": "all_profiles_then_threshold",
+      "units": 22,
+      "median": 0.52268621226269318
+    }
+  ],
+  "resampling": [
+    {
+      "mode": "representative",
+      "definition": "all38",
+      "B": 50,
+      "valid_reps": 10,
+      "median": 2.7152686418496614,
+      "q025": 2.6363742433041129,
+      "q975": 2.8524911332852456
+    },
+    {
+      "mode": "representative",
+      "definition": "named25",
+      "B": 50,
+      "valid_reps": 10,
+      "median": 1.2619759096603129,
+      "q025": 0.98320100733996041,
+      "q975": 1.825467952660103
+    },
+    {
+      "mode": "cluster_bootstrap",
+      "definition": "all38",
+      "B": 200,
+      "valid_reps": 76,
+      "median": 2.5297764424117544,
+      "q025": 2.0075693982740219,
+      "q975": 3.0681961418611783
+    },
+    {
+      "mode": "cluster_bootstrap",
+      "definition": "named25",
+      "B": 200,
+      "valid_reps": 76,
+      "median": 1.2469844173508662,
+      "q025": 0.90274881952136843,
+      "q975": 1.863560643749558
+    }
+  ],
+  "adjusted": [
+    {
+      "mode": "ecosystem",
+      "rep": 0,
+      "definition": "all38",
+      "valid": false,
+      "n_invalid_metab": 106,
+      "n_invalid_adf": 11
+    },
+    {
+      "mode": "ecosystem",
+      "rep": 0,
+      "definition": "named25",
+      "valid": false,
+      "n_invalid_metab": 106,
+      "n_invalid_adf": 7
+    },
+    {
+      "mode": "host",
+      "rep": 0,
+      "definition": "all38",
+      "valid": false,
+      "n_invalid_metab": 58,
+      "n_invalid_adf": 18
+    },
+    {
+      "mode": "host",
+      "rep": 0,
+      "definition": "named25",
+      "valid": false,
+      "n_invalid_metab": 58,
+      "n_invalid_adf": 13
+    }
+  ],
+  "seed": 20260917,
+  "scope": "Conditional annotation associations; no biological or causal function established."
+}

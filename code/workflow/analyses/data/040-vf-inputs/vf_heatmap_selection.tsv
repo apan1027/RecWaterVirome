@@ -1,0 +1,19 @@
+vOTU_id	max_percent_of_catalogue	rank	selection_rule	functions_F0	strict_match_present	all_filtered_hits_region_excluded
+vOTU0113	3.33913811552851	1	top 18 F0 carriers by the highest catalogue-relative percentage reached in any one sample; ties broken by ascending vOTU identifier	FbpABC	FALSE	FALSE
+vOTU0073	3.262162717502587	2	top 18 F0 carriers by the highest catalogue-relative percentage reached in any one sample; ties broken by ascending vOTU identifier	LPS	FALSE	TRUE
+vOTU0022	3.097662346405786	3	top 18 F0 carriers by the highest catalogue-relative percentage reached in any one sample; ties broken by ascending vOTU identifier	Capsule	TRUE	FALSE
+vOTU0016	2.502272592863428	4	top 18 F0 carriers by the highest catalogue-relative percentage reached in any one sample; ties broken by ascending vOTU identifier	Capsule; Flagella; LPS	TRUE	TRUE
+vOTU2009	2.2486764195940827	5	top 18 F0 carriers by the highest catalogue-relative percentage reached in any one sample; ties broken by ascending vOTU identifier	Capsule	TRUE	FALSE
+vOTU0001	1.611940764150491	6	top 18 F0 carriers by the highest catalogue-relative percentage reached in any one sample; ties broken by ascending vOTU identifier	SodB	FALSE	FALSE
+vOTU0931	0.9516062096036442	7	top 18 F0 carriers by the highest catalogue-relative percentage reached in any one sample; ties broken by ascending vOTU identifier	LPS	FALSE	FALSE
+vOTU3464	0.8906931740445138	8	top 18 F0 carriers by the highest catalogue-relative percentage reached in any one sample; ties broken by ascending vOTU identifier	3-hydroxymyristoyl] glucosamine N-acyltransferase [LPS	FALSE	FALSE
+vOTU0012	0.822072367820718	9	top 18 F0 carriers by the highest catalogue-relative percentage reached in any one sample; ties broken by ascending vOTU identifier	LPS	FALSE	FALSE
+vOTU0131	0.720488306346703	10	top 18 F0 carriers by the highest catalogue-relative percentage reached in any one sample; ties broken by ascending vOTU identifier	LOS	FALSE	FALSE
+vOTU1906	0.6193884233821673	11	top 18 F0 carriers by the highest catalogue-relative percentage reached in any one sample; ties broken by ascending vOTU identifier	LPS	FALSE	FALSE
+vOTU0576	0.5736465498008144	12	top 18 F0 carriers by the highest catalogue-relative percentage reached in any one sample; ties broken by ascending vOTU identifier	GspA	FALSE	FALSE
+vOTU2859	0.5434127638709689	13	top 18 F0 carriers by the highest catalogue-relative percentage reached in any one sample; ties broken by ascending vOTU identifier	ClpE; ClpP	TRUE	FALSE
+vOTU0553	0.3995018256133051	14	top 18 F0 carriers by the highest catalogue-relative percentage reached in any one sample; ties broken by ascending vOTU identifier	LPS; O-antigen	TRUE	FALSE
+vOTU0155	0.3845929355545366	15	top 18 F0 carriers by the highest catalogue-relative percentage reached in any one sample; ties broken by ascending vOTU identifier	HSI-2	FALSE	FALSE
+vOTU3291	0.3596205100474609	16	top 18 F0 carriers by the highest catalogue-relative percentage reached in any one sample; ties broken by ascending vOTU identifier	WhiB3	FALSE	FALSE
+vOTU2681	0.3138826483479231	17	top 18 F0 carriers by the highest catalogue-relative percentage reached in any one sample; ties broken by ascending vOTU identifier	LPS	FALSE	TRUE
+vOTU2361	0.3086981368715696	18	top 18 F0 carriers by the highest catalogue-relative percentage reached in any one sample; ties broken by ascending vOTU identifier	GroEL	FALSE	FALSE

@@ -1,0 +1,159 @@
+panel	item	value	value2	unit	sample_id	detected	display_order	strict_match_present	all_filtered_hits_region_excluded	ci_low	ci_high
+A	bc1 Filtered	9.678806735639716	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	bd1 Filtered	1.8507665307268244	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	bc2 Filtered	3.904719431856035	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	gc1 Filtered	9.949268917818864	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	gd1 Filtered	2.0154369551415736	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	oc1 Filtered	1.077158042274046	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	od1 Filtered	2.650746585200978	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	bc1 Filtered + region exclusion	6.803491831877868	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	bd1 Filtered + region exclusion	1.7887778150589833	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	bc2 Filtered + region exclusion	3.645952764473091	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	gc1 Filtered + region exclusion	6.6871062003162764	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	gd1 Filtered + region exclusion	1.974057634929769	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	oc1 Filtered + region exclusion	1.077158042274046	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	od1 Filtered + region exclusion	2.40281981746077	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	bc1 Strict	6.512867780632264	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	bd1 Strict	1.0421696959818467	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	bc2 Strict	2.523728648864918	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	gc1 Strict	0.5434127638709689	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	gd1 Strict	0.1820003733657916	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	oc1 Strict	0	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	od1 Strict	0	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	bc1 Strict + region exclusion	4.0105951877688355	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	bd1 Strict + region exclusion	0.9801809803140056	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	bc2 Strict + region exclusion	2.523728648864918	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	gc1 Strict + region exclusion	0.5434127638709689	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	gd1 Strict + region exclusion	0.1820003733657916	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	oc1 Strict + region exclusion	0	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+A	od1 Strict + region exclusion	0	NA	% of detected catalogue (bar height); one whole-catalogue denominator per sample	NA	NA	NA	NA	NA	NA	NA
+B	vOTU0001	NA	6	% of detected catalogue (tile fill); value2 = numeric rank	bc1	FALSE	6	FALSE	FALSE	NA	NA
+B	vOTU0001	NA	6	% of detected catalogue (tile fill); value2 = numeric rank	bd1	FALSE	6	FALSE	FALSE	NA	NA
+B	vOTU0001	NA	6	% of detected catalogue (tile fill); value2 = numeric rank	bc2	FALSE	6	FALSE	FALSE	NA	NA
+B	vOTU0001	1.611940764150491	6	% of detected catalogue (tile fill); value2 = numeric rank	gc1	TRUE	6	FALSE	FALSE	NA	NA
+B	vOTU0001	0.1159894014208786	6	% of detected catalogue (tile fill); value2 = numeric rank	gd1	TRUE	6	FALSE	FALSE	NA	NA
+B	vOTU0001	NA	6	% of detected catalogue (tile fill); value2 = numeric rank	oc1	FALSE	6	FALSE	FALSE	NA	NA
+B	vOTU0001	NA	6	% of detected catalogue (tile fill); value2 = numeric rank	od1	FALSE	6	FALSE	FALSE	NA	NA
+B	vOTU0012	NA	9	% of detected catalogue (tile fill); value2 = numeric rank	bc1	FALSE	9	FALSE	FALSE	NA	NA
+B	vOTU0012	NA	9	% of detected catalogue (tile fill); value2 = numeric rank	bd1	FALSE	9	FALSE	FALSE	NA	NA
+B	vOTU0012	NA	9	% of detected catalogue (tile fill); value2 = numeric rank	bc2	FALSE	9	FALSE	FALSE	NA	NA
+B	vOTU0012	0.822072367820718	9	% of detected catalogue (tile fill); value2 = numeric rank	gc1	TRUE	9	FALSE	FALSE	NA	NA
+B	vOTU0012	0.14804059733862468	9	% of detected catalogue (tile fill); value2 = numeric rank	gd1	TRUE	9	FALSE	FALSE	NA	NA
+B	vOTU0012	NA	9	% of detected catalogue (tile fill); value2 = numeric rank	oc1	FALSE	9	FALSE	FALSE	NA	NA
+B	vOTU0012	NA	9	% of detected catalogue (tile fill); value2 = numeric rank	od1	FALSE	9	FALSE	FALSE	NA	NA
+B	vOTU0016	2.502272592863428	4	% of detected catalogue (tile fill); value2 = numeric rank	bc1	TRUE	4	TRUE	TRUE	NA	NA
+B	vOTU0016	0.061988715667841074	4	% of detected catalogue (tile fill); value2 = numeric rank	bd1	TRUE	4	TRUE	TRUE	NA	NA
+B	vOTU0016	NA	4	% of detected catalogue (tile fill); value2 = numeric rank	bc2	FALSE	4	TRUE	TRUE	NA	NA
+B	vOTU0016	NA	4	% of detected catalogue (tile fill); value2 = numeric rank	gc1	FALSE	4	TRUE	TRUE	NA	NA
+B	vOTU0016	NA	4	% of detected catalogue (tile fill); value2 = numeric rank	gd1	FALSE	4	TRUE	TRUE	NA	NA
+B	vOTU0016	NA	4	% of detected catalogue (tile fill); value2 = numeric rank	oc1	FALSE	4	TRUE	TRUE	NA	NA
+B	vOTU0016	NA	4	% of detected catalogue (tile fill); value2 = numeric rank	od1	FALSE	4	TRUE	TRUE	NA	NA
+B	vOTU0022	3.097662346405786	3	% of detected catalogue (tile fill); value2 = numeric rank	bc1	TRUE	3	TRUE	FALSE	NA	NA
+B	vOTU0022	0.09063462083814192	3	% of detected catalogue (tile fill); value2 = numeric rank	bd1	TRUE	3	TRUE	FALSE	NA	NA
+B	vOTU0022	NA	3	% of detected catalogue (tile fill); value2 = numeric rank	bc2	FALSE	3	TRUE	FALSE	NA	NA
+B	vOTU0022	NA	3	% of detected catalogue (tile fill); value2 = numeric rank	gc1	FALSE	3	TRUE	FALSE	NA	NA
+B	vOTU0022	NA	3	% of detected catalogue (tile fill); value2 = numeric rank	gd1	FALSE	3	TRUE	FALSE	NA	NA
+B	vOTU0022	NA	3	% of detected catalogue (tile fill); value2 = numeric rank	oc1	FALSE	3	TRUE	FALSE	NA	NA
+B	vOTU0022	NA	3	% of detected catalogue (tile fill); value2 = numeric rank	od1	FALSE	3	TRUE	FALSE	NA	NA
+B	vOTU0073	NA	2	% of detected catalogue (tile fill); value2 = numeric rank	bc1	FALSE	2	FALSE	TRUE	NA	NA
+B	vOTU0073	NA	2	% of detected catalogue (tile fill); value2 = numeric rank	bd1	FALSE	2	FALSE	TRUE	NA	NA
+B	vOTU0073	NA	2	% of detected catalogue (tile fill); value2 = numeric rank	bc2	FALSE	2	FALSE	TRUE	NA	NA
+B	vOTU0073	3.262162717502587	2	% of detected catalogue (tile fill); value2 = numeric rank	gc1	TRUE	2	FALSE	TRUE	NA	NA
+B	vOTU0073	0.04137932021180481	2	% of detected catalogue (tile fill); value2 = numeric rank	gd1	TRUE	2	FALSE	TRUE	NA	NA
+B	vOTU0073	NA	2	% of detected catalogue (tile fill); value2 = numeric rank	oc1	FALSE	2	FALSE	TRUE	NA	NA
+B	vOTU0073	NA	2	% of detected catalogue (tile fill); value2 = numeric rank	od1	FALSE	2	FALSE	TRUE	NA	NA
+B	vOTU0113	NA	1	% of detected catalogue (tile fill); value2 = numeric rank	bc1	FALSE	1	FALSE	FALSE	NA	NA
+B	vOTU0113	NA	1	% of detected catalogue (tile fill); value2 = numeric rank	bd1	FALSE	1	FALSE	FALSE	NA	NA
+B	vOTU0113	NA	1	% of detected catalogue (tile fill); value2 = numeric rank	bc2	FALSE	1	FALSE	FALSE	NA	NA
+B	vOTU0113	3.33913811552851	1	% of detected catalogue (tile fill); value2 = numeric rank	gc1	TRUE	1	FALSE	FALSE	NA	NA
+B	vOTU0113	0.03934897914387305	1	% of detected catalogue (tile fill); value2 = numeric rank	gd1	TRUE	1	FALSE	FALSE	NA	NA
+B	vOTU0113	NA	1	% of detected catalogue (tile fill); value2 = numeric rank	oc1	FALSE	1	FALSE	FALSE	NA	NA
+B	vOTU0113	NA	1	% of detected catalogue (tile fill); value2 = numeric rank	od1	FALSE	1	FALSE	FALSE	NA	NA
+B	vOTU0131	NA	10	% of detected catalogue (tile fill); value2 = numeric rank	bc1	FALSE	10	FALSE	FALSE	NA	NA
+B	vOTU0131	NA	10	% of detected catalogue (tile fill); value2 = numeric rank	bd1	FALSE	10	FALSE	FALSE	NA	NA
+B	vOTU0131	NA	10	% of detected catalogue (tile fill); value2 = numeric rank	bc2	FALSE	10	FALSE	FALSE	NA	NA
+B	vOTU0131	NA	10	% of detected catalogue (tile fill); value2 = numeric rank	gc1	FALSE	10	FALSE	FALSE	NA	NA
+B	vOTU0131	NA	10	% of detected catalogue (tile fill); value2 = numeric rank	gd1	FALSE	10	FALSE	FALSE	NA	NA
+B	vOTU0131	NA	10	% of detected catalogue (tile fill); value2 = numeric rank	oc1	FALSE	10	FALSE	FALSE	NA	NA
+B	vOTU0131	0.720488306346703	10	% of detected catalogue (tile fill); value2 = numeric rank	od1	TRUE	10	FALSE	FALSE	NA	NA
+B	vOTU0155	NA	15	% of detected catalogue (tile fill); value2 = numeric rank	bc1	FALSE	15	FALSE	FALSE	NA	NA
+B	vOTU0155	NA	15	% of detected catalogue (tile fill); value2 = numeric rank	bd1	FALSE	15	FALSE	FALSE	NA	NA
+B	vOTU0155	NA	15	% of detected catalogue (tile fill); value2 = numeric rank	bc2	FALSE	15	FALSE	FALSE	NA	NA
+B	vOTU0155	NA	15	% of detected catalogue (tile fill); value2 = numeric rank	gc1	FALSE	15	FALSE	FALSE	NA	NA
+B	vOTU0155	NA	15	% of detected catalogue (tile fill); value2 = numeric rank	gd1	FALSE	15	FALSE	FALSE	NA	NA
+B	vOTU0155	NA	15	% of detected catalogue (tile fill); value2 = numeric rank	oc1	FALSE	15	FALSE	FALSE	NA	NA
+B	vOTU0155	0.3845929355545366	15	% of detected catalogue (tile fill); value2 = numeric rank	od1	TRUE	15	FALSE	FALSE	NA	NA
+B	vOTU0553	NA	14	% of detected catalogue (tile fill); value2 = numeric rank	bc1	FALSE	14	TRUE	FALSE	NA	NA
+B	vOTU0553	0.3995018256133051	14	% of detected catalogue (tile fill); value2 = numeric rank	bd1	TRUE	14	TRUE	FALSE	NA	NA
+B	vOTU0553	NA	14	% of detected catalogue (tile fill); value2 = numeric rank	bc2	FALSE	14	TRUE	FALSE	NA	NA
+B	vOTU0553	NA	14	% of detected catalogue (tile fill); value2 = numeric rank	gc1	FALSE	14	TRUE	FALSE	NA	NA
+B	vOTU0553	NA	14	% of detected catalogue (tile fill); value2 = numeric rank	gd1	FALSE	14	TRUE	FALSE	NA	NA
+B	vOTU0553	NA	14	% of detected catalogue (tile fill); value2 = numeric rank	oc1	FALSE	14	TRUE	FALSE	NA	NA
+B	vOTU0553	NA	14	% of detected catalogue (tile fill); value2 = numeric rank	od1	FALSE	14	TRUE	FALSE	NA	NA
+B	vOTU0576	NA	12	% of detected catalogue (tile fill); value2 = numeric rank	bc1	FALSE	12	FALSE	FALSE	NA	NA
+B	vOTU0576	NA	12	% of detected catalogue (tile fill); value2 = numeric rank	bd1	FALSE	12	FALSE	FALSE	NA	NA
+B	vOTU0576	NA	12	% of detected catalogue (tile fill); value2 = numeric rank	bc2	FALSE	12	FALSE	FALSE	NA	NA
+B	vOTU0576	NA	12	% of detected catalogue (tile fill); value2 = numeric rank	gc1	FALSE	12	FALSE	FALSE	NA	NA
+B	vOTU0576	NA	12	% of detected catalogue (tile fill); value2 = numeric rank	gd1	FALSE	12	FALSE	FALSE	NA	NA
+B	vOTU0576	0.05898734721801591	12	% of detected catalogue (tile fill); value2 = numeric rank	oc1	TRUE	12	FALSE	FALSE	NA	NA
+B	vOTU0576	0.5736465498008144	12	% of detected catalogue (tile fill); value2 = numeric rank	od1	TRUE	12	FALSE	FALSE	NA	NA
+B	vOTU0931	NA	7	% of detected catalogue (tile fill); value2 = numeric rank	bc1	FALSE	7	FALSE	FALSE	NA	NA
+B	vOTU0931	NA	7	% of detected catalogue (tile fill); value2 = numeric rank	bd1	FALSE	7	FALSE	FALSE	NA	NA
+B	vOTU0931	NA	7	% of detected catalogue (tile fill); value2 = numeric rank	bc2	FALSE	7	FALSE	FALSE	NA	NA
+B	vOTU0931	NA	7	% of detected catalogue (tile fill); value2 = numeric rank	gc1	FALSE	7	FALSE	FALSE	NA	NA
+B	vOTU0931	NA	7	% of detected catalogue (tile fill); value2 = numeric rank	gd1	FALSE	7	FALSE	FALSE	NA	NA
+B	vOTU0931	0.9516062096036442	7	% of detected catalogue (tile fill); value2 = numeric rank	oc1	TRUE	7	FALSE	FALSE	NA	NA
+B	vOTU0931	NA	7	% of detected catalogue (tile fill); value2 = numeric rank	od1	FALSE	7	FALSE	FALSE	NA	NA
+B	vOTU1906	NA	11	% of detected catalogue (tile fill); value2 = numeric rank	bc1	FALSE	11	FALSE	FALSE	NA	NA
+B	vOTU1906	NA	11	% of detected catalogue (tile fill); value2 = numeric rank	bd1	FALSE	11	FALSE	FALSE	NA	NA
+B	vOTU1906	NA	11	% of detected catalogue (tile fill); value2 = numeric rank	bc2	FALSE	11	FALSE	FALSE	NA	NA
+B	vOTU1906	0.3705421889455885	11	% of detected catalogue (tile fill); value2 = numeric rank	gc1	TRUE	11	FALSE	FALSE	NA	NA
+B	vOTU1906	0.6193884233821673	11	% of detected catalogue (tile fill); value2 = numeric rank	gd1	TRUE	11	FALSE	FALSE	NA	NA
+B	vOTU1906	NA	11	% of detected catalogue (tile fill); value2 = numeric rank	oc1	FALSE	11	FALSE	FALSE	NA	NA
+B	vOTU1906	NA	11	% of detected catalogue (tile fill); value2 = numeric rank	od1	FALSE	11	FALSE	FALSE	NA	NA
+B	vOTU2009	NA	5	% of detected catalogue (tile fill); value2 = numeric rank	bc1	FALSE	5	TRUE	FALSE	NA	NA
+B	vOTU2009	0.01430568332524998	5	% of detected catalogue (tile fill); value2 = numeric rank	bd1	TRUE	5	TRUE	FALSE	NA	NA
+B	vOTU2009	2.2486764195940827	5	% of detected catalogue (tile fill); value2 = numeric rank	bc2	TRUE	5	TRUE	FALSE	NA	NA
+B	vOTU2009	NA	5	% of detected catalogue (tile fill); value2 = numeric rank	gc1	FALSE	5	TRUE	FALSE	NA	NA
+B	vOTU2009	NA	5	% of detected catalogue (tile fill); value2 = numeric rank	gd1	FALSE	5	TRUE	FALSE	NA	NA
+B	vOTU2009	NA	5	% of detected catalogue (tile fill); value2 = numeric rank	oc1	FALSE	5	TRUE	FALSE	NA	NA
+B	vOTU2009	NA	5	% of detected catalogue (tile fill); value2 = numeric rank	od1	FALSE	5	TRUE	FALSE	NA	NA
+B	vOTU2361	0.3086981368715696	18	% of detected catalogue (tile fill); value2 = numeric rank	bc1	TRUE	18	FALSE	FALSE	NA	NA
+B	vOTU2361	0.02211186743997253	18	% of detected catalogue (tile fill); value2 = numeric rank	bd1	TRUE	18	FALSE	FALSE	NA	NA
+B	vOTU2361	NA	18	% of detected catalogue (tile fill); value2 = numeric rank	bc2	FALSE	18	FALSE	FALSE	NA	NA
+B	vOTU2361	NA	18	% of detected catalogue (tile fill); value2 = numeric rank	gc1	FALSE	18	FALSE	FALSE	NA	NA
+B	vOTU2361	NA	18	% of detected catalogue (tile fill); value2 = numeric rank	gd1	FALSE	18	FALSE	FALSE	NA	NA
+B	vOTU2361	NA	18	% of detected catalogue (tile fill); value2 = numeric rank	oc1	FALSE	18	FALSE	FALSE	NA	NA
+B	vOTU2361	NA	18	% of detected catalogue (tile fill); value2 = numeric rank	od1	FALSE	18	FALSE	FALSE	NA	NA
+B	vOTU2681	0.3138826483479231	17	% of detected catalogue (tile fill); value2 = numeric rank	bc1	TRUE	17	FALSE	TRUE	NA	NA
+B	vOTU2681	NA	17	% of detected catalogue (tile fill); value2 = numeric rank	bd1	FALSE	17	FALSE	TRUE	NA	NA
+B	vOTU2681	0.12156043216509356	17	% of detected catalogue (tile fill); value2 = numeric rank	bc2	TRUE	17	FALSE	TRUE	NA	NA
+B	vOTU2681	NA	17	% of detected catalogue (tile fill); value2 = numeric rank	gc1	FALSE	17	FALSE	TRUE	NA	NA
+B	vOTU2681	NA	17	% of detected catalogue (tile fill); value2 = numeric rank	gd1	FALSE	17	FALSE	TRUE	NA	NA
+B	vOTU2681	NA	17	% of detected catalogue (tile fill); value2 = numeric rank	oc1	FALSE	17	FALSE	TRUE	NA	NA
+B	vOTU2681	NA	17	% of detected catalogue (tile fill); value2 = numeric rank	od1	FALSE	17	FALSE	TRUE	NA	NA
+B	vOTU2859	NA	13	% of detected catalogue (tile fill); value2 = numeric rank	bc1	FALSE	13	TRUE	FALSE	NA	NA
+B	vOTU2859	NA	13	% of detected catalogue (tile fill); value2 = numeric rank	bd1	FALSE	13	TRUE	FALSE	NA	NA
+B	vOTU2859	NA	13	% of detected catalogue (tile fill); value2 = numeric rank	bc2	FALSE	13	TRUE	FALSE	NA	NA
+B	vOTU2859	0.5434127638709689	13	% of detected catalogue (tile fill); value2 = numeric rank	gc1	TRUE	13	TRUE	FALSE	NA	NA
+B	vOTU2859	0.03241510525036994	13	% of detected catalogue (tile fill); value2 = numeric rank	gd1	TRUE	13	TRUE	FALSE	NA	NA
+B	vOTU2859	NA	13	% of detected catalogue (tile fill); value2 = numeric rank	oc1	FALSE	13	TRUE	FALSE	NA	NA
+B	vOTU2859	NA	13	% of detected catalogue (tile fill); value2 = numeric rank	od1	FALSE	13	TRUE	FALSE	NA	NA
+B	vOTU3291	NA	16	% of detected catalogue (tile fill); value2 = numeric rank	bc1	FALSE	16	FALSE	FALSE	NA	NA
+B	vOTU3291	NA	16	% of detected catalogue (tile fill); value2 = numeric rank	bd1	FALSE	16	FALSE	FALSE	NA	NA
+B	vOTU3291	NA	16	% of detected catalogue (tile fill); value2 = numeric rank	bc2	FALSE	16	FALSE	FALSE	NA	NA
+B	vOTU3291	NA	16	% of detected catalogue (tile fill); value2 = numeric rank	gc1	FALSE	16	FALSE	FALSE	NA	NA
+B	vOTU3291	NA	16	% of detected catalogue (tile fill); value2 = numeric rank	gd1	FALSE	16	FALSE	FALSE	NA	NA
+B	vOTU3291	0.06656448545238572	16	% of detected catalogue (tile fill); value2 = numeric rank	oc1	TRUE	16	FALSE	FALSE	NA	NA
+B	vOTU3291	0.3596205100474609	16	% of detected catalogue (tile fill); value2 = numeric rank	od1	TRUE	16	FALSE	FALSE	NA	NA
+B	vOTU3464	0.8906931740445138	8	% of detected catalogue (tile fill); value2 = numeric rank	bc1	TRUE	8	FALSE	FALSE	NA	NA
+B	vOTU3464	0.007709725518942104	8	% of detected catalogue (tile fill); value2 = numeric rank	bd1	TRUE	8	FALSE	FALSE	NA	NA
+B	vOTU3464	NA	8	% of detected catalogue (tile fill); value2 = numeric rank	bc2	FALSE	8	FALSE	FALSE	NA	NA
+B	vOTU3464	NA	8	% of detected catalogue (tile fill); value2 = numeric rank	gc1	FALSE	8	FALSE	FALSE	NA	NA
+B	vOTU3464	NA	8	% of detected catalogue (tile fill); value2 = numeric rank	gd1	FALSE	8	FALSE	FALSE	NA	NA
+B	vOTU3464	NA	8	% of detected catalogue (tile fill); value2 = numeric rank	oc1	FALSE	8	FALSE	FALSE	NA	NA
+B	vOTU3464	NA	8	% of detected catalogue (tile fill); value2 = numeric rank	od1	FALSE	8	FALSE	FALSE	NA	NA
+C	including the CheckV provirus call | all hits; full contig length offset	2.52070124878035	3013	IRR (value2 = vOTUs in the model)	NA	NA	NA	NA	NA	1.50685649491322	4.21668208422777
+C	including the CheckV provirus call | hits retained after regional exclusion; retained-viral-length offset	1.04962168337121	3013	IRR (value2 = vOTUs in the model)	NA	NA	NA	NA	NA	0.567711804584735	1.94060731044492
+C	excluding the CheckV provirus call | all hits; full contig length offset	0.950811166371943	3013	IRR (value2 = vOTUs in the model)	NA	NA	NA	NA	NA	0.491701521964604	1.83859889325836
+C	excluding the CheckV provirus call | hits retained after regional exclusion; retained-viral-length offset	1.00319213932276	3013	IRR (value2 = vOTUs in the model)	NA	NA	NA	NA	NA	0.531593073710298	1.89316700718986

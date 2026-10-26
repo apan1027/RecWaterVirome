@@ -1,0 +1,281 @@
+{
+  "step": "014-legacy-comparison",
+  "status": "complete",
+  "run_id": "quarto-render-20261023T135850",
+  "mode": "quarto-render",
+  "qmd": "analyses/014-legacy-comparison.qmd",
+  "source_contract": "rwv-source-v1",
+  "sources": [
+    {
+      "path": "analyses/_quarto.yml",
+      "sha256": "f0a3aa48cc56e27741842f9b2de3347ce9248fe5f891412a3574bd30eae244a3"
+    },
+    {
+      "path": "analyses/014-legacy-comparison.qmd",
+      "sha256": "987d293f78ed6df9ee6adc31389e564a73b8382bbae071db4762123b20e487d0"
+    },
+    {
+      "path": "DESCRIPTION",
+      "sha256": "542f81044f872f6abab362c51697985b128b55c5a1eae811ab9aaf63a0d41d12"
+    },
+    {
+      "path": "NAMESPACE",
+      "sha256": "53248d066122bbbf7fefbbca5b547a05a2ef79b4d01f8adce5487c937d37351f"
+    },
+    {
+      "path": "R/community.R",
+      "sha256": "e43790efd903763a406173508ab07c3e875e61aa6ab006b8efc32a5669018bef"
+    },
+    {
+      "path": "R/export.R",
+      "sha256": "b7cc60626548945b094ab3b70e59feae0eed56289ed081c9233fbf0fe16d1951"
+    },
+    {
+      "path": "R/figures.R",
+      "sha256": "b8c4a6f75680a85b60ee94752ece28837afed188a77be4511b068d82909a601b"
+    },
+    {
+      "path": "R/fonts.R",
+      "sha256": "5423a0f88176e82fd1f8ada882972dc56adeb330d692101318af6318783d5adf"
+    },
+    {
+      "path": "R/literature-summary.R",
+      "sha256": "9b225ec26f45adaf1597bb3f0851143466b28537dbc99dbeb636107dee16a079"
+    },
+    {
+      "path": "R/report.R",
+      "sha256": "3eb3fbd7a788c9b4d4cd8e61403415637b4bcde87faad9d5069be57d20f1b4ea"
+    },
+    {
+      "path": "R/sfig-sharing-hosts.R",
+      "sha256": "2428b3b776a1ea14cd26d7df769519b85e244bf7c69869eab19c83d793e9bf57"
+    },
+    {
+      "path": "R/style.R",
+      "sha256": "e03dbf78ae81c5108c6a28abe2638e06c70b49c3f3fee20fbe50f4292efc97b2"
+    },
+    {
+      "path": "R/workflow.R",
+      "sha256": "f235287b127dc0411c60b883ddc44ad25592b07efe2dd9f3a7fcc019b66a46f1"
+    },
+    {
+      "path": "scripts/gfm-from-knit.R",
+      "sha256": "9e8f8570c3f8a07f9e7208a0e26cd501e44dfc00e03331a44eff78f0b01dc29a"
+    },
+    {
+      "path": "scripts/render-step.R",
+      "sha256": "3632f5636861fd03d4ffbee5e2b51724abe6ced71f38e933613901272a1b820a"
+    },
+    {
+      "path": "scripts/render.R",
+      "sha256": "c8dbba5879978f032ddf8d7104987b9d548370555844dc411445f59810216654"
+    }
+  ],
+  "started": "2026-10-23T13:58:50+0200",
+  "finished": "2026-10-23T13:59:56+0200",
+  "inputs": [
+    {
+      "kind": "upstream",
+      "path": "010-input-manifest/input-manifest.tsv",
+      "sha256": "70ee8c390a17b829c9918447651b445edf633ac557ff7822648889529dea4536"
+    },
+    {
+      "kind": "upstream",
+      "path": "010-input-manifest/raw-input-manifest.tsv",
+      "sha256": "28fbe92253ba4d14f566494b38325c973e24450eff272bd756b654ba1f16e9f7"
+    },
+    {
+      "kind": "project",
+      "path": "config/community.yml",
+      "sha256": "7afd3cc3a10d8ff8080ff610e06eb55536815d33361551ba2fc1ab11b5429732"
+    },
+    {
+      "kind": "upstream",
+      "path": "012-tse-construction/tse_virome.rds",
+      "sha256": "51dfe0fbc7a40a600a0eb6adefbb6a05f9189cb8d49595dee227957e46c4e707"
+    },
+    {
+      "kind": "upstream",
+      "path": "012-tse-construction/tse_16s.rds",
+      "sha256": "9be63dfaecb9305f9c4774383a0cd17c98a26d9af0744a54ac2a006228cb0e46"
+    },
+    {
+      "kind": "upstream",
+      "path": "012-tse-construction/tse_18s_all.rds",
+      "sha256": "a8b712365b5fdd7d6d9442690c8838b18f9ed92c63c313af16ecdd7a2276c8f9"
+    },
+    {
+      "kind": "upstream",
+      "path": "012-tse-construction/tse_18s_microeuk.rds",
+      "sha256": "f36f9322c67712b999356aaeab2924fda6d2ecb521dd48d19907f87e218dc825"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_corrected_host_members.tsv",
+      "sha256": "d51631785bcada5be7fabb98a2c045095db92e9f10b5b3cb60ba66a57567eadd"
+    },
+    {
+      "kind": "upstream",
+      "path": "012-tse-construction/tse_16s_filtered.rds",
+      "sha256": "9ab2c148041998bf9ef0b8c2642022235e8ccba0fee77e39f144bb0607fb9aa2"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_crispr_host_edges_primary.tsv",
+      "sha256": "9e8485520655f607f9f8c94c47a53c5fa2178c08b4a59b7a7f89a17c8a7fbcb4"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_composition_full.tsv",
+      "sha256": "685e096b3742330d35e7ee2d543d04e290abdf4542813b4ed8dad1fef585a996"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_feature_taxonomy.tsv",
+      "sha256": "696aae1bb259eb929255aceb37caebb2fec80ee50a5ef7e3aae9bee3678c1084"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_alpha_summary.tsv",
+      "sha256": "70e4b2a63549d2a2ee378090f34f73b8136b0af9d13c3d69b343ab9082805d0c"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_virome_alpha.tsv",
+      "sha256": "954ff7764f8ad74520a7f9eb1226970e973deb53ff6da2b172534324dcebe5f6"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_viral_load_per_sample.tsv",
+      "sha256": "25a14421302ec25c69fd0c230885d550b482835adc8fa5e492a25c5edd9693ef"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_virome_depth_check.tsv",
+      "sha256": "13e9f8ff7c5f846c39c434657a6a1e532faaf0cd107b040a7c5b1f6b53ef89e1"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_label_pairs.tsv",
+      "sha256": "77acad47653f6e97a317ffc2ec7f6e520104603ccb0656c8099450fb38b3230b"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_pcoa_aitchison.tsv",
+      "sha256": "fdeaebaed847d48300c97f333763791bd019df3050527d772efa4b8f4caa58e7"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_permanova_marginal.tsv",
+      "sha256": "d37b962bec662b1bf11bd8fb8d24009fe453c592530e0ccb1f36131c154a7647"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_betadisper_summary.tsv",
+      "sha256": "0eb7e5947b27bf5a71abcfdaef27bcb4aefd237abcb1a9ce9f9c89ec443e0236"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_crossomics_pairwise.tsv",
+      "sha256": "6746ae0c677f757ecd757ed905a5eab0eecb9e88f4860703e10d5dd0a16fb374"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_corrected_host_members.tsv",
+      "sha256": "d51631785bcada5be7fabb98a2c045095db92e9f10b5b3cb60ba66a57567eadd"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_crispr_host_edges_primary.tsv",
+      "sha256": "9e8485520655f607f9f8c94c47a53c5fa2178c08b4a59b7a7f89a17c8a7fbcb4"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_pcoa_aitchison.tsv",
+      "sha256": "fdeaebaed847d48300c97f333763791bd019df3050527d772efa4b8f4caa58e7"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_tse_virome.rds",
+      "sha256": "d142acbb1f8c41c9423d4c8016ce3637124000d14deaa33b5aab01ce4a6e4b04"
+    },
+    {
+      "kind": "upstream",
+      "path": "012-tse-construction/tse_virome.rds",
+      "sha256": "51dfe0fbc7a40a600a0eb6adefbb6a05f9189cb8d49595dee227957e46c4e707"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_tse_16s.rds",
+      "sha256": "3061bbebcf9274954c48e0a8ec3a58a29308eb414c735e7d69eb43c69e2b5419"
+    },
+    {
+      "kind": "upstream",
+      "path": "012-tse-construction/tse_16s.rds",
+      "sha256": "9be63dfaecb9305f9c4774383a0cd17c98a26d9af0744a54ac2a006228cb0e46"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_tse_18s_all.rds",
+      "sha256": "842a34467eca0483ce85aa893a527867b865480bcbd4b6fc5ff01f3ea7160334"
+    },
+    {
+      "kind": "upstream",
+      "path": "012-tse-construction/tse_18s_all.rds",
+      "sha256": "a8b712365b5fdd7d6d9442690c8838b18f9ed92c63c313af16ecdd7a2276c8f9"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_tse_18s_microeuk.rds",
+      "sha256": "a33df7f5699979736ec3e2466ffa8acfe10d203a3f08a6db087407b2c03bbcc7"
+    },
+    {
+      "kind": "upstream",
+      "path": "012-tse-construction/tse_18s_microeuk.rds",
+      "sha256": "f36f9322c67712b999356aaeab2924fda6d2ecb521dd48d19907f87e218dc825"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_mae_diversity.rds",
+      "sha256": "9a66c39756cb81e4b0718ed30a1edc2f49418d4c990ee4a60f44e0f90cdb7829"
+    },
+    {
+      "kind": "raw",
+      "path": "analyses/data/00-raw/d014-legacy-comparison/legacy_tse_virome.rds",
+      "sha256": "d142acbb1f8c41c9423d4c8016ce3637124000d14deaa33b5aab01ce4a6e4b04"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "legacy-comparison.tsv",
+      "bytes": 3157544,
+      "sha256": "aec8458ab1d76b339d9200571d1cf77ef3c8d654b6893055f91c47ea660e9c03"
+    },
+    {
+      "file": "object-comparison.tsv",
+      "bytes": 8992,
+      "sha256": "deab556635afd4565e3b0149be7d7725a93eccb42a42dea44d8176701332c987"
+    },
+    {
+      "file": "key-report.tsv",
+      "bytes": 631,
+      "sha256": "32cf0743d54b26e4846ac1c24d49750e93491f03f825c6b694ab754e08c6e1ed"
+    },
+    {
+      "file": "comparison-summary.tsv",
+      "bytes": 613,
+      "sha256": "724e9468ee2e81367c8ab0410fe3c47286895ccbc66319d13a8e01c83132e6eb"
+    },
+    {
+      "file": "comparison-checks.tsv",
+      "bytes": 880,
+      "sha256": "78567239310d9d9afaa796a51698cfa3853b10549eee4f36bd46d850492448fc"
+    },
+    {
+      "file": "session-info.txt",
+      "bytes": 13713,
+      "sha256": "771f9e0349c11244c9da639a34a8d55e12e93da82099ac4b4970017b233d5ad5"
+    }
+  ],
+  "output_dir_files": []
+}

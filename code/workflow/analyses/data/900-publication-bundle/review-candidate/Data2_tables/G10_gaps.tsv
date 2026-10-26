@@ -1,0 +1,5 @@
+item	status	consequence
+joint adjustment for ecosystem and host phylum	not done: the saved analyses adjust for each covariate separately	Supplementary Note 4 reports the two adjustments separately and does not call them a joint control
+second-stage logit projection diagnostics	saved for the fixed 285/38 sets (null_logit_equivalent and residual_slope in G01) but the validity, warnings and convergence of the projection fit itself were not saved; recorded invalid for all 19 corrected categories (G21)	Supplementary Note 4 discloses the saved projection and difference as descriptive values only; no projection panel is drawn and no validity is asserted
+local-global shared sequence membership	not established in the source project's bounded search	Figure 5 keeps the local and global arms visually and textually separate
+category aggregation of anti-defense profiles	the historical direct-join aggregation (G14, G15, named25 subsets) is withdrawn and kept for audit; post hoc corrected category definitions are in G20-G25	Figure 5 uses the 38 individual profiles, which do not pass through the category join; see the status index G19

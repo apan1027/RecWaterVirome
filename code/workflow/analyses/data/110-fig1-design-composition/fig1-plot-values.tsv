@@ -1,0 +1,223 @@
+panel	category	sample_id	value	unit
+A	Virome (viral metagenome)	bc1	1	assay performed
+A	Virome (viral metagenome)	bd1	1	assay performed
+A	Virome (viral metagenome)	bc2	1	assay performed
+A	Virome (viral metagenome)	gc1	1	assay performed
+A	Virome (viral metagenome)	gd1	1	assay performed
+A	Virome (viral metagenome)	oc1	1	assay performed
+A	Virome (viral metagenome)	od1	1	assay performed
+A	16S rRNA gene amplicons	bc1	1	assay performed
+A	16S rRNA gene amplicons	bd1	1	assay performed
+A	16S rRNA gene amplicons	bc2	1	assay performed
+A	16S rRNA gene amplicons	gc1	1	assay performed
+A	16S rRNA gene amplicons	gd1	1	assay performed
+A	16S rRNA gene amplicons	oc1	1	assay performed
+A	16S rRNA gene amplicons	od1	1	assay performed
+A	18S rRNA gene amplicons	bc1	1	assay performed
+A	18S rRNA gene amplicons	bd1	1	assay performed
+A	18S rRNA gene amplicons	bc2	1	assay performed
+A	18S rRNA gene amplicons	gc1	1	assay performed
+A	18S rRNA gene amplicons	gd1	1	assay performed
+A	18S rRNA gene amplicons	oc1	1	assay performed
+A	18S rRNA gene amplicons	od1	1	assay performed
+B	[Novel_Class]_{kingdom}_Bamfordvirae	bc1	0	% of the assay total in the sample
+B	Caudoviricetes	bc1	98.80237885379573	% of the assay total in the sample
+B	Malgrandaviricetes	bc1	0	% of the assay total in the sample
+B	Maveriviricetes	bc1	0.8665209506688074	% of the assay total in the sample
+B	Pokkesviricetes	bc1	0	% of the assay total in the sample
+B	Polintoviricetes	bc1	0	% of the assay total in the sample
+B	Tectiliviricetes	bc1	0.16265202370034754	% of the assay total in the sample
+B	Unclassified	bc1	0.16844817183512456	% of the assay total in the sample
+B	[Novel_Class]_{kingdom}_Bamfordvirae	bd1	0.30568964260307596	% of the assay total in the sample
+B	Caudoviricetes	bd1	87.83319853931158	% of the assay total in the sample
+B	Malgrandaviricetes	bd1	0	% of the assay total in the sample
+B	Maveriviricetes	bd1	0.020988144327019186	% of the assay total in the sample
+B	Pokkesviricetes	bd1	0	% of the assay total in the sample
+B	Polintoviricetes	bd1	11.75607597345808	% of the assay total in the sample
+B	Tectiliviricetes	bd1	0	% of the assay total in the sample
+B	Unclassified	bd1	0.0840477003002446	% of the assay total in the sample
+B	[Novel_Class]_{kingdom}_Bamfordvirae	bc2	0.11856621533671119	% of the assay total in the sample
+B	Caudoviricetes	bc2	98.57854392897332	% of the assay total in the sample
+B	Malgrandaviricetes	bc2	0.04889126976271321	% of the assay total in the sample
+B	Maveriviricetes	bc2	0.05195403327671622	% of the assay total in the sample
+B	Pokkesviricetes	bc2	0	% of the assay total in the sample
+B	Polintoviricetes	bc2	0	% of the assay total in the sample
+B	Tectiliviricetes	bc2	0	% of the assay total in the sample
+B	Unclassified	bc2	1.2020445526505605	% of the assay total in the sample
+B	[Novel_Class]_{kingdom}_Bamfordvirae	gc1	0	% of the assay total in the sample
+B	Caudoviricetes	gc1	97.23029152871122	% of the assay total in the sample
+B	Malgrandaviricetes	gc1	0	% of the assay total in the sample
+B	Maveriviricetes	gc1	0	% of the assay total in the sample
+B	Pokkesviricetes	gc1	0	% of the assay total in the sample
+B	Polintoviricetes	gc1	0	% of the assay total in the sample
+B	Tectiliviricetes	gc1	0	% of the assay total in the sample
+B	Unclassified	gc1	2.7697084712887756	% of the assay total in the sample
+B	[Novel_Class]_{kingdom}_Bamfordvirae	gd1	0	% of the assay total in the sample
+B	Caudoviricetes	gd1	99.75029894458321	% of the assay total in the sample
+B	Malgrandaviricetes	gd1	0	% of the assay total in the sample
+B	Maveriviricetes	gd1	0	% of the assay total in the sample
+B	Pokkesviricetes	gd1	0.11568919123773266	% of the assay total in the sample
+B	Polintoviricetes	gd1	0	% of the assay total in the sample
+B	Tectiliviricetes	gd1	0	% of the assay total in the sample
+B	Unclassified	gd1	0.13401186417905603	% of the assay total in the sample
+B	[Novel_Class]_{kingdom}_Bamfordvirae	oc1	0	% of the assay total in the sample
+B	Caudoviricetes	oc1	99.66324228318169	% of the assay total in the sample
+B	Malgrandaviricetes	oc1	0	% of the assay total in the sample
+B	Maveriviricetes	oc1	0	% of the assay total in the sample
+B	Pokkesviricetes	oc1	0	% of the assay total in the sample
+B	Polintoviricetes	oc1	0	% of the assay total in the sample
+B	Tectiliviricetes	oc1	0	% of the assay total in the sample
+B	Unclassified	oc1	0.3367577168183286	% of the assay total in the sample
+B	[Novel_Class]_{kingdom}_Bamfordvirae	od1	0	% of the assay total in the sample
+B	Caudoviricetes	od1	99.92586125328003	% of the assay total in the sample
+B	Malgrandaviricetes	od1	0	% of the assay total in the sample
+B	Maveriviricetes	od1	0	% of the assay total in the sample
+B	Pokkesviricetes	od1	0.07413874671995985	% of the assay total in the sample
+B	Polintoviricetes	od1	0	% of the assay total in the sample
+B	Tectiliviricetes	od1	0	% of the assay total in the sample
+B	Unclassified	od1	0	% of the assay total in the sample
+C	Actinomycetota	bc1	3.0344428711034896	% of the assay total in the sample
+C	Bacillota	bc1	0.5045770925988713	% of the assay total in the sample
+C	Bacteroidota	bc1	11.32207175764344	% of the assay total in the sample
+C	Bdellovibrionota	bc1	2.4929698250932377	% of the assay total in the sample
+C	Myxococcota	bc1	2.458068247541932	% of the assay total in the sample
+C	Other	bc1	6.416904329789995	% of the assay total in the sample
+C	Planctomycetota	bc1	1.548632855347919	% of the assay total in the sample
+C	Pseudomonadota	bc1	66.42069364392414	% of the assay total in the sample
+C	Unclassified	bc1	5.350910432580125	% of the assay total in the sample
+C	Verrucomicrobiota	bc1	0.45072894437685723	% of the assay total in the sample
+C	Actinomycetota	bd1	1.6235200565470942	% of the assay total in the sample
+C	Bacillota	bd1	0.8614596218413154	% of the assay total in the sample
+C	Bacteroidota	bd1	11.32819402721329	% of the assay total in the sample
+C	Bdellovibrionota	bd1	6.769084643930025	% of the assay total in the sample
+C	Myxococcota	bd1	1.11989750839371	% of the assay total in the sample
+C	Other	bd1	5.510028273546565	% of the assay total in the sample
+C	Planctomycetota	bd1	3.020630853507688	% of the assay total in the sample
+C	Pseudomonadota	bd1	52.58106555928609	% of the assay total in the sample
+C	Unclassified	bd1	11.187930729810924	% of the assay total in the sample
+C	Verrucomicrobiota	bd1	5.998188725923315	% of the assay total in the sample
+C	Actinomycetota	bc2	1.8648627175011059	% of the assay total in the sample
+C	Bacillota	bc2	0.6889663235077121	% of the assay total in the sample
+C	Bacteroidota	bc2	8.638752369385823	% of the assay total in the sample
+C	Bdellovibrionota	bc2	2.6616573782958577	% of the assay total in the sample
+C	Myxococcota	bc2	1.2859948015391072	% of the assay total in the sample
+C	Other	bc2	2.6253362541570646	% of the assay total in the sample
+C	Planctomycetota	bc2	1.0680680567063543	% of the assay total in the sample
+C	Pseudomonadota	bc2	67.30758316969913	% of the assay total in the sample
+C	Unclassified	bc2	12.57618923305676	% of the assay total in the sample
+C	Verrucomicrobiota	bc2	1.2825896961510954	% of the assay total in the sample
+C	Actinomycetota	gc1	4.2769356820975	% of the assay total in the sample
+C	Bacillota	gc1	11.34098047248394	% of the assay total in the sample
+C	Bacteroidota	gc1	1.575856889253038	% of the assay total in the sample
+C	Bdellovibrionota	gc1	0.004096681687832854	% of the assay total in the sample
+C	Myxococcota	gc1	0.023214529564386167	% of the assay total in the sample
+C	Other	gc1	0.4642905912877235	% of the assay total in the sample
+C	Planctomycetota	gc1	0.5271063771678272	% of the assay total in the sample
+C	Pseudomonadota	gc1	74.0256725385771	% of the assay total in the sample
+C	Unclassified	gc1	7.659429195684829	% of the assay total in the sample
+C	Verrucomicrobiota	gc1	0.10241704219582135	% of the assay total in the sample
+C	Actinomycetota	gd1	2.224568975412659	% of the assay total in the sample
+C	Bacillota	gd1	8.051149016276778	% of the assay total in the sample
+C	Bacteroidota	gd1	2.161436212952547	% of the assay total in the sample
+C	Bdellovibrionota	gd1	0	% of the assay total in the sample
+C	Myxococcota	gd1	0.028696710209141628	% of the assay total in the sample
+C	Other	gd1	0.2456438393902524	% of the assay total in the sample
+C	Planctomycetota	gd1	0.18595468215523778	% of the assay total in the sample
+C	Pseudomonadota	gd1	82.83018434766637	% of the assay total in the sample
+C	Unclassified	gd1	4.118551849216008	% of the assay total in the sample
+C	Verrucomicrobiota	gd1	0.1538143667209991	% of the assay total in the sample
+C	Actinomycetota	oc1	5.739097602416465	% of the assay total in the sample
+C	Bacillota	oc1	12.727329935183437	% of the assay total in the sample
+C	Bacteroidota	oc1	0.37285255805172746	% of the assay total in the sample
+C	Bdellovibrionota	oc1	0	% of the assay total in the sample
+C	Myxococcota	oc1	0.022025045623308797	% of the assay total in the sample
+C	Other	oc1	1.032030709206469	% of the assay total in the sample
+C	Planctomycetota	oc1	2.683909130954629	% of the assay total in the sample
+C	Pseudomonadota	oc1	66.38506072619721	% of the assay total in the sample
+C	Unclassified	oc1	9.28827638285822	% of the assay total in the sample
+C	Verrucomicrobiota	oc1	1.7494179095085272	% of the assay total in the sample
+C	Actinomycetota	od1	3.9207273470221655	% of the assay total in the sample
+C	Bacillota	od1	6.489937685156806	% of the assay total in the sample
+C	Bacteroidota	od1	0.10215548064153643	% of the assay total in the sample
+C	Bdellovibrionota	od1	0	% of the assay total in the sample
+C	Myxococcota	od1	0.01021554806415364	% of the assay total in the sample
+C	Other	od1	0.3156604351823475	% of the assay total in the sample
+C	Planctomycetota	od1	0.09296148738379811	% of the assay total in the sample
+C	Pseudomonadota	od1	52.296455204821754	% of the assay total in the sample
+C	Unclassified	od1	36.72489529063234	% of the assay total in the sample
+C	Verrucomicrobiota	od1	0.04699152109510674	% of the assay total in the sample
+D	Alveolata	bc1	0.038313360720291186	% of the assay total in the sample
+D	Chlorophyta	bc1	0.00744982014005662	% of the assay total in the sample
+D	Malawimonadidae	bc1	0.006385560120048531	% of the assay total in the sample
+D	Opisthokonta	bc1	60.53404567804004	% of the assay total in the sample
+D	Other	bc1	0.07236968136055003	% of the assay total in the sample
+D	Rhizaria	bc1	25.62525276175476	% of the assay total in the sample
+D	Stramenopiles	bc1	0.1787956833613589	% of the assay total in the sample
+D	Streptophyta	bc1	0.03724910070028311	% of the assay total in the sample
+D	Tubulinea	bc1	7.329558757795707	% of the assay total in the sample
+D	Unclassified	bc1	6.170579596006899	% of the assay total in the sample
+D	Alveolata	bd1	0.023350253807106598	% of the assay total in the sample
+D	Chlorophyta	bd1	0.06091370558375635	% of the assay total in the sample
+D	Malawimonadidae	bd1	1.0710659898477157	% of the assay total in the sample
+D	Opisthokonta	bd1	10.847715736040609	% of the assay total in the sample
+D	Other	bd1	0.6548223350253808	% of the assay total in the sample
+D	Rhizaria	bd1	31.805076142131977	% of the assay total in the sample
+D	Stramenopiles	bd1	55.16852791878173	% of the assay total in the sample
+D	Streptophyta	bd1	0.03756345177664974	% of the assay total in the sample
+D	Tubulinea	bd1	0.052791878172588826	% of the assay total in the sample
+D	Unclassified	bd1	0.2781725888324873	% of the assay total in the sample
+D	Alveolata	bc2	15.12969683005971	% of the assay total in the sample
+D	Chlorophyta	bc2	0.1852811857995891	% of the assay total in the sample
+D	Malawimonadidae	bc2	9.60006144039322e-4	% of the assay total in the sample
+D	Opisthokonta	bc2	46.87806001958413	% of the assay total in the sample
+D	Other	bc2	0.1276808171572298	% of the assay total in the sample
+D	Rhizaria	bc2	27.395695332450128	% of the assay total in the sample
+D	Stramenopiles	bc2	0.02880018432117966	% of the assay total in the sample
+D	Streptophyta	bc2	0.17856114279131388	% of the assay total in the sample
+D	Tubulinea	bc2	9.875583203732504	% of the assay total in the sample
+D	Unclassified	bc2	0.19968127796017895	% of the assay total in the sample
+D	Alveolata	gc1	22.690817512592023	% of the assay total in the sample
+D	Chlorophyta	gc1	23.57225881441302	% of the assay total in the sample
+D	Malawimonadidae	gc1	0	% of the assay total in the sample
+D	Opisthokonta	gc1	40.730337078651665	% of the assay total in the sample
+D	Other	gc1	0.11817125145292524	% of the assay total in the sample
+D	Rhizaria	gc1	2.845796203022085	% of the assay total in the sample
+D	Stramenopiles	gc1	7.929097249128246	% of the assay total in the sample
+D	Streptophyta	gc1	0.10848508330104613	% of the assay total in the sample
+D	Tubulinea	gc1	0	% of the assay total in the sample
+D	Unclassified	gc1	2.005036807438977	% of the assay total in the sample
+D	Alveolata	gd1	64.51698163076514	% of the assay total in the sample
+D	Chlorophyta	gd1	0.9741546942551305	% of the assay total in the sample
+D	Malawimonadidae	gd1	0	% of the assay total in the sample
+D	Opisthokonta	gd1	27.251788782117853	% of the assay total in the sample
+D	Other	gd1	0.02076686363722177	% of the assay total in the sample
+D	Rhizaria	gd1	1.9313183182616243	% of the assay total in the sample
+D	Stramenopiles	gd1	0.6475485661424604	% of the assay total in the sample
+D	Streptophyta	gd1	0.7155128471370044	% of the assay total in the sample
+D	Tubulinea	gd1	0.011327380165757328	% of the assay total in the sample
+D	Unclassified	gd1	3.9306009175177916	% of the assay total in the sample
+D	Alveolata	oc1	5.0471548467107015	% of the assay total in the sample
+D	Chlorophyta	oc1	0.4657802901393017	% of the assay total in the sample
+D	Malawimonadidae	oc1	0	% of the assay total in the sample
+D	Opisthokonta	oc1	86.20684682606061	% of the assay total in the sample
+D	Other	oc1	0	% of the assay total in the sample
+D	Rhizaria	oc1	0.04037723877368562	% of the assay total in the sample
+D	Stramenopiles	oc1	7.331352925907774	% of the assay total in the sample
+D	Streptophyta	oc1	0.5148097943644916	% of the assay total in the sample
+D	Tubulinea	oc1	0.025956796354512177	% of the assay total in the sample
+D	Unclassified	oc1	0.3677212816889225	% of the assay total in the sample
+D	Alveolata	od1	0.2173248667187341	% of the assay total in the sample
+D	Chlorophyta	od1	0.1375258922204489	% of the assay total in the sample
+D	Malawimonadidae	od1	0	% of the assay total in the sample
+D	Opisthokonta	od1	99.5178104519678	% of the assay total in the sample
+D	Other	od1	0	% of the assay total in the sample
+D	Rhizaria	od1	0.0033957010424802195	% of the assay total in the sample
+D	Stramenopiles	od1	0.05942476824340384	% of the assay total in the sample
+D	Streptophyta	od1	0.011884953648680769	% of the assay total in the sample
+D	Tubulinea	od1	0	% of the assay total in the sample
+D	Unclassified	od1	0.0526333661584434	% of the assay total in the sample
+E	Complete	all	167	vOTUs (of 3,060)
+E	High-quality	all	142	vOTUs (of 3,060)
+E	Medium-quality	all	450	vOTUs (of 3,060)
+E	Low-quality	all	2254	vOTUs (of 3,060)
+E	Undetermined	all	47	vOTUs (of 3,060)
