@@ -1,3 +1,0 @@
-item	status	consequence
-read-rarefaction curve values	Historical source-project gap: original unmasked curve values were not exported. Current retained-table rarefaction values are supplied in Data 1 S50 and displayed in Supplementary Figure 1c.	S50 supports the retained-table subsampling display with the full-depth detection mask fixed; it does not requalify breadth after raw-read subsampling or establish complete sampling of environmental viruses.
-rarefaction curve with the masked alpha definition	not done in the source project	masked alpha saturation cannot be claimed from the unmasked curves

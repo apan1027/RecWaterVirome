@@ -1,7 +1,0 @@
-analysis	covariate	definition	valid	metab_median	adf_median	difference	note
-Firth sensitivity	unadjusted	all38	TRUE	4.05650545931977	1.36091311308802	2.69559234623175	uniform sensitivity for separated nuisance strata; not applied to zero-carrier replicates
-Firth sensitivity	unadjusted	named25	TRUE	4.05650545931977	2.80734205241234	1.24916340690744	uniform sensitivity for separated nuisance strata; not applied to zero-carrier replicates
-Firth sensitivity	ecosystem	all38	TRUE	4.11118909299541	1.20844454649343	2.90274454650197	uniform sensitivity for separated nuisance strata; not applied to zero-carrier replicates
-Firth sensitivity	ecosystem	named25	TRUE	4.11118909299541	2.62990789944999	1.48128119354542	uniform sensitivity for separated nuisance strata; not applied to zero-carrier replicates
-Firth sensitivity	host	all38	TRUE	3.97015691219657	1.44606645087647	2.5240904613201	uniform sensitivity for separated nuisance strata; not applied to zero-carrier replicates
-Firth sensitivity	host	named25	TRUE	3.97015691219657	2.70305281012657	1.26710410207	uniform sensitivity for separated nuisance strata; not applied to zero-carrier replicates

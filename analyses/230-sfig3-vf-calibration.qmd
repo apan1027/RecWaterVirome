@@ -1,0 +1,325 @@
+---
+title: "230-sfig3-vf-calibration"
+subtitle: "Supplementary Figure 4: controlled constructs and genomic positions of candidate VF matches"
+author:
+  - name: Jinlong Ru
+    orcid: "0000-0002-6757-6018"
+  - name: Cunli Pan
+    orcid: "0000-0002-2595-7533"
+date: today
+params:
+  name: "230-sfig3-vf-calibration"
+---
+
+**Updated: `r format(Sys.time(), '%Y-%m-%d %H:%M:%S %Z %z', tz = 'Europe/Berlin')`.**
+
+```{r}
+#| label: params
+#| eval: !expr interactive()
+#| include: false
+params <- list(name = "230-sfig3-vf-calibration")
+```
+
+```{r}
+#| label: setup
+#| include: false
+#| message: false
+#| warning: false
+#| cache: false
+wd <- "analyses"
+if (basename(getwd()) != wd) {
+    setwd(here::here(wd))
+}
+here::i_am(paste0(params$name, ".qmd"), uuid = "21765e43-0648-4311-8a40-f369da5a0f21")
+qproj::proj_create_dir_target(params$name, clean = FALSE)
+
+# convenience helpers
+path_target <- qproj::proj_path_target(params$name)
+path_source <- qproj::proj_path_source(params$name)
+path_raw <- path_source("00-raw")
+path_resource <- here::here(path_raw, "d00-resource")
+path_data <- here::here(path_raw, paste0("d", params$name))
+dir.create(path_raw, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_data, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_resource, recursive = TRUE, showWarnings = FALSE)
+```
+
+```{r}
+#| label: packages
+#| message: false
+#| warning: false
+#| cache: false
+# qproj template chunk, trimmed to what figure steps use: ggplot2 and
+# patchwork plus the project helpers in R/.
+suppressPackageStartupMessages({
+  library(ggplot2)
+  library(patchwork)
+  devtools::load_all()
+})
+```
+
+```{r}
+#| label: step-guard
+#| cache: false
+# Checks params$name, path_target() and here() against analyses/R/steps.yml
+# and opens a staging folder for this run's outputs.
+step <- rwv_step_begin(params$name, path_target)
+# New outputs are staged; the previous result stays until rwv_step_finish()
+# has checked and published the new one.
+path_target <- step$path_target
+```
+
+```{r}
+#| label: report-presentation
+#| include: false
+rwv_report_setup(step)
+```
+
+
+
+## Tasks
+
+Natural position evidence first; controlled endpoints second. Displaced evidence is retained in Supplementary Note 3 and unchanged Data 1 tables.
+
+```{r}
+#| label: inputs
+manifest <- rwv_read_tsv(rwv_step_input(step, path_source, "010-input-manifest", "input-manifest.tsv"))
+style <- rwv_style_read(rwv_project_input(step, "analyses/R/style.yml", manifest))
+style <- rwv_style_for_figure(style, "sfig4")   # v40: figure-specific text sizes (analyses/R/style.yml figure_text_pt)
+palettes <- rwv_palettes_read(rwv_project_input(step, "analyses/R/palettes.yml", manifest))
+figures <- rwv_figures_read(rwv_project_input(step, "analyses/R/figures.yml", manifest))
+defs <- rwv_definitions_read(rwv_project_input(step, "analyses/R/definitions.tsv", manifest))
+up4 <- function(f) as.data.frame(rwv_read_tsv(rwv_step_input(step, path_source, "040-vf-inputs", f)))
+det <- up4("construct_detection.tsv")
+endpoints <- up4("construct_endpoints.tsv")
+b95 <- up4("construct_below95.tsv")
+bridge <- up4("vf_model_bridge.tsv")
+models <- up4("vf_models.tsv")
+hits <- up4("vf_hits.tsv")
+regions <- up4("checkv_regions.tsv")
+records <- up4("checkv_flagged_records.tsv")
+catalogue_hits <- up4("vf_hit_catalogue.tsv")
+num <- as.numeric
+for (k in c("viral_window_bp", "flank_percent", "constructs", "flagged", "flagged_fraction")) det[[k]] <- num(det[[k]])
+for (k in c("k", "n")) endpoints[[k]] <- num(endpoints[[k]])
+for (k in c("start_bp", "end_bp", "strand", "hsp_start_bp", "hsp_end_bp", "hsp_host_nt", "hsp_viral_nt")) hits[[k]] <- num(hits[[k]])
+for (k in c("start", "end", "length", "record_length_bp")) regions[[k]] <- num(regions[[k]])
+for (k in c("requested_viral_length_bp", "host_percent_requested", "viral_retention", "host_removed")) b95[[k]] <- num(b95[[k]])
+fonts <- rwv_fonts_resolve(style)
+spec <- rwv_figure_spec(figures, "sfig4", params$name)   # displayed as Supplementary Figure 4 since 2026-10-17
+checks <- rwv_checks_new()
+pt <- style$text_pt; ink <- style$colours$text; fam <- style$font$family
+loc_lab <- c(`predicted-host` = "Predicted host region", `boundary-crossing` = "Boundary-crossing", viral = "Viral region")
+
+
+flagged_hit_records <- records[as.numeric(records$n_vf_hits)>0,]
+catalogue <- catalogue_hits
+loc_levels <- names(palettes$localization)
+ids <- unique(hits$vOTU_id)
+reg <- regions[regions$vOTU_id %in% ids,]
+
+rwv_check(checks, "endpoint counts and denominators", c(0,315,33,512,720,720), c(endpoints$k,endpoints$n))
+rwv_check(checks, "complete natural coordinate scope", c(8L,17L,20L), c(length(ids),nrow(reg),nrow(hits)))
+cat_levels <- c("host","boundary_crossing","viral","no_region_prediction")
+cat_counts <- as.integer(table(factor(catalogue_hits$localization,levels=cat_levels)))
+rwv_check(checks,"full catalogue classification", c(18L,1L,1L,123L),cat_counts)
+rwv_check(checks,"model scope counts", c(142L,123L,142L,123L),as.integer(models$hits))
+rwv_check(checks,"below-95 tail retained in note/data",33L,nrow(b95))
+rwv_check(checks,"minimum retention",0.6402,round(min(b95$viral_retention),4))
+
+```
+
+```{r}
+#| label: panels
+# 2026-10-18 (v40): layout H (outputs/supp34-literature-redesign-2026-10-18, code/candidates.R "S4-H"; author-approved),
+# drawn with grid at 9.2 pt: (a) the localization scope of all 143 catalogue hits, (b) the eight region-predicted
+# carriers on one absolute kb scale, (c) the saved vOTU1009 boundary zoom. The controlled-construct endpoints are no
+# longer drawn; their checks above stay, and the values remain in Results, Supplementary Note 3 and Data 1 S34-S36, S41.
+len <- tapply(reg$record_length_bp, reg$vOTU_id, max)
+ord <- names(sort(len, decreasing = TRUE))
+reg$y <- match(reg$vOTU_id, ord); hits$y <- match(hits$vOTU_id, ord)
+reg$f0 <- (reg$start - 1) / reg$record_length_bp; reg$f1 <- reg$end / reg$record_length_bp
+L <- as.numeric(len[hits$vOTU_id])
+hits$f0 <- (hits$start_bp - 1) / L; hits$f1 <- hits$end_bp / L
+rwv_check(checks, "all hit intervals inside their own contig", TRUE, all(hits$f1 <= 1 & hits$f0 >= 0))
+n_hit <- as.integer(table(factor(hits$vOTU_id, levels = ord)))
+rwv_check(checks, "track hit counts match flagged records", as.integer(flagged_hit_records$n_vf_hits[match(ord, flagged_hit_records$vOTU_id)]), n_hit)
+rwv_check(checks, "track lengths match flagged records", as.numeric(flagged_hit_records$record_length_bp[match(ord, flagged_hit_records$vOTU_id)]), unname(len[ord]))
+rwv_check(checks, "S4b track order (longest first)", c("vOTU0073", "vOTU0016", "vOTU0273", "vOTU0446", "vOTU1009", "vOTU1381", "vOTU2681", "vOTU3434"), ord)
+rwv_check(checks, "S4b shared absolute scale covers the longest carrier (75 kb)", TRUE, max(len) <= 75000)
+scope_n <- cat_counts; names(scope_n) <- cat_levels
+rwv_check(checks, "S4a scope bar = full catalogue classification (sum 143)", c(18L, 1L, 1L, 123L, 143L), c(as.integer(scope_n), sum(scope_n)))
+zid <- "vOTU1009"; zr <- reg[reg$vOTU_id == zid, ]; zr <- zr[order(zr$start), ]
+zb <- zr$end[zr$kind == "viral" & zr$end < max(zr$end)]
+rwv_check(checks, "S4c vOTU1009 CheckV boundary (last viral / first host bp)", c(12974, 12975), c(zb, zr$start[zr$start == zb + 1]))
+zh <- hits[hits$vOTU_id == zid & hits$localization %in% c("viral", "boundary-crossing"), ]; zh <- zh[order(zh$start_bp), ]
+zh$orf <- sub(".*_", "", zh$protein_id)
+rwv_check(checks, "S4c zoom ORFs and HSP viral/host nt (ORF23 762/0, ORF28 10/560)", c("23", "28", 762, 0, 10, 560),
+          c(zh$orf, zh$hsp_viral_nt[1], zh$hsp_host_nt[1], zh$hsp_viral_nt[2], zh$hsp_host_nt[2]))
+rwv_check(checks, "S4c zoom window holds both ORFs and HSPs (9.0-14.2 kb)", TRUE, all(c(zh$start_bp, zh$hsp_start_bp) >= 9000 & c(zh$end_bp, zh$hsp_end_bp) <= 14200))
+W <- spec$width_mm; H <- spec$height_mm; P <- style$text_pt; K <- style$colours
+rwv_check(checks, "page size of the adopted layout H (mm)", c(180, 182), c(W, H), source = "analyses/R/figures.yml")
+tx <- function(s, x, y, size = P$annotation, bold = FALSE, just = "left", col = ink)
+  grid::grid.text(s, unit(x, "mm"), unit(H - y, "mm"), just = just, gp = grid::gpar(fontfamily = fam, fontsize = size, fontface = if (bold) "bold" else "plain", col = col))
+ln <- function(x, y, xx, yy, col = K$grey_mid, mm = style$line_mm$thin, lty = 1)
+  grid::grid.lines(unit(c(x, xx), "mm"), unit(H - c(y, yy), "mm"), gp = grid::gpar(col = col, lwd = rwv_lwd(mm), lty = lty))
+bx <- function(x, y, w, h, fill = "white", col = NA, mm = style$line_mm$hairline)
+  grid::grid.rect(unit(x, "mm"), unit(H - y, "mm"), unit(w, "mm"), unit(h, "mm"), just = c("left", "top"), gp = grid::gpar(fill = fill, col = col, lwd = rwv_lwd(mm)))
+dot <- function(x, y, r, fill) grid::grid.circle(unit(x, "mm"), unit(H - y, "mm"), r = unit(r, "mm"), gp = grid::gpar(fill = fill, col = fill, lwd = rwv_lwd(style$line_mm$hairline)))
+tag <- function(id, y) tx(rwv_tag(style, id), 3, y, P$tag, TRUE)   # v50: panel letter only
+loc_col <- unlist(palettes$localization)
+vfrow <- function(id, x0, x1, y, lo = 0, hi = 75000, regions_only = FALSE) {
+  xm <- function(v) x0 + (v - lo) / (hi - lo) * (x1 - x0)
+  z <- reg[reg$vOTU_id == id, ]
+  for (i in seq_len(nrow(z))) { aa <- max(lo, z$start[i]); bb <- min(hi, z$end[i]); if (bb > aa) bx(xm(aa), y - 1.8, xm(bb) - xm(aa), 3.6, palettes$region[[paste(z$kind[i], "region")]], K$grey_mid) }
+  if (regions_only) return(invisible(NULL))
+  z <- hits[hits$vOTU_id == id, ]
+  for (i in seq_len(nrow(z))) { cc <- loc_col[[as.character(z$localization[i])]]; aa <- max(lo, z$start_bp[i]); bb <- min(hi, z$end_bp[i])
+    if (bb > aa) { bx(xm(aa), y - 1.8, xm(bb) - xm(aa), 3.6, cc, "white"); dot(xm((aa + bb) / 2), y - 3.1, .5, cc) } }
+}
+arrow <- function(a, b, y, dir, fill) {
+  h <- min(1.8, (b - a) * .3); x <- if (dir > 0) c(a, b - h, b, b - h, a) else c(b, a + h, a, a + h, b)
+  grid::grid.polygon(unit(x, "mm"), unit(H - c(y - 1.6, y - 1.6, y, y + 1.6, y + 1.6), "mm"), gp = grid::gpar(fill = fill, col = fill, lwd = rwv_lwd(style$line_mm$hairline)))
+}
+scope_lab <- c(sprintf("Pred. host: %d", scope_n[["host"]]), sprintf("Boundary: %d", scope_n[["boundary_crossing"]]),
+               sprintf("Pred. viral: %d", scope_n[["viral"]]), sprintf("No prediction: %d", scope_n[["no_region_prediction"]]))
+# v50 figure cleanup (2026-10-19, Codex task book docs/figure-cleanup-v49-2026-10-19/00): panel letters only; the
+# explanatory titles, the boundary/HSP ledger lines and the axis-title explanations are not drawn (caption and figure
+# notes carry them). Scope classes, tracks, ORFs, HSP lines and the boundary line unchanged; page size unchanged.
+draw_s4 <- function() {
+  tag("A", 6)
+  cl <- c(loc_col[["predicted-host"]], loc_col[["boundary-crossing"]], loc_col[["viral"]], K$grey_pale); x <- 3
+  for (k in 1:4) { w <- 174 * scope_n[[k]] / sum(scope_n); bx(x, 12, w, 3.2, cl[k], K$grey_mid); x <- x + w }
+  for (k in 1:4) { xx <- c(3, 45, 88, 124)[k]; bx(xx, 20.2, 2.4, 2.4, cl[k], K$grey_mid); tx(scope_lab[k], xx + 3.6, 21.4) }
+  tag("B", 32)
+  tx("Hits", 173, 38, just = "centre", bold = TRUE)
+  for (i in seq_along(ord)) { y <- 45 + (i - 1) * 8; tx(ord[i], 3, y, bold = ord[i] == zid); vfrow(ord[i], 28, 166, y); tx(n_hit[i], 173, y, just = "centre") }
+  for (v in c(0, 20, 40, 60)) { x <- 28 + v / 75 * 138; ln(x, 106, x, 107, ink, style$line_mm$main); tx(v, x, 110.5, just = "centre") }
+  tx("Position (kb)", 97, 116, just = "centre")
+  bx(3, 120.8, 3, 2.6, palettes$region[["host region"]], K$grey_mid); tx("Predicted host region", 8, 122.1)
+  bx(64, 120.8, 3, 2.6, palettes$region[["viral region"]], K$grey_mid); tx("Predicted viral region", 69, 122.1)
+  tx("Coloured marks: VF-hit ORFs", 177, 122.1, just = "right")
+  tag("C", 132); tx(zid, 10, 132, bold = TRUE)
+  yy <- 151; xm <- function(v) 22 + (v - 9000) / 5200 * 153
+  vfrow(zid, 22, 175, yy, 9000, 14200, TRUE)
+  for (k in seq_len(nrow(zh))) { r <- zh[k, ]; cc <- loc_col[[as.character(r$localization)]]
+    arrow(xm(r$start_bp), xm(r$end_bp), yy, r$strand, cc); ln(xm(r$hsp_start_bp), yy + 4.2, xm(r$hsp_end_bp), yy + 4.2, cc, 0.6)
+    tx(paste0("ORF", r$orf, " / ", r$vf_id, "-like"), xm((r$start_bp + r$end_bp) / 2), yy - 6, just = "centre") }
+  x <- xm(zb + 0.5); ln(x, yy - 4, x, yy + 6, K$grey_dark, style$line_mm$thin, 2)
+  for (v in 9:14) { x <- xm(v * 1000); ln(x, yy + 8, x, yy + 9, ink, style$line_mm$main); tx(v, x, yy + 12.5, just = "centre") }
+  tx("Position (kb)", 99, yy + 18.5, just = "centre")
+}
+page <- grid::gTree(children = grid::gList(rwv_capture_grob(draw_s4(), width = rwv_mm_to_in(W), height = rwv_mm_to_in(H), style = style, fonts = fonts)),
+                    vp = grid::viewport(width = unit(W, "mm"), height = unit(H, "mm"), clip = "off"))
+expected <- c("a", "b", "c", ord, scope_lab, "Hits", "Position (kb)", "Predicted host region", "Predicted viral region",
+              "Coloured marks: VF-hit ORFs", "ORF23 / VF0608-like", "ORF28 / VF0465-like")
+res <- rwv_figure_export(patchwork::wrap_elements(full = page), path_target, "sfig4", spec, style, fonts, expected, step)
+knitr::kable(res$qa[, c("format", "check", "observed", "pass")])
+# Plot values: exactly what layout H draws (a: 4 scope classes; b: 17 regions, 20 hits, 8 hit counts; c: 2 ORFs with
+# their HSPs and the boundary). The construct endpoints are no longer plot values; they stay in Note 3 values and Data 1.
+vals <- rbind(
+ data.frame(panel = "A", item = paste("catalogue hits:", cat_levels), value = as.integer(scope_n), value2 = sum(scope_n), unit = "filtered VFDB-A matches (value2 = catalogue total)", display_order = 1:4, record_length_bp = NA),
+ data.frame(panel = "B", item = paste(reg$vOTU_id, reg$kind, "region"), value = reg$start, value2 = reg$end, unit = "bp (region start, end)", display_order = reg$y, record_length_bp = reg$record_length_bp),
+ data.frame(panel = "B", item = paste(hits$vOTU_id, hits$protein_id, hits$localization), value = hits$start_bp, value2 = hits$end_bp, unit = "bp (hit ORF start, end)", display_order = hits$y, record_length_bp = as.numeric(len[hits$vOTU_id])),
+ data.frame(panel = "B", item = paste(ord, "hits"), value = n_hit, value2 = NA, unit = "VF hits on the carrier (right-hand count)", display_order = seq_along(ord), record_length_bp = as.numeric(len[ord])),
+ data.frame(panel = "C", item = paste(zh$protein_id, "ORF"), value = zh$start_bp, value2 = zh$end_bp, unit = "bp (ORF start, end)", display_order = seq_len(nrow(zh)), record_length_bp = as.numeric(len[zid])),
+ data.frame(panel = "C", item = paste(zh$protein_id, "HSP"), value = zh$hsp_start_bp, value2 = zh$hsp_end_bp, unit = "bp (VFDB-matching segment start, end)", display_order = seq_len(nrow(zh)), record_length_bp = as.numeric(len[zid])),
+ data.frame(panel = "C", item = paste(zh$protein_id, "HSP viral / host nt"), value = zh$hsp_viral_nt, value2 = zh$hsp_host_nt, unit = "nt of the HSP in the predicted viral (value) and host (value2) region", display_order = seq_len(nrow(zh)), record_length_bp = as.numeric(len[zid])),
+ data.frame(panel = "C", item = paste(zid, "CheckV boundary"), value = zb, value2 = zb + 1, unit = "bp (last viral, first host)", display_order = 1, record_length_bp = as.numeric(len[zid])))
+rwv_write_tsv(vals, path_target("sfig4-plot-values.tsv"))
+rwv_check(checks, "active plot values: 4 scope classes, 17 regions, 20 hits, 8 hit counts, 2 ORFs, 2 HSPs, 2 HSP splits, 1 boundary", 56L, nrow(vals))
+
+```
+
+```{r}
+#| label: notes-and-checks
+
+# Generate a shareable supplement from the same verified saved tables, without inference.
+mdtable <- function(d) paste(c(paste0("| ",paste(names(d),collapse=" | ")," |"),paste0("| ",paste(rep("---",ncol(d)),collapse=" | ")," |"),apply(d,1,function(r)paste0("| ",paste(r,collapse=" | ")," |"))),collapse="\n")
+note <- c("# Supplementary Note 3. VF localization and controlled-construct checks","",
+ "## Natural-catalogue scope","",
+ mdtable(data.frame(Localization=c("Predicted host","Boundary-crossing","Predicted viral","No region prediction"),Matches=cat_counts)),"",
+ sprintf("The complete catalogue contains %d filtered VFDB-A matches on 3,060 representatives. Region exclusion retains %d matches, including the %d with no region prediction; retention does not establish viral localization.",nrow(catalogue_hits),sum(catalogue_hits$in_F1=="TRUE"),cat_counts[4]),"",
+ "All eight VF-bearing CheckV-flagged sequences, all 17 region segments and all 20 localized hit intervals are displayed in Supplementary Figure 4b (the localization scope of all 143 matches in 4a; the vOTU1009 boundary zoom in 4c). Their unchanged coordinates are in Data 1 S29–S31; complete match-level scope is in S48. Homology and predicted boundaries do not validate toxicity, infection, host transfer or biological activity.","",
+ "## Controlled-construct endpoints","",
+ mdtable(data.frame(Endpoint=endpoints$endpoint,Count=endpoints$k,Denominator=endpoints$n)),"",
+ "The 512 unflanked controls pool series B (270) and C (242) descriptively. The other two endpoints use only the 720 primary flanked constructs in series C. The 315 unflagged constructs were retained whole, including the added host flank. They are distinct from the 33 constructs retaining less than 95% of viral bases; the endpoints must not be added into a total error rate. Repeated constructs derived from the same mother genome are not independent biological samples. Exploratory series B flanked constructs and longer non-primary series C constructs are outside this primary denominator.","",
+ "### Primary window-length and flank groups","",
+ mdtable(det[,c("viral_window_bp","flank_percent","flagged","constructs","flagged_fraction")]),"",
+ "Lengths can be compared only while holding flank proportion fixed. Detailed strata are retained in Data 1 S35 and S41.","",
+ "### Individual retention below 95%","",
+ sprintf("The saved table contains %d selected sub-threshold constructs, not all 720 constructs. Minimum viral retention is %.1f%%. High average retention does not guarantee retention for an individual construct. The full 33-record table is Data 1 S36.",nrow(b95),100*min(b95$viral_retention)),"",
+ mdtable(b95[,c("id","requested_viral_length_bp","host_percent_requested","viral_retention","host_removed")]),"",
+ "## Catalogue-to-model scope","",
+ mdtable(bridge),"",
+ "The 47 representatives without a CheckV completeness estimate remain in the catalogue but are excluded from the four saved models (Data 1 S33, S40). The single GroEL match on vOTU2169 accounts for the 143-to-142 match difference. The models contain 142 total and 123 region-retained matches; 122 of those retained matches have no region prediction. The full catalogue instead has 143 total and 124 retained matches, including 123 without a region prediction. The two occurrences of 123 denote different sets.","",
+ "## Sequence-level lifestyle model specifications","",
+ mdtable(data.frame(Model=models$model, `Lifestyle rule`=models$label_rule, `Counted hits`=models$hits_rule, `Length offset`=models$offset_rule, vOTUs=models$n, `Temperate vOTUs`=models$temperate, Hits=models$hits, check.names=FALSE)),"",
+ "All four are negative-binomial models of filtered VF hit counts per vOTU, comparing predicted-temperate with predicted-virulent vOTUs, with the CheckV completeness estimate as a covariate and log length in kilobases as an offset; they use the same 3,013 vOTUs, are dependent sensitivity analyses and were not combined. Regional exclusion removes predicted-host and boundary-crossing hits and replaces the full contig length by the retained viral length in the same model, so the two changes are not separated. The lifestyle change drops only the CheckV provirus branch. Estimates and Wald intervals are shown in Figure 4c and listed in Data 1 S32. These four sequence-level specifications are distinct from the four sample-level annotation definitions of Figure 4a (filtered or strict matching, each with or without region exclusion; Supplementary Methods, Sample-level abundance of candidate virulence-factor carriers).","",
+ "## Interpretation and sources","",
+ "Artificial constructs characterize CheckV detection and trimming on near-reference sequence. They do not estimate error rates for the natural water-sample catalogue. Region and lifestyle definitions share CheckV information; in the two Figure 4c settings with regional exclusion, hit inclusion and the length offset change together and their individual effects are not isolated. Candidate carrier abundance is not VF expression, concentration or water-health risk. The c/d labels follow the author-selected terminology (d, wastewater collected from treatment tanks; c, reclaimed water) and are not verified treatment stages.","",
+ "Sources: saved outputs of step 040: construct_endpoints.tsv, construct_detection.tsv, construct_below95.tsv, vf_model_bridge.tsv, vf_models.tsv, vf_hits.tsv, checkv_regions.tsv, checkv_flagged_records.tsv and vf_hit_catalogue.tsv. Data 1 S29–S36, S40–S41 and S48 preserve the scientific records. No annotation, model fit, threshold or statistical test was recomputed for this rearrangement.")
+rwv_check(checks,"Note 3 model table: four saved specifications on 3,013 vOTUs with 142 or 123 filtered hits",TRUE,
+  nrow(models)==4L && all(as.numeric(models$n)==3013) && setequal(as.numeric(models$hits),c(142,123)))
+life_context <- as.data.frame(rwv_read_tsv(rwv_step_input(step, path_source,
+                                      "040-vf-inputs", "lifestyle_function_carriage.tsv")))
+lc <- life_context[life_context$lifestyle_rule == "including_CheckV" & life_context$function_set == "AMG_export", ]
+lc <- lc[match(c("temperate", "virulent"), lc$lifestyle), ]
+rwv_check(checks, "descriptive lifestyle context has both full-catalogue groups", 3060,
+          sum(as.numeric(lc$group_n)), source = "040/lifestyle_function_carriage.tsv")
+note <- c(note, "", "## Descriptive carrier proportions by lifestyle label", "",
+  paste("Data 1 S61 retains unadjusted carrier proportions for AMG-export, anti-defense and all four VF definitions",
+        "under both lifestyle rules, using the entire catalogue. Each vOTU is counted once per candidate set; sets can overlap.",
+        "These binary proportions have a different endpoint and population from the completeness-adjusted hit-rate models above."), "",
+  sprintf(paste("Under the original rule, median recovered sequence lengths were %s and %s bp in the temperate and virulent groups,",
+                "respectively, with median available CheckV completeness %s%% and %s%%.",
+                "Recovery and classification opportunity may differ between these groups; the descriptive proportions do not establish functional enrichment."),
+          rwv_fmt_num(as.numeric(lc$group_median_length_bp[1]), 0), rwv_fmt_num(as.numeric(lc$group_median_length_bp[2]), 1),
+          rwv_fmt_num(as.numeric(lc$group_median_completeness_pct[1]), 2), rwv_fmt_num(as.numeric(lc$group_median_completeness_pct[2]), 2)))
+writeLines(note,path_target("supplementary-note-3-vf-context.md"),useBytes=TRUE)
+rwv_write_tsv(rbind(data.frame(group="length/flank",item=paste(det$viral_window_bp,det$flank_percent),value=det$flagged,value2=det$constructs),data.frame(group="below95",item=b95$id,value=b95$viral_retention,value2=b95$host_removed),data.frame(group="model bridge",item=bridge$step,value=as.numeric(bridge$n),value2=NA),data.frame(group="catalogue localization",item=cat_levels,value=cat_counts,value2=143)),path_target("supplementary-note-3-values.tsv"))
+legend_en <- paste0(sprintf("(a) Of %d filtered VFDB-A matches in the complete catalogue, %d intersect predicted host regions, %d crosses a predicted boundary, %d lies in a predicted viral region and %d lack usable region predictions. Absence of a prediction does not establish viral origin. ", sum(scope_n), scope_n[["host"]], scope_n[["boundary_crossing"]], scope_n[["viral"]], scope_n[["no_region_prediction"]]),
+ sprintf("(b) All eight VF-bearing CheckV-flagged recovered sequences, with %d predicted region segments and %d VF-hit ORF intervals, plotted on a shared absolute kb scale. Right-hand labels count hits; exact recovered lengths are in Data 1 S31. Same-colour points aid visibility without adding hits; region fills and hit colours have distinct meanings. ", nrow(reg), nrow(hits)),
+ sprintf("(c) A selected vOTU1009 zoom separates two VF-hit ORFs (arrows) from their VFDB-matching segments (HSP lines); other flanking genes are not shown. The CheckV boundary at %s/%s bp separates predicted viral and host regions. The ORF%s HSP spans %s nt in the viral region and %s nt in the host region; the ORF%s HSP spans %s nt and %s nt, respectively. This selected case is one of the eight carriers in b, is not representative of all %d matches, and its -like labels are sequence homologues; predicted localization does not confirm biological function. ",
+         rwv_fmt_int(zb), rwv_fmt_int(zb + 1), zh$orf[1], zh$hsp_viral_nt[1], zh$hsp_host_nt[1], zh$orf[2], zh$hsp_viral_nt[2], zh$hsp_host_nt[2], sum(scope_n)),
+ sprintf("Controlled-construct endpoints are reported in Results and Supplementary Note 3 rather than drawn here: unflanked controls flagged, %s; primary flanked constructs unflagged, %s; primary flanked constructs retaining less than 95%% of viral bases, %s (minimum retention %s%%). These distinct endpoints must not be combined into an overall error rate; artificial constructs are not ground truth for the natural catalogue, and repeated constructs from one mother genome are not independent biological replicates. ",
+         rwv_fmt_frac(endpoints$k[1], endpoints$n[1]), rwv_fmt_frac(endpoints$k[2], endpoints$n[2]), rwv_fmt_frac(endpoints$k[3], endpoints$n[3]), formatC(100 * min(b95$viral_retention), format = "f", digits = 1)),
+ "Full stratified results, individual sub-threshold records and model-scope accounting are in Supplementary Note 3 and Data 1 S29–S36, S40–S41 and S48. The 143 catalogue hits differ from the 142 hits in the 3,013-sequence model subset. ", sprintf("Details: Supplementary figure notes, %s.", spec$label))
+rwv_write_legend(path_target("sfig4-legend.md"),spec$label,"Regional scope and genomic positions of candidate VF matches",legend_en,
+ can_read="Among 143 candidate catalogue hits, 18 are predicted-host, one crosses a boundary, one is viral-localized and 123 lack a region prediction. Tracks show eight carriers, 17 predicted regions and 20 hits on an absolute kb scale; the vOTU1009 zoom distinguishes full ORFs from VFDB HSPs. Controlled-construct endpoints (0/512, 315/720, 33/720) are retained in Results and Supplementary Note 3.",
+ cannot_infer="No region prediction does not establish viral localization; 123 is not a viral count and hits are not contigs. vOTU1009 is one of eight carriers, not all 143 hits. A -like label denotes sequence similarity, not demonstrated function. Construct endpoints do not estimate the natural-sequence error rate and cannot be added. Candidate similarity does not establish virulence or treatment effects.",
+ sources=c("analyses/data/040-vf-inputs/vf_hits.tsv, checkv_regions.tsv, checkv_flagged_records.tsv, vf_hit_catalogue.tsv (complete saved natural localization; layout H 2026-10-18)","analyses/data/040-vf-inputs/construct_endpoints.tsv, construct_detection.tsv, construct_below95.tsv, vf_model_bridge.tsv, vf_models.tsv (saved construct and model scopes; reported in the caption and Supplementary Note 3)"),
+ abbreviations=c("VF, virulence factor"),notes=c(sprintf("Panel c (%s): the dashed line marks the CheckV boundary at %s/%s bp; the ORF%s HSP spans %s nt in the predicted viral and %s nt in the host region, and the ORF%s HSP %s nt and %s nt, respectively.",
+           zid, rwv_fmt_int(zb), rwv_fmt_int(zb + 1), zh$orf[1], zh$hsp_viral_nt[1], zh$hsp_host_nt[1], zh$orf[2], zh$hsp_viral_nt[2], zh$hsp_host_nt[2]),
+ "Detailed scope, all six primary length/flank groups, individual retention and model-cohort accounting: Supplementary Note 3 and Data 1.","Catalogue regional exclusion retains 124/143 matches; Figure 4 models retain 123/142, in a different scope. Unlocalized does not mean viral."))
+check_table <- rwv_checks_finish(checks,path_target("sfig4-checks.tsv"))
+knitr::kable(check_table)
+rwv_write_session_info(path_target("session-info.txt"),c(step=params$name,run_id=step$run_id,mode=step$mode,quarto=rwv_quarto_version()))
+
+```
+
+```{r}
+#| label: step-record
+outputs <- rwv_step_finish(step, path_target)
+knitr::kable(transform(outputs, sha256 = substr(outputs$sha256, 1, 16)), caption = "Outputs recorded in step-record.json")
+rwv_report_complete(step, outputs)
+```
+
+## Published figure preview
+
+```{r}
+#| label: preview
+#| out-width: "100%"
+knitr::include_graphics(rwv_public_preview(step, "sfig4.png", "FigureS4.png"))
+```
+
+```{r}
+#| label: list-files-target
+rwv_report_files(step, outputs)
+```
+
+```{r}
+#| label: report-summary
+#| results: asis
+cat(rwv_report_summary(step))
+```

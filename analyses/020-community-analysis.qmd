@@ -1,0 +1,604 @@
+---
+title: "020-community-analysis"
+subtitle: "Calculate community results from TSEs or read archived results, validate them and prepare figure data"
+author:
+  - name: Jinlong Ru
+    orcid: "0000-0002-6757-6018"
+  - name: Cunli Pan
+    orcid: "0000-0002-2595-7533"
+date: today
+params:
+  name: "020-community-analysis"
+---
+
+**Updated: `r format(Sys.time(), '%Y-%m-%d %H:%M:%S %Z %z', tz = 'Europe/Berlin')`.**
+
+```{r}
+#| label: params
+#| eval: !expr interactive()
+#| include: false
+params <- list(name = "020-community-analysis")
+```
+
+```{r}
+#| label: setup
+#| include: false
+#| message: false
+#| warning: false
+#| cache: false
+wd <- "analyses"
+if (basename(getwd()) != wd) {
+    setwd(here::here(wd))
+}
+here::i_am(paste0(params$name, ".qmd"), uuid = "35b2431c-77b7-4888-bca9-3edabee11aa5")
+qproj::proj_create_dir_target(params$name, clean = FALSE)
+
+# convenience helpers
+path_target <- qproj::proj_path_target(params$name)
+path_source <- qproj::proj_path_source(params$name)
+path_raw <- path_source("00-raw")
+path_resource <- here::here(path_raw, "d00-resource")
+path_data <- here::here(path_raw, paste0("d", params$name))
+dir.create(path_raw, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_data, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_resource, recursive = TRUE, showWarnings = FALSE)
+```
+
+```{r}
+#| label: packages
+#| message: false
+#| warning: false
+#| cache: false
+# qproj template chunk, trimmed: base R plus the project helpers in R/; the
+# community calculation calls mia, vegan and ape with `pkg::`.
+suppressPackageStartupMessages({
+  devtools::load_all()
+  library(TreeSummarizedExperiment)
+})
+```
+
+```{r}
+#| label: step-guard
+#| cache: false
+# Checks params$name, path_target() and here() against analyses/R/steps.yml
+# and opens a staging folder for this run's outputs.
+step <- rwv_step_begin(params$name, path_target)
+# New outputs are staged; the previous result stays until rwv_step_finish()
+# has checked and published the new one.
+path_target <- step$path_target
+```
+
+```{r}
+#| label: report-presentation
+#| include: false
+rwv_report_setup(step)
+```
+
+
+
+## Tasks
+
+This analysis prepares community results for Figures 1 and 2, Supplementary Figures S1 and S2, and Supplementary Data 1. It calculates composition, diversity, ordinations and candidate-host summaries from the processed community objects. Methods and random seeds are specified in R/community.R and analyses/R/community.yml.
+
+Displayed values are checked against the input tables or shared definitions. A failed assertion stops the analysis.
+
+### Task 1: Read verified inputs
+
+```{r}
+#| label: inputs
+manifest <- rwv_read_tsv(rwv_step_input(step, path_source, "010-input-manifest", "input-manifest.tsv"))
+raw_manifest <- rwv_read_tsv(rwv_step_input(step, path_source, "010-input-manifest", "raw-input-manifest.tsv"))
+style <- rwv_style_read(rwv_project_input(step, "analyses/R/style.yml", manifest))
+samples <- rwv_samples_read(rwv_project_input(step, "analyses/R/samples.tsv", manifest), style)
+palettes <- rwv_palettes_read(rwv_project_input(step, "analyses/R/palettes.yml", manifest))
+defs <- rwv_definitions_read(rwv_project_input(step, "analyses/R/definitions.tsv", manifest))
+raw <- function(f) as.data.frame(rwv_read_tsv(rwv_raw_input(step, path_data, f, raw_manifest)))
+num <- function(x) as.numeric(x)
+checks <- rwv_checks_new()
+sample_levels <- rwv_sample_levels(samples)
+# One switch selects the source of the whole set of community results; there
+# is no per-file fallback.
+av <- yaml::read_yaml(rwv_project_input(step, "analyses/R/community-source.yml", manifest))
+community_source <- av$versions[[av$active]]
+if (!isTRUE(community_source %in% c("archived", "rebuilt"))) rwv_fail("analyses/R/community-source.yml: unknown active version ", av$active)
+community_files <- c("composition_full.tsv", "export_checks.tsv", "feature_taxonomy.tsv", "virome_alpha.tsv", "alpha_summary.tsv",
+                     "label_pairs.tsv", "pcoa_aitchison.tsv", "crossomics_pairwise.tsv", "permanova_marginal.tsv",
+                     "betadisper_summary.tsv", "viral_load_per_sample.tsv", "virome_depth_check.tsv",
+                     "corrected_host_members.tsv", "crispr_host_edges_primary.tsv")
+```
+
+### Task 2: Calculate community results for the rebuilt version
+
+Calls follow the scientific-task order in R/community.R. Each random procedure sets its configured seed at its original point. Archived host evidence (200 iPHoP records and 29 strict CRISPR edges) is preserved; only visibility and co-detection summaries are recalculated.
+
+```{r}
+#| label: community-calculation
+computed <- NULL
+if (community_source == "rebuilt") {
+  cfg <- yaml::read_yaml(rwv_project_input(step, "analyses/R/community.yml", manifest))
+  cfg_problems <- rwv_community_config_check(cfg)
+  if (length(cfg_problems)) rwv_fail("analyses/R/community.yml selects values that are not implemented: ", paste(cfg_problems, collapse = "; "))
+  up12 <- function(f) readRDS(rwv_step_input(step, path_source, "012-tse-construction", f))
+  tse <- list(virome = up12("tse_virome.rds"), bact_16s = up12("tse_16s.rds"),
+              euk_18s_all = up12("tse_18s_all.rds"), euk_18s_microeuk = up12("tse_18s_microeuk.rds"))
+  archived_evidence <- function(f) utils::read.delim(rwv_raw_input(step, path_data, f, raw_manifest), check.names = FALSE,
+                                                     colClasses = "character", na.strings = character(0))
+  calc_order <- unlist(cfg$calculation_sample_order)
+  rwv_check(checks, "all four TSEs in calculation sample order", TRUE, all(vapply(tse, function(x) identical(colnames(x), calc_order), logical(1))))
+  # 2a. Composition: per-assay taxon sums and within-sample shares.
+  comp <- rwv_comm_composition(tse, calc_order, checks)
+  # 2b. Alpha diversity: amplicons on the rarefied assay; virome by repeated rarefaction.
+  alpha_res <- rwv_comm_alpha(tse, cfg, calc_order, checks)
+  # 2c. Distances, PCoA, marginal PERMANOVA and betadisper.
+  div_res <- rwv_comm_diversity(alpha_res$tse, cfg, calc_order, comp$comp_checks)
+  # 2d. Cross-assay covariation (Procrustes, Mantel, RV).
+  cross_res <- rwv_comm_crossomics(div_res$div, cfg, calc_order)
+  # 2e. Host visibility and co-detection on the archived host evidence.
+  host_res <- rwv_comm_hosts(alpha_res$tse, up12("tse_16s_filtered.rds"), archived_evidence("corrected_host_members.tsv"),
+                             archived_evidence("crispr_host_edges_primary.tsv"), cfg, calc_order, checks)
+  computed <- list(composition_full = comp$composition_full, export_checks = div_res$export_checks, feature_taxonomy = comp$feature_taxonomy,
+                   virome_alpha = alpha_res$virome_alpha, alpha_summary = alpha_res$alpha_summary, label_pairs = alpha_res$label_pairs,
+                   pcoa_aitchison = div_res$pcoa_aitchison, crossomics_pairwise = cross_res$crossomics_pairwise,
+                   permanova_marginal = div_res$permanova_marginal, betadisper_summary = div_res$betadisper_summary,
+                   viral_load_per_sample = alpha_res$viral_load_per_sample, virome_depth_check = alpha_res$virome_depth_check,
+                   corrected_host_members = host_res$corrected_host_members, crispr_host_edges_primary = host_res$crispr_host_edges_primary)
+  # Records of this calculation (optional outputs of the rebuilt version).
+  rwv_write_tsv(rwv_comm_rng_record(cfg, rbind(div_res$perm_log, cross_res$perm_log)), path_target("rng-record.tsv"))
+  rwv_write_tsv(rbind(comp$prov, alpha_res$prov, div_res$prov, cross_res$prov, host_res$prov), path_target("community-provenance.tsv"))
+  rwv_write_tsv(div_res$pcoa_eigen, path_target("pcoa-eigen.tsv"))
+  saveRDS(div_res$distances, path_target("distances.rds"))
+  print(knitr::kable(alpha_res$alpha_summary[, c("experiment", "sample_id", "observed", "shannon", "pielou", "faith")], digits = 3,
+                     row.names = FALSE, caption = "Amplicon alpha diversity (rarefied assay)"))
+  print(knitr::kable(alpha_res$virome_alpha[, c("sample_id", "masked_reads", "rarefy_depth", "observed", "shannon", "shannon_sd")], digits = 3,
+                     row.names = FALSE, caption = "Virome alpha diversity (mean of 100 rarefactions)"))
+  print(knitr::kable(div_res$permanova_marginal, digits = 3, row.names = FALSE, caption = "Marginal PERMANOVA (999 permutations)"))
+  print(knitr::kable(div_res$betadisper_summary[, c("experiment", "diss_x_group", "p_betadisper_permutation",
+                                                    "p_betadisper_permutation_bias_adjusted", "dispersion_status")],
+                     digits = 4, row.names = FALSE, caption = "Dispersion checks (betadisper)"))
+  print(knitr::kable(cross_res$crossomics_pairwise[, c("pair", "mantel_r", "mantel_p", "proc_corr", "proc_p", "rv_coef")], digits = 3,
+                     caption = "Cross-assay covariation"))
+} else {
+  cat("Active version", av$active, "uses the archived community tables; no calculation in this run.\n")
+}
+# Each community table is taken from the active source. Rebuilt tables pass
+# through the same TSV reader as the archived ones, so both sources are
+# parsed identically by the tasks below.
+community_log <- list()
+comm <- function(f) {
+  if (!f %in% community_files) rwv_fail(f, " is not a community table")
+  if (community_source == "rebuilt") {
+    tmp <- tempfile(fileext = ".tsv")
+    rwv_write_tsv(computed[[sub("\\.tsv$", "", f)]], tmp)
+    path <- tmp; read_from <- "computed in this step (Task 2)"
+  } else {
+    path <- rwv_raw_input(step, path_data, f, raw_manifest)
+    read_from <- paste0("analyses/data/00-raw/d020-community-analysis/", f)
+  }
+  community_log[[f]] <<- data.frame(file = f, active_version = av$active, source = community_source, read_from = read_from,
+                                    sha256 = rwv_sha256(path))
+  as.data.frame(rwv_read_tsv(path))
+}
+```
+
+### Task 3: Validate sample dictionary and metadata
+
+Site labels in analyses/R/samples.tsv are derived from ID prefixes and checked against the archived S1 sample metadata. The c/d identifiers retain their recorded clean/dirty water_condition labels; they do not establish a before/after treatment design.
+
+```{r}
+#| label: samples
+meta <- raw("sample_metadata.tsv")
+meta <- meta[match(sample_levels, meta$sample_id), , drop = FALSE]
+rwv_check(checks, "sample IDs in metadata equal config order", sample_levels, meta$sample_id, source = "sample_metadata.tsv")
+rwv_check(checks, "metadata location equals config site", as.character(samples$site), meta$location, source = "sample_metadata.tsv")
+rwv_check_def(checks, defs, "samples", nrow(meta), "sample_metadata.tsv")
+samples_out <- data.frame(
+  sample_id = sample_levels, sample_order = samples$sample_order, site = as.character(samples$site),
+  site_colour = unname(rwv_site_colours(style)[as.character(samples$site)]),
+  record_label = meta$water_condition, description = meta$desc,
+  id_virome = meta$id_virome, id_16s = meta$id_16s, id_18s = meta$id_18s,
+  clean_reads_virome = meta$clean_reads_virome, raw_reads_virome = meta$raw_reads_virome,
+  label_note = "Sample labels: d, wastewater collected from treatment tanks; c, reclaimed water. bc2 has no designated d counterpart."
+)
+rwv_write_tsv(samples_out, path_target("samples.tsv"))
+knitr::kable(samples_out[, 1:8])
+```
+
+### Task 4: Prepare three-assay composition and display aggregation
+
+Display aggregation retains all viral classes. For 16S and microeukaryotes, the eight named taxa with highest mean relative abundance across seven samples are retained, with ties ordered by name; other named taxa are grouped as Other and Unclassified remains separate. The full 59-category table and display mapping are retained.
+
+```{r}
+#| label: composition
+comp <- comm("composition_full.tsv")
+comp$relative_abundance <- num(comp$relative_abundance)
+comp$abundance_sum <- num(comp$abundance_sum)
+omics <- c("virome", "bact_16s", "euk_18s_microeuk")
+rwv_check(checks, "composition rows", 413, nrow(comp), source = "composition_full.tsv")
+rwv_check(checks, "composition omics", omics, unique(comp$omic), source = "composition_full.tsv")
+rwv_check(checks, "composition samples (sorted)", sort(sample_levels), sort(unique(comp$sample_id)), source = "composition_full.tsv")
+sums <- tapply(comp$relative_abundance, paste(comp$omic, comp$sample_id), sum)
+rwv_check(checks, "every omic x sample sums to 1", rep(1, 21), unname(sums), tol = 1e-9, source = "composition_full.tsv")
+n_taxa <- tapply(comp$taxon, comp$omic, function(x) length(unique(x)))[omics]
+rwv_check(checks, "taxa per omic (virome, 16S, microeuk)", c(8, 38, 13), unname(n_taxa), source = "composition_full.tsv")
+checks_export <- comm("export_checks.tsv")
+# Hash chain: the production-input exports staged here must be the files the
+# export manifest recorded (independent of this step's own copy).
+if (community_source == "archived") {
+  pim <- jsonlite::read_json(rwv_raw_input(step, path_data, "production_input_manifest.json", raw_manifest))
+  staged_sha <- function(f) raw_manifest$origin_sha256[basename(raw_manifest$path) == f & raw_manifest$consumer_step == step$name]
+  for (f in c("composition_full.tsv", "feature_taxonomy.tsv", "pcoa_aitchison.tsv", "export_checks.tsv")) {
+    rwv_check(checks, paste("production manifest hash of", f), pim$outputs_sha256[[f]], staged_sha(f),
+              source = "production-inputs/input-manifest.json")
+  }
+}
+ftax <- comm("feature_taxonomy.tsv")
+rwv_check(checks, "feature-to-taxon mappings", 6998, nrow(ftax), source = "production-inputs/README.md")
+rwv_check(checks, "features per assay equal export_checks.tsv", num(checks_export$source_features),
+          as.numeric(table(ftax$omic)[checks_export$omic]), source = "export_checks.tsv")
+rwv_write_tsv(ftax, path_target("feature_taxonomy.tsv"))
+rwv_check(checks, "taxa per omic equal export_checks.tsv", num(checks_export$taxonomy_groups), unname(as.numeric(n_taxa)),
+          source = "export_checks.tsv")
+
+map_rows <- list()
+for (o in omics) {
+  x <- comp[comp$omic == o, ]
+  mean_rel <- tapply(x$relative_abundance, x$taxon, sum) / length(sample_levels)
+  taxa <- names(mean_rel)
+  named <- taxa[taxa != "Unclassified"]
+  ord <- named[order(-mean_rel[named], named)]
+  keep <- if (o == "virome") ord else head(ord, 8)
+  display <- ifelse(taxa == "Unclassified", "Unclassified", ifelse(taxa %in% keep, taxa, "Other"))
+  rank_named <- match(taxa, ord)
+  map_rows[[o]] <- data.frame(
+    omic = o, taxon = taxa, mean_relative_abundance = unname(mean_rel), rank_among_named = rank_named,
+    display_category = display,
+    rule = if (o == "virome") "all classes kept; Unclassified separate" else
+      "top 8 named by 7-sample mean relative abundance (ties by name); other named -> Other; Unclassified separate"
+  )
+  expected <- names(palettes$taxa[[o]])
+  rwv_check(checks, paste0(o, ": displayed named taxa equal analyses/R/palettes.yml"), expected, keep, source = "palettes.yml")
+}
+taxon_map <- do.call(rbind, map_rows)
+taxon_map <- taxon_map[order(match(taxon_map$omic, omics), is.na(taxon_map$rank_among_named),
+                             taxon_map$rank_among_named), ]
+rownames(taxon_map) <- NULL
+comp$display_category <- taxon_map$display_category[match(paste(comp$omic, comp$taxon), paste(taxon_map$omic, taxon_map$taxon))]
+disp <- aggregate(list(relative_abundance = comp$relative_abundance),
+                  list(omic = comp$omic, sample_id = comp$sample_id, display_category = comp$display_category), sum)
+dsum <- tapply(disp$relative_abundance, paste(disp$omic, disp$sample_id), sum)
+rwv_check(checks, "display categories still sum to 1", rep(1, 21), unname(dsum), tol = 1e-9, source = "derived")
+disp <- disp[order(match(disp$omic, omics), match(disp$sample_id, sample_levels), disp$display_category), ]
+rownames(disp) <- NULL
+rwv_write_tsv(comp, path_target("composition_full.tsv"))
+rwv_write_tsv(taxon_map, path_target("taxon_display_map.tsv"))
+rwv_write_tsv(disp, path_target("composition_display.tsv"))
+knitr::kable(taxon_map[taxon_map$display_category != "Other", c("omic", "taxon", "mean_relative_abundance", "display_category")], digits = 4)
+```
+
+### Task 5: Shannon diversity and same-site record pairs
+
+Viral Shannon uses the dev390 breadth >= 75% masked, rarefied shannon field. The 16S and microeukaryote values use the 060 shannon field, excluding euk_18s_all. The SD across 100 rarefactions is technical variation, not a biological uncertainty interval.
+
+```{r}
+#| label: alpha
+va <- comm("virome_alpha.tsv")
+if (community_source == "archived") {
+  alpha_script <- readLines(rwv_raw_input(step, path_data, "virome_alpha_script.R", raw_manifest), warn = FALSE)
+  rwv_check(checks, "masking rule in the script that produced virome_alpha.tsv", TRUE,
+            any(grepl("breadth < 75%", alpha_script, fixed = TRUE)), source = "dev/390 virome_alpha.R line 3")
+  rwv_check(checks, "rarefaction repeats in that script", TRUE,
+            any(grepl("n_iter <- 100", alpha_script, fixed = TRUE)), source = "dev/390 virome_alpha.R line 20")
+} else {
+  cc <- yaml::read_yaml(rwv_project_input(step, "analyses/R/community.yml", manifest))
+  rwv_check(checks, "breadth mask and rarefaction repeats used by Task 2", c(0.75, 100),
+            c(cc$virome$detect_covered_fraction, cc$virome$alpha_iterations), source = "analyses/R/community.yml")
+}
+rwv_check(checks, "saved rarefaction depth (reads)", 1648195, unique(num(va$rarefy_depth)), source = "virome_alpha.tsv")
+aa <- comm("alpha_summary.tsv")
+alpha <- rbind(
+  data.frame(omic = "virome", sample_id = va$sample_id, shannon = num(va$shannon), observed = num(va$observed),
+             definition = "breadth>=75% count_masked; mean of 100 rarefactions to 1,648,195 reads (computed in 020; checked in 014 against dev/390 virome_alpha.tsv)"),
+  # 16S was rarefied to 63,564 reads. The 18S table was rarefied to 53,257
+  # reads and Metazoa were removed afterwards, so the retained microeukaryote
+  # totals are not equal across samples (SI Note 2 of the source project).
+  data.frame(omic = aa$experiment, sample_id = aa$sample_id, shannon = num(aa$shannon), observed = num(aa$observed),
+             definition = c(bact_16s = "rarefied 16S assay, 63,564 reads per sample (computed in 012/020; checked in 014 against 060-diversity)",
+                            euk_18s_microeuk = "full 18S table rarefied (53,257 reads per sample) before Metazoa were removed; retained microeukaryote totals therefore need not be equal among samples (computed in 012/020; checked in 014 against 060-diversity)")[
+                              aa$experiment])[aa$experiment %in% c("bact_16s", "euk_18s_microeuk"), ]
+)
+alpha <- alpha[order(match(alpha$omic, omics), match(alpha$sample_id, sample_levels)), ]
+rownames(alpha) <- NULL
+rwv_check(checks, "alpha rows (3 omics x 7)", 21, nrow(alpha), source = "virome_alpha.tsv + alpha_summary.tsv")
+rwv_check(checks, "alpha has no NA", FALSE, anyNA(alpha$shannon))
+# The two amplicon rarefaction depths written into the alpha dictionary come
+# from the registered definition (030 checks them against the staged
+# supplementary information, which is that step's raw input).
+amp <- strsplit(as.character(rwv_def(defs, "amplicon_rarefaction")), "/")[[1]]
+rwv_check(checks, "16S and full-18S rarefaction depths in the alpha definitions",
+          amp, gsub(",", "", c(sub(".*?([0-9,]+) reads per sample.*", "\\1", alpha$definition[alpha$omic == "bact_16s"][1]),
+                               sub(".*?\\(([0-9,]+) reads per sample\\).*", "\\1", alpha$definition[alpha$omic == "euk_18s_microeuk"][1])), fixed = TRUE),
+          source = "definitions.tsv amplicon_rarefaction")
+pairs <- comm("label_pairs.tsv")
+# Clean/dirty samples of each saved pair are looked up from the sample
+# metadata (description names the site; water_condition is the record label).
+site_pairs <- do.call(rbind, lapply(unique(pairs$pair), function(pr) {
+  hit <- meta[grepl(pr, meta$desc, fixed = TRUE), ]
+  data.frame(pair = pr, clean = hit$sample_id[hit$water_condition == "clean"],
+             dirty = hit$sample_id[hit$water_condition == "dirty"])
+}))
+rwv_check(checks, "one clean and one dirty sample per saved pair", rep(3, 2),
+          c(length(unique(site_pairs$clean)), length(unique(site_pairs$dirty))), source = "sample_metadata.tsv")
+rwv_check(checks, "unpaired sample", "bc2", setdiff(sample_levels, c(site_pairs$clean, site_pairs$dirty)),
+          source = "sample_metadata.tsv")
+pair_rows <- list()
+for (i in seq_len(nrow(pairs))) {
+  p <- pairs[i, ]
+  sp <- site_pairs[site_pairs$pair == p$pair, ]
+  a <- alpha[alpha$omic == p$experiment, ]
+  diff <- a$shannon[a$sample_id == sp$dirty] - a$shannon[a$sample_id == sp$clean]
+  rwv_check(checks, paste("saved Shannon dirty - clean", p$experiment, p$pair), num(p$shannon_diff_dirty_minus_clean), diff,
+            tol = 1e-9, source = "clean_dirty_pairs.tsv (sign: dirty minus clean)")
+  pair_rows[[i]] <- data.frame(omic = p$experiment, pair = p$pair, clean_sample = sp$clean, dirty_sample = sp$dirty,
+                               shannon_clean = num(p$shannon_clean), shannon_dirty = num(p$shannon_dirty),
+                               shannon_diff_dirty_minus_clean = num(p$shannon_diff_dirty_minus_clean))
+}
+label_pairs <- do.call(rbind, pair_rows)
+v <- label_pairs$shannon_diff_dirty_minus_clean[label_pairs$omic == "virome"]
+rwv_check(checks, "virome Shannon differences (rounded 3 dp)", c(-0.320, 2.168, 0.423), round(v, 3), tol = 1e-12)
+rwv_write_tsv(alpha, path_target("alpha.tsv"))
+rwv_write_tsv(label_pairs, path_target("label_pairs.tsv"))
+virome_alpha <- data.frame(va[, c("sample_id", "masked_reads", "rarefy_depth", "observed", "shannon", "observed_sd", "shannon_sd",
+                                  "observed_unrarefied", "shannon_unrarefied")])
+rwv_write_tsv(virome_alpha, path_target("virome_alpha_detail.tsv"))
+knitr::kable(label_pairs, digits = 3)
+```
+
+### Task 6: Saved Aitchison PCoA coordinates
+
+```{r}
+#| label: pcoa
+pc <- comm("pcoa_aitchison.tsv")
+for (k in c("PCoA1", "PCoA2", "axis1_percent", "axis2_percent")) pc[[k]] <- num(pc[[k]])
+rwv_check(checks, "PCoA rows", 21, nrow(pc), source = "pcoa_aitchison.tsv")
+rwv_check(checks, "axis percentages already in 0-100 (not x100 again)", TRUE,
+          all(pc$axis1_percent > 1 & pc$axis1_percent < 100 & pc$axis2_percent > 1 & pc$axis2_percent < 100))
+rwv_check(checks, "axis percentages equal export_checks.tsv", num(c(checks_export$axis1_percent, checks_export$axis2_percent)),
+          c(tapply(pc$axis1_percent, pc$omic, unique)[checks_export$omic], tapply(pc$axis2_percent, pc$omic, unique)[checks_export$omic]),
+          tol = 1e-9, source = "export_checks.tsv")
+pc <- pc[order(match(pc$omic, omics), match(pc$sample_id, sample_levels)), ]
+rownames(pc) <- NULL
+rwv_write_tsv(pc, path_target("pcoa.tsv"))
+```
+
+### Task 7: Cross-assay associations, PERMANOVA and dispersion
+
+```{r}
+#| label: crossomics
+xo <- comm("crossomics_pairwise.tsv")
+for (k in c("proc_m2", "proc_corr", "proc_p", "mantel_r", "mantel_p", "rv_coef")) xo[[k]] <- num(xo[[k]])
+rwv_check(checks, "Mantel r (6 dp)", c(0.415584, 0.128571, 0.698701), round(xo$mantel_r, 6), source = "crossomics_pairwise.tsv")
+rwv_check(checks, "Mantel p (nominal)", c(0.115, 0.328, 0.002), xo$mantel_p, source = "crossomics_pairwise.tsv")
+xo$method_note <- "Mantel: Spearman, 999 permutations, seed 42, nominal p (no BH); Procrustes: full-rank; RV coefficient; Aitchison = Euclidean on CLR"
+rwv_write_tsv(xo, path_target("crossomics.tsv"))
+pm <- comm("permanova_marginal.tsv")
+bd <- comm("betadisper_summary.tsv")
+pv <- function(e, d, t) num(pm$p[pm$experiment == e & pm$dissimilarity == d & pm$term == t])
+rwv_check(checks, "virome location p: Aitchison, Bray, Jaccard", c(0.725, 0.001, 0.002),
+          c(pv("virome", "aitchison", "location"), pv("virome", "bray", "location"), pv("virome", "jaccard", "location")),
+          source = "permanova_marginal.tsv")
+rwv_write_tsv(pm, path_target("permanova.tsv"))
+rwv_write_tsv(bd, path_target("betadisper.tsv"))
+knitr::kable(xo[, c("pair", "mantel_r", "mantel_p", "proc_corr", "proc_p", "rv_coef")], digits = 3)
+```
+
+### Task 8: Depth-related context
+
+```{r}
+#| label: depth
+load <- comm("viral_load_per_sample.tsv")
+dc <- comm("virome_depth_check.tsv")
+depth <- data.frame(sample_id = sample_levels)
+depth$masked_richness <- num(va$observed_unrarefied[match(sample_levels, va$sample_id)])
+depth$masked_reads <- num(va$masked_reads[match(sample_levels, va$sample_id)])
+depth$mapped_viral_reads <- num(load$mapped_viral_reads[match(sample_levels, load$sample_id)])
+depth$clean_reads <- num(load$clean_reads[match(sample_levels, load$sample_id)])
+rwv_check(checks, "masked_reads equals mapped_viral_reads", depth$mapped_viral_reads, depth$masked_reads,
+          source = "virome_alpha.tsv vs viral_load_per_sample.tsv")
+rho <- num(dc$spearman_rho[dc$metric == "observed_unrarefied~mapped_viral_reads"])
+rwv_check(checks, "saved rho richness ~ mapped reads (3 dp), n = 7", 0.857, round(rho, 3), source = "depth_check.tsv")
+rwv_write_tsv(depth, path_target("depth.tsv"))
+rwv_write_tsv(dc, path_target("depth_check.tsv"))
+```
+
+### Task 9: Host records: iPHoP and strict CRISPR with separate denominators
+
+```{r}
+#| label: hosts
+hm <- comm("corrected_host_members.tsv")
+rwv_check_def(checks, defs, "iphop_records", nrow(hm), "corrected_host_members.tsv")
+rwv_check(checks, "iPHoP vOTU IDs unique", nrow(hm), length(unique(hm$vOTU_id)))
+tab <- table(hm$visibility_status)
+rwv_check_def(checks, defs, "iphop_visible", unname(tab["named_genus_detected_in_16s"]), "corrected_host_members.tsv")
+rwv_check_def(checks, defs, "iphop_not_detected", unname(tab["named_genus_not_detected_in_16s"]), "corrected_host_members.tsv")
+rwv_check_def(checks, defs, "iphop_unresolved", unname(tab["genus_unresolved"]), "corrected_host_members.tsv")
+rwv_check(checks, "in_127 flag agrees with status", sum(hm$in_127_named_visible_set == "1"), unname(tab["named_genus_detected_in_16s"]))
+rwv_write_tsv(hm, path_target("host_iphop.tsv"))
+cr <- comm("crispr_host_edges_primary.tsv")
+rwv_check_def(checks, defs, "crispr_edges", nrow(cr), "crispr_host_edges_primary.tsv")
+rwv_check(checks, "CRISPR edges all is_primary", TRUE, all(cr$is_primary == "True"))
+rwv_check(checks, "CRISPR vOTUs / genera", c(25, 22), c(length(unique(cr$vOTU_id)), length(unique(cr$host_genus))))
+rwv_check(checks, "CRISPR host genus visible in 16S (edges)", 16, sum(cr$host_visible_in_16s == "True"))
+rwv_check_def(checks, defs, "crispr_codetected", sum(num(cr$n_codetected_masked) > 0), "crispr_host_edges_primary.tsv")
+rwv_check_def(checks, defs, "crispr_codetected_raw", sum(num(cr$n_codetected_raw) > 0), "crispr_host_edges_primary.tsv")
+keep <- c("vOTU_id", "vcontig_id", "host_genus", "host_family", "host_order", "host_phylum", "overall_confidence",
+          "crispr_component_score", "min_mismatches", "perfect_match", "host_visible_in_16s", "n_codetected_masked",
+          "n_codetected_raw", "carries_VF", "is_primary")
+rwv_write_tsv(cr[, keep], path_target("host_crispr_edges.tsv"))
+# Per-sample co-detection detail (Data 1 S49), built from the 012 TSEs with the
+# same presence rules for either analysis version. Every per-record sum must
+# reproduce the saved counts above, so the table cannot drift from Figure 2d.
+{
+  tse12 <- function(f) readRDS(rwv_step_input(step, path_source, "012-tse-construction", f))
+  cds <- rwv_comm_host_codetection(tse12("tse_virome.rds"), tse12("tse_16s.rds"), tse12("tse_16s_filtered.rds"),
+                                   hm, cr, sample_levels)
+  cds <- cds[order(cds$endpoint != "iPHoP record (score >= 90)", cds$vOTU_id, cds$host_genus,
+                   match(cds$sample_id, sample_levels)), ]
+  rwv_check(checks, "per-sample co-detection: 7 rows per iPHoP record and per CRISPR edge", 7 * (nrow(hm) + nrow(cr)), nrow(cds))
+  ch <- cds[cds$endpoint == "iPHoP record (score >= 90)", ]
+  sum_h <- tapply(ch$codetected, ch$vOTU_id, function(v) sum(v, na.rm = TRUE))[hm$vOTU_id]
+  vis_h <- hm$visibility_status == "named_genus_detected_in_16s"
+  rwv_check(checks, "per-sample co-detection reproduces n_codetected_saved (127 visible iPHoP records)", num(hm$n_codetected_saved[vis_h]),
+            unname(as.numeric(sum_h[vis_h])))
+  rwv_check(checks, "no co-detection for iPHoP records whose genus is absent from 16S or unresolved", 0, sum(sum_h[!vis_h]))
+  rwv_check(checks, "unresolved iPHoP genera stay NA, not FALSE", 7 * sum(hm$visibility_status == "genus_unresolved"),
+            sum(is.na(ch$genus_detected_16s)))
+  cc <- cds[cds$endpoint == "strict CRISPR edge", ]
+  sum_c <- tapply(cc$codetected, paste(cc$vOTU_id, sub("^g__", "", cc$host_genus)), sum)[paste(cr$vOTU_id, cr$host_genus)]
+  rwv_check(checks, "per-sample co-detection reproduces n_codetected_masked (29 CRISPR edges)", num(cr$n_codetected_masked),
+            unname(as.numeric(sum_c)))
+  rwv_write_tsv(cds, path_target("host_codetection_by_sample.tsv"))
+  # Read-subsampling curves within the retained count tables (Supplementary Fig. 1c,
+  # Data 1 S50; 2026-10-11): analytical rarefaction expectation, interpolated only.
+  micro_ids <- rownames(tse12("tse_18s_microeuk.rds"))
+  curves <- rwv_comm_rarefaction_curves(tse12("tse_virome.rds"), tse12("tse_16s_filtered.rds"), tse12("tse_18s_all.rds"),
+                                        micro_ids, sample_levels,
+                                        common_depth = list(virome_masked = 1648195, bact_16s = 63564, euk_18s_microeuk = 53257))
+  ce <- curves[curves$depth_reads == curves$sample_total_reads, ]
+  rwv_check(checks, "curves: 4 layers x 7 samples, each ending at its observed total", 28L, nrow(ce))
+  rwv_check(checks, "curves: masked-virome end = masked richness of the alpha analysis",
+            as.numeric(depth$masked_richness[match(ce$sample_id[ce$layer == "virome_masked"], depth$sample_id)]),
+            ce$observed_features[ce$layer == "virome_masked"])
+  rwv_check(checks, "curves: masked-virome expectation at 1,648,195 reads equals the full masked richness (alpha unchanged by rarefaction)",
+            ce$observed_features[ce$layer == "virome_masked"],
+            round(curves$expected_features[curves$layer == "virome_masked" & curves$is_common_depth], 6))
+  rwv_check(checks, "curves: common depths are within every sample total for the masked virome and amplicons", TRUE,
+            all(curves$sample_total_reads[!is.na(curves$common_depth)] >= curves$common_depth[!is.na(curves$common_depth)]))
+  rwv_write_tsv(curves, path_target("rarefaction_curves.tsv"))
+}
+```
+
+### Task 10: Five CheckV quality categories for all 3,060 members
+
+votu_contig_map.tsv is the read-only vOTU-to-representative-contig mapping extracted from p0061.sqlite. CheckV categories come from quality_summary.tsv; Not-determined is displayed as Undetermined with the mapping retained.
+
+```{r}
+#| label: checkv
+vm <- raw("votu_contig_map.tsv")
+qs <- raw("checkv_quality_summary.tsv")
+rwv_check_def(checks, defs, "catalogue_votu", nrow(vm), "votu_contig_map.tsv")
+rwv_check(checks, "vOTU and contig IDs unique", c(3060, 3060), c(length(unique(vm$vOTU_id)), length(unique(vm$vcontig_id))))
+q <- qs[match(vm$vcontig_id, qs$contig_id), ]
+rwv_check(checks, "every representative contig found in CheckV", FALSE, anyNA(q$contig_id))
+rwv_check(checks, "contig length equals CheckV contig_length", num(vm$contig_length), num(q$contig_length))
+display <- c("Complete" = "Complete", "High-quality" = "High-quality", "Medium-quality" = "Medium-quality",
+             "Low-quality" = "Low-quality", "Not-determined" = "Undetermined")
+cat_ <- data.frame(
+  vOTU_id = vm$vOTU_id, vcontig_id = vm$vcontig_id, contig_length_bp = num(vm$contig_length),
+  checkv_quality_source = q$checkv_quality, checkv_quality = unname(display[q$checkv_quality]),
+  checkv_completeness_pct = suppressWarnings(num(q$completeness)), completeness_method = q$completeness_method,
+  checkv_provirus = q$provirus, checkv_quality_score_db = num(vm$checkv_quality_score),
+  genomad_n_genes = num(vm$genomad_n_genes)
+)
+rwv_check(checks, "no CheckV class outside the five", FALSE, anyNA(cat_$checkv_quality))
+score_map <- c("1" = "Complete", "2" = "High-quality", "3" = "Medium-quality", "4" = "Low-quality", "5" = "Undetermined")
+rwv_check(checks, "database quality score agrees with CheckV class", cat_$checkv_quality,
+          unname(score_map[as.character(cat_$checkv_quality_score_db)]))
+tab <- table(factor(cat_$checkv_quality, levels = names(palettes$checkv)))
+class_defs <- c(Complete = "checkv_complete", `High-quality` = "checkv_high", `Medium-quality` = "checkv_medium",
+                `Low-quality` = "checkv_low", Undetermined = "checkv_undetermined")
+for (cls in names(class_defs)) {
+  rwv_check_def(checks, defs, class_defs[[cls]], unname(as.numeric(tab[cls])), "CheckV quality_summary via vOTU map")
+}
+funnel <- raw("denominator_funnel.tsv")
+rwv_check(checks, "five classes equal the denominator ledger", num(funnel$n[grepl("^S2_checkv", funnel$stage)]),
+          unname(as.numeric(tab)), source = "F1_denominator_funnel_inputs.tsv")
+rwv_check(checks, "Undetermined == completeness NA", sum(cat_$checkv_quality == "Undetermined"), sum(is.na(cat_$checkv_completeness_pct)))
+rwv_check(checks, "length range (bp)", c(10005, 158264), range(cat_$contig_length_bp))
+rwv_check_def(checks, defs, "vf_model_n", sum(!is.na(cat_$checkv_completeness_pct)), "3060 - 47 completeness NA")
+rwv_write_tsv(cat_, path_target("checkv_catalogue.tsv"))
+knitr::kable(as.data.frame(tab), col.names = c("CheckV class", "vOTUs"))
+```
+
+### Task 11: Saved saturation diagnostics on the historical unmasked basis
+
+The historical 115 sample rarefaction curves were saved as PNGs without point-level values. This task migrates their saved endpoint diagnostics without rerunning vegan::rarefy. They use unmasked positive counts, a different basis from dev390 masked alpha diversity.
+
+```{r}
+#| label: saturation
+sat <- raw("saturation_diagnostics.tsv")
+sat$omic <- c("Virome (vOTUs)" = "virome", "16S bacteria (ASVs)" = "bact_16s",
+              "18S microeukaryotes (ASVs)" = "euk_18s_microeuk")[sat$layer]
+rwv_check(checks, "saturation rows (3 x 7)", 21, nrow(sat))
+rwv_check(checks, "saturation layers mapped", FALSE, anyNA(sat$omic))
+sat$definition <- ifelse(sat$omic == "virome", "unmasked positive counts (SQLite virus_abundance_count); not the masked alpha definition",
+                         "retained amplicon count table")
+rwv_write_tsv(sat, path_target("saturation.tsv"))
+gaps <- data.frame(
+  item = c("read-rarefaction curve values", "rarefaction curve with the masked alpha definition"),
+  status = c("not exported: only PNG files analyses/data/115-supp-qc/figures/panel_a_rarefaction.png and panel_i_crossomic_rarefaction.png in the source project",
+             "not done in the source project"),
+  consequence = c("S1 shows saved end-point diagnostics; curves are not redrawn (re-running vegan::rarefy is outside this task)",
+                  "masked alpha saturation cannot be claimed from the unmasked curves")
+)
+rwv_write_tsv(gaps, path_target("community-gaps.tsv"))
+community_version <- do.call(rbind, community_log)
+rownames(community_version) <- NULL
+rwv_check(checks, "every community table read from the single active source", length(community_files), nrow(community_version))
+rwv_write_tsv(community_version, path_target("community-version.tsv"))
+# With the rebuilt version the archived community tables (and the provenance
+# files that only describe them) stay registered but are not read; they are
+# hash-checked and recorded as not used rather than silently skipped.
+if (community_source == "rebuilt") {
+  rwv_raw_not_used(step, path_data, c(setdiff(community_files, c("corrected_host_members.tsv", "crispr_host_edges_primary.tsv")),
+                                      "production_input_manifest.json", "virome_alpha_script.R"), raw_manifest)
+}
+knitr::kable(gaps)
+```
+
+### Task 11b: Seven-sample detection intersections and abundance contributions
+
+Using the 012 viral TSE and the existing breadth rule, each vOTU receives a seven-bit detection pattern. The catalogue table retains members qualifying in no sample; the display table includes nonempty patterns. Abundance denominators remain each sample's complete masked catalogue, without intersection-specific renormalization or substituting seven-sample sharing for same-site comparisons.
+
+```{r}
+#| label: seven-sample-sharing
+sharing_cfg <- yaml::read_yaml(rwv_project_input(step, "analyses/R/community.yml", manifest))
+sharing_tse <- readRDS(rwv_step_input(step, path_source, "012-tse-construction", "tse_virome.rds"))
+sharing <- rwv_comm_votu_sharing(sharing_tse, sample_levels, sharing_cfg, checks)
+rwv_check_def(checks, defs, "catalogue_votu", nrow(sharing$members), "012 TSE and sharing register")
+rwv_check(checks, "observed nonempty sharing patterns (registered dataset regression)", 26L, nrow(sharing$patterns),
+          source = "2026-10-15 independent saved-TSE descriptive audit; not a threshold or model choice")
+rwv_check(checks, "sharing sample summary follows the configured seven-sample order", sample_levels, sharing$samples$sample_id)
+rwv_write_tsv(sharing$patterns, path_target("votu_sharing_patterns.tsv"))
+rwv_write_tsv(sharing$samples, path_target("votu_sharing_samples.tsv"))
+rwv_write_tsv(sharing$members, path_target("votu_sharing_members.tsv"))
+knitr::kable(sharing$samples[, c("sample_id", "qualifying_vOTUs", "sample_only_vOTUs", "shared_vOTUs",
+                                "sample_only_catalogue_percent", "shared_catalogue_percent")], digits = 2)
+```
+
+### Task 12: Record checks and the run
+
+```{r}
+#| label: checks
+check_table <- rwv_checks_finish(checks, path_target("input-checks.tsv"))
+knitr::kable(check_table[, c("check", "expected", "observed", "pass")])
+rwv_write_session_info(path_target("session-info.txt"),
+                       c(step = params$name, run_id = step$run_id, mode = step$mode, quarto = rwv_quarto_version()))
+```
+
+```{r}
+#| label: step-record
+outputs <- rwv_step_finish(step, path_target, raw_manifest)
+knitr::kable(transform(outputs, sha256 = substr(outputs$sha256, 1, 16)), caption = "Outputs recorded in step-record.json")
+rwv_report_complete(step, outputs)
+```
+
+```{r}
+#| label: list-files-target
+rwv_report_files(step, outputs)
+```
+
+```{r}
+#| label: report-summary
+#| results: asis
+cat(rwv_report_summary(step))
+```

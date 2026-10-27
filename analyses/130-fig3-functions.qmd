@@ -1,0 +1,427 @@
+---
+title: "130-fig3-functions"
+subtitle: "Figure 3: candidate metabolic annotations, carriers, defense systems and a candidate NARP locus"
+author:
+  - name: Jinlong Ru
+    orcid: "0000-0002-6757-6018"
+  - name: Cunli Pan
+    orcid: "0000-0002-2595-7533"
+date: today
+params:
+  name: "130-fig3-functions"
+---
+
+**Updated: `r format(Sys.time(), '%Y-%m-%d %H:%M:%S %Z %z', tz = 'Europe/Berlin')`.**
+
+```{r}
+#| label: params
+#| eval: !expr interactive()
+#| include: false
+params <- list(name = "130-fig3-functions")
+```
+
+```{r}
+#| label: setup
+#| include: false
+#| message: false
+#| warning: false
+#| cache: false
+wd <- "analyses"
+if (basename(getwd()) != wd) {
+    setwd(here::here(wd))
+}
+here::i_am(paste0(params$name, ".qmd"), uuid = "03f7d547-11bc-4885-8570-e85c7458f2c5")
+qproj::proj_create_dir_target(params$name, clean = FALSE)
+
+# convenience helpers
+path_target <- qproj::proj_path_target(params$name)
+path_source <- qproj::proj_path_source(params$name)
+path_raw <- path_source("00-raw")
+path_resource <- here::here(path_raw, "d00-resource")
+path_data <- here::here(path_raw, paste0("d", params$name))
+dir.create(path_raw, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_data, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_resource, recursive = TRUE, showWarnings = FALSE)
+```
+
+```{r}
+#| label: packages
+#| message: false
+#| warning: false
+#| cache: false
+# qproj template chunk, trimmed to what figure steps use: ggplot2 and
+# patchwork plus the project helpers in R/.
+suppressPackageStartupMessages({
+  library(ggplot2)
+  library(patchwork)
+  devtools::load_all()
+})
+```
+
+```{r}
+#| label: step-guard
+#| cache: false
+# Checks params$name, path_target() and here() against analyses/R/steps.yml
+# and opens a staging folder for this run's outputs.
+step <- rwv_step_begin(params$name, path_target)
+# New outputs are staged; the previous result stays until rwv_step_finish()
+# has checked and published the new one.
+path_target <- step$path_target
+```
+
+```{r}
+#| label: report-presentation
+#| include: false
+rwv_report_setup(step)
+```
+
+
+
+## Tasks
+
+Draw the fixed 11-row KO heatmap, matching carrier-rank contributions, tool-specific defense/anti-defense sets and the ORF101-ORF103 candidate locus on vOTU0052 from verified 030 tables. KO values are carrier TPM sums transformed as log10(TPM+1), without row standardization.
+
+### Task 1: Inputs
+
+```{r}
+#| label: inputs
+manifest <- rwv_read_tsv(rwv_step_input(step, path_source, "010-input-manifest", "input-manifest.tsv"))
+style <- rwv_style_read(rwv_project_input(step, "analyses/R/style.yml", manifest))
+style <- rwv_style_for_figure(style, "fig3")   # v39: figure-specific text sizes (analyses/R/style.yml figure_text_pt)
+samples <- rwv_samples_read(rwv_project_input(step, "analyses/R/samples.tsv", manifest), style)
+palettes <- rwv_palettes_read(rwv_project_input(step, "analyses/R/palettes.yml", manifest))
+figures <- rwv_figures_read(rwv_project_input(step, "analyses/R/figures.yml", manifest))
+defs <- rwv_definitions_read(rwv_project_input(step, "analyses/R/definitions.tsv", manifest))
+# Short display names of the Figure 3a rows (2026-10-14; Codex-reviewed candidate). KO stays the row identity.
+ko_labels <- as.data.frame(rwv_read_tsv(rwv_project_input(step, "analyses/R/f3-ko-labels.tsv", manifest)))
+up3 <- function(f) as.data.frame(rwv_read_tsv(rwv_step_input(step, path_source, "030-function-inputs", f)))
+disp <- up3("f3_display.tsv")
+ranks <- up3("f3_carrier_ranks.tsv"); ranks$fraction <- as.numeric(ranks$fraction)
+sets <- up3("defense_sets.tsv"); sets$n <- as.numeric(sets$n)
+narp <- up3("narp_definitions.tsv")
+locus <- up3("votu0052_locus.tsv")
+catalogue <- as.data.frame(rwv_read_tsv(rwv_step_input(step, path_source, "020-community-analysis", "checkv_catalogue.tsv")))
+fonts <- rwv_fonts_resolve(style, italic = TRUE)   # gene symbols in panel a are italic
+spec <- rwv_figure_spec(figures, "fig3", params$name)
+checks <- rwv_checks_new()
+pt <- style$text_pt; ink <- style$colours$text; fam <- style$font$family; col <- style$colours
+lvl <- rwv_sample_levels(samples)
+site_col <- rwv_site_colours(style)
+```
+
+### Task 2: Panel a: the fixed 11-row KO heatmap
+
+```{r}
+#| label: panel-a
+rwv_check(checks, "11 displayed KOs in frozen order", c("K00558", "K13381", "K00820", "K01939", "K00560", "K01858", "K00390",
+                                                       "K13010", "K06217", "K03462", "K13522"), disp$KO,
+          source = "F3-display-selection.tsv (frozen list)")
+# Rows are keyed by KO; the y-axis shows the short display name from analyses/R/f3-ko-labels.tsv
+# (gene symbols italic, function names and abbreviations upright). Nothing is grouped by label.
+lab_map <- ko_labels[match(disp$KO, ko_labels$KO), ]
+rwv_check(checks, "label table covers the 11 displayed KOs, one row each", sort(disp$KO), sort(ko_labels$KO), source = "analyses/R/f3-ko-labels.tsv")
+rwv_check(checks, "short labels are non-empty and unique", 11L, length(unique(lab_map$short_label[nzchar(lab_map$short_label)])))
+rwv_check(checks, "no short label needs truncation (<= 26 characters)", TRUE, all(nchar(lab_map$short_label) <= 26))
+rwv_check(checks, "italic is used exactly for gene symbols", lab_map$label_type == "gene_symbol", toupper(lab_map$italic) == "TRUE")
+disp$row_label <- disp$KO
+row_levels <- rev(disp$row_label)
+ko_short <- setNames(lab_map$short_label, disp$KO)
+ko_italic <- setNames(toupper(lab_map$italic) == "TRUE", disp$KO)
+ko_axis_labels <- function(breaks) do.call(expression, lapply(breaks, function(b)
+  if (isTRUE(ko_italic[[b]])) bquote(italic(.(ko_short[[b]]))) else ko_short[[b]]))
+# Label table for Data 1 (S51): display decisions joined to the full KO annotation of f3_display.tsv.
+rwv_write_tsv(data.frame(KO = disp$KO, display_order = disp$display_order, selection = disp$selection,
+                         short_label = lab_map$short_label, label_type = lab_map$label_type, italic = lab_map$italic,
+                         annotation_full = disp$label_full, basis = lab_map$basis),
+              path_target("f3_ko_labels.tsv"))
+heat <- do.call(rbind, lapply(lvl, function(s) data.frame(row_label = disp$row_label, KO = disp$KO, sample_id = s,
+                                                            tpm = as.numeric(disp[[s]]))))
+heat$row_label <- factor(heat$row_label, levels = row_levels)
+heat$sample_id <- factor(heat$sample_id, levels = lvl)
+heat$value <- log10(heat$tpm + 1)
+rwv_check(checks, "row totals reproduce total_TPM", as.numeric(disp$total_TPM),
+          unname(tapply(heat$tpm, heat$KO, sum)[disp$KO]), tol = 1e-6, source = "amg_ko_matrix_tpm.tsv")
+rwv_check(checks, "no non-zero cell below 1 TPM (zero cells cannot be confused with the lowest colour)", 0,
+          sum(heat$tpm > 0 & heat$tpm < 1))
+```
+
+### Task 3: Panel b: carrier-rank contributions in matching row order
+
+Colours indicate rank within each row (Top 1/2/3/remaining), not the same vOTU across rows.
+
+```{r}
+#| label: panel-b
+ranks$row_label <- factor(disp$row_label[match(ranks$KO, disp$KO)], levels = row_levels)
+ranks$rank_class <- factor(ranks$rank_class, levels = rev(names(palettes$carrier_rank)))
+top1 <- ranks[ranks$rank_class == "Top 1", ]
+lab <- data.frame(row_label = factor(disp$row_label, levels = row_levels),
+                  txt = sprintf("n = %s; %s (%.0f%%)", rwv_fmt_int(as.numeric(disp$n_carriers)), top1$vOTU_id[match(disp$KO, top1$KO)],
+                                100 * top1$fraction[match(disp$KO, top1$KO)]))
+rwv_check_def(checks, defs, "k00558_carriers", as.numeric(disp$n_carriers[disp$KO == "K00558"]), "f3_display.tsv")
+```
+
+### Task 4: Panel c: separate defense/anti-defense tools and units
+
+```{r}
+#| label: panel-c
+n_of <- function(x) sets$n[sets$set == x]
+narp_n <- c(NARP1 = sum(narp$df_narp1 == "1"), NARP2 = sum(narp$df_narp2 == "1"))
+rwv_check_def(checks, defs, "df_antidefense", n_of("DefenseFinder anti-defense"), "defense_sets.tsv")
+rwv_check_def(checks, defs, "dbapis_filtered", n_of("filtered dbAPIS"), "defense_sets.tsv")
+rwv_check_def(checks, defs, "antidefense_overlap", n_of("DefenseFinder anti-defense AND dbAPIS"), "defense_sets.tsv")
+rwv_check_def(checks, defs, "antidefense_union", n_of("Anti-defense union (OR)"), "defense_sets.tsv")
+rwv_check_def(checks, defs, "df_defense", n_of("DefenseFinder defense"), "defense_sets.tsv")
+rwv_check_def(checks, defs, "padloc", n_of("PADLOC defense"), "defense_sets.tsv")
+rwv_check_def(checks, defs, "narp1_df", unname(narp_n["NARP1"]), "narp_definitions.tsv")
+rwv_check_def(checks, defs, "narp2_df", unname(narp_n["NARP2"]), "narp_definitions.tsv")
+bars <- data.frame(
+  group = c(rep("Anti-defense candidates", 4), rep("Candidate defense-related calls", 2), rep("NARP calls (anti-defense subset)", 2)),
+  set = c("DefenseFinder anti-defense", "filtered dbAPIS", "Both (overlap)", "Union: DefenseFinder or dbAPIS",
+          "DefenseFinder defense", "PADLOC", "NARP1", "NARP2"),
+  n = c(n_of("DefenseFinder anti-defense"), n_of("filtered dbAPIS"), n_of("DefenseFinder anti-defense AND dbAPIS"),
+        n_of("Anti-defense union (OR)"), n_of("DefenseFinder defense"), n_of("PADLOC defense"), narp_n),
+  kind = c("tool", "tool", "set operation", "set operation", "tool", "tool", "tool", "tool"))
+bars$set <- factor(bars$set, levels = rev(bars$set))
+bars$group <- factor(bars$group, levels = unique(bars$group))
+bars$txt <- rwv_fmt_int(bars$n)   # v50: the common denominator 3,060 is stated once, on the axis title
+bars$fill_key <- ifelse(bars$group == "Anti-defense candidates",
+                        ifelse(bars$kind == "tool", "anti_defense_tool", "anti_defense_derived"),
+                        ifelse(grepl("^NARP", as.character(bars$set)), "narp_call", "defense_tool"))
+```
+
+### Task 5: Panel d: ORF101-ORF103 on vOTU0052
+
+Plot only the real ORF101-ORF103 coordinates, all on the positive strand. ORF166 (atd1, 91,206-91,499 bp) is a separate system call about 45 kb away and is excluded from this neighbourhood.
+
+```{r}
+#| label: panel-d
+locus$start <- as.numeric(locus$start_position); locus$end <- as.numeric(locus$end_position)
+locus <- locus[order(as.numeric(locus$gene_position)), ]
+c52 <- catalogue[catalogue$vOTU_id == "vOTU0052", ]
+rwv_check(checks, "vOTU0052 CheckV values in subtitle", c("132528", "Medium-quality", "88.84"),
+          c(c52$contig_length_bp, c52$checkv_quality, c52$checkv_completeness_pct), source = "checkv_catalogue.tsv")
+rwv_check(checks, "vOTU0052 is one of the DefenseFinder NARP2 calls", "1", narp$df_narp2[narp$vOTU_id == "vOTU0052"],
+          source = "narp_definitions.tsv")
+arrow_poly <- function(s, e, y, h = 0.32, head = 180) {
+  hs <- max(s, e - head)
+  data.frame(x = c(s, hs, e, hs, s), y = c(y - h, y - h, y, y + h, y + h))
+}
+polys <- do.call(rbind, lapply(seq_len(nrow(locus)), function(i) cbind(arrow_poly(locus$start[i], locus$end[i], 1), id = locus$gene_position[i])))
+polys$role <- ifelse(polys$id == "102", "candidate", "narp_member")
+lab_top <- c(`101` = "ORF101", `102` = "ORF102", `103` = "ORF103")
+lab_bottom <- c(`101` = "nadM/NMNAT (K13522)", `102` = "GIY-YIG/NUMOD-like\ncandidate", `103` = "NAMPT (K03462)")
+locus$mid <- (locus$start + locus$end) / 2
+locus$lab1 <- unname(lab_top[locus$gene_position])
+locus$lab2 <- unname(lab_bottom[locus$gene_position])
+rwv_check(checks, "labels matched to ORFs by position number", c("ORF101", "ORF102", "ORF103"), locus$lab1)
+# Contig overview (2026-10-11): the whole vOTU0052 sequence drawn above the gene
+# map on the same x range (rescaled, so it carries its own end labels), with the
+# displayed window marked and joined to the map by two guide lines.
+ctg_len <- as.numeric(c52$contig_length_bp)
+ov_x <- function(p) 42450 + p / ctg_len * (46150 - 42450)
+win <- c(min(locus$start), max(locus$end))
+rwv_check(checks, "overview window equals the ORF101-ORF103 span (bp)", c(42702, 45891), win, source = "votu0052_locus.tsv")
+rwv_check(checks, "overview window lies inside the contig", TRUE, win[1] >= 1 && win[2] <= ctg_len, source = "checkv_catalogue.tsv")
+```
+
+### Task 6: Assemble and export
+
+```{r}
+#| label: assemble
+# 2026-10-18 (v38): adopted panel-consult version D (outputs/fig345-visual-review-2026-10-17, code/final-figure3.R),
+# with the author-approved follow-up: more space between the nadM note and panel c (page 230 -> 234 mm).
+# The page is drawn with grid at absolute mm positions on the full W x H page and handed to rwv_figure_export
+# as one patchwork element inside a W x H viewport, so the symmetric export margin leaves the positions unchanged.
+W <- spec$width_mm; H <- spec$height_mm; P <- pt; rule <- col$grey_rule
+lw <- function(mm) mm / 25.4 * 96   # grid lwd from the style line widths (1 lwd = 1/96 in)
+rwv_check(checks, "page size of the adopted layout (mm)", c(180, 234), c(W, H), source = "analyses/R/figures.yml")
+reds <- grDevices::hcl.colors(palettes$heatmap$levels, "Reds", rev = TRUE)
+rlevels <- c("Top 1", "Top 2", "Top 3", "Other carriers"); rcols <- unlist(palettes$carrier_rank)[rlevels]
+sites <- as.character(samples$site)
+rwv_check(checks, "site strip order", c(rep("Beijing", 3), rep("Garching", 2), rep("Oberschleissheim", 2)), sites)
+rwv_check(checks, "heatmap values lie on the 0-6 colour scale", TRUE, max(heat$value) <= 6)
+rwv_check(checks, "tool panel rows in drawing order", c("DefenseFinder anti-defense", "filtered dbAPIS", "Both (overlap)",
+          "Union: DefenseFinder or dbAPIS", "DefenseFinder defense", "PADLOC", "NARP1", "NARP2"), as.character(bars$set))
+nadm_rank <- as.numeric(disp$rank_total_TPM[disp$KO == "K13522"])
+q_abbr <- c("Complete" = "complete", "High-quality" = "HQ", "Medium-quality" = "MQ", "Low-quality" = "LQ")
+c52_lab <- sprintf("%s bp; CheckV %s; %s%% estimated completeness", rwv_fmt_int(ctg_len), q_abbr[[c52$checkv_quality]],
+                   c52$checkv_completeness_pct)
+ctg_end <- sprintf("%s kb", formatC(ctg_len / 1000, format = "f", digits = 1))
+tx <- function(s, x, y, size = P$annotation, just = "left", face = "plain", colour = ink)
+  grid::grid.text(s, unit(x, "mm"), unit(H - y, "mm"), just = just, gp = grid::gpar(fontfamily = fam, fontsize = size, fontface = face, col = colour))
+box <- function(x, y, w, h, fill, colour = NA)
+  grid::grid.rect(unit(x, "mm"), unit(H - y, "mm"), unit(w, "mm"), unit(h, "mm"), gp = grid::gpar(fill = fill, col = colour, lwd = lw(style$line_mm$hairline)))
+ln <- function(x, y, xx, yy, colour = rule, lwd = lw(style$line_mm$thin), lty = 1)
+  grid::grid.lines(unit(c(x, xx), "mm"), unit(H - c(y, yy), "mm"), gp = grid::gpar(col = colour, lwd = lwd, lty = lty))
+# v50 figure cleanup (2026-10-19, Codex task book docs/figure-cleanup-v49-2026-10-19/00): panel letters only; no
+# explanatory panel titles, footnote sentences or contig-metadata line (meaning carried by the caption and the
+# Supplementary figure notes). Rows, values, order and encodings unchanged; page size unchanged (analyses/R/figures.yml).
+tag <- function(lab, y, x = 5) tx(rwv_tag(style, lab), x, y, P$tag, face = "bold")
+draw_ko <- function() {
+  tag("A", 7); tag("B", 7, 98)
+  tx("KO / function", 43, 14, just = "right", face = "bold"); tx("Carrier abundance", 71, 14, just = "centre", face = "bold")
+  tx("Within-KO\nTPM share (%)", 115, 14, just = "centre", face = "bold"); tx("Carriers\n(n)", 140, 14, just = "centre", face = "bold")
+  tx("Top carrier", 162, 14, just = "centre", face = "bold")
+  x0 <- 50; cw <- 6.7
+  for (j in 1:7) { x <- x0 + (j - 1) * cw; tx(lvl[j], x, 21, just = "centre"); box(x, 24, cw - .25, .8, site_col[[sites[j]]]) }
+  for (i in seq_len(nrow(disp))) {
+    y <- 30 + (i - 1) * 4.6
+    if (i %% 2 == 0) box(90, y, 170, 4.6, "#FAFAFA")
+    tx(lab_map$short_label[i], 43, y, just = "right", face = if (toupper(lab_map$italic[i]) == "TRUE") "italic" else "plain")
+    if (disp$KO[i] == "K13522") tx("†", 43.6, y - .6)   # prespecified NARP case; explained in the caption
+    for (j in 1:7) {
+      x <- x0 + (j - 1) * cw; v <- as.numeric(disp[[lvl[j]]][i])
+      box(x, y, cw - .25, 4.0, if (v > 0) reds[1 + round(255 * log10(v + 1) / 6)] else palettes$heatmap$zero, rule)
+    }
+    z <- ranks[ranks$KO == disp$KO[i], ]; z <- z[match(rlevels, as.character(z$rank_class)), ]; start <- 100
+    for (j in 1:4) { w <- 31 * z$fraction[j]; if (w > 0) box(start + w / 2, y, w, 3.8, rcols[j]); start <- start + w }
+    tx(disp$n_carriers[i], 140, y, just = "centre"); tx(z$vOTU_id[1], 149, y); tx(paste0(round(100 * z$fraction[1]), "%"), 175, y, just = "right")
+    if (i == 10) ln(5, y + 2.3, 175, y + 2.3, ink, lw(style$line_mm$main), 2)
+  }
+  tx("log10(summed carrier TPM + 1)", 49, 86)
+  for (k in 1:256) box(49 + 36 * (k - .5) / 256, 90, 36 / 256 + .03, 2.2, reds[k])
+  for (v in c(0, 2, 4, 6)) tx(v, 49 + 36 * v / 6, 94, just = "centre")
+  for (j in 1:4) { x <- 101 + (j - 1) * 18; box(x, 90, 3, 3, rcols[j]); tx(c("1st", "2nd", "3rd", "Other")[j], x + 2.2, 90) }
+  box(7, 90, 2.6, 2.6, palettes$heatmap$zero, rule); tx("0 TPM", 10, 90)
+  for (v in c(0, 50, 100)) tx(v, 100 + 31 * v / 100, 84, just = "centre")
+}
+draw_tools <- function(c0 = 104) {
+  tag("C", c0)
+  x0 <- 67; ww <- 88; scale <- ww / 800
+  labs <- c("DefenseFinder anti-defense", "Filtered dbAPIS", "Both (overlap)", "Union: DefenseFinder or dbAPIS",
+            "DefenseFinder defense", "PADLOC", "NARP1", "NARP2")
+  yy <- c0 + c(11, 16, 21, 26, 37, 42, 53, 58)
+  fills <- unlist(palettes$function_calls)[bars$fill_key]
+  tx("Anti-defense", x0, c0 + 6, face = "bold"); tx("Defense", x0, c0 + 32, face = "bold")
+  tx("NARP (anti-defense subsets)", x0, c0 + 48, face = "bold")
+  for (i in 1:8) {
+    tx(labs[i], x0 - 2, yy[i], just = "right"); box(x0 + bars$n[i] * scale / 2, yy[i], bars$n[i] * scale, 3.1, fills[i], ink)
+    tx(bars$txt[i], x0 + bars$n[i] * scale + 1, yy[i])
+  }
+  ya <- c0 + 61
+  ln(x0, ya, x0 + ww, ya, ink, lw(style$line_mm$main))
+  for (v in seq(0, 800, 200)) { ln(x0 + v * scale, ya, x0 + v * scale, ya + 1, ink, lw(style$line_mm$main)); tx(v, x0 + v * scale, ya + 4, just = "centre") }
+  tx("vOTUs (of 3,060)", x0 + ww / 2, ya + 9, just = "centre")
+}
+draw_locus <- function(y = 179) {
+  tag("D", y)
+  tx("vOTU0052 (+ strand)", 12, y, face = "bold")
+  box(130, y, 3, 3, palettes$gene$narp_member, ink); tx("Candidate NARP2 member", 133, y)
+  ln(7, y + 8, 173, y + 8, col$grey_mid, lw(style$line_mm$main))
+  xa <- 7 + 166 * win[1] / ctg_len; xb <- 7 + 166 * win[2] / ctg_len; box((xa + xb) / 2, y + 8, xb - xa, 2, "white", ink)
+  tx("0", 7, y + 12); tx(ctg_end, 173, y + 12, just = "right")
+  xf <- function(v) 8 + (v - 42500) / 3500 * 165
+  ln(8, y + 28, 173, y + 28, col$grey_mid, lw(style$line_mm$main))
+  for (i in 1:3) {
+    x <- xf(locus$start[i]); xx <- xf(locus$end[i]); head <- min(3.5, (xx - x) * .3)
+    grid::grid.polygon(unit(c(x, xx - head, xx, xx - head, x), "mm"), unit(H - c(y + 25, y + 25, y + 28, y + 31, y + 31), "mm"),
+                       gp = grid::gpar(fill = if (i == 2) "white" else palettes$gene$narp_member, col = ink, lwd = lw(if (i == 2) style$line_mm$emphasis else style$line_mm$thin)))
+    tx(locus$lab1[i], (x + xx) / 2, y + 20, just = "centre", face = "bold")
+    if (i == 1) {   # v44: only nadM italic; NMNAT and the KO number upright
+      tx(expression(italic(nadM) * " / NMNAT"), (x + xx) / 2, y + 33.05, just = "centre")
+      tx("(K13522)", (x + xx) / 2, y + 36.95, just = "centre")
+    } else tx(c("", "GIY-YIG / NUMOD-like\ncandidate", "NAMPT\n(K03462)")[i], (x + xx) / 2, y + 35, just = "centre")
+  }
+  ln(8, y + 40, 173, y + 40, ink, lw(style$line_mm$main))
+  for (v in seq(42500, 46000, 500)) { x <- xf(v); ln(x, y + 40, x, y + 41, ink, lw(style$line_mm$main)); tx(sprintf("%.1f", v / 1000), x, y + 44, just = "centre") }
+  tx("Position on recovered sequence (kb)", 90, y + 49, just = "centre")
+}
+page <- grid::gTree(children = grid::gList(rwv_capture_grob({ draw_ko(); draw_tools(); draw_locus() },
+                                                                  width = rwv_mm_to_in(W), height = rwv_mm_to_in(H), style = style, fonts = fonts)),
+                    vp = grid::viewport(width = unit(W, "mm"), height = unit(H, "mm"), clip = "off"))
+fig <- patchwork::wrap_elements(full = page)
+expected_text <- c(rwv_tag(style, c("A", "B", "C", "D")), lvl, "KO / function", "Carrier abundance",
+                   "log10(summed carrier TPM + 1)", "0 TPM", "Within-KO", "TPM share (%)", "Carriers", "(n)", "Top carrier",
+                   "vOTUs (of 3,060)", "Position on recovered sequence (kb)", "vOTU0052 (+ strand)", "Candidate NARP2 member",
+                   "Anti-defense", "Defense", "NARP (anti-defense subsets)", lab_map$short_label, "\u2020", "ORF102",
+                   "722", "106", "715", "99", "vOTU2575", ctg_end)
+res <- rwv_figure_export(fig, path_target, "fig3", spec, style, fonts, expected_text, step)
+knitr::kable(res$qa[, c("format", "check", "observed", "pass")])
+```
+
+
+### Task 7: Record plot values, caption and checks
+
+```{r}
+#| label: values-legend
+vals <- rbind(
+  data.frame(panel = "A", item = paste(heat$KO, heat$sample_id), value = heat$tpm, value2 = heat$value, unit = "summed carrier TPM; value2 = log10(TPM + 1)"),
+  data.frame(panel = "B", item = paste(ranks$KO, ranks$rank_class, ranks$vOTU_id), value = ranks$fraction, value2 = NA, unit = "fraction of row TPM"),
+  data.frame(panel = "C", item = as.character(bars$set), value = bars$n, value2 = 3060, unit = "vOTUs (value2 = denominator)"),
+  data.frame(panel = "D", item = paste0("ORF", locus$gene_position), value = locus$start, value2 = locus$end, unit = "bp (start, end)"),
+  data.frame(panel = "D", item = c("vOTU0052 sequence (overview)", "displayed window (overview)"), value = c(1, win[1]), value2 = c(ctg_len, win[2]),
+             unit = "bp (start, end)")
+)
+rwv_check(checks, "plot-values panels equal the figure's panel tags", c("A", "B", "C", "D"), sort(unique(vals$panel)))
+rwv_write_tsv(vals, path_target("fig3-plot-values.tsv"))
+n_ko_carriers <- rwv_def(defs, "amg_carriers_ko"); n_all_carriers <- rwv_def(defs, "amg_carriers_dbid")
+# Figure-expression revision 2026-10-07 (Codex 03/04): short submission caption; detail in notes_en.
+legend_en <- paste0(
+  "(a) Summed TPM of the vOTUs carrying each candidate AMG KO in each sample (log10(TPM + 1); no row scaling; white, zero). ",
+  "Rows are the ten KOs with the largest carrier TPM summed over the seven samples, followed below the dashed line by K13522 (nadM, marked \u2020; bifunctional NMN adenylyltransferase/Nudix hydrolase), added in advance for the NARP-related locus in d. ",
+  "Each row is one KO shown by a short name: gene symbols in italics, otherwise the enzyme or function (DNA m5C MTase, DNA (cytosine-5)-methyltransferase; Inositol-P synthase, myo-inositol-1-phosphate synthase); KO numbers and full annotations are in Data 1 S51. ",
+  "Values are abundances of carrier sequences, not expression or metabolic flux. The strip marks the site (colours as in Fig. 1). ",
+  "(b) For the same rows, the share of row TPM from the first, second and third carriers and all others; colours denote rank within a row, not one vOTU across rows. ",
+  "Columns give the number of carriers (n) and the top carrier with its share. ",
+  sprintf("(c) vOTUs (of 3,060) with at least one call in each tool-specific set, with the anti-defense overlap and union (%d); ", bars$n[4]),
+  "counts from different tools are not added and do not measure sensitivity. ",
+  "NARP calls are DefenseFinder NARP1 and NARP2 module calls, a subset of its anti-defense calls; candidate defense-related calls are DefenseFinder defense systems and PADLOC calls. ",
+  "(d) ORF101", rwv_ndash, "ORF103 of vOTU0052, one of the five NARP2 calls in c, at their recorded coordinates; ",
+  sprintf("the line above marks this window on the whole %s-bp sequence. ", rwv_fmt_int(ctg_len)),
+  "DefenseFinder places ORF101 and ORF103 in one NARP2 call; ORF102 (outlined) is a GIY-YIG/NUMOD-like candidate. ",
+  "The locus is a candidate annotation; activity or a mechanism was not tested. ",
+  sprintf("Details: Supplementary figure notes, %s; the full matrices are in Data 1.", spec$label)
+)
+notes_en <- c(
+  sprintf("Candidate AMG KOs (a): the 138 AMG candidate KOs are carried by %s vOTUs (%s when all database identifiers are counted). Selecting by abundance shows the largest contributions, not all functions or their biological importance; K13522 (nadM, \u2020) is a prespecified NARP case at abundance rank %d, not part of the top ten.", rwv_fmt_int(n_ko_carriers), rwv_fmt_int(n_all_carriers), as.integer(nadm_rank)),
+  "K00558 (a): DNA cytosine-5-methyltransferase, carried by 146 vOTUs in this AMG table; its pathway label alone does not indicate enhanced sulfur metabolism.",
+  "Data 1 (a, b): the full 138-KO and 68-pathway matrices and the per-carrier contributions.",
+  sprintf("Tool-specific sets (c): DefenseFinder anti-defense %d, filtered dbAPIS %d, both %d, union %d (%d + %d %s %d); DefenseFinder defense %d and PADLOC %d; DefenseFinder NARP1 %d and NARP2 %d module calls. A separate KO co-occurrence rule (K03462 + K13522) gives six vOTUs (Supplementary Fig. 3).",
+          bars$n[1], bars$n[2], bars$n[3], bars$n[4], bars$n[1], bars$n[2], rwv_minus, bars$n[3], bars$n[5], bars$n[6], narp_n[1], narp_n[2]),
+  sprintf("vOTU0052 (d): %s bp; CheckV %s, %s%% estimated completeness. ORF coordinates %s, %s and %s bp, all on the plus strand. The separate atd1 call on ORF166, about 45 kb away, is not part of this neighbourhood.",
+          rwv_fmt_int(as.numeric(c52$contig_length_bp)), c52$checkv_quality, c52$checkv_completeness_pct,
+          rwv_fmt_range(42702, 43781), rwv_fmt_range(43790, 44425), rwv_fmt_range(44422, 45891))
+)
+rwv_write_legend(path_target("fig3-legend.md"), spec$label, "Candidate auxiliary metabolic functions, their carriers, defense-related calls and one candidate locus", legend_en,
+  can_read = "Panels show the distribution of major candidate AMG KO contributions and carrier concentration, tool-specific defense/anti-defense calls (union 722), and the real ORF101-ORF103 arrangement on vOTU0052, one of five NARP2 calls. The approximately 3.2 kb locus is located within a 132.5 kb sequence.",
+  cannot_infer = "The heatmap is not expression or metabolic flux; K00558 does not establish enhanced sulfur metabolism. Do not add tool counts or compare their sensitivities from these counts. The candidate NARP2 locus is not a demonstrated anti-defense mechanism or experimental validation.",
+  sources = c("analyses/R/f3-ko-labels.tsv (short display names; written with the full KO annotations as f3_ko_labels.tsv, Data 1 S51)",
+              "analyses/data/030-function-inputs/f3_display.tsv, f3_carrier_ranks.tsv (amg_ko_matrix_tpm.tsv; amg_driver_votu_feature_contributions.tsv; F3-display-selection.tsv)",
+              "analyses/data/030-function-inputs/defense_sets.tsv, narp_definitions.tsv (local_votu_table.tsv; narp_votu_detail.tsv)",
+              "analyses/data/030-function-inputs/votu0052_locus.tsv (votu0052_amg_focused_context_pm5.tsv; SQLite virus_defense_finder_genes)"),
+  abbreviations = c("AMG, auxiliary metabolic gene", "KO, KEGG Orthology", "TPM, abundance normalized to one million per sample",
+                    "NARP, NAD+ reconstitution pathway", "NMNAT, nicotinamide mononucleotide adenylyltransferase",
+                    "NAMPT, nicotinamide phosphoribosyltransferase", "dbAPIS, a database of anti-prokaryotic immune system genes",
+                    "PADLOC, a defense-system annotation tool"),
+  notes = notes_en)
+check_table <- rwv_checks_finish(checks, path_target("fig3-checks.tsv"))
+knitr::kable(check_table[, c("check", "expected", "observed", "pass")])
+rwv_write_session_info(path_target("session-info.txt"),
+                       c(step = params$name, run_id = step$run_id, mode = step$mode, quarto = rwv_quarto_version()))
+```
+
+```{r}
+#| label: step-record
+outputs <- rwv_step_finish(step, path_target)
+knitr::kable(transform(outputs, sha256 = substr(outputs$sha256, 1, 16)), caption = "Outputs recorded in step-record.json")
+rwv_report_complete(step, outputs)
+```
+
+## Published figure preview
+
+```{r}
+#| label: preview
+#| out-width: "100%"
+knitr::include_graphics(rwv_public_preview(step, "fig3.png", "Figure3.png"))
+```
+
+```{r}
+#| label: list-files-target
+rwv_report_files(step, outputs)
+```
+
+```{r}
+#| label: report-summary
+#| results: asis
+cat(rwv_report_summary(step))
+```

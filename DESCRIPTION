@@ -1,0 +1,60 @@
+Package: RecWaterVirome
+Title: RecWaterVirome Figure Production Workflow
+Version: 0.2.0
+Authors@R: c(
+    person("Jinlong", "Ru", , "jinlong.ru@tum.com", role = "aut",
+           comment = c(ORCID = "0000-0002-6757-6018")),
+    person("Cunli", "Pan", , "cunli.pan@tum.de", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-2595-7533"))
+  )
+Description: R and Quarto source workflow for the RecWaterVirome study.
+    Shared scientific functions, eighteen analysis notebooks, saved-result
+    figure production and deterministic supplementary exports follow the
+    author-selected BMC clean baseline. Required data inputs are supplied
+    separately and hash-registered. Optional original R model and diagnostic
+    scripts are provided in dev and are not run by the figure workflow.
+License: Not yet selected (see README.md)
+Remotes: rujinlong/qproj@4665814be79e13f7440f26b95279c014e6a5e209
+Imports: 
+    ape,
+    DBI,
+    devtools,
+    digest,
+    ggforce,
+    ggplot2,
+    ggrepel,
+    grDevices,
+    grid,
+    here,
+    jsonlite,
+    knitr,
+    mia,
+    MultiAssayExperiment,
+    patchwork,
+    pdftools,
+    pkgload,
+    png,
+    qproj,
+    ragg,
+    readr,
+    readxl,
+    rmarkdown,
+    rnaturalearthdata,
+    rprojroot,
+    RSQLite,
+    S4Vectors,
+    sessioninfo,
+    sf,
+    SummarizedExperiment,
+    svglite,
+    systemfonts,
+    tools,
+    TreeSummarizedExperiment,
+    utils,
+    vegan,
+    viridisLite,
+    writexl,
+    xml2,
+    yaml
+Encoding: UTF-8
+Suggests: data.table, MASS, logistf

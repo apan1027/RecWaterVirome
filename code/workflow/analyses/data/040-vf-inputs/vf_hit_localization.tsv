@@ -1,5 +1,0 @@
-localization	hits	in_retained_set	meaning
-no_host_region_detected	122	TRUE	the record carries no CheckV region prediction, so no host region was identified and the full contig length is used as the offset
-host	18	FALSE	the hit lies entirely inside a CheckV-predicted host region
-boundary_crossing	1	FALSE	the hit spans a predicted host/viral boundary
-viral	1	TRUE	the hit lies entirely inside a CheckV-predicted viral region

@@ -1,0 +1,494 @@
+---
+title: "210-sfig1-qc-community"
+subtitle: "Supplementary Figures 1 and 2: catalogue quality, detection diagnostics, seven-sample sharing and candidate hosts"
+author:
+  - name: Jinlong Ru
+    orcid: "0000-0002-6757-6018"
+  - name: Cunli Pan
+    orcid: "0000-0002-2595-7533"
+date: today
+params:
+  name: "210-sfig1-qc-community"
+---
+
+**Updated: `r format(Sys.time(), '%Y-%m-%d %H:%M:%S %Z %z', tz = 'Europe/Berlin')`.**
+
+```{r}
+#| label: params
+#| eval: !expr interactive()
+#| include: false
+params <- list(name = "210-sfig1-qc-community")
+```
+
+```{r}
+#| label: setup
+#| include: false
+#| message: false
+#| warning: false
+#| cache: false
+wd <- "analyses"
+if (basename(getwd()) != wd) {
+    setwd(here::here(wd))
+}
+here::i_am(paste0(params$name, ".qmd"), uuid = "2cae525e-f70d-427b-bc36-8e0c54a8b2ee")
+qproj::proj_create_dir_target(params$name, clean = FALSE)
+
+# convenience helpers
+path_target <- qproj::proj_path_target(params$name)
+path_source <- qproj::proj_path_source(params$name)
+path_raw <- path_source("00-raw")
+path_resource <- here::here(path_raw, "d00-resource")
+path_data <- here::here(path_raw, paste0("d", params$name))
+dir.create(path_raw, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_data, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_resource, recursive = TRUE, showWarnings = FALSE)
+```
+
+```{r}
+#| label: packages
+#| message: false
+#| warning: false
+#| cache: false
+# qproj template chunk, trimmed to what figure steps use: ggplot2 and
+# patchwork plus the project helpers in R/.
+suppressPackageStartupMessages({
+  library(ggplot2)
+  library(patchwork)
+  devtools::load_all()
+})
+```
+
+```{r}
+#| label: step-guard
+#| cache: false
+# Checks params$name, path_target() and here() against analyses/R/steps.yml
+# and opens a staging folder for this run's outputs.
+step <- rwv_step_begin(params$name, path_target)
+# New outputs are staged; the previous result stays until rwv_step_finish()
+# has checked and published the new one.
+path_target <- step$path_target
+```
+
+```{r}
+#| label: report-presentation
+#| include: false
+rwv_report_setup(step)
+```
+
+
+
+## Tasks
+
+This step exports Supplementary Figures 1 and 2. S1 contains sequence-length/CheckV quality and detection-depth diagnostics, including within-table read-subsampling curves. S2 contains qualified detection patterns, abundance contributions and 83 best-host-genus links co-detected in at least one sample. Counts are descriptive; no model, test or threshold is added. Complete PERMANOVA, dispersion and cross-assay results are retained in Data 1 S10, S11 and S09.
+
+### Task 1: Inputs
+
+```{r}
+#| label: inputs
+manifest <- rwv_read_tsv(rwv_step_input(step, path_source, "010-input-manifest", "input-manifest.tsv"))
+style <- rwv_style_read(rwv_project_input(step, "analyses/R/style.yml", manifest))
+style <- rwv_style_for_figure(style, "sfig1")   # v40: figure-specific text sizes (analyses/R/style.yml figure_text_pt)
+samples <- rwv_samples_read(rwv_project_input(step, "analyses/R/samples.tsv", manifest), style)
+palettes <- rwv_palettes_read(rwv_project_input(step, "analyses/R/palettes.yml", manifest))
+figures <- rwv_figures_read(rwv_project_input(step, "analyses/R/figures.yml", manifest))
+defs <- rwv_definitions_read(rwv_project_input(step, "analyses/R/definitions.tsv", manifest))
+up <- function(f) as.data.frame(rwv_read_tsv(rwv_step_input(step, path_source, "020-community-analysis", f)))
+catalogue <- up("checkv_catalogue.tsv")
+curves <- up("rarefaction_curves.tsv")
+depth <- up("depth.tsv")
+depth_check <- up("depth_check.tsv")
+sharing_patterns <- up("votu_sharing_patterns.tsv")
+sharing_samples <- up("votu_sharing_samples.tsv")
+sharing_members <- up("votu_sharing_members.tsv")
+# Supplementary Figure 2 (2026-10-17): the 200 retained iPHoP best-host records and their per-sample co-detection.
+hosts <- up("host_iphop.tsv")
+codet <- up("host_codetection_by_sample.tsv")
+fonts <- rwv_fonts_resolve(style)
+fonts2 <- rwv_fonts_resolve(style, italic = TRUE)   # S2c genus labels are italic
+spec <- rwv_figure_spec(figures, "sfig1", params$name)
+spec2 <- rwv_figure_spec(figures, "sfig2", params$name)
+checks <- rwv_checks_new()
+rwv_check(checks, "Supplementary Figures 1 and 2 share one text-size override (v40)", style$figure_text_pt$sfig1, style$figure_text_pt$sfig2, source = "analyses/R/style.yml")
+checks2 <- rwv_checks_new()
+pt <- style$text_pt; ink <- style$colours$text; fam <- style$font$family
+lvl <- rwv_sample_levels(samples)
+site_of <- setNames(as.character(samples$site), lvl)
+omics <- c(virome = "Virome", bact_16s = "16S (prokaryotes)", euk_18s_microeuk = "18S (microeukaryotes)")
+```
+
+### Task 2: S1a: representative sequence lengths for all quality categories
+
+```{r}
+#| label: panel-a
+cls <- names(palettes$checkv)
+catalogue$len_kb <- as.numeric(catalogue$contig_length_bp) / 1000
+catalogue$checkv_quality <- factor(catalogue$checkv_quality, levels = cls)
+n_cls <- as.numeric(table(catalogue$checkv_quality))
+rwv_check_def(checks, defs, "catalogue_votu", sum(n_cls), "checkv_catalogue.tsv")
+rwv_check(checks, "five CheckV classes (167/142/450/2254/47)", c(167, 142, 450, 2254, 47), n_cls,
+          source = "regression constant; class totals also checked in 110 against definitions.tsv")
+lab_n <- data.frame(checkv_quality = factor(cls, levels = cls), n = n_cls,
+                    med = tapply(catalogue$len_kb, catalogue$checkv_quality, median))
+# Horizontal boxes so the full CheckV class names fit; Complete on top as in Figure 1E.
+p_len <- ggplot(catalogue, aes(x = len_kb, y = checkv_quality)) +
+  geom_boxplot(aes(fill = checkv_quality), width = 0.62, outlier.size = 0.6, outlier.stroke = 0,
+               outlier.colour = style$colours$grey_dark, colour = ink, linewidth = rwv_linewidth(style$line_mm$thin),
+               show.legend = FALSE) +
+  scale_fill_manual(values = unlist(palettes$checkv)) +
+  scale_y_discrete(limits = rev(cls), labels = function(x) paste0(x,   # v45: CheckV label mapping moved to the legend
+                                                                        " (n = ", rwv_fmt_int(n_cls[match(x, cls)]), ")")) +
+  scale_x_log10(breaks = c(10, 20, 50, 100, 150), limits = c(9, 200)) +
+  labs(tag = rwv_tag(style, "A"), x = "Length (kb, log scale)", y = NULL) +
+  rwv_panel(style)
+```
+
+### Task 3: S1c: within-table read-subsampling curves
+
+The curves use Hurlbert analytic expectations calculated in 020, interpolated only up to each sample's observed depth. Viral curves show unmasked counts and counts after the fixed full-depth breadth mask; amplicons retain their own processing. Curves characterize detection within the retained feature tables, not assembly/mapping completeness or full environmental community recovery.
+
+```{r}
+#| label: panel-c-curves
+layer_lab <- c(virome_unmasked = "Virome: all mapped counts", virome_masked = "Virome: breadth-masked counts",   # v45 short titles
+               bact_16s = "16S ASVs", euk_18s_microeuk = "18S microeukaryotic ASVs")
+layer_unit <- c(virome_unmasked = 1e6, virome_masked = 1e6, bact_16s = 1e3, euk_18s_microeuk = 1e3)
+# F6: common_depth is the literal "NA" except at the common-depth points; convert that token explicitly so a
+# coercion warning (or the check below) signals only an unexpected value.
+curve_bad <- 0
+for (k in c("depth_reads", "expected_features", "sample_total_reads", "observed_features", "common_depth")) {
+  v <- curves[[k]]; lit <- is.na(v) | v %in% "NA"
+  curves[[k]] <- suppressWarnings(as.numeric(replace(v, lit, NA)))
+  curve_bad <- curve_bad + sum(!lit & is.na(curves[[k]]))
+}
+rwv_check(checks, "rarefaction curve columns are numeric or the literal NA", 0, curve_bad, source = "rarefaction_curves.tsv")
+curves$is_common_depth <- curves$is_common_depth == "TRUE"
+rwv_check(checks, "curve layers and samples (4 layers x 7 samples)", 28L, nrow(unique(curves[, c("layer", "sample_id")])))
+endp <- curves[curves$depth_reads == curves$sample_total_reads, ]
+rwv_check(checks, "each curve ends at its own observed total (no extrapolation)", 28L, nrow(endp))
+rwv_check(checks, "curve end equals the observed feature count", TRUE, isTRUE(all.equal(endp$expected_features, endp$observed_features)))
+m_end <- endp[endp$layer == "virome_masked", ]
+rwv_check(checks, "masked-virome curve ends equal the masked richness of panel b", as.numeric(depth$masked_richness[match(m_end$sample_id, depth$sample_id)]),
+          m_end$observed_features, source = "depth.tsv")
+curves$sample_id <- factor(curves$sample_id, levels = lvl)
+curves$site <- factor(site_of[as.character(curves$sample_id)], levels = names(rwv_site_colours(style)))
+# One small plot per count table, each with its own axis: the two virome tables span
+# 0.01-11 million reads and are drawn on a log axis so the early rise of the masked
+# curve stays visible; amplicons use a linear axis in thousands of reads.
+x_info <- list(
+  virome_unmasked = list(unit = 1e6, log = TRUE, lab = "Mapped reads (millions, log scale)"),   # v45: "subsampled" in the legend
+  virome_masked = list(unit = 1e6, log = TRUE, lab = "Masked reads (millions, log scale)"),
+  bact_16s = list(unit = 1e3, log = FALSE, lab = "16S reads (thousands)"),
+  euk_18s_microeuk = list(unit = 1e3, log = FALSE, lab = "Total 18S reads (thousands)"))   # denominator stays all 18S
+curve_plot <- function(layer, tag = NULL, y_lab = NULL) {
+  d <- curves[curves$layer == layer, ]
+  xi <- x_info[[layer]]
+  if (xi$log) d <- d[d$depth_reads >= 1e3, ]   # log axis starts at 1,000 reads
+  d$x <- d$depth_reads / xi$unit
+  ends <- d[d$depth_reads == d$sample_total_reads, ]
+  # v44: two label anchors moved to avoid collisions (16S bd1, 18S gc1); curves and end points are unchanged
+  ends$label_dy <- 0
+  ends$label_dx <- if (xi$log) 0.12 else 0.04 * max(d$x)
+  if (layer == "euk_18s_microeuk") {
+    ends$label_dy[ends$sample_id == "gc1"] <- -40
+    ends$label_dx[ends$sample_id == "gc1"] <- 0.08 * max(d$x)
+  }
+  if (layer == "bact_16s") {
+    ends$label_dy[ends$sample_id == "bd1"] <- -100
+    ends$label_dx[ends$sample_id == "bd1"] <- 0.10 * max(d$x)
+  }
+  cdx <- unique(d$common_depth[!is.na(d$common_depth)]) / xi$unit
+  g <- ggplot(d, aes(x = x, y = expected_features, group = sample_id, colour = site)) +
+    { if (length(cdx)) geom_vline(xintercept = cdx, colour = style$colours$grey_ref,
+                                  linewidth = rwv_linewidth(style$line_mm$thin), linetype = "22") } +
+    geom_line(linewidth = rwv_linewidth(style$line_mm$main), show.legend = FALSE) +
+    geom_point(data = ends, size = style$point_mm$feature, show.legend = FALSE) +
+    ggrepel::geom_text_repel(data = ends, aes(label = sample_id), family = fam, size = rwv_text_pt(style, pt$minimum),
+                             direction = "y", hjust = 0, nudge_x = ends$label_dx, nudge_y = ends$label_dy, xlim = c(NA, Inf),
+                             seed = 3, min.segment.length = 0, box.padding = 0.15, point.padding = 0.1,
+                             segment.size = rwv_linewidth(style$line_mm$hairline), segment.colour = style$colours$grey_ref,
+                             show.legend = FALSE) +
+    rwv_scale_colour_site(style) +
+    scale_y_continuous(limits = c(0, NA), expand = expansion(mult = c(0, 0.06)), labels = rwv_axis_num) +
+    coord_cartesian(clip = "off") +
+    labs(subtitle = layer_lab[[layer]], x = xi$lab, y = y_lab, tag = tag) +
+    rwv_panel(style) +
+    theme(axis.text = element_text(size = pt$minimum), axis.title = element_text(size = pt$minimum),
+          plot.subtitle = element_text(size = pt$annotation), plot.margin = margin(1, 9, 1, 1, unit = "mm"))
+  if (xi$log) g + scale_x_log10(breaks = c(0.001, 0.01, 0.1, 1, 10), labels = c("0.001", "0.01", "0.1", "1", "10"))
+  else g + scale_x_continuous(expand = expansion(mult = c(0, 0.02)), labels = rwv_axis_num)
+}
+tag_c <- rwv_tag(style, "C")
+p_sat <- wrap_elements(full = (curve_plot("virome_unmasked", tag = tag_c, y_lab = "Expected vOTUs") +
+                                 curve_plot("virome_masked")) /
+                                (curve_plot("bact_16s", y_lab = "Expected ASVs") + curve_plot("euk_18s_microeuk")))
+```
+
+### Task 4: S1b: masked richness and mapped viral reads
+
+The saved Spearman rho = 0.857 (n = 7) relates richness to mapped reads, not Shannon. It is not recalculated here.
+
+```{r}
+#| label: panel-c
+depth$masked_richness <- as.numeric(depth$masked_richness)
+depth$mapped_viral_reads <- as.numeric(depth$mapped_viral_reads)
+depth$site <- factor(site_of[depth$sample_id], levels = names(rwv_site_colours(style)))
+rho <- as.numeric(depth_check$spearman_rho[depth_check$metric == "observed_unrarefied~mapped_viral_reads"])
+rwv_check(checks, "Spearman rho shown (3 dp)", 0.857, round(rho, 3), source = "regression constant (dev/390 depth check)")
+rwv_check(checks, "depth points", 7, nrow(depth))
+# bc1 and bd1 sit close at the top right: nudge bc1 left and bd1 down-right;
+# the ρ note sits top left, clear of the bc1 label.
+nud <- data.frame(sample_id = c("bc1", "bd1"), nx = c(-0.12, 0.1), ny = c(0, -90))
+depth$nx <- ifelse(depth$sample_id %in% nud$sample_id, nud$nx[match(depth$sample_id, nud$sample_id)], 0)
+depth$ny <- ifelse(depth$sample_id %in% nud$sample_id, nud$ny[match(depth$sample_id, nud$sample_id)], 0)
+p_depth <- ggplot(depth, aes(x = mapped_viral_reads / 1e6, y = masked_richness, colour = site)) +
+  geom_point(size = style$point_mm$sample, show.legend = FALSE) +
+  ggrepel::geom_text_repel(aes(label = sample_id), family = fam, size = rwv_text_pt(style, pt$minimum), seed = 2,
+                           show.legend = FALSE, box.padding = 0.4, min.segment.length = 0, nudge_x = depth$nx, nudge_y = depth$ny,
+                           segment.size = rwv_linewidth(style$line_mm$hairline), segment.colour = style$colours$grey_ref) +
+  annotate("text", x = 1.45, y = 1260, hjust = 0, vjust = 1, family = fam, size = rwv_text_pt(style, pt$minimum), colour = ink,
+           label = sprintf("Spearman ρ = %s (n = 7)", rwv_fmt_num(rho, 3))) +   # v45: richness note kept in the legend
+  rwv_scale_colour_site(style) +
+  scale_x_log10(breaks = c(1.5, 2, 3, 5, 10), limits = c(1.4, 13)) +
+  scale_y_continuous(limits = c(0, 1260), breaks = seq(0, 1000, 250), labels = rwv_axis_num) +
+  labs(tag = rwv_tag(style, "B"),
+       x = "Mapped viral reads (millions, log scale)", y = "Masked richness (vOTUs)") +
+  rwv_panel(style) +
+  theme(axis.title.x = element_text(margin = margin(t = 1, unit = "mm")))
+```
+
+### Task 5: Location of former statistical-summary panels
+
+The former figure panels for PERMANOVA/dispersion and cross-assay statistics are retained in Data 1 S10, S11 and S09, with worksheet notes supplied by 320.
+
+### Task 7: Assemble and export S1
+
+```{r}
+#| label: assemble
+fig <- (p_len + p_depth + plot_layout(widths = c(1.15, 1))) / free(p_sat) +
+  plot_layout(heights = c(50, 92))
+expected_text <- c(rwv_tag(style, c("A", "B", "C")), lvl, "Length (kb, log scale)",   # v45: subtitle no longer drawn
+                   "Mapped viral reads (millions, log scale)", "Masked richness (vOTUs)", "Complete (n = 167)", "Low-quality (n = 2,254)",
+                   "Spearman ρ = 0.857 (n = 7)", unname(layer_lab), "Expected vOTUs", "Expected ASVs",
+                   unname(vapply(x_info, function(x) x$lab, "")))
+res <- rwv_figure_export(fig, path_target, "sfig1", spec, style, fonts, expected_text, step)
+knitr::kable(res$qa[, c("format", "check", "observed", "pass")])
+```
+
+
+### Task 7b: S2: sharing, abundance contributions and 83 co-detected host links
+
+S2 shows shared members, catalogue abundance contributions and 83 best-host-genus links with at least one same-sample co-detection. R/sfig-sharing-hosts.R draws one grid object from formal 020 tables; rwv_figure_export exports four formats. These are counts of saved rows, not an inferred correlation network. Thresholds and models are unchanged; colours are registered under sample_codetection and sharing.
+
+```{r}
+#| label: sfig2-sharing-hosts
+for (k in c("display_order", "n_qualifying_samples", "n_vOTUs", paste0(lvl, "_percent")))
+  sharing_patterns[[k]] <- as.numeric(sharing_patterns[[k]])
+for (k in setdiff(names(sharing_samples), "sample_id")) sharing_samples[[k]] <- as.numeric(sharing_samples[[k]])
+for (k in setdiff(names(sharing_members), c("vOTU_id", "pattern"))) sharing_members[[k]] <- as.numeric(sharing_members[[k]])
+# Sharing checks (unchanged from the former continuation page).
+rwv_check(checks2, "sharing sample order is the configured seven-sample order", lvl, sharing_samples$sample_id)
+rwv_check(checks2, "sharing member register has every catalogue member once", nrow(catalogue), nrow(sharing_members))
+rwv_check(checks2, "sharing register vOTU IDs are unique", 0L, anyDuplicated(sharing_members$vOTU_id))
+rwv_check(checks2, "sharing patterns exclude only the all-zero combination", TRUE,
+          all(sharing_patterns$pattern != "0000000") && all(grepl("^[01]{7}$", sharing_patterns$pattern)))
+rwv_check(checks2, "sharing union plus zero-qualified members equals the catalogue", nrow(catalogue),
+          sum(sharing_patterns$n_vOTUs) + sum(sharing_members$n_qualifying_samples == 0))
+rwv_check(checks2, "sharing row counts use the member register", TRUE,
+          all(vapply(sharing_patterns$pattern, function(x) sum(sharing_members$pattern == x), integer(1)) == sharing_patterns$n_vOTUs))
+rwv_check(checks2, "sharing sample totals agree with the S1 depth panel", TRUE,
+          all(sharing_samples$qualifying_vOTUs == depth$masked_richness[match(lvl, depth$sample_id)]))
+rwv_check(checks2, "sharing abundance categories sum to 100 percent", rep(100, length(lvl)),
+          sharing_samples$sample_only_catalogue_percent + sharing_samples$shared_catalogue_percent, tol = 1e-10)
+rwv_check(checks2, "every observed combination is drawn (no top-N filter)", 26L, nrow(sharing_patterns),
+          source = "020 exact-pattern table (current dataset)")
+rwv_check(checks2, "no vOTU qualifies in all seven samples", 0, unique(sharing_samples$all_samples_shared_vOTUs))
+pat <- sharing_patterns[order(-sharing_patterns$n_vOTUs, sharing_patterns$pattern), ]
+# a inset: members qualifying in >= 2 samples with a retained high-score host record (not a host census of all 296).
+shared <- sharing_members$vOTU_id[sharing_members$n_qualifying_samples >= 2]
+shh <- hosts[hosts$vOTU_id %in% shared, , drop = FALSE]
+phyla <- vapply(strsplit(shh$host_genus_full, ";", fixed = TRUE), function(z) sub("^p__", "", z[startsWith(z, "p__")]), character(1))
+hp <- table(phyla); hp <- hp[order(-as.integer(hp), names(hp))]
+rwv_check(checks2, "shared members (>= 2 samples) with / without a retained host record", c(296, 18, 278),
+          c(length(shared), nrow(shh), length(shared) - nrow(shh)))
+rwv_check(checks2, "host phyla of the 18 shared members with a record", c(Bacteroidota = 8, Pseudomonadota = 7, Asgardarchaeota = 2, Bacillota = 1),
+          c(hp[["Bacteroidota"]], hp[["Pseudomonadota"]], hp[["Asgardarchaeota"]], hp[["Bacillota"]]))
+# c: one row per vOTU whose saved best host genus was co-detected in at least one sample.
+rwv_check(checks2, "per-sample co-detection rows: 200 iPHoP records x 7 samples", 1400L,
+          sum(codet$endpoint == "iPHoP record (score >= 90)"))
+rwv_check(checks2, "every co-detection row belongs to one of the 200 records", TRUE,
+          all(codet$vOTU_id[codet$endpoint == "iPHoP record (score >= 90)"] %in% hosts$vOTU_id))
+links <- rwv_host_links(hosts, codet, lvl)
+n_saved <- suppressWarnings(as.numeric(hosts$n_codetected_saved))
+rwv_check(checks2, "links equal the records with n_codetected_saved > 0 (020)", sort(hosts$vOTU_id[!is.na(n_saved) & n_saved > 0]), sort(links$vOTU_id))
+rwv_check(checks2, "per-link sample counts equal n_codetected_saved", n_saved[match(links$vOTU_id, hosts$vOTU_id)], links$n_codetected_samples)
+rwv_check(checks2, "links, genera, sample events", c(83, 43, 86), c(nrow(links), length(unique(links$host_genus)), sum(links$n_codetected_samples)))
+rwv_check(checks2, "single-sample and two-sample links", c(80, 3), c(sum(links$n_codetected_samples == 1), sum(links$n_codetected_samples == 2)))
+rwv_check(checks2, "every link has a resolved genus and a score >= 90", TRUE, all(nzchar(links$host_genus) & links$host_genus != "NA" & links$iphop_score >= 90))
+rwv_check_def(checks2, defs, "iphop_records", nrow(hosts), "host_iphop.tsv")
+rwv_check_def(checks2, defs, "iphop_codetected", nrow(links), "host_iphop.tsv; host_codetection_by_sample.tsv")
+vis <- hosts$visibility_status
+host_cls <- c(codetected = nrow(links),
+         visible_no_codetection = sum(vis == "named_genus_detected_in_16s") - nrow(links),
+         not_detected = sum(vis == "named_genus_not_detected_in_16s"), unresolved = sum(vis == "genus_unresolved"))
+rwv_check(checks2, "all 200 records: co-detected / visible only / not detected / unresolved", c(83, 44, 70, 3), unname(host_cls))
+lay <- rwv_host_link_layout(links, lvl, unlist(palettes$sample_codetection))
+rwv_check(checks2, "S2c footer (legend row + 14 mm) keeps >= 4 mm above the page bottom (v40 layout)", TRUE, lay$legend_y + 14 + 4 <= spec2$height_mm, source = "analyses/R/figures.yml")
+rwv_check(checks2, "drawn vOTU circles, sample spokes and genus diamonds", c(83, 86, 43),
+          c(nrow(lay$nodes), nrow(lay$events), nrow(lay$hosts)))
+rwv_check(checks2, "each drawn vOTU is one link (one best genus)", 0L, anyDuplicated(lay$nodes$vOTU_id))
+site_for <- setNames(as.character(samples$site), as.character(samples$sample_id))
+g2 <- rwv_sharing_hosts_grob(pat, sharing_samples, sharing_members, hosts, links, lay, palettes, style, lvl, site_for, H = spec2$height_mm)
+fig2s <- patchwork::wrap_elements(full = g2)
+expected2 <- c(rwv_tag(style, c("A", "B", "C")), lvl, "Only this sample", "Also qualifies elsewhere")   # v50: titles, inset and ledgers not drawn
+# Genus labels: names with a GTDB placeholder hyphen (display adds U+200C, see R/sfig-sharing-hosts.R) are split
+# into two words by PDF text extraction, so they are checked separately below rather than as single tokens.
+disp_g <- rwv_taxon_display(unique(links$host_genus))
+expected2 <- c(expected2, disp_g[!grepl("\u200c", disp_g)])
+res2 <- rwv_figure_export(fig2s, path_target, "sfig2", spec2, style, fonts2, expected2, step)
+knitr::kable(res2$qa[, c("format", "check", "observed", "pass")])
+zw <- disp_g[grepl("\u200c", disp_g)]
+svg_txt <- xml2::xml_text(xml2::xml_find_all(xml2::read_xml(path_target("sfig2.svg")), "//*[local-name()='text']"))
+pdf_w <- pdftools::pdf_data(path_target("sfig2.pdf"))[[1]]$text
+pdf_pairs <- paste0(head(pdf_w, -1), tail(pdf_w, -1))
+rwv_check(checks2, "GTDB placeholder genus labels drawn intact (SVG text node; adjacent PDF words)", c(TRUE, TRUE),
+          c(all(zw %in% svg_txt), all(zw %in% pdf_pairs)), source = paste(gsub("\u200c", "", zw), collapse = ", "))
+rwv_write_tsv(links, path_target("sfig2-links.tsv"))
+```
+
+
+### Task 8: Record plot values, captions and checks
+
+```{r}
+#| label: values-legend
+tags <- c(p_len$labels$tag, p_depth$labels$tag, tag_c)
+rwv_check(checks, "plot-values panel letters follow the plot tags (length, depth, subsampling curves)",
+          rwv_tag(style, c("A", "B", "C")), tags, source = "plot objects")
+# Internal panel IDs A-C (display letters come from rwv_tag(); the check above ties them together).
+vals <- rbind(
+  data.frame(panel = "A", item = paste("class", cls), value = as.numeric(lab_n$med), unit = "median length (kb)", n = n_cls),
+  data.frame(panel = "B", item = depth$sample_id, value = depth$masked_richness, unit = "masked richness (vOTUs)", n = depth$mapped_viral_reads),
+  data.frame(panel = "C", item = paste(curves$layer, curves$sample_id), value = curves$expected_features,
+             unit = "expected features observed at n subsampled reads (n in column n)", n = curves$depth_reads)
+)
+rwv_check(checks, "S1 plot-values cover panels a-c", c("A", "B", "C"), unique(vals$panel))
+rwv_write_tsv(vals, path_target("sfig1-plot-values.tsv"))
+# Figure-expression revision 2026-10-07 (Codex 03/04): short submission caption; detail in notes_en.
+legend_en <- paste0(
+  "In b and c, colours mark sites as in Fig. 1. ",
+  "(a) Representative sequence length of all 3,060 vOTUs by CheckV class (boxes, median and interquartile range; points, beyond 1.5 × IQR). ",
+  "Undetermined is the CheckV label Not-determined. Length and completeness class do not certify read quality. ",
+  sprintf("(b) Breadth-masked viral richness against mapped viral reads (Spearman ρ = %s, n = 7; richness, not Shannon diversity); ", rwv_fmt_num(rho, 3)),
+  "both come from the same masked mapping table, so part of the association is definitional. ",
+  "(c) Read-subsampling curves within the retained count tables: the expected number of features observed when n reads are drawn at random from a sample's own reads, interpolated up to its observed total and not extrapolated; x axes give the number of reads subsampled. ",
+  "Virome curves are shown for all mapped counts and for the breadth-masked counts used in Fig. 2a; the 75% breadth mask was fixed at full depth and is not re-evaluated on subsampling, so a flat masked curve does not show that viral communities were sampled completely. ",
+  "Amplicon curves describe the denoised and filtered ASV tables (16S before rarefaction); microeukaryote reads are drawn from all 18S reads and only non-metazoan ASVs counted. Dashed lines mark the common depths of the alpha diversity analyses. ",
+  "Marginal PERMANOVA, dispersion and cross-assay statistics for every distance and assay pair are in Data 1 (sheets S10, S11 and S09). ",
+  sprintf("Details: Supplementary figure notes, %s.", spec$label)
+)
+notes_en <- c(
+  "Panel a: no length threshold beyond the catalogue's own is applied; Undetermined is the CheckV label Not-determined.",
+  "Panel c: expected features use the analytical rarefaction expectation (Hurlbert), so no random draws or seed are involved. Virome counts are rounded as in the alpha analysis. The 16S curves use the 3,093 filtered ASVs before rarefaction (one more than the 3,092 retained after the rarefaction draw). The earlier panel of observed richness as a percentage of Chao1 was withdrawn: its viral values used unmasked counts, and Chao1 is not interpretable for denoised and filtered ASV tables (Deng, Umbach and Neufeld 2024).",
+  "Panel c: common depths, virome 1,648,195 breadth-masked reads; 16S 63,564 reads; 18S 53,257 reads of the full 18S table, drawn before Metazoa are removed. The unmasked virome counts have no common depth in this study.",
+  "Data 1 S10/S11: PERMANOVA used 999 unrestricted permutations; betadisper requested 9,999 and, with seven samples, enumerated all 5,039 non-identity orderings (5,040 with the observed one), so 0.0002 (1/5,040) is its smallest attainable p. Data 1 S09: Mantel r uses Spearman correlation and 999 permutations; the Procrustes correlation is full-rank (six axes for seven samples), so only its permutation p is informative; the RV coefficient is descriptive, with no permutation test in this study."
+)
+rwv_write_legend(path_target("sfig1-legend.md"), spec$label, "Catalogue quality and detection diagnostics", legend_en,
+  abbreviations = c("16S, 16S rRNA gene amplicons (prokaryotes)", "18S, 18S rRNA gene amplicons (microeukaryotes)",
+                    "c/d, recorded sample labels: d, wastewater collected from treatment tanks; c, reclaimed water (from the sample descriptions; not verified hydraulic pairs or a before/after treatment)",
+                    "IQR, interquartile range", "PERMANOVA, permutational multivariate analysis of variance",
+                    "RV, RV coefficient of matrix correlation", "vOTU, viral operational taxonomic unit"), notes = notes_en,
+  can_read = "S1 shows lengths by five quality categories, richness versus mapped reads (rho = 0.857, n = 7; partly definitional), and expected detections during within-table read subsampling, separately for unmasked and fixed-mask viral counts.",
+  cannot_infer = "Flat curves do not establish complete environmental sampling: the breadth mask is determined at full depth and is not reassessed during subsampling; amplicon curves depend on denoising/filtering. Do not extrapolate beyond observed depth or call rho a Shannon correlation. PERMANOVA, dispersion and cross-assay statistics are retained in Data 1 S09-S11.",
+  sources = c("analyses/data/020-community-analysis/checkv_catalogue.tsv",
+              "analyses/data/020-community-analysis/depth.tsv, depth_check.tsv (computed in 020 from the masked mapping table; 014 checks depth_check against dev/390 virome_depth_check.tsv: numerically consistent under the registered comparison tolerance in step 014)",
+              "analyses/data/020-community-analysis/rarefaction_curves.tsv (computed in 020 from the 012 count tables: analytical rarefaction expectation within each sample's observed total; new diagnostic 2026-10-11)",
+              "Data 1 S09, S10, S11 (crossomics.tsv, permanova.tsv, betadisper.tsv computed in 020; formerly panels d and e)"))
+check_table <- rwv_checks_finish(checks, path_target("sfig1-checks.tsv"))
+knitr::kable(check_table[, c("check", "expected", "observed", "pass")])
+
+# ---- Supplementary Figure 2: plot values, legend and checks (2026-10-17)
+vals2 <- rbind(
+  data.frame(panel = "A", item = pat$pattern, value = pat$n_vOTUs, unit = "vOTUs in one exact seven-sample qualification pattern", n = pat$n_qualifying_samples),
+  data.frame(panel = "A", item = paste("shared members, host phylum", names(hp)), value = as.numeric(hp),
+             unit = "shared members (>= 2 samples) with a retained iPHoP record, by host phylum", n = length(shared)),
+  data.frame(panel = "B", item = paste(sharing_samples$sample_id, "sample-only"), value = sharing_samples$sample_only_catalogue_percent,
+             unit = "percent of sample whole masked catalogue depth", n = sharing_samples$sample_only_vOTUs),
+  data.frame(panel = "B", item = paste(sharing_samples$sample_id, "shared"), value = sharing_samples$shared_catalogue_percent,
+             unit = "percent of sample whole masked catalogue depth", n = sharing_samples$shared_vOTUs),
+  data.frame(panel = "C", item = paste(links$vOTU_id, links$host_genus, links$codetected_samples), value = links$n_codetected_samples,
+             unit = "samples with co-detection of the vOTU and its best predicted host genus (n = iPHoP score)", n = links$iphop_score))
+rwv_check(checks2, "S2 plot-values cover panels a-c", c("A", "B", "C"), unique(vals2$panel))
+rwv_write_tsv(vals2, path_target("sfig2-plot-values.tsv"))
+fmt <- rwv_fmt_int
+legend2 <- paste0(
+  "Membership overlap and candidate host co-detection describe different subsets of the catalogue. ",
+  sprintf("(a) The %d observed exact qualification patterns of all %s vOTUs. ", nrow(pat), fmt(nrow(sharing_members))),
+  "Upper bars count vOTUs in each exclusive intersection; coloured dots and connectors identify the qualifying samples, and left bars give each sample's qualifying set size. ",
+  "A single-dot intersection denotes sample-only qualification, not biological endemism. ",
+  "(b) Contributions of sample-only members (dark) and members qualifying in at least one other sample (pale) to each sample's full breadth-masked catalogue abundance; printed percentages are the sample-only share and every complete bar totals 100%. ",
+  "Bars weight members by masked trimmed mean depth, not by member count. ",
+  sprintf("(c) The %d best-host records with at least one same-sample co-detection, linked to %d predicted host genera and pooled across samples. ", nrow(links), length(unique(links$host_genus))),
+  "Diamonds denote host genera and circles vOTUs; seven sample-specific shades in the site colour families mark the co-detection samples. ",
+  sprintf("%d records were co-detected in one sample and %d in two (split-fill circles with two spokes), giving %d sample-specific observations. ",
+          sum(links$n_codetected_samples == 1), sum(links$n_codetected_samples == 2), sum(links$n_codetected_samples)),
+  "Sizes and positions encode neither abundance nor confidence; each vOTU keeps one best predicted genus, so the genus-centred groups follow this display rule and are not inferred ecological modules. ",
+  sprintf("Of the %d high-score records, %d with host-genus detection but no co-detection, %d whose genus was not detected in 16S and %d with an unresolved genus are not drawn as links and remain in Data 1. ",
+          nrow(hosts), host_cls[["visible_no_codetection"]], host_cls[["not_detected"]], host_cls[["unresolved"]]),
+  sprintf("The %d records in c are a different selection from the %d shared members in a. ", nrow(links), length(shared)),
+  "iPHoP prediction and same-sample detection do not confirm infection, and neither qualification nor sharing demonstrates biological absence, hydraulic transport or removal. ",
+  sprintf("Details: Supplementary figure notes, %s.", spec2$label))
+notes2 <- c(
+  "Panels a/b: bit order follows the configured sample order bc1, bd1, bc2, gc1, gd1, oc1, od1. A member qualifies when covered_fraction is at least the registered 0.75 threshold and masked trimmed mean depth is positive. All catalogue members remain in the sharing register; only observed nonempty patterns are drawn, and no vOTU qualifies in all seven samples. Sharing with any other of the seven samples is different from the designated same-site comparisons in Supplementary Note 5. Each sample's abundance denominator is its full masked catalogue depth sum; differences in sequencing depth can affect breadth qualification, so normalized percentages do not establish equal detection opportunity or concentration.",
+  sprintf("Panel a totals: %s vOTUs in %d observed patterns; none qualifies in all seven samples.", fmt(nrow(sharing_members)), nrow(pat)),
+  sprintf("Shared members (a): %d vOTUs qualify in at least two of the seven samples; %d of them have a retained high-score (iPHoP \u2265 90) best-host record, with predicted host phyla %s, and %d have none. This is not a host census of all %d.",
+          length(shared), nrow(shh), paste(sprintf("%s %d", names(hp), as.integer(hp)), collapse = ", "), length(shared) - nrow(shh), length(shared)),
+  sprintf("Panel c totals: %d of the %d high-score best-host records are drawn, linked to %d genera, giving %d sample-specific co-detections.",
+          nrow(links), nrow(hosts), length(unique(links$host_genus)), sum(links$n_codetected_samples)),
+  sprintf("Panel c: co-detection requires the vOTU to qualify in a sample (breadth ≥ 0.75 and positive masked depth) and its predicted host genus to have a positive count in the retained 16S table of that sample; iPHoP score ≥ 90. Six of the %d vOTUs qualify in at least two samples, but only %d have their host genus detected in more than one of those samples, so a single-sample link does not mean a single-sample virus. Exact vOTU IDs, scores and co-detection samples are listed in the Supplementary Figure 2 link table, FigureS2-links.tsv (Data 1 S12 and S49 hold all 200 records and every sample cell).",
+          nrow(links), sum(links$n_codetected_samples == 2)),
+  "Panel c and Figure 2d use the same evidence with different selections: Figure 2d shows the top ten predicted genera by catalogue vOTU count (ties kept), whereas c shows every co-detected record.")
+rwv_check(checks2, "vOTUs in the 83 links that qualify in >= 2 samples (legend note)", 6L,
+          sum(sharing_members$n_qualifying_samples[match(links$vOTU_id, sharing_members$vOTU_id)] >= 2))
+rwv_write_legend(path_target("sfig2-legend.md"), spec2$label, "Seven-sample membership sharing, abundance contributions and candidate hosts", legend2,
+  abbreviations = c("16S, 16S rRNA gene amplicons (prokaryotes)", "iPHoP, integrated phage host prediction", "vOTU, viral operational taxonomic unit"),
+  notes = notes2,
+  can_read = "S2 shows 26 nonempty qualified detection patterns, each sample's qualified set, and abundance contributions from sample-only/shared members under the sample-specific full masked-catalogue denominator. Of 200 high-score host records, 83 have same-sample co-detection at least once (43 genera, 86 sample events: 80 in one sample and three in two).",
+  cannot_infer = "Sample-only qualification is not biological uniqueness; sharing does not establish hydraulic transfer or removal. The 83 links are not infection evidence or an inferred correlation network; star groupings display one best genus per vOTU. The 18/296 inset is not the host composition of all 296 shared members; the 83-link and 296-member sets differ.",
+  sources = c("analyses/data/020-community-analysis/votu_sharing_patterns.tsv, votu_sharing_samples.tsv, votu_sharing_members.tsv (exact-pattern counts and sample-depth contributions from the saved 012 virome TSE; Data 1 S56-S58)",
+              "analyses/data/020-community-analysis/host_iphop.tsv (200 retained iPHoP records; Data 1 S12) and host_codetection_by_sample.tsv (per-sample co-detection; Data 1 S49)",
+              "Layout: reviewed candidate outputs/pooled-host-network-2026-10-17 (draw-network.R, draw-split-candidate.R), implemented in R/sfig-sharing-hosts.R"))
+check_table2 <- rwv_checks_finish(checks2, path_target("sfig2-checks.tsv"))
+knitr::kable(check_table2[, c("check", "expected", "observed", "pass")])
+rwv_write_session_info(path_target("session-info.txt"),
+                       c(step = params$name, run_id = step$run_id, mode = step$mode, quarto = rwv_quarto_version()))
+```
+
+```{r}
+#| label: step-record
+outputs <- rwv_step_finish(step, path_target)
+knitr::kable(transform(outputs, sha256 = substr(outputs$sha256, 1, 16)), caption = "Outputs recorded in step-record.json")
+rwv_report_complete(step, outputs)
+```
+
+## Published figure preview
+
+```{r}
+#| label: preview
+#| out-width: "100%"
+knitr::include_graphics(rwv_public_preview(step, "sfig1.png", "FigureS1.png"))
+```
+
+```{r}
+#| label: preview-sfig2
+#| out-width: "100%"
+knitr::include_graphics(rwv_public_preview(step, "sfig2.png", "FigureS2.png"))
+```
+
+```{r}
+#| label: list-files-target
+rwv_report_files(step, outputs)
+```
+
+```{r}
+#| label: report-summary
+#| results: asis
+cat(rwv_report_summary(step))
+```

@@ -1,8 +1,0 @@
-.sample_id	sample_id	id_virome	id_16s	id_18s	desc	water_condition	location	id_virome_hpc	id_16s_hpc	id_18s_hpc	clean_reads_virome	raw_reads_virome
-bc1	bc1	TC	TC_16S	TC_18S	Beijing Tsinghua clean water	clean	Beijing	bc1v	bc1	bc1	30229342	30447942
-bc2	bc2	G	G_16S	G_18S	Beijing Gaobeidian clean water	clean	Beijing	bc2v	bc2	bc2	29015900	29171736
-bd1	bd1	TH	TH_16S	TH_18S	Beijing Tsinghua dirty water	dirty	Beijing	bd1v	bd1	bd1	32130344	32331264
-gc1	gc1	G_V	G_B	G_F	Garching clean water	clean	Garching	gc1v	gc1	gc1	24667388	25644694
-gd1	gd1	GA_V	GA_B	GA_F	Garching dirty water	dirty	Garching	gd1v	gd1	gd1	21361738	21536196
-oc1	oc1	W2_V	W2_B	W2_F	Oberschleissheim clean water	clean	Oberschleissheim	oc1v	oc1	oc1	26252368	26599790
-od1	od1	W1_V	W1_B	W1_F	Oberschleissheim dirty water	dirty	Oberschleissheim	od1v	od1	od1	21368992	21573046

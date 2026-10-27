@@ -1,0 +1,5 @@
+# Community calculations use the processed inputs constructed by 012.
+# Authors: Jinlong Ru; Cunli Pan.
+active: current
+versions:
+  current: rebuilt

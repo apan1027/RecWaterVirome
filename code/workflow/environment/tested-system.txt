@@ -1,5 +1,0 @@
-R: R version 4.5.2 (2025-10-31)
-platform: aarch64-apple-darwin20
-os: Darwin
-os_release: 24.5.0
-recorded: 2026-10-19T23:03:20+0200

@@ -1,6 +1,0 @@
-object	rows	columns	assays	tree	note
-tse_virome	3060	7	count, count_masked, trimmed_mean, trimmed_mean_masked, trimmed_tpm, trimmed_pmcr, tpm, tpm_masked, covered_fraction, clr	none	SQLite snapshot; mask covered_fraction >= 0.75; trimmed_tpm and trimmed_pmcr; clr on trimmed_tpm
-tse_16s	3092	7	counts, rarefied, relabundance, clr	pruned ASV tree	filtered, rarefied (drops rows that become all-zero), relabundance and clr from counts
-tse_16s_filtered	3093	7	counts	pruned ASV tree	filtered counts before rarefaction (the 16S genus set used for CRISPR visibility)
-tse_18s_all	892	7	counts, rarefied, relabundance, clr	pruned ASV tree	as 16S, PR2 taxonomy
-tse_18s_microeuk	846	7	counts, rarefied, relabundance, clr	pruned ASV tree	Metazoa removed after rarefaction; relabundance and clr rebuilt from counts

@@ -1,8 +1,0 @@
-{
-  "package": "logistf",
-  "version": "1.26.1",
-  "pl": false,
-  "maxit": 100,
-  "full_universe": 323,
-  "scope": "Uniform sensitivity for separated nuisance strata. Not applied to zero-carrier bootstrap replicates; cannot manufacture lineage replication."
-}

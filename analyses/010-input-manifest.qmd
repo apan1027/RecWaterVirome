@@ -1,0 +1,159 @@
+---
+title: "010-input-manifest"
+subtitle: "Checksums for registered design documents, configuration and staged scientific inputs"
+author:
+  - name: Jinlong Ru
+    orcid: "0000-0002-6757-6018"
+  - name: Cunli Pan
+    orcid: "0000-0002-2595-7533"
+date: today
+params:
+  name: "010-input-manifest"
+---
+
+**Updated: `r format(Sys.time(), '%Y-%m-%d %H:%M:%S %Z %z', tz = 'Europe/Berlin')`.**
+
+```{r}
+#| label: params
+#| eval: !expr interactive()
+#| include: false
+params <- list(name = "010-input-manifest")
+```
+
+```{r}
+#| label: setup
+#| include: false
+#| message: false
+#| warning: false
+#| cache: false
+wd <- "analyses"
+if (basename(getwd()) != wd) {
+    setwd(here::here(wd))
+}
+here::i_am(paste0(params$name, ".qmd"), uuid = "c1a09400-fd79-4bb7-b09a-1af291017808")
+qproj::proj_create_dir_target(params$name, clean = FALSE)
+
+# convenience helpers
+path_target <- qproj::proj_path_target(params$name)
+path_source <- qproj::proj_path_source(params$name)
+path_raw <- path_source("00-raw")
+path_resource <- here::here(path_raw, "d00-resource")
+path_data <- here::here(path_raw, paste0("d", params$name))
+dir.create(path_raw, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_data, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_resource, recursive = TRUE, showWarnings = FALSE)
+```
+
+```{r}
+#| label: packages
+#| message: false
+#| warning: false
+#| cache: false
+# qproj template chunk, trimmed: this step needs only the project helpers in
+# R/, so the template's conflicted/tidyverse/data.table stack is not loaded.
+suppressPackageStartupMessages({
+  devtools::load_all()
+})
+```
+
+```{r}
+#| label: step-guard
+#| cache: false
+# Checks params$name, path_target() and here() against analyses/R/steps.yml
+# and opens a staging folder for this run's outputs.
+step <- rwv_step_begin(params$name, path_target)
+# New outputs are staged; the previous result stays until rwv_step_finish()
+# has checked and published the new one.
+path_target <- step$path_target
+```
+
+```{r}
+#| label: report-presentation
+#| include: false
+rwv_report_setup(step)
+```
+
+
+
+## Tasks
+
+This step verifies registered design/configuration files against analyses/data/source-checksums.tsv and staged scientific inputs against analyses/data/inputs.tsv. Inputs were copied or extracted read-only from the source project with source paths and SHA256 provenance. Missing, changed or unregistered raw files stop the step. The source project is not accessed at runtime.
+
+### Task 1: Verify the frozen-file register
+
+The frozen-file register supplies the expected SHA256 of each registered file. Every hash is recomputed and compared. The register itself is the trust anchor; its own hash is recorded rather than compared with itself.
+
+```{r}
+#| label: verify-frozen
+register_file <- "analyses/data/source-checksums.tsv"
+register <- rwv_register_read(step, register_file)
+verified <- rwv_register_verify(step, register)
+register_path <- file.path(step$root, register_file)
+manifest <- rbind(
+  data.frame(
+    path = register_file, role = "register", bytes = file.size(register_path),
+    sha256 = rwv_sha256(register_path), expected_sha256 = NA_character_,
+    status = "root of trust (no expected hash)", origin = "project-authored", source_sha256 = ""
+  ),
+  verified
+)
+rwv_write_tsv(manifest, path_target("input-manifest.tsv"))
+knitr::kable(
+  transform(manifest[, c("path", "role", "bytes", "status")], sha256 = substr(manifest$sha256, 1, 16)),
+  caption = "input-manifest.tsv (sha256 shortened here; full values are in the file)"
+)
+```
+
+### Task 2: Verify staged scientific inputs
+
+The raw-input register is itself hash-verified in Task 1. This task recomputes each staged input hash; downstream steps access these verified files through rwv_raw_input().
+
+```{r}
+#| label: verify-raw
+raw_register <- rwv_raw_register_read(step, "analyses/data/inputs.tsv")
+raw_manifest <- rwv_raw_register_verify(step, raw_register, path_raw)
+rwv_write_tsv(raw_manifest, path_target("raw-input-manifest.tsv"))
+science <- aggregate(list(files = raw_manifest$path), list(consumer_step = raw_manifest$consumer_step), length)
+science$bytes <- tapply(raw_manifest$bytes, raw_manifest$consumer_step, sum)[science$consumer_step]
+science$status <- "staged and hash-verified; reconstruction scope is defined by the consumer step"
+science <- rbind(
+  data.frame(consumer_step = "all", files = nrow(raw_manifest), bytes = sum(raw_manifest$bytes),
+             status = "migrated: every file in analyses/data/00-raw/ is registered and matches"),
+  science
+)
+rwv_write_tsv(science, path_target("science-input-status.tsv"))
+knitr::kable(science, caption = "science-input-status.tsv")
+knitr::kable(transform(raw_manifest[, c("path", "bytes", "status", "origin_path")],
+                       sha256 = substr(raw_manifest$sha256, 1, 12)),
+             caption = "raw-input-manifest.tsv (sha256 shortened)")
+```
+
+Staged inputs include a viral SQLite snapshot, amplicon counts/taxonomy/trees, archived analysis tables and saved figure materials. Steps 012 and 020 rebuild community objects and calculations; the function, VF and global modules read archived results. This is not a workflow from raw sequencing reads.
+
+### Task 3: Record the run
+
+```{r}
+#| label: session-record
+rwv_write_session_info(
+  path_target("session-info.txt"),
+  c(step = params$name, run_id = step$run_id, mode = step$mode, quarto = rwv_quarto_version())
+)
+```
+
+```{r}
+#| label: step-record
+outputs <- rwv_step_finish(step, path_target)
+knitr::kable(transform(outputs, sha256 = substr(outputs$sha256, 1, 16)), caption = "Outputs recorded in step-record.json")
+rwv_report_complete(step, outputs)
+```
+
+```{r}
+#| label: list-files-target
+rwv_report_files(step, outputs)
+```
+
+```{r}
+#| label: report-summary
+#| results: asis
+cat(rwv_report_summary(step))
+```

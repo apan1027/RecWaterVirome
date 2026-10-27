@@ -1,9 +1,0 @@
-consumer_step	files	bytes	status
-all	124	54461123	migrated: every file in analyses/data/00-raw/ is registered and matches
-012-tse-construction	12	29719037	staged and hash-verified; reconstruction scope is defined by the consumer step
-014-legacy-comparison	18	6053267	staged and hash-verified; reconstruction scope is defined by the consumer step
-020-community-analysis	21	1134047	staged and hash-verified; reconstruction scope is defined by the consumer step
-030-function-inputs	19	1606730	staged and hash-verified; reconstruction scope is defined by the consumer step
-040-vf-inputs	14	2954180	staged and hash-verified; reconstruction scope is defined by the consumer step
-050-global-inputs	29	5432429	staged and hash-verified; reconstruction scope is defined by the consumer step
-220-sfig2-function-context	11	7561433	staged and hash-verified; reconstruction scope is defined by the consumer step

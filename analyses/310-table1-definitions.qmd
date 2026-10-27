@@ -1,0 +1,215 @@
+---
+title: "310-table1-definitions"
+subtitle: "Study units, definitions and interpretation limits from analyses/R/definitions.tsv"
+author:
+  - name: Jinlong Ru
+    orcid: "0000-0002-6757-6018"
+  - name: Cunli Pan
+    orcid: "0000-0002-2595-7533"
+date: today
+params:
+  name: "310-table1-definitions"
+---
+
+**Updated: `r format(Sys.time(), '%Y-%m-%d %H:%M:%S %Z %z', tz = 'Europe/Berlin')`.**
+
+```{r}
+#| label: params
+#| eval: !expr interactive()
+#| include: false
+params <- list(name = "310-table1-definitions")
+```
+
+```{r}
+#| label: setup
+#| include: false
+#| message: false
+#| warning: false
+#| cache: false
+wd <- "analyses"
+if (basename(getwd()) != wd) {
+    setwd(here::here(wd))
+}
+here::i_am(paste0(params$name, ".qmd"), uuid = "103139b1-eac5-422f-a533-074480103303")
+qproj::proj_create_dir_target(params$name, clean = FALSE)
+
+# convenience helpers
+path_target <- qproj::proj_path_target(params$name)
+path_source <- qproj::proj_path_source(params$name)
+path_raw <- path_source("00-raw")
+path_resource <- here::here(path_raw, "d00-resource")
+path_data <- here::here(path_raw, paste0("d", params$name))
+dir.create(path_raw, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_data, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_resource, recursive = TRUE, showWarnings = FALSE)
+```
+
+```{r}
+#| label: packages
+#| message: false
+#| warning: false
+#| cache: false
+# qproj template chunk, trimmed: this step uses base R plus the project
+# helpers in R/ (no tidyverse/data.table stack).
+suppressPackageStartupMessages({
+  devtools::load_all()
+})
+```
+
+```{r}
+#| label: step-guard
+#| cache: false
+# Checks params$name, path_target() and here() against analyses/R/steps.yml
+# and opens a staging folder for this run's outputs.
+step <- rwv_step_begin(params$name, path_target)
+# New outputs are staged; the previous result stays until rwv_step_finish()
+# has checked and published the new one.
+path_target <- step$path_target
+```
+
+```{r}
+#| label: report-presentation
+#| include: false
+rwv_report_setup(step)
+```
+
+
+
+## Tasks
+
+Table 1 draws a reader-facing 12-row summary from analyses/R/definitions.tsv: analysis level, units/rules, counts/denominators, figure locations and interpretation limits. The complete 49-row register is delivered as table1-full-definitions.tsv. Configuration is the single numerical source; no new quantities or backward figure dependencies are introduced.
+
+### Task 1: Inputs
+
+```{r}
+#| label: inputs
+manifest <- rwv_read_tsv(rwv_step_input(step, path_source, "010-input-manifest", "input-manifest.tsv"))
+defs <- rwv_definitions_read(rwv_project_input(step, "analyses/R/definitions.tsv", manifest))
+checks <- rwv_checks_new()
+```
+
+### Task 2: Assemble Table 1
+
+```{r}
+#| label: table1
+rwv_check(checks, "every definition row has a study unit and a definition", c(TRUE, TRUE),
+          c(all(nzchar(defs$study_unit)), all(nzchar(defs$definition))))
+rwv_check(checks, "figure column filled for every row", TRUE, all(nzchar(defs$figure)))
+# The complete ledger (every registered definition, nine columns) is kept as
+# table1-full-definitions.tsv: it is the reference the figure steps check
+# against, not a table for readers.
+full <- data.frame(
+  `Figure` = defs$figure,
+  `Study unit` = defs$study_unit,
+  `Object or tool` = defs$object,
+  `Value` = ifelse(nzchar(defs$value), defs$value, "-"),
+  `Unit` = defs$unit,
+  `Denominator` = ifelse(nzchar(defs$denominator), defs$denominator, "-"),
+  `What it counts` = defs$definition,
+  `How it must not be used` = ifelse(nzchar(defs$limitation), defs$limitation, "-"),
+  `Source` = defs$source,
+  check.names = FALSE)
+rwv_check(checks, "full ledger rows equal definition rows", nrow(defs), nrow(full))
+rwv_write_tsv(full, path_target("table1-full-definitions.tsv"))
+
+# Main Table 1: the core objects a reader needs, one row per analysis layer.
+# Every number is read from the registered definitions; the wording of the
+# rules and limits follows the definition and limitation columns.
+n <- function(id) rwv_fmt_int(rwv_def(defs, id))
+pair <- function(id) strsplit(as.character(rwv_def(defs, id)), "/")[[1]]
+rows <- list(
+  c("Samples", "Seven water samples from three sites, each profiled once by viral metagenomics and 16S and 18S rRNA gene amplicons",
+    sprintf("%s samples; 21 assay profiles", n("samples")), "Figs. 1, 2; Supplementary Figs. 1, 2",
+    "Profiles are not independent samples; d, wastewater collected from treatment tanks and c, reclaimed water (from the sample descriptions), not verified hydraulic pairs; bc2 has no designated d counterpart"),
+  c("Viral catalogue", sprintf("Representative vOTU sequences with CheckV quality classes (Complete / High / Medium / Low / Undetermined: %s / %s / %s / %s / %s)",
+                               n("checkv_complete"), n("checkv_high"), n("checkv_medium"), n("checkv_low"), n("checkv_undetermined")),
+    sprintf("%s vOTUs", n("catalogue_votu")), "Figs. 1, 5a; Supplementary Figs. 1a, 2a",
+    "Not complete genomes; quality classes estimate genome recovery, not sequencing-read quality"),
+  c("Amplicon alpha diversity", sprintf("16S table rarefied to %s reads; full 18S table rarefied to %s reads before Metazoa were removed",
+                                        rwv_fmt_int(as.numeric(pair("amplicon_rarefaction")[1])), rwv_fmt_int(as.numeric(pair("amplicon_rarefaction")[2]))),
+    "per sample", "Fig. 2a; Supplementary Fig. 1", "Retained microeukaryote totals need not be equal among samples"),
+  c("Candidate hosts (iPHoP)", "High-confidence iPHoP records (score >= 90), classified by whether the named genus is detected in the 16S dataset",
+    sprintf("%s records: %s detected (%s co-detected in a sample), %s not detected, %s unresolved", n("iphop_records"), n("iphop_visible"), n("iphop_codetected"), n("iphop_not_detected"), n("iphop_unresolved")),
+    "Fig. 2d; Supplementary Fig. 2c; Supplementary Note 1, Table C", "Dataset-level genus detection alone does not imply same-sample co-detection; neither establishes infection"),
+  c("Strict CRISPR edges", "Reference-database CRISPR evidence within high-confidence iPHoP predictions: overall and CRISPR scores >= 90 and an exact same-genus raw spacer hit",
+    sprintf("%s (vOTU, genus) edges; %s co-detected in a sample", n("crispr_edges"), n("crispr_codetected")), "Fig. 2d",
+    "Part of the iPHoP evidence, not an independent validation; the genus match is exact, not zero-mismatch"),
+  c("AMG candidates", "Auxiliary metabolic gene candidates; heatmap values are summed TPM of the carrier vOTUs",
+    sprintf("%s KOs; %s carrier vOTUs (all database IDs), %s with >= 1 KO", n("amg_ko"), n("amg_carriers_dbid"), n("amg_carriers_ko")), "Fig. 3; Supplementary Note 1, Table C",
+    "Two carrier definitions; values are not expression or metabolic flux"),
+  c("Anti-defense candidates", "DefenseFinder anti-defense systems and filtered dbAPIS hits",
+    sprintf("%s and %s vOTUs; %s in both; %s in either", n("df_antidefense"), n("dbapis_filtered"), n("antidefense_overlap"), n("antidefense_union")),
+    "Figs. 3, 5a", "The tool sets are not additive; the union is at least one candidate, not concordant detection"),
+  c("NARP definitions", "DefenseFinder NARP1 and NARP2 calls; KO co-occurrence of K03462 and K13522; dbAPIS NARP-targeting hits",
+    sprintf("%s / %s / %s / %s vOTUs", n("narp1_df"), n("narp2_df"), n("narp_ko_cooccurrence"), n("dbapis_narp_targeting")), "Fig. 3; Supplementary Fig. 3a",
+    "Operational definitions that are not interchangeable"),
+  c("VF hits on flagged records", "Virulence-factor hits on CheckV provirus-flagged records, by localization (host region / crossing / viral region)",
+    sprintf("%s hits on %s of %s flagged vOTUs (%s / %s / %s)", n("vf_hits"), n("vf_hit_records"), n("vf_flagged_records"),
+            n("vf_hits_host"), n("vf_hits_crossing"), n("vf_hits_viral")), "Supplementary Fig. 4a, b", "Not 18 contigs; a crossing hit is counted once"),
+  c("Lifestyle-VF models", sprintf("Four negative-binomial models: all hits with contig-length offset, or hits retained after regional exclusion with retained-length offset; lifestyle labels with or without the CheckV branch (temperate %s / %s)",
+                                   pair("vf_lifestyle_rule")[1], pair("vf_lifestyle_rule")[2]),
+    sprintf("%s vOTUs; %s or %s hits", n("vf_model_n"), n("vf_model_hits_all"), n("vf_model_hits_viral")), "Fig. 4c; Supplementary Note 3",
+    "Regional exclusion changes both the counted hits and the offset; four dependent estimates; labels are annotation-based"),
+  c("Controlled constructs", "Viral windows with defined host flanks, used to calibrate CheckV flagging and trimming",
+    sprintf("%s/%s unflanked flagged; %s/%s flanked unflagged; %s/%s retaining < 95%%", n("construct_noflank"), rwv_fmt_int(512), n("construct_unflagged"),
+            rwv_fmt_int(720), n("construct_below95"), rwv_fmt_int(720)), "Supplementary Note 3",
+    "Distinct endpoints whose percentages must not be combined; constructs are not natural sequences"),
+  c("Global reference", sprintf("Source-labelled Complete Caudoviricetes genomes in %s gene-sharing clusters; %s metabolic Pfam domains and %s non-NARP anti-defense profiles, each modelled against log10(CDS)",
+                                n("global_clusters"), n("global_metab"), n("global_adf")),
+    sprintf("%s genomes", n("global_references")), "Fig. 5b, c; Supplementary Note 4",
+    "Separate from the local catalogue; carriage associations, not functional demand or causation; clusters are not a phylogeny")
+)
+tab <- as.data.frame(do.call(rbind, rows), stringsAsFactors = FALSE)
+# Figure pointers use the manuscript's own form (Fig. 2d, Supplementary Fig. 4a). Numbering of 2026-10-17:
+# Supplementary Fig. 1 quality and detection, 2 sharing and candidate host links, 3 NARP (former 2), 4 VF (former 3);
+# the former Supplementary Fig. 2a (functional-carrier host background) is Supplementary Note 1, Table C.
+rwv_check(checks, "Table 1 figure pointers use the manuscript form and no former S2A pointer remains",
+          c(TRUE, FALSE), c(all(grepl("^(Figs?\\.|Supplementary)", tab[[4]])), any(grepl("S2A|F[0-9]|S[0-9][A-Z]", tab[[4]]))))
+names(tab) <- c("Level", "Object and rule", "n (denominator)", "Figures", "Key limit")
+rwv_check(checks, "the flanked-construct denominators quoted in Table 1", c(512, 720, 720),
+          as.numeric(defs$denominator[match(c("construct_noflank", "construct_unflagged", "construct_below95"), defs$id)]))
+rwv_check(checks, "main Table 1 is compact (rows, columns)", c(12, 5), dim(tab))
+rwv_write_tsv(tab, path_target("table1.tsv"))
+md <- c("# Table 1. Core study units and definitions", "",
+        "Each row is one analysis layer; numbers are counts with their denominator. All registered definitions, with sources, are in the full definition table (`Table1_full_definitions.tsv`).", "",
+        paste0("| ", paste(names(tab), collapse = " | "), " |"),
+        paste0("|", paste(rep("---", ncol(tab)), collapse = "|"), "|"),
+        apply(tab, 1, function(r) paste0("| ", paste(gsub("\\|", "/", r), collapse = " | "), " |")))
+writeLines(md, path_target("table1.md"), useBytes = TRUE)
+knitr::kable(tab)
+```
+
+### Task 3: Record checks and the run
+
+```{r}
+#| label: checks
+check_table <- rwv_checks_finish(checks, path_target("table1-checks.tsv"))
+knitr::kable(check_table[, c("check", "expected", "observed", "pass")])
+rwv_write_session_info(path_target("session-info.txt"),
+                       c(step = params$name, run_id = step$run_id, mode = step$mode, quarto = rwv_quarto_version()))
+```
+
+```{r}
+#| label: step-record
+outputs <- rwv_step_finish(step, path_target)
+knitr::kable(transform(outputs, sha256 = substr(outputs$sha256, 1, 16)), caption = "Outputs recorded in step-record.json")
+rwv_report_complete(step, outputs)
+```
+
+## Table 1
+
+```{r}
+#| label: main-table-preview
+knitr::kable(tab)
+```
+
+```{r}
+#| label: list-files-target
+rwv_report_files(step, outputs)
+```
+
+```{r}
+#| label: report-summary
+#| results: asis
+cat(rwv_report_summary(step))
+```

@@ -1,5 +1,0 @@
-item	status	consequence
-NARP2-locus coverage profile values	done in the source project; only the summary table inside docs/votu0052-coverage-spike.md is local	values parsed from the document tables and shown with file and line; not re-derived
-HE-targeting per-genome table	done; only the summary table inside docs/votu0052-he-targeting.md is local	values parsed from the document tables and shown with file and line; not re-derived
-ORF102 hmmscan domain table and structure files	done; boundaries only in docs/votu0052-orf102-characterization.md (dev/160-orf102 holds scripts only)	values parsed from the document tables and shown with file and line; not re-derived
-Global NARP module call table	done; counts only in manuscript SI Note 7 text	values parsed from the document tables and shown with file and line; not re-derived

@@ -1,5 +1,0 @@
-mode	definition	valid_replicates	replicates	median	note
-cluster_bootstrap	all38	76	200	2.5297764424117544	a replicate counts only if every fixed feature is estimable in both groups; median is the median over valid replicates of (METAB median - ADF median), in log-odds per 10-fold CDS; the percentile range is not a confidence interval
-representative	all38	10	50	2.7152686418496614	a replicate counts only if every fixed feature is estimable in both groups; median is the median over valid replicates of (METAB median - ADF median), in log-odds per 10-fold CDS; the percentile range is not a confidence interval
-cluster_bootstrap	named25	76	200	1.2469844173508662	a replicate counts only if every fixed feature is estimable in both groups; median is the median over valid replicates of (METAB median - ADF median), in log-odds per 10-fold CDS; the percentile range is not a confidence interval
-representative	named25	10	50	1.261975909660313	a replicate counts only if every fixed feature is estimable in both groups; median is the median over valid replicates of (METAB median - ADF median), in log-odds per 10-fold CDS; the percentile range is not a confidence interval

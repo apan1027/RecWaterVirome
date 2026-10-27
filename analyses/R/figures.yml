@@ -1,0 +1,17 @@
+# RecWaterVirome figure pages: output stem and physical size (mm).
+# Authors (display order): Jinlong Ru, Cunli Pan
+#
+# Working sizes from design-v2026.09.27.1 (01 section 3/4); width 180 mm.
+# Heights are working values adjusted for legibility, not journal rules.
+# Hash-registered in analyses/data/source-checksums.tsv.
+version: 1
+figures:
+  fig1:  {step: 110-fig1-design-composition, label: "Figure 1", width_mm: 180, height_mm: 175}
+  fig2:  {step: 120-fig2-community-links,    label: "Figure 2", width_mm: 180, height_mm: 247}  # 215 -> 247 (2026-10-17): compact Mantel strip c, full-width host bubbles d (top 10 + ties)
+  fig3:  {step: 130-fig3-functions,          label: "Figure 3", width_mm: 180, height_mm: 234}  # 230 -> 234 (2026-10-18, v38): adopted version D plus spacing below the nadM note
+  fig4:  {step: 140-fig4-vf-context,         label: "Figure 4", width_mm: 180, height_mm: 232}  # 225 -> 232 (2026-10-18, v38): adopted version D
+  fig5:  {step: 150-fig5-global-reference,   label: "Figure 5", width_mm: 180, height_mm: 226}  # 220 -> 226 (2026-10-18, v38): adopted version D
+  sfig1: {step: 210-sfig1-qc-community,      label: "Supplementary Figure 1", width_mm: 180, height_mm: 175}  # quality and detection diagnostics a-c (2026-10-17: former d/e moved to S2)
+  sfig2: {step: 210-sfig1-qc-community,      label: "Supplementary Figure 2", width_mm: 180, height_mm: 274}  # 254 -> 274 (2026-10-18, v40): 9.2 pt type; host links in six columns
+  sfig3: {step: 220-sfig2-function-context,  label: "Supplementary Figure 3", width_mm: 180, height_mm: 265}  # 245 -> 265 (2026-10-18, v40): layout H drawn in step 220 at 9.2 pt
+  sfig4: {step: 230-sfig3-vf-calibration,    label: "Supplementary Figure 4", width_mm: 180, height_mm: 182}  # 172 -> 182 (2026-10-18, v40): layout H (scope, tracks, vOTU1009 zoom) at 9.2 pt

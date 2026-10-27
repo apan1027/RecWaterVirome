@@ -1,0 +1,366 @@
+# Figure 2
+
+Jinlong Ru; Cunli Pan.
+
+[Editable QMD](120-fig2-community-links.qmd) · [Analysis index](README.md)
+
+Source reading companion with accepted figure previews; not a new scientific execution report.
+
+![Figure 2](120-fig2-community-links_files/figure-commonmark/Figure2.png)
+
+## Tasks
+
+Draw Figure 2 from verified 020 tables: seven-sample Shannon, saved Aitchison PCoA coordinates, all three Mantel correlations and sample-level detection bubbles for the top ten predicted host genera including ties (13 genera) by catalogue vOTU count among 200 best iPHoP records. The 200-record iPHoP and 29-edge strict-CRISPR summaries retain their separate denominators and four-category checks in the caption. No ordination, statistical test or group ellipse is newly fitted.
+
+### Task 1: Inputs
+
+```r
+manifest <- rwv_read_tsv(rwv_step_input(step, path_source, "010-input-manifest", "input-manifest.tsv"))
+style <- rwv_style_read(rwv_project_input(step, "analyses/R/style.yml", manifest))
+style <- rwv_style_for_figure(style, "fig2")   # v40: figure-specific text sizes (analyses/R/style.yml figure_text_pt)
+samples <- rwv_samples_read(rwv_project_input(step, "analyses/R/samples.tsv", manifest), style)
+palettes <- rwv_palettes_read(rwv_project_input(step, "analyses/R/palettes.yml", manifest))
+figures <- rwv_figures_read(rwv_project_input(step, "analyses/R/figures.yml", manifest))
+defs <- rwv_definitions_read(rwv_project_input(step, "analyses/R/definitions.tsv", manifest))
+up <- function(f) as.data.frame(rwv_read_tsv(rwv_step_input(step, path_source, "020-community-analysis", f)))
+alpha <- up("alpha.tsv"); alpha$shannon <- as.numeric(alpha$shannon)
+pairs <- up("label_pairs.tsv"); pairs$shannon_diff_dirty_minus_clean <- as.numeric(pairs$shannon_diff_dirty_minus_clean)
+pc <- up("pcoa.tsv"); for (k in c("PCoA1", "PCoA2", "axis1_percent", "axis2_percent")) pc[[k]] <- as.numeric(pc[[k]])
+xo <- up("crossomics.tsv"); xo$mantel_r <- as.numeric(xo$mantel_r); xo$mantel_p <- as.numeric(xo$mantel_p)
+hosts <- up("host_iphop.tsv")
+crispr <- up("host_crispr_edges.tsv")
+members <- up("votu_sharing_members.tsv")     # per-sample qualification (breadth >= 0.75, positive masked depth)
+codet <- up("host_codetection_by_sample.tsv")  # per-sample co-detection of each record's vOTU and host genus
+fonts <- rwv_fonts_resolve(style, italic = TRUE)   # genus names in panel d are italic
+spec <- rwv_figure_spec(figures, "fig2", params$name)
+checks <- rwv_checks_new()
+pt <- style$text_pt; ink <- style$colours$text; fam <- style$font$family; col <- style$colours
+lvl <- rwv_sample_levels(samples)
+site_of <- setNames(as.character(samples$site), lvl)
+omics <- c(virome = "Virome", bact_16s = "16S (prokaryotes)", euk_18s_microeuk = "18S (microeukaryotes)")
+label_shape <- c(c = 21, d = 24)
+rec_label <- function(id) substr(id, 2, 2)
+```
+
+### Task 2: Panel a: seven Shannon values per assay
+
+Thin grey lines connect same-site c/d record-label pairs for direction only; bc2 is unpaired. Points have no error bars because the SD across 100 viral rarefactions is technical rather than biological variation. Different feature units and rarefaction depths preclude cross-assay comparison of Shannon magnitudes.
+
+```r
+alpha$omic_lab <- factor(omics[alpha$omic], levels = omics)
+alpha$sample_id <- factor(alpha$sample_id, levels = lvl)
+alpha$site <- factor(site_of[as.character(alpha$sample_id)], levels = names(rwv_site_colours(style)))
+alpha$label <- rec_label(as.character(alpha$sample_id))
+seg <- merge(pairs, data.frame(omic = alpha$omic, clean_sample = as.character(alpha$sample_id), y0 = alpha$shannon))
+seg <- merge(seg, data.frame(omic = alpha$omic, dirty_sample = as.character(alpha$sample_id), y1 = alpha$shannon))
+seg$omic_lab <- factor(omics[seg$omic], levels = omics)
+seg$x0 <- match(seg$clean_sample, lvl); seg$x1 <- match(seg$dirty_sample, lvl)
+rwv_check(checks, "three label pairs per omic", rep(3, 3), as.numeric(table(seg$omic)[names(omics)]))
+rwv_check(checks, "segment ends reproduce saved dirty - clean differences", seg$shannon_diff_dirty_minus_clean,
+          seg$y1 - seg$y0, tol = 1e-9, source = "clean_dirty_pairs.tsv")
+rwv_check(checks, "bc2 has no connecting line", FALSE, "bc2" %in% c(seg$clean_sample, seg$dirty_sample))
+p_a <- ggplot(alpha, aes(x = as.integer(sample_id), y = shannon)) +
+  geom_segment(data = seg, aes(x = x0, xend = x1, y = y0, yend = y1), colour = col$grey_ref,
+               linewidth = rwv_linewidth(style$line_mm$main), inherit.aes = FALSE) +
+  geom_point(aes(fill = site, shape = label), size = style$point_mm$sample, colour = "#FFFFFF",
+             stroke = rwv_linewidth(style$line_mm$hairline)) +
+  facet_wrap(~omic_lab, nrow = 1, scales = "free_y") +
+  rwv_scale_fill_site(style) +
+  scale_shape_manual(values = label_shape, labels = c(c = "c: nearby water", d = "d: process water"), name = "Water position") +
+  scale_x_continuous(breaks = seq_along(lvl), labels = lvl, expand = expansion(add = 0.5)) +
+  scale_y_continuous(labels = function(x) formatC(x, format = "f", digits = 1)) +
+  guides(fill = guide_legend(order = 1, override.aes = list(shape = 21, colour = "#FFFFFF", size = style$point_mm$sample)),
+         shape = guide_legend(order = 2, override.aes = list(fill = col$grey_mid, colour = col$grey_mid, size = style$point_mm$sample))) +
+  labs(tag = rwv_tag(style, "A"), x = "Samples", y = "Shannon index (nats)") +
+  rwv_panel(style) +
+  theme(legend.position = "bottom", legend.justification = "left", axis.text.x = element_text(size = pt$annotation),
+        panel.spacing = unit(5, "mm"), legend.box = "horizontal", legend.spacing.x = unit(6, "mm"),
+        strip.background = element_blank(), strip.text = element_text(size = pt$ordinary, hjust = 0))
+```
+
+### Task 3: Panel b: saved Aitchison PCoA
+
+Each assay has its own equal-aspect coordinate system. Axis percentages are read from the saved object and are already percentages.
+
+```r
+pcoa_panel <- function(o, tag = NULL) {
+  d <- pc[pc$omic == o, ]
+  d$site <- factor(site_of[d$sample_id], levels = names(rwv_site_colours(style)))
+  d$label <- rec_label(d$sample_id)
+  rx <- range(d$PCoA1); ry <- range(d$PCoA2)
+  pad <- 0.2 * max(diff(rx), diff(ry))
+  ggplot(d, aes(PCoA1, PCoA2)) +
+    geom_hline(yintercept = 0, colour = col$grey_rule, linewidth = rwv_linewidth(style$line_mm$thin)) +
+    geom_vline(xintercept = 0, colour = col$grey_rule, linewidth = rwv_linewidth(style$line_mm$thin)) +
+    geom_point(aes(fill = site, shape = label), size = style$point_mm$sample, colour = "#FFFFFF",
+               stroke = rwv_linewidth(style$line_mm$hairline), alpha = 0.9, show.legend = FALSE) +
+    ggrepel::geom_text_repel(aes(label = sample_id, colour = site), family = fam, size = rwv_text_pt(style, pt$annotation),
+                             show.legend = FALSE, seed = 1, box.padding = 0.35, point.padding = 0.25, min.segment.length = 0,
+                             segment.size = rwv_linewidth(style$line_mm$hairline), segment.colour = col$grey_ref,
+                             max.overlaps = Inf) +
+    rwv_scale_fill_site(style) + rwv_scale_colour_site(style) +
+    scale_shape_manual(values = label_shape) +
+    scale_x_continuous(labels = rwv_axis_num) + scale_y_continuous(labels = rwv_axis_num) +
+    coord_equal(xlim = rx + c(-pad, pad), ylim = ry + c(-pad, pad)) +
+    labs(title = omics[[o]], tag = rwv_tag(style, tag),
+         x = sprintf("PCoA1 (%.1f%%)", unique(d$axis1_percent)), y = sprintf("PCoA2 (%.1f%%)", unique(d$axis2_percent))) +
+    rwv_panel(style) +
+    theme(axis.text = element_text(size = pt$annotation), plot.title.position = "panel",
+          plot.title = element_text(size = pt$ordinary))
+}
+p_b1 <- pcoa_panel("virome", "B")
+p_b2 <- pcoa_panel("bact_16s")
+p_b3 <- pcoa_panel("euk_18s_microeuk")
+rwv_check(checks, "PCoA points per panel", rep(7, 3), as.numeric(table(pc$omic)[names(omics)]))
+```
+
+### Task 4: Panel c: all three Mantel correlations
+
+Display all three Mantel results on a common -1 to 1 axis. Report saved nominal Spearman p values (999 permutations, seed 42) without multiple-testing adjustment or selecting the most significant method. Complete Procrustes/RV results are in Data 1 S09.
+
+```r
+pair_lab <- c("virome x bact_16s" = paste0("Virome", rwv_ndash, "16S"), "virome x euk_18s_microeuk" = paste0("Virome", rwv_ndash, "18S"),
+              "bact_16s x euk_18s_microeuk" = paste0("16S", rwv_ndash, "18S"))
+xo$pair_lab <- factor(pair_lab[xo$pair], levels = rev(pair_lab))
+xo$txt <- sprintf("r = %.3f, p = %.3f", xo$mantel_r, xo$mantel_p)
+rwv_check(checks, "Mantel r shown (6 dp)", c(0.415584, 0.128571, 0.698701), round(xo$mantel_r, 6), source = "080 crossomics_pairwise.tsv")
+rwv_check(checks, "Mantel p shown", c(0.115, 0.328, 0.002), xo$mantel_p, source = "080 crossomics_pairwise.tsv")
+# 2026-10-17 adoption (candidate A, outputs/figure2-ecology-panel-2026-10-17): a compact strip of three small
+# axes on a common -1...1 scale, each with r and the nominal p. The grey rule is the common range of r, not an
+# interval estimate; the strip summarises cross-assay distance concordance and is not a comparison of p values.
+sz <- function(x) rwv_geom_text_size(x)
+xoc <- xo; xoc$column <- match(xoc$pair, c("virome x bact_16s", "virome x euk_18s_microeuk", "bact_16s x euk_18s_microeuk"))
+xoc$cx <- 30 + (xoc$column - 1) * 60; xoc$x <- xoc$cx + 20 * xoc$mantel_r
+xoc$lab <- c(paste0("Virome", rwv_ndash, "16S"), paste0("Virome", rwv_ndash, "18S"), paste0("16S", rwv_ndash, "18S"))[xoc$column]
+xoc$txt <- sprintf("r = %.3f; p = %.3f", xoc$mantel_r, xoc$mantel_p)
+rwv_check(checks, "panel c draws the three assay pairs once each", 1:3, sort(xoc$column))
+ticks <- do.call(rbind, lapply(xoc$cx, function(cx) data.frame(x = cx + c(-20, 0, 20), label = c(paste0(rwv_minus, "1"), "0", "1"))))
+p_c <- ggplot() +
+  geom_segment(data = xoc, aes(x = cx - 20, xend = cx + 20, y = style$mantel_strip$axis_y, yend = style$mantel_strip$axis_y), colour = col$grey_rule, linewidth = rwv_linewidth(style$line_mm$main)) +
+  geom_point(data = xoc, aes(x = x, y = style$mantel_strip$point_y), size = style$point_mm$sample, colour = palettes$estimate$ink) +
+  geom_segment(data = ticks, aes(x = x, xend = x, y = style$mantel_strip$axis_y - 1, yend = style$mantel_strip$axis_y + 1), colour = col$grey_ref, linewidth = rwv_linewidth(style$line_mm$thin)) +
+  geom_text(data = ticks, aes(x = x, y = style$mantel_strip$tick_label_y, label = label), family = fam, size = sz(pt$annotation)) +
+  geom_text(data = xoc, aes(x = cx, y = 20, label = lab), family = fam, size = sz(pt$annotation)) +
+  geom_text(data = xoc, aes(x = cx, y = 3, label = txt), family = fam, size = sz(pt$annotation)) +
+  annotate("text", x = 3.5, y = 25, label = rwv_tag(style, "C"), hjust = 0, family = fam, fontface = "bold", size = sz(pt$tag)) +
+  annotate("text", x = 17, y = 25, label = "Mantel r", hjust = 0, family = fam, size = sz(pt$annotation)) +
+  coord_cartesian(xlim = c(0, 180), ylim = c(0, 28), expand = FALSE, clip = "off") +
+  theme_void(base_family = fam, base_size = pt$ordinary) + theme(plot.margin = margin(0, 0, 0, 0, "mm"))
+```
+
+### Task 5: Panel d: sample-level detection for the displayed host genera
+
+The four mutually exclusive host categories describe named-genus visibility and same-sample co-detection, with unresolved genera separate; they are not validated infection levels. Both iPHoP and CRISPR use the breadth-masked viral count > 0 and host-genus 16S count > 0 rules, using their respective saved genus tables and the n_codetected_saved/n_codetected_masked fields. The 200 records and 29 edges are different units; CRISPR evidence overlaps the iPHoP records and is not an independent validation set.
+
+```r
+hs <- palettes$host_status
+# Figure 2d's own four mutually exclusive classes, used for both rows. The shared
+# host_status colours are reused, but the 16S-visible class is split by same-sample
+# co-detection here only; S2a keeps the shared, unsplit "named genus in 16S" meaning.
+d_cls <- c(codetected = "Genus detected in 16S,\nco-detected with the vOTU",
+           visible_no_codetection = "Genus detected in 16S,\nno same-sample co-detection",
+           not_detected = "Named genus not detected in 16S",
+           unresolved = "Genus not resolved")
+d_col <- c(codetected = hs$codetected_in_sample, visible_no_codetection = hs$named_genus_detected_in_16s,
+           not_detected = hs$named_genus_not_detected_in_16s, unresolved = hs$genus_unresolved)
+# Upper row, iPHoP records: 16S visibility from visibility_status / host_in_16s_clean;
+# co-detection from n_codetected_saved (020: vOTU count_masked > 0 and genus 16S count > 0 in one sample).
+rwv_check(checks, "iPHoP visibility classes are the three recorded statuses", TRUE,
+          all(hosts$visibility_status %in% c("named_genus_detected_in_16s", "named_genus_not_detected_in_16s", "genus_unresolved")))
+vis_h <- hosts$visibility_status == "named_genus_detected_in_16s"
+rwv_check(checks, "iPHoP visibility_status agrees with host_in_16s_clean", TRUE, all(vis_h == (hosts$host_in_16s_clean == "1")))
+rwv_check(checks, "every 16S-visible iPHoP record has a co-detection count (a missing value is not read as 0)", 0,
+          sum(vis_h & !grepl("^[0-9]+$", hosts$n_codetected_saved)))
+nco_h <- suppressWarnings(as.numeric(hosts$n_codetected_saved))
+h_class <- ifelse(hosts$visibility_status == "genus_unresolved", "unresolved",
+                  ifelse(!vis_h, "not_detected", ifelse(nco_h > 0, "codetected", "visible_no_codetection")))
+n_h <- setNames(as.numeric(table(factor(h_class, levels = names(d_cls)))), names(d_cls))
+rwv_check_def(checks, defs, "iphop_records", sum(n_h), "host_iphop.tsv")
+rwv_check(checks, "the four iPHoP categories partition all records (v45 legend wording)", nrow(hosts), sum(n_h), source = "host_iphop.tsv")
+rwv_check_def(checks, defs, "iphop_visible", n_h[["codetected"]] + n_h[["visible_no_codetection"]], "host_iphop.tsv")
+rwv_check_def(checks, defs, "iphop_codetected", n_h[["codetected"]], "host_iphop.tsv")
+rwv_check_def(checks, defs, "iphop_visible_no_codetection", n_h[["visible_no_codetection"]], "host_iphop.tsv")
+rwv_check_def(checks, defs, "iphop_not_detected", n_h[["not_detected"]], "host_iphop.tsv")
+rwv_check_def(checks, defs, "iphop_unresolved", n_h[["unresolved"]], "host_iphop.tsv")
+n_host <- c(n_h[["codetected"]] + n_h[["visible_no_codetection"]], n_h[["not_detected"]], n_h[["unresolved"]])
+co_h_n <- nco_h[h_class == "codetected"]
+# Lower row, strict CRISPR edges (16S visibility and co-detection as computed in 020).
+co <- as.numeric(crispr$n_codetected_masked) > 0
+co_raw <- as.numeric(crispr$n_codetected_raw) > 0
+vis <- crispr$host_visible_in_16s == "True"
+rwv_check(checks, "co-detected CRISPR edges are a subset of 16S-visible edges", 0, sum(co & !vis))
+unres_c <- is.na(crispr$host_genus) | crispr$host_genus %in% c("", "NA")
+rwv_check(checks, "strict CRISPR edges without a resolved genus (none, so no white segment is drawn)", 0, sum(unres_c))
+c_class <- ifelse(unres_c, "unresolved", ifelse(!vis, "not_detected", ifelse(co, "codetected", "visible_no_codetection")))
+n_c <- setNames(as.numeric(table(factor(c_class, levels = names(d_cls)))), names(d_cls))
+n_cr <- unname(n_c[c("codetected", "visible_no_codetection", "not_detected")])
+rwv_check_def(checks, defs, "crispr_edges", sum(n_c), "host_crispr_edges.tsv")
+rwv_check_def(checks, defs, "crispr_codetected", n_c[["codetected"]], "host_crispr_edges.tsv")
+rwv_check_def(checks, defs, "crispr_visible_no_codetection", n_c[["visible_no_codetection"]], "host_crispr_edges.tsv")
+rwv_check_def(checks, defs, "crispr_codetected_raw", sum(co_raw), "host_crispr_edges.tsv")
+rwv_check(checks, "every record and edge falls in exactly one class", c(nrow(hosts), nrow(crispr)), c(sum(n_h), sum(n_c)))
+co_c_n <- as.numeric(crispr$n_codetected_masked)[c_class == "codetected"]
+# The strict rule is (i) overall iPHoP confidence >= 90, (ii) CRISPR component
+# score >= 90 and (iii) an exact same-genus raw hit; "exact" is the genus match,
+# not zero mismatches, so the legend reports the perfect-match subset as well.
+rwv_check(checks, "strict CRISPR edges meet both score thresholds", TRUE,
+          all(as.numeric(crispr$overall_confidence) >= 90 & as.numeric(crispr$crispr_component_score) >= 90))
+n_perfect <- sum(crispr$perfect_match == "True")
+rwv_check(checks, "strict CRISPR edges with zero mismatches (071 funnel)", 10L, n_perfect, source = "071-crispr_host_network.qmd:18")
+# The two rows overlap: every CRISPR vOTU is one of the 200 iPHoP records, and most
+# edges are the same vOTU-genus link as that record (the rest are other genus
+# predictions for the same vOTUs). Stated in the notes so the rows are not added.
+best_g <- sub("^g__", "", hosts$host_genus_clean[match(crispr$vOTU_id, hosts$vOTU_id)])
+n_cr_in_iphop <- length(unique(crispr$vOTU_id[crispr$vOTU_id %in% hosts$vOTU_id]))
+n_same_link <- sum(!is.na(best_g) & best_g == sub("^g__", "", crispr$host_genus))
+rwv_check(checks, "all strict CRISPR vOTUs are among the 200 iPHoP records", length(unique(crispr$vOTU_id)), n_cr_in_iphop)
+ep <- c(iphop = sprintf("iPHoP ≥ 90\n%d vOTU records", sum(n_h)),
+        crispr = sprintf("Strict CRISPR\n%d edges", sum(n_c)))
+bars <- rbind(data.frame(endpoint = ep[["iphop"]], class = names(d_cls), n = unname(n_h)),
+              data.frame(endpoint = ep[["crispr"]], class = names(d_cls), n = unname(n_c)))
+bars <- bars[bars$n > 0, ]   # a class without members gets no (zero-width or invented) segment
+bars$endpoint <- factor(bars$endpoint, levels = rev(ep))
+bars$class <- factor(bars$class, levels = rev(names(d_cls)))
+bars$total <- ave(bars$n, bars$endpoint, FUN = sum)
+bars$pct <- 100 * bars$n / bars$total
+rwv_check(checks, "each row is normalised to its own denominator (shares sum to 100%)", c(100, 100),
+          as.numeric(tapply(bars$pct, bars$endpoint, sum)), tol = 1e-9)
+bars <- bars[order(bars$endpoint, -as.integer(bars$class)), ]
+bars$x_end <- ave(bars$pct, bars$endpoint, FUN = cumsum)
+bars$x_mid <- bars$x_end - bars$pct / 2
+# 2026-10-17 adoption (candidate A): panel d is a full-width bubble matrix of the predicted host genera with the
+# most catalogue vOTU records, top 10 with every tie kept (a display rule, not a biological threshold). The four
+# endpoint classes counted above stay in the caption, Supplementary Note 2 and Data 1.
+yes <- function(x) toupper(as.character(x)) %in% c("1", "TRUE")
+rs <- hosts[yes(hosts$has_resolved_genus), , drop = FALSE]
+rs$genus <- sub("^g__", "", rs$host_genus_clean)
+rwv_check(checks, "resolved best-host records and distinct resolved genera", c(197, 129), c(nrow(rs), length(unique(rs$genus))))
+gcount <- table(rs$genus)
+genera <- names(gcount)[order(-as.integer(gcount), names(gcount))]
+cut <- as.integer(gcount[[genera[10]]])
+top <- genera[as.integer(gcount[genera]) >= cut]
+rwv_check(checks, "top 10 + ties: genera, records, display cut (records per genus)", c(13, 64, 3),
+          c(length(top), sum(as.integer(gcount[top])), cut))
+ip <- codet[codet$endpoint == "iPHoP record (score >= 90)", , drop = FALSE]
+rwv_check(checks, "per-sample co-detection rows cover the 200 records x 7 samples", 1400L, nrow(ip))
+co_of <- setNames(yes(ip$codetected), paste(ip$vOTU_id, ip$sample_id))
+bu <- do.call(rbind, lapply(top, function(g) do.call(rbind, lapply(lvl, function(sm) {
+  vs <- rs$vOTU_id[rs$genus == g & rs$vOTU_id %in% members$vOTU_id[yes(members[[paste0(sm, "_qualified")]])]]
+  co <- if (length(vs)) sum(co_of[paste(vs, sm)]) else 0   # paste() of an empty vector would make a false key
+  data.frame(genus = g, sample = sm, site = site_of[[sm]], n = length(vs), co = co,
+             catalogue_n = as.integer(gcount[[g]]), order = match(g, top))
+}))))
+rwv_check(checks, "panel d cells: 13 genera x 7 samples", 91L, nrow(bu))
+rwv_check(checks, "a genus is detected in 16S for all or none of its qualifying vOTUs in a sample", TRUE, all(bu$co == 0 | bu$co == bu$n))
+ord <- top
+# v50 figure cleanup (2026-10-19, Codex task book docs/figure-cleanup-v49-2026-10-19/00, user's Fig. 2d example): the
+# introductory "Predicted host genera: top 10 + ties (...)" line and the "All records ..." ledger are no longer drawn and
+# are not replaced by a shorter title; the selection rule is in the caption, the 13/64/200 and CRISPR 13/29 ledgers in
+# Supplementary Note 2. Rows, bubbles, outlines and keys unchanged; rows spread over the freed height.
+bu$x <- 57 + (match(bu$sample, lvl) - 1) * 16; bu$y <- 85 - (match(bu$genus, ord) - 1) * 5
+sites <- rwv_site_colours(style); rows <- bu[!duplicated(bu$genus), ]; nz <- bu[bu$n > 0, ]
+p_d <- ggplot() +
+  geom_rect(data = rows[seq_len(nrow(rows)) %% 2 == 1, ], aes(xmin = 3, xmax = 169, ymin = y - 2.4, ymax = y + 2.4), fill = col$grey_pale, colour = NA) +
+  geom_point(data = bu, aes(x = x, y = y), size = 0.5, colour = col$grey_rule) +
+  geom_point(data = nz, aes(x = x, y = y, size = n), shape = 21, fill = sites[nz$site], colour = ink,
+             stroke = ifelse(nz$co > 0, style$line_mm$emphasis, 0)) +
+  scale_size_area(max_size = 3.4, guide = "none") +
+  geom_text(data = rows, aes(x = 43, y = y, label = genus), hjust = 1, family = fam, fontface = "italic", size = sz(pt$annotation)) +
+  geom_text(data = data.frame(x = 57 + (seq_along(lvl) - 1) * 16, label = lvl), aes(x = x, y = 93, label = label), family = fam, size = sz(pt$annotation)) +
+  annotate("text", x = 3.5, y = 97, label = rwv_tag(style, "D"), hjust = 0, family = fam, fontface = "bold", size = sz(pt$tag)) +
+  annotate("segment", x = 50, xend = 161, y = 89.5, yend = 89.5, colour = col$grey_rule, linewidth = rwv_linewidth(style$line_mm$main)) +
+  annotate("text", x = 3.5, y = 9, label = "Outline: 16S genus detected", hjust = 0, family = fam, size = sz(pt$annotation)) +
+  geom_point(data = data.frame(x = c(137, 147, 158), y = 7, n = c(1, 4, 8)), aes(x = x, y = y, size = n), shape = 21,
+             fill = palettes$estimate$fill, colour = ink, stroke = 0) +
+  geom_text(data = data.frame(x = c(137, 147, 158), n = c(1, 4, 8)), aes(x = x, y = 13, label = n), family = fam, size = sz(pt$annotation)) +
+  annotate("text", x = 114, y = 8, label = "vOTUs", family = fam, size = sz(pt$annotation)) +
+  coord_cartesian(xlim = c(0, 180), ylim = c(0, 101), expand = FALSE, clip = "off") +
+  theme_void(base_family = fam, base_size = pt$ordinary) + theme(plot.margin = margin(0, 0, 0, 0, "mm"))
+```
+
+### Task 6: Assemble and export
+
+```r
+# 2026-10-17 adoption (candidate A): compact Mantel strip c after b; full-width host bubbles d (180 x 247 mm).
+# c and d have no axes; free() keeps patchwork from aligning them to the axis-title offset of a/b, so both use the
+# full page width and their tags line up with a and b; their 0-180 x 0-101 (0-28) mm-like frames fill the row
+# (coord_cartesian; layout only, data and text sizes as in the candidate).
+fig <- p_a / (p_b1 | p_b2 | p_b3) / free(p_c) / free(p_d) + plot_layout(heights = c(48, 70, 28, 101))
+expected_text <- c(rwv_tag(style, c("A", "B", "C", "D")), lvl, "Samples", "Shannon index (nats)", unique(sprintf("PCoA1 (%.1f%%)", pc$axis1_percent)),
+                   unique(sprintf("PCoA2 (%.1f%%)", pc$axis2_percent)), "Mantel r", xoc$lab, xoc$txt,
+                   "Virome", "16S (prokaryotes)", "18S (microeukaryotes)", "Water type", "c: reclaimed water", "d: wastewater",
+                   top, "Outline: 16S genus detected", "vOTUs")
+# Preserve frozen panel allocation; the native grid helper draws the final two-row legend.
+fig <- rwv_final_figure2(fig, style, fonts, spec)
+res <- rwv_figure_export(fig, path_target, "fig2", spec, style, fonts, expected_text, step)
+knitr::kable(res$qa[, c("format", "check", "observed", "pass")])
+```
+
+### Task 7: Record plot values, caption and checks
+
+```r
+vals <- rbind(
+  data.frame(panel = "A", item = paste(alpha$omic, alpha$sample_id), x = NA, value = alpha$shannon, unit = "Shannon index (nats)"),
+  data.frame(panel = "B", item = paste(pc$omic, pc$sample_id), x = pc$PCoA1, value = pc$PCoA2, unit = "PCoA scores (x = PCoA1, value = PCoA2)"),
+  data.frame(panel = "C", item = xo$pair, x = xo$mantel_p, value = xo$mantel_r, unit = "Mantel r (x = nominal p)"),
+  data.frame(panel = "D", item = paste(bu$genus, bu$sample), x = bu$co, value = bu$n,
+             unit = "qualifying vOTUs assigned to the genus in the sample (x = of these, co-detected with the genus in 16S)")
+)
+vals$item <- gsub("\n", " ", vals$item)
+rwv_check(checks, "plot-values panels equal the figure's panel tags", c("A", "B", "C", "D"), sort(unique(vals$panel)))
+rwv_write_tsv(vals, path_target("fig2-plot-values.tsv"))
+vd <- pairs$shannon_diff_dirty_minus_clean[pairs$omic == "virome"]
+fmt_d <- function(x) ifelse(x < 0, paste0(rwv_minus, sprintf("%.3f", abs(x))), sprintf("+%.3f", x))
+# Figure-expression revision 2026-10-07 (Codex 03/04): short submission caption; detail in notes_en.
+legend_en <- paste0(
+  "(a) Shannon index of the seven samples in each assay (virome: breadth-masked counts, mean of 100 rarefactions; 16S and 18S: rarefied tables). ",
+  "Features and depths differ, so values are not comparable between assays. ",
+  "Grey lines connect the c and d samples recorded at the same locality (three localities; bc2 has no designated d counterpart) only to show direction; they are not matched sampling points, treatment stages or replicated contrasts. ",
+  sprintf("The virome differences (d minus c) are %s, %s and %s and do not share one direction. ", fmt_d(vd[1]), fmt_d(vd[2]), fmt_d(vd[3])),
+  "Fill marks the site (as in Fig. 1) and shape the c/d record label (d, wastewater collected from treatment tanks; c, reclaimed water (author-selected terminology)). ",
+  "(b) Principal coordinates of Aitchison distances (CLR-transformed profiles), one equal-scaled panel per assay; axis percentages are the variation explained. ",
+  "No grouping ellipses are drawn for n = 7. ",
+  "(c) Mantel r between the full Aitchison distance matrices of each pair of assays (n = 7; Spearman, 999 permutations), on a common scale from \u22121 to 1; the grey rule is that common range, not an interval estimate. p values are nominal and not adjusted, and the three pairs are not compared by significance. ",
+  sprintf("(d) Predicted host genera of the %d retained iPHoP best-host records (score \u2265 90): the %d genera with the most catalogue vOTU records, top ten with all ties kept (%d records). ",
+          sum(n_h), length(top), sum(as.integer(gcount[top]))),
+  "Bubble area is the number of distinct vOTUs assigned to the genus that qualify in the sample (breadth \u2265 75% and positive masked depth); it is not abundance or host cell number. ",
+  "A black outline marks a sample in which the predicted genus has a positive count in the retained 16S table; a grey dot means no qualifying vOTU of that genus, not absence of the host. ",
+  sprintf("Across all %d records, %d were co-detected with their predicted genus in at least one sample, %d had the genus detected in 16S without co-detection, %d had a genus not detected in 16S and %d no resolved genus; of %d strict CRISPR edges, %d were co-detected. ",
+          sum(n_h), n_h[["codetected"]], n_h[["visible_no_codetection"]], n_h[["not_detected"]], n_h[["unresolved"]], sum(n_c), n_c[["codetected"]]),
+  sprintf("The four iPHoP categories partition the %d records; the CRISPR summary overlaps the iPHoP evidence and is not added to it. These counts summarise all records rather than the genera drawn. Genus-level detection and co-detection are co-occurrence, not evidence of infection. ", sum(n_h)),   # v45
+  sprintf("Details: Supplementary figure notes, %s.", spec$label)
+)
+notes_en <- c(
+  "Alpha diversity (a): virome reads are zeroed where less than 75% of the vOTU is covered and averaged over 100 rarefactions to 1,648,195 reads; the 16S table is rarefied to 63,564 reads per sample; the full 18S table was rarefied to 53,257 reads before Metazoa were removed, so retained microeukaryote totals need not be equal among samples. Features differ (vOTUs versus amplicon sequence variants).",
+  "No error bars (a): the spread over rarefactions is technical, not a biological interval.",
+  "Ordination (b): CLR of virome trimmed TPM, 16S counts and Metazoa-removed 18S counts, pseudocount 1.",
+  "Mantel test (c): permutation seed 42. Procrustes and RV results for the same pairs are in Data 1 S09. The test compares whole distance matrices, so it is distinct from the Shannon values in a and from the two-axis projection in b.",
+  sprintf("Host genera (d): %d of the %d records have a resolved genus, in %d distinct genera; GTDB genus suffixes are kept. Genera are ranked by their number of catalogue vOTU records and the ten highest are drawn with every tie at the tenth rank (cut = %d records), giving %d genera. The co-detected links of all genera are shown in Supplementary Fig. 2c, which uses the same evidence with a different selection.",
+          nrow(rs), sum(n_h), length(unique(rs$genus)), cut, length(top)),
+  sprintf("iPHoP endpoint (d): of %d vOTU records, %d had a resolved predicted host genus detected in the 16S dataset; of these, %d were co-detected with the vOTU in at least one sample on the breadth-masked vOTU table (%d in one sample, %d in two or more) and %d never occurred in the same sample as the vOTU. %d had a resolved genus not detected in 16S and %d no resolved genus, which differs from a named genus that was not detected.",
+          sum(n_h), n_host[1], n_h[["codetected"]], sum(co_h_n == 1), sum(co_h_n >= 2), n_h[["visible_no_codetection"]], n_h[["not_detected"]], n_h[["unresolved"]]),
+  sprintf("CRISPR endpoint (d): strict edges require overall iPHoP confidence ≥ 90, CRISPR component score ≥ 90 and a raw spacer hit to the same genus; the genus match is exact, but only %d of the edges have zero spacer mismatches.", n_perfect),
+  sprintf("CRISPR endpoint (d): of %d vOTU%shost genus edges (25 vOTUs, 22 genera), %d had the host genus co-detected with the vOTU in at least one sample on the breadth-masked vOTU table (%d of them in a single sample; %d with unmasked counts), %d more had the genus present in 16S without co-detection and %d had no 16S match; no edge lacks a resolved genus.",
+          sum(n_c), rwv_ndash, n_c[["codetected"]], sum(co_c_n == 1), sum(co_raw), n_c[["visible_no_codetection"]], n_c[["not_detected"]]),
+  sprintf("The two rows overlap and are not additive: all %d CRISPR vOTUs are among the %d iPHoP records, and %d of the %d edges are the same vOTU%sgenus link as that vOTU's iPHoP record (the others are further genus predictions for the same vOTUs).",
+          n_cr_in_iphop, sum(n_h), n_same_link, sum(n_c), rwv_ndash),
+  "16S detection (d) is a genus-level match over the whole 16S dataset (filtered counts before rarefaction; each row keeps the genus table of its original analysis); co-detection additionally requires the vOTU (breadth-masked count > 0) and the genus (16S count > 0) in the same sample. Depth diagnostics are in Supplementary Fig. 1b; PERMANOVA and dispersion tests are in Data 1 S10 and S11."
+)
+rwv_write_legend(path_target("fig2-legend.md"), spec$label, "Sample differences, cross-assay covariation and candidate host evidence", legend_en,
+  can_read = "Panel d shows qualifying vOTU counts and same-sample 16S detection for 13 predicted host genera (top ten including ties). Cross-assay associations are strongest for 16S-18S (r = 0.699, nominal p = 0.002). Of 200 iPHoP records, 127 have genera visible in 16S: 83 co-detected and 44 never co-detected. Of 29 strict CRISPR edges, 13 are co-detected using the masked basis (15 unmasked), and three have visible genera without co-detection.",
+  cannot_infer = "Do not compare Shannon magnitudes across assays, infer treatment effects from c/d lines, interpret nominal p as adjusted significance, count 127 as genera, or equate visibility/co-detection with infection. CRISPR evidence overlaps high-score iPHoP records, so the two endpoints cannot be added or treated as independent validation. Unresolved genera are distinct from undetected genera; PCoA does not establish that geography dominates.",
+  sources = c("analyses/data/020-community-analysis/alpha.tsv, label_pairs.tsv (computed in 012/020: viral alpha on breadth-masked counts, amplicon alpha on the rarefied assays; 014 checks them against dev/390 virome_alpha.tsv, 060 alpha_summary.tsv and clean_dirty_pairs.tsv: numerically consistent under the registered comparison tolerance in step 014)",
+              "analyses/data/020-community-analysis/pcoa.tsv (computed in 020 from the CLR profiles; 014 checks it against production-inputs/pcoa_aitchison.tsv: numerically consistent under the registered comparison tolerance in step 014)",
+              "analyses/data/020-community-analysis/crossomics.tsv (computed in 020; 014 checks it against 080-procrustes/crossomics_pairwise.tsv: all compared values identical)",
+              "analyses/data/020-community-analysis/host_iphop.tsv (archived 200 iPHoP records from corrected-host-members.tsv, with genus visibility and co-detection recomputed in 020), host_crispr_edges.tsv (archived 29 strict edges from 071 crispr_host_edges_primary.tsv, with genus visibility and co-detection recomputed in 020)"),
+  abbreviations = c("CLR, centred log-ratio", "PCoA, principal coordinates analysis", "TPM, abundance normalized to one million per sample",
+                    "iPHoP, integrated phage host prediction", "CRISPR, clustered regularly interspaced short palindromic repeats"),
+  notes = notes_en)
+check_table <- rwv_checks_finish(checks, path_target("fig2-checks.tsv"))
+knitr::kable(check_table[, c("check", "expected", "observed", "pass")])
+rwv_write_session_info(path_target("session-info.txt"),
+                       c(step = params$name, run_id = step$run_id, mode = step$mode, quarto = rwv_quarto_version()))
+```
+
+
+## Published figure preview

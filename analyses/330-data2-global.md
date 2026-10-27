@@ -1,0 +1,225 @@
+# Supplementary Data 2
+
+Jinlong Ru; Cunli Pan.
+
+[Editable QMD](330-data2-global.qmd) · [Analysis index](README.md)
+
+Source reading companion with accepted figure previews; not a new scientific execution report.
+
+## Tasks
+
+Data 2 collects global per-feature models, fixed feature-set mappings, lineage support, separate adjustment, Firth and resampling sensitivity/estimability, stratified scales, NAD leave-one-out and incomplete items. Worksheets record units, provenance and figure references; TSVs are also exported. Local and global results remain in separate Data 1 and Data 2 workbooks.
+
+### Task 1: Inputs
+
+```r
+manifest <- rwv_read_tsv(rwv_step_input(step, path_source, "010-input-manifest", "input-manifest.tsv"))
+raw_manifest <- rwv_read_tsv(rwv_step_input(step, path_source, "010-input-manifest", "raw-input-manifest.tsv"))
+defs <- rwv_definitions_read(rwv_project_input(step, "analyses/R/definitions.tsv", manifest))
+get <- function(file) as.data.frame(rwv_read_tsv(rwv_step_input(step, path_source, "050-global-inputs", file)))
+checks <- rwv_checks_new()
+```
+
+### Task 2: Worksheet register
+
+```r
+spec <- list(
+  list(id = "G01_feature_fits", file = "global_feature_fits.tsv", figures = "F5B, Supplementary Note 4",
+       content = "Coefficient of every feature in the two fixed sets (285 metabolic Pfam domains, 38 non-NARP anti-defense profiles), with the saved opportunity diagnostics of the same fits (fixed-opportunity cloglog model, free exponent gamma, logit projection and their validity/warnings)",
+       units = "slope in log-odds per 10-fold increase in CDS count; se and cluster_se on the same scale; carriers are reference genomes. The unit and model columns describe the ordinary logit only; null_logit_equivalent and residual_slope are on the slope scale; gamma, gamma_se and gamma_unaccepted_estimate are dimensionless (see FIELDS). Empty gamma where gamma_valid is FALSE"),
+  list(id = "G02_group_medians", file = "global_group_medians.tsv", figures = "F5B",
+       content = "Median coefficient and sign counts of each fixed set",
+       units = "median in log-odds per 10-fold CDS; the median describes the set and is not a test between sets"),
+  list(id = "G03_profile_support", file = "global_profile_support.tsv", figures = "F5C, Supplementary Note 4",
+       content = "Carrier genomes and gene-sharing clusters behind each of the 38 profiles",
+       units = "genomes and clusters; a single cluster is not a single genome and clusters are not a phylogeny"),
+  list(id = "G04_local_carriage_bins", file = "local_carriage_bins.tsv", figures = "F5A",
+       content = "The six saved local bins of predicted genes per recovered vOTU (kept here because they are plotted in Figure 5A)",
+       units = "intervals are left-closed [lo, hi); n and k are vOTUs; rate is a fraction. This is the only local table in Data 2"),
+  list(id = "G05_adjusted", file = "global_adjusted.tsv", figures = "Supplementary Note 4",
+       content = "Validity of the separate ecosystem and host-phylum adjustments for the fixed comparison",
+       units = "counts of features that were not estimable; the two adjustments are separate models and neither controls for the other"),
+  list(id = "G06_firth", file = "global_firth.tsv", figures = "Supplementary Note 4",
+       content = "Firth sensitivity fits, unadjusted and under each separate adjustment",
+       units = "medians in log-odds per 10-fold CDS"),
+  list(id = "G07_resampling", file = "global_resampling.tsv", figures = "Supplementary Note 4",
+       content = "How often the full fixed comparison was estimable in each resampling scheme (summary of G17)",
+       units = "replicates; median is the median over valid replicates of (METAB median - ADF median) in log-odds per 10-fold CDS, not a coefficient median of one set; the percentile range of valid replicates is not a confidence interval"),
+  list(id = "G08_strata", file = "global_strata.tsv", figures = "Supplementary Note 4",
+       content = "Stratum sizes of the ecosystem and host-phylum labels",
+       units = "reference genomes; host labels are annotations, not measured host range"),
+  list(id = "G09_nad_leaveout", file = "global_nad_leaveout.tsv", figures = "Supplementary Note 4",
+       content = "The six NAD-pathway domains and the metabolic median with and without them",
+       units = "slopes and medians in log-odds per 10-fold CDS"),
+  list(id = "G10_gaps", file = "global-gaps.tsv", figures = "Supplementary Note 4",
+       content = "Global-side analyses that were not done, are incomplete, or were not established in the source project; original S4 wording in the saved records now refers to Supplementary Note 4",
+       units = "text"),
+  list(id = "G11_adjusted_fits", file = "global_adjusted_fits.tsv", figures = "Supplementary Note 4",
+       content = "Every per-feature fit of the two separate adjustments, including the ones that were not estimable",
+       units = "slope in log-odds per 10-fold CDS; valid marks an estimable fit; warnings as saved by the fitting run"),
+  list(id = "G12_firth_feature_fits", file = "global_firth_feature_fits.tsv", figures = "Supplementary Note 4",
+       content = "Every per-feature Firth-penalised fit behind the medians of Supplementary Note 4",
+       units = "both slope and raw_slope are the same Firth-penalised coefficient (log-odds per 10-fold CDS): raw_slope is the value before the validity filter, slope is kept only where valid is TRUE. Neither is an unpenalised estimate; for unpenalised fits see G01 (unadjusted) and G11 (separate adjustments)"),
+  list(id = "G13_stratum_fits", file = "global_stratum_fits.tsv", figures = "Supplementary Note 4",
+       content = "Per-feature fits within each ecosystem and host-phylum stratum",
+       units = "slope as above; n is the stratum size in reference genomes; carriers are genomes within that stratum"),
+  list(id = "G14_aggregation_fits", file = "global_aggregation_fits.tsv", figures = "Supplementary Note 4",
+       content = "HISTORICAL, withdrawn, audit only: fits of aggregation units formed by the old direct category join (21 fixed38 units; 22 all-profile units = legacy_mixed). Corrected post hoc categories are in G21; status in G19",
+       units = "slope as above; unit names the historical aggregation unit"),
+  list(id = "G15_aggregation_members", file = "global_aggregation_members.tsv", figures = "Supplementary Note 4",
+       content = "HISTORICAL, withdrawn, audit only: profile-to-unit membership under the old direct join (equals G22 old_unit). Corrected mapping in G22 and G24",
+       units = "text; selected38 is a TRUE/FALSE flag"),
+  list(id = "G16_firth_run", file = "global_firth_run.tsv", figures = "Supplementary Note 4",
+       content = "Run parameters of the Firth sensitivity fits",
+       units = "key/value text"),
+  list(id = "G17_resample_contrasts", file = "global_resample_contrasts.tsv", figures = "Supplementary Note 4",
+       content = "Every resampling replicate: whether the full fixed comparison was estimable and, when it was, the METAB-minus-ADF median difference",
+       units = "difference in log-odds per 10-fold CDS, empty when the replicate is not valid; n_invalid_metab and n_invalid_adf count features that could not be fitted in that replicate"),
+  list(id = "G18_resample_features", file = "global_resample_features.tsv", figures = "Supplementary Note 4",
+       content = "Per-replicate, per-feature diagnostics behind G17: which feature failed in which replicate, with its carrier count and warning text",
+       units = "carriers are reference genomes in that replicate; slope in log-odds per 10-fold CDS, empty when not estimable; warnings are the fitting warnings as saved"),
+  # 2026-10-15 (task r2 section 4.2): status index and the saved post hoc repair of the category join (dev380).
+  list(id = "G19_result_status", file = "global_result_status.tsv", figures = "Supplementary Note 4",
+       content = "Status of the historical, withdrawn and post hoc corrected global aggregation results and of the current fixed baseline, by sheet and rows",
+       units = "text; status labels are the repair run's own where saved, otherwise a summary of the saved record (label_origin); none is a validation grade"),
+  list(id = "G20_repair_scenarios", file = "global_repair_scenario_summary.tsv", figures = "Supplementary Note 4",
+       content = "Saved scenario summary of the post hoc repair of the category join: fixed 285 and 38 baselines, two corrected category definitions (9 and 10 units), and the withdrawn legacy_mixed (22)",
+       units = "medians and differences in log-odds per 10-fold CDS; corrected scenarios change the statistical units and weights and are not replicates of the 38-profile parameter"),
+  list(id = "G21_repair_feature_fits", file = "global_repair_feature_fits.tsv", figures = "Supplementary Note 4",
+       content = "All 364 saved fits of the repair run, with logit, fixed-opportunity, free-exponent and projection fields, validity flags and warnings as saved",
+       units = "slope in log-odds per 10-fold CDS; gamma dimensionless; opportunity fields computed for the 19 corrected categories only; null_equivalent_valid is FALSE and observed_minus_null_slope NA for all 19, as saved"),
+  list(id = "G22_repair_members", file = "global_repair_members.tsv", figures = "Supplementary Note 4",
+       content = "The 104 observed anti-defense profiles: corrected category, historical old-join unit and whether the mapping changed",
+       units = "carriers are reference genomes; text and TRUE/FALSE flags"),
+  list(id = "G23_repair_scenario_members", file = "global_repair_scenario_members.tsv", figures = "Supplementary Note 4",
+       content = "Profile-to-unit membership in profile38, legacy_mixed and the two corrected category scenarios",
+       units = "carriers are distinct reference genomes of the scenario unit, repeated across member rows; included is TRUE when that unit has at least 30 carriers"),
+  list(id = "G24_repair_mapping", file = "global_repair_mapping.tsv", figures = "Supplementary Note 4",
+       content = "Census expansion of 356 profiles to subtypes and categories used by the repair",
+       units = "text; status unique or ambiguous"),
+  list(id = "G25_repair_eligibility", file = "global_repair_eligibility_changes.tsv", figures = "Supplementary Note 4",
+       content = "All categories compared between the two corrected scenarios, including unchanged membership and eligibility",
+       units = "profiles and reference genomes; eligibility is carriers ≥ 30"))
+# Numeric columns are restored after the character-only read, as in Data 1.
+tables <- lapply(spec, function(x) as.data.frame(readr::type_convert(get(x$file), col_types = readr::cols())))
+names(tables) <- vapply(spec, function(x) x$id, character(1))
+index <- data.frame(
+  sheet = names(tables), rows = vapply(tables, nrow, integer(1)), columns = vapply(tables, ncol, integer(1)),
+  figures = vapply(spec, function(x) x$figures, character(1)),
+  content = vapply(spec, function(x) x$content, character(1)),
+  units_and_limits = vapply(spec, function(x) x$units, character(1)),
+  source_step = "050-global-inputs", source_file = vapply(spec, function(x) x$file, character(1)))
+rwv_check(checks, "no empty sheet", TRUE, all(index$rows > 0))
+rwv_check(checks, "sheet names unique and <= 31 characters", c(TRUE, TRUE),
+          c(!anyDuplicated(index$sheet), all(nchar(index$sheet) <= 31)))
+fits <- tables$G01_feature_fits
+rwv_check_def(checks, defs, "global_metab", sum(fits$group == "285 metabolic-related Pfam domains"), "G01_feature_fits")
+rwv_check_def(checks, defs, "global_adf", sum(fits$group == "38 non-NARP anti-defense profiles"), "G01_feature_fits")
+rwv_check_def(checks, defs, "global_adf", nrow(tables$G03_profile_support), "G03_profile_support")
+rwv_check(checks, "six local bins retained", 6, nrow(tables$G04_local_carriage_bins))
+rwv_check(checks, "numeric columns are numeric after conversion (feature slopes)", TRUE, is.numeric(fits$slope))
+rwv_check(checks, "per-feature fits of the two separate adjustments cover both sets twice",
+          2 * nrow(fits), nrow(tables$G11_adjusted_fits), source = "G01 row count")
+rwv_check(checks, "aggregation members cover the fixed 38", rwv_def(defs, "global_adf"),
+          sum(tables$G15_aggregation_members$selected38 == 1), source = "definitions.tsv global_adf")
+rwv_check(checks, "resampling detail sheets: 500 replicate rows and 80,750 feature rows", c(500, 80750),
+          c(nrow(tables$G17_resample_contrasts), nrow(tables$G18_resample_features)))
+rwv_check(checks, "valid replicates rebuilt from the detail equal the G07 summary",
+          as.numeric(tables$G07_resampling$valid_replicates),
+          as.numeric(tapply(tables$G17_resample_contrasts$valid,
+                            paste(tables$G17_resample_contrasts$mode, tables$G17_resample_contrasts$definition), sum)[
+                              paste(tables$G07_resampling$mode, tables$G07_resampling$definition)]),
+          source = "G17 valid column")
+rwv_check(checks, "Firth slope and raw_slope are the same coefficient wherever the fit is valid", 0,
+          sum(tables$G12_firth_feature_fits$valid &
+                abs(tables$G12_firth_feature_fits$slope - tables$G12_firth_feature_fits$raw_slope) > 1e-12),
+          source = "G12 columns")
+tables$G01_feature_fits -> g01
+rwv_check(checks, "G01 keeps the 8 original columns first and adds the 13 opportunity fields", c(8L, 21L),
+          c(sum(names(g01)[1:8] == c("feature", "group", "carriers", "slope", "se", "cluster_se", "unit", "model")), ncol(g01)))
+rwv_check(checks, "G01 gamma valid 320/323 and null_valid 323/323", c(320L, 323L),
+          c(sum(g01$gamma_valid), sum(g01$null_valid)))
+rwv_check(checks, "G01 residual identity on the delivered values (|diff| <= 1e-12)", TRUE,
+          max(abs(g01$slope - g01$null_logit_equivalent - g01$residual_slope)) <= 1e-12)
+rwv_check(checks, "repair fits: 364 rows, 19 corrected", c(364L, 19L),
+          c(nrow(tables$G21_repair_feature_fits), sum(startsWith(tables$G21_repair_feature_fits$scenario, "corrected_"))))
+rwv_check(checks, "status index refers only to sheets of this workbook", TRUE, all(tables$G19_result_status$sheet %in% names(tables)))
+rwv_write_tsv(index, path_target("data2-index.tsv"))
+# Field-level dictionary: one row per delivered field. The sheet index stays a
+# short overview; this is the per-field reference, keyed on sheet + field.
+notes <- rwv_field_notes_read(rwv_project_input(step, "analyses/R/field-notes.tsv", manifest))
+dict <- rwv_field_dictionary(tables, index, notes)
+rwv_check(checks, "field dictionary agrees with the delivered values (missing rules, ranges, code sets)", character(0),
+          rwv_field_dictionary_check(dict, tables), source = "rwv_field_dictionary_check")
+rwv_check(checks, "every delivered field has exactly one dictionary row", sum(vapply(tables, ncol, 0L)), nrow(dict))
+rwv_check(checks, "no duplicated sheet/field pair in the dictionary", FALSE, anyDuplicated(paste(dict$sheet, dict$field)) > 0)
+priority <- c("G01_feature_fits", "G06_firth", "G07_resampling", "G11_adjusted_fits", "G12_firth_feature_fits", "G17_resample_contrasts", "G18_resample_features")
+rwv_check(checks, "every field of the model, resampling and construct sheets is curated", 0,
+          sum(!dict$curated[dict$sheet %in% priority]))
+rwv_check(checks, "every numeric field is curated and states a unit or code", 0,
+          sum(dict$type == "numeric" & !nzchar(dict$unit_or_code)))
+dict$curated <- ifelse(dict$curated, "TRUE", "FALSE")
+rwv_write_tsv(dict, path_target("data2-field-dictionary.tsv"))
+knitr::kable(head(dict[dict$sheet %in% priority, c("sheet", "field", "type", "unit_or_code", "meaning")], 8))
+knitr::kable(index[, c("sheet", "rows", "figures", "content")])
+```
+
+### Task 3: Write the workbook and TSVs
+
+```r
+for (nm in names(tables)) rwv_write_tsv(tables[[nm]], path_target(paste0(nm, ".tsv")))
+readme <- c("# Data 2 (global reference arm): sheet dictionary", "",
+            "One sheet per table. Local tables live in Data 1; the only local table here is the",
+            "six-bin summary plotted in Figure 5A. Global summaries and limitations are in Supplementary Note 4.", "",
+            "In the review bundle this file sits next to `Supplementary_Data_2_Reference_genome_analyses.xlsx`, the sheet overview",
+            "`Data2_sheet_index.tsv`, the field-level dictionary `Data2_field_dictionary.tsv`",
+            "(one row per sheet and field, with units and missing-value rules) and one TSV per",
+            "sheet under `Data2_tables/<sheet>.tsv`. The workbook carries the same two",
+            "dictionaries as its INDEX and FIELDS sheets.", "",
+            "| Sheet | Rows | Figures | Content |", "|---|---:|---|---|",
+            sprintf("| %s | %d | %s | %s |", index$sheet, index$rows, index$figures, index$content))
+writeLines(readme, path_target("data2-README.md"), useBytes = TRUE)
+# writexl rather than openxlsx: see the note in 320-data1-local. The workbook is
+# a declared output, so a missing writer is an error rather than a fallback.
+if (!nzchar(system.file(package = "writexl"))) rwv_fail("writexl is required to write Supplementary_Data_2_Reference_genome_analyses.xlsx; see environment/README.md.")
+workbook_sheets <- c(list(INDEX = index, FIELDS = dict), tables)
+
+# Final author-approved export contract; never fit models here.
+rwv_project_input(step, "analyses/R/supplementary-tables.json", manifest)
+rwv_project_input(step, "analyses/R/table-fields.tsv", manifest)
+export_cfg <- jsonlite::read_json(file.path(step$root, "analyses/R/supplementary-tables.json"))
+for (entry in export_cfg$books[["2"]]$additional) rwv_raw_input(step, path_data, entry$file, raw_manifest)
+base_workbook <- tempfile("rwv-base-", fileext = ".xlsx")
+writexl::write_xlsx(workbook_sheets, base_workbook, format_headers = FALSE)
+final_sheets <- rwv_public_workbook(base_workbook, path_target("Supplementary_Data_2_Reference_genome_analyses.xlsx"), 2, path_data, step$root)
+unlink(base_workbook)
+for (entry in export_cfg$books[["2"]]$additional)
+  rwv_write_tsv(rwv_literal_tsv(file.path(path_data, entry$file)), path_target(paste0(entry$sheet, ".tsv")))
+index <- as.data.frame(readxl::read_xlsx(path_target("Supplementary_Data_2_Reference_genome_analyses.xlsx"), sheet = "INDEX", trim_ws = FALSE))
+dict <- as.data.frame(readxl::read_xlsx(path_target("Supplementary_Data_2_Reference_genome_analyses.xlsx"), sheet = "FIELDS", trim_ws = FALSE))
+rwv_write_tsv(index, path_target("data2-index.tsv"))
+rwv_write_tsv(dict, path_target("data2-field-dictionary.tsv"))
+
+status <- data.frame(item = "Supplementary_Data_2_Reference_genome_analyses.xlsx", status = "written",
+                     note = sprintf("%d scientific sheets plus INDEX and FIELDS, base writer writexl %s; final registered R export", (length(final_sheets) - 2L),
+                                    as.character(utils::packageVersion("writexl"))))
+rwv_write_tsv(status, path_target("data2-workbook-status.tsv"))
+rwv_check(checks, "workbook written", "written", status$status)
+back <- readxl::excel_sheets(path_target("Supplementary_Data_2_Reference_genome_analyses.xlsx"))
+rwv_check(checks, "workbook sheets read back equal INDEX, FIELDS plus every sheet", final_sheets, back,
+          source = "readxl on the written file")
+one <- as.data.frame(readxl::read_xlsx(path_target("Supplementary_Data_2_Reference_genome_analyses.xlsx"), sheet = "G01_feature_fits"))
+rwv_check(checks, "feature-fit sheet read back: rows and numeric slope column", c(as.character(nrow(fits)), "TRUE"),
+          c(as.character(nrow(one)), as.character(is.numeric(one$slope))), source = "readxl on the written file")
+writeLines(c("# Supplementary Data 2", "", "Final worksheet register:", "", paste(index$sheet, collapse = "\n")), path_target("data2-README.md"))
+knitr::kable(status)
+```
+
+### Task 4: Record checks and the run
+
+```r
+check_table <- rwv_checks_finish(checks, path_target("data2-checks.tsv"))
+knitr::kable(check_table[, c("check", "expected", "observed", "pass")])
+rwv_write_session_info(path_target("session-info.txt"),
+                       c(step = params$name, run_id = step$run_id, mode = step$mode, quarto = rwv_quarto_version()))
+```

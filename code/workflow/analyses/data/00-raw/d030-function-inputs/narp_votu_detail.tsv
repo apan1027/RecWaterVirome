@@ -1,9 +1,0 @@
-vOTU_id	vcontig_id	type	subtype	activity	protein_in_syst	name_of_profiles_in_sys	lifestyle	contig_length	checkv_completeness	checkv_quality_score	genomad_n_hallmarks	class	order	family
-vOTU0060	vctg1131	NADP	NARP1	Antidefense	vctg1131-cat_1_77,vctg1131-cat_1_78	narp1_adps,narp1_namat	virulent	94380	100.0	1.0	10	Caudoviricetes		
-vOTU0058	vctg2476	NADP	NARP1	Antidefense	vctg2476-cat_1_1,vctg2476-cat_1_5	narp1_adps,narp1_namat	virulent	97756	100.0	1.0	9	Caudoviricetes		
-vOTU0515	vctg2480	NADP	NARP1	Antidefense	vctg2480-cat_1_9,vctg2480-cat_1_10	narp1_adps,narp1_namat	temperate	36266	100.0	2.0	1	Caudoviricetes		
-vOTU0052	vctg2997	NADP	NARP2	Antidefense	vctg2997-cat_1_101,vctg2997-cat_1_103	narp2_nampt,narp2_nmnat	temperate	132528	88.84	3.0	9	Caudoviricetes		
-vOTU0131	vctg3454	NADP	NARP2	Antidefense	vctg3454-cat_1_21,vctg3454-cat_1_26	narp2_nampt,narp2_nmnat	virulent	58307	31.9	4.0	10	Caudoviricetes		
-vOTU0113	vctg2633	NADP	NARP2	Antidefense	vctg2633-cat_1_35,vctg2633-cat_1_37	narp2_nampt,narp2_nmnat	virulent	61898	16.65	4.0	1	Caudoviricetes		
-vOTU0544	vctg2892	NADP	NARP2	Antidefense	vctg2892-cat_1_13,vctg2892-cat_1_14	narp2_nampt,narp2_nmnat	virulent	35287	14.34	4.0	4	Caudoviricetes		
-vOTU1643	vctg2728	NADP	NARP2	Antidefense	vctg2728-cat_2_1,vctg2728-cat_2_2	narp2_nampt,narp2_nmnat	virulent	16548	6.8	4.0	0			

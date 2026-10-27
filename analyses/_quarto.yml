@@ -1,0 +1,22 @@
+# Authors: Jinlong Ru; Cunli Pan. Native GitHub Markdown source workflow.
+project:
+  type: default
+  output-dir: "."
+  render:
+    - "*.qmd"
+    - "!data/"
+format: gfm
+execute:
+  freeze: false
+  cache: false
+  echo: true
+  warning: true
+  message: true
+  error: false
+toc: true
+number-sections: false
+author:
+  - name: Jinlong Ru
+    orcid: "0000-0002-6757-6018"
+  - name: Cunli Pan
+    orcid: "0000-0002-2595-7533"

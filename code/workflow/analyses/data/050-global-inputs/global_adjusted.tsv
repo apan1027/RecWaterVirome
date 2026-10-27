@@ -1,5 +1,0 @@
-analysis	covariate	definition	valid	n_invalid_metab	n_invalid_adf	note
-separate adjustment (not joint)	ecosystem	all38	FALSE	106	11	ecosystem and host-phylum adjustments are separate models; neither controls for the other
-separate adjustment (not joint)	ecosystem	named25	FALSE	106	7	ecosystem and host-phylum adjustments are separate models; neither controls for the other
-separate adjustment (not joint)	host	all38	FALSE	58	18	ecosystem and host-phylum adjustments are separate models; neither controls for the other
-separate adjustment (not joint)	host	named25	FALSE	58	13	ecosystem and host-phylum adjustments are separate models; neither controls for the other

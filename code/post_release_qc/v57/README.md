@@ -1,5 +1,0 @@
-# Supplementary diagnostics incorporated in v57.1
-
-These are the two previously executed, scoped checks from 2026-10-25. This release incorporates their saved outputs and scripts; it does not rerun them. The position check reproduces the original gene-site bootstrap; it is not a contig-cluster bootstrap or an equivalence test. DTR/ITR does not certify host-free sequence. Projection convergence and numerical reproducibility do not imply passage of the original no-warning rule or validate biological opportunity assumptions.
-
-`position/source/vf_position_qc.audit.R` accepts a read-only SQLite input and an existing output folder. That original database input is a separate prerequisite; do not substitute another database without checking provenance. `opportunity/validate.R` accepts the package root and an existing output folder and uses the archived model inputs. These scripts are opt-in reproductions, not called by the default publication command. Original comments and old report versions are provenance, not current manuscript wording. Current scientific interpretations are in Supplementary Notes 3 and 4.

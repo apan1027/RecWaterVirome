@@ -1,0 +1,745 @@
+---
+title: "220-sfig2-function-context"
+subtitle: "Supplementary Figure 3 and Supplementary Note 1: NARP definitions, carrier profiles, gene neighbourhoods and stored structural evidence"
+author:
+  - name: Jinlong Ru
+    orcid: "0000-0002-6757-6018"
+  - name: Cunli Pan
+    orcid: "0000-0002-2595-7533"
+date: today
+params:
+  name: "220-sfig2-function-context"
+---
+
+**Updated: `r format(Sys.time(), '%Y-%m-%d %H:%M:%S %Z %z', tz = 'Europe/Berlin')`.**
+
+```{r}
+#| label: params
+#| eval: !expr interactive()
+#| include: false
+params <- list(name = "220-sfig2-function-context")
+```
+
+```{r}
+#| label: setup
+#| include: false
+#| message: false
+#| warning: false
+#| cache: false
+wd <- "analyses"
+if (basename(getwd()) != wd) {
+    setwd(here::here(wd))
+}
+here::i_am(paste0(params$name, ".qmd"), uuid = "af26f9fb-d304-4697-9ddc-4be1e8eb247b")
+qproj::proj_create_dir_target(params$name, clean = FALSE)
+
+# convenience helpers
+path_target <- qproj::proj_path_target(params$name)
+path_source <- qproj::proj_path_source(params$name)
+path_raw <- path_source("00-raw")
+path_resource <- here::here(path_raw, "d00-resource")
+path_data <- here::here(path_raw, paste0("d", params$name))
+dir.create(path_raw, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_data, recursive = TRUE, showWarnings = FALSE)
+dir.create(path_resource, recursive = TRUE, showWarnings = FALSE)
+```
+
+```{r}
+#| label: packages
+#| message: false
+#| warning: false
+#| cache: false
+# qproj template chunk, trimmed to what figure steps use: ggplot2 and
+# patchwork plus the project helpers in R/.
+suppressPackageStartupMessages({
+  library(ggplot2)
+  library(patchwork)
+  devtools::load_all()
+})
+```
+
+```{r}
+#| label: step-guard
+#| cache: false
+# Checks params$name, path_target() and here() against analyses/R/steps.yml
+# and opens a staging folder for this run's outputs.
+step <- rwv_step_begin(params$name, path_target)
+# New outputs are staged; the previous result stays until rwv_step_finish()
+# has checked and published the new one.
+path_target <- step$path_target
+```
+
+```{r}
+#| label: report-presentation
+#| include: false
+rwv_report_setup(step)
+```
+
+
+
+## Tasks
+
+This step draws the final Supplementary Figure 3 layout in R/grid from verified NARP tables and registered display materials: definition membership, seven-sample carrier abundance, local gene neighbourhoods and ORF102 domain/structural evidence. The full-model and local-overlay PNGs are reused pixel-identically; no structure prediction or structural alignment is rerun. Supplementary Note 1 retains depth/reference checks and host background in Tables A-C. Tasks 2-5 validate the component evidence; Task 6 assembles the current figure.
+
+### Task 1: Inputs
+
+```{r}
+#| label: inputs
+manifest <- rwv_read_tsv(rwv_step_input(step, path_source, "010-input-manifest", "input-manifest.tsv"))
+# 2026-10-17: the adopted v35 NARP figure (Supplementary Figure 3) is a registered raw input of this step.
+raw_manifest <- rwv_read_tsv(rwv_step_input(step, path_source, "010-input-manifest", "raw-input-manifest.tsv"))
+raw_path <- function(f) rwv_raw_input(step, path_data, f, raw_manifest)
+style <- rwv_style_read(rwv_project_input(step, "analyses/R/style.yml", manifest))
+style <- rwv_style_for_figure(style, "sfig3")   # v40: figure-specific text sizes (analyses/R/style.yml figure_text_pt)
+palettes <- rwv_palettes_read(rwv_project_input(step, "analyses/R/palettes.yml", manifest))
+figures <- rwv_figures_read(rwv_project_input(step, "analyses/R/figures.yml", manifest))
+defs <- rwv_definitions_read(rwv_project_input(step, "analyses/R/definitions.tsv", manifest))
+# Sample order, the Figure 3a short display names (Data 1 S51) and the 030 sample-abundance table are used by the
+# data checks below; Task 6 assembles the current Supplementary Figure 3 in R/grid from registered display materials.
+samples <- rwv_samples_read(rwv_project_input(step, "analyses/R/samples.tsv", manifest), style)
+ko_labels <- as.data.frame(rwv_read_tsv(rwv_project_input(step, "analyses/R/f3-ko-labels.tsv", manifest)))
+up3 <- function(f) as.data.frame(rwv_read_tsv(rwv_step_input(step, path_source, "030-function-inputs", f)))
+disp <- up3("f3_display.tsv")
+cab <- up3("narp_carrier_sample_abundance.tsv")   # 49 rows written by 030 from the 012 TSE
+ch <- up3("f3_carrier_hosts.tsv")
+narp <- up3("narp_definitions.tsv")
+dfg <- up3("votu0052_defensefinder.tsv")
+ev <- up3("narp_case_evidence.tsv"); ev$value <- as.numeric(ev$value)
+pairs <- up3("narp_gene_pairs.tsv")
+gaps <- up3("function-gaps.tsv")
+fonts <- rwv_fonts_resolve(style, italic = TRUE)   # gene symbols in panel a are italic
+spec <- rwv_figure_spec(figures, "sfig3", params$name)
+checks <- rwv_checks_new()
+pt <- style$text_pt; ink <- style$colours$text; fam <- style$font$family
+lvl <- rwv_sample_levels(samples)
+site_col <- rwv_site_colours(style)
+```
+
+### Task 2: Validate display-KO carriers and host evidence
+
+Use only the 200 verified iPHoP score >= 90 records from 020. Historical host fields in the driver table are excluded. Dataset-level genus visibility is distinct from same-sample co-detection and infection evidence.
+
+```{r}
+#| label: panel-a
+st_lab <- c(named_genus_detected_in_16s = "named genus in 16S", named_genus_not_detected_in_16s = "named genus not in 16S",
+            genus_unresolved = "genus unresolved")
+st_col <- unlist(palettes$host_status)[names(st_lab)]
+row_lab <- disp$KO   # KO stays the row key; the axis shows the Figure 3a short names
+lab_map <- ko_labels[match(disp$KO, ko_labels$KO), ]
+rwv_check(checks, "label table covers the 11 displayed KOs, one row each", sort(disp$KO), sort(ko_labels$KO), source = "analyses/R/f3-ko-labels.tsv")
+ko_short <- setNames(lab_map$short_label, disp$KO)
+ko_italic <- setNames(toupper(lab_map$italic) == "TRUE", disp$KO)
+ko_axis_labels <- function(breaks) do.call(expression, lapply(breaks, function(b)
+  if (isTRUE(ko_italic[[b]])) bquote(italic(.(ko_short[[b]]))) else ko_short[[b]]))
+ch$row <- factor(row_lab[match(ch$feature_id, disp$KO)], levels = rev(row_lab))
+rwv_check(checks, "carriers per displayed KO equal Figure 3", as.numeric(disp$n_carriers),
+          as.numeric(table(ch$row)[row_lab]), source = "f3_display.tsv")
+rwv_check(checks, "host statuses are the three record classes or no record", TRUE,
+          all(ch$iphop90_status %in% c(names(st_lab), "no iPHoP >= 90 record")))
+# Bars count only carriers with an iPHoP >= 90 record; the number at the right
+# is carriers with a record/all carriers of that KO.
+rec <- ch[ch$iphop90_status %in% names(st_lab), ]
+rec$status <- factor(rec$iphop90_status, levels = rev(names(st_lab)))
+cnt <- as.data.frame(table(row = rec$row, status = rec$status))
+n_all <- as.integer(table(ch$row)[levels(ch$row)])
+with_rec <- as.integer(table(rec$row)[levels(ch$row)])
+rwv_check(checks, "carriers with an iPHoP >= 90 record (all displayed KOs)", 23, sum(with_rec),
+          source = "regression constant (17 + 5 + 1 in f3_carrier_hosts.tsv)")
+lab <- data.frame(row = factor(levels(ch$row), levels = levels(ch$row)), txt = rwv_fmt_frac(with_rec, n_all))
+x_max <- 15
+rwv_check(checks, "largest record count fits the axis", TRUE, max(with_rec) <= x_max)
+```
+
+### Task 3: Validate membership under four NARP definitions
+
+```{r}
+#| label: panel-b
+defs_cols <- c(df_narp1 = "NARP1", df_narp2 = "NARP2", ko_K03462_K13522 = "KO rule", dbapis_narp_targeting = "dbAPIS")
+rwv_check_def(checks, defs, "narp1_df", sum(narp$df_narp1 == "1"), "narp_definitions.tsv")
+rwv_check_def(checks, defs, "narp2_df", sum(narp$df_narp2 == "1"), "narp_definitions.tsv")
+rwv_check_def(checks, defs, "narp_ko_cooccurrence", sum(narp$ko_K03462_K13522 == "1"), "narp_definitions.tsv")
+rwv_check_def(checks, defs, "dbapis_narp_targeting", sum(narp$dbapis_narp_targeting == "1"), "narp_definitions.tsv")
+rwv_check(checks, "every row belongs to at least one definition", TRUE,
+          all(rowSums(sapply(names(defs_cols), function(k) narp[[k]] == "1")) >= 1))
+# Candidate: the five DefenseFinder NARP2 calls first (vOTU0052 on top), then the rest by vOTU id.
+b_order <- c("vOTU0052", setdiff(narp$vOTU_id[narp$df_narp2 == "1"], "vOTU0052"), narp$vOTU_id[narp$df_narp2 != "1"])
+rwv_check(checks, "NARP definition table keeps all 19 NARP-related vOTUs (S3a)", 19L, length(unique(b_order)))
+narp <- narp[match(b_order, narp$vOTU_id), ]
+n_b2 <- sum(narp$df_narp2 == "1")
+q_short <- c(Complete = "C", `High-quality` = "HQ", `Medium-quality` = "MQ", `Low-quality` = "LQ")
+rwv_check(checks, "CheckV classes have a short mark", TRUE, all(narp$checkv_quality %in% names(q_short)))
+tiles <- do.call(rbind, lapply(names(defs_cols), function(k) {
+  data.frame(vOTU_id = narp$vOTU_id, def = defs_cols[[k]], member = narp[[k]] == "1")
+}))
+tiles$vOTU_id <- factor(tiles$vOTU_id, levels = rev(narp$vOTU_id))
+tiles$def <- factor(tiles$def, levels = defs_cols)
+q_lab <- data.frame(vOTU_id = factor(narp$vOTU_id, levels = rev(narp$vOTU_id)),
+                    txt = sprintf("%s %s%%", q_short[narp$checkv_quality], formatC(as.numeric(narp$checkv_completeness_pct), format = "f", digits = 1)))
+tot <- data.frame(def = factor(defs_cols, levels = defs_cols),
+                  n = sapply(names(defs_cols), function(k) sum(narp[[k]] == "1")))
+```
+
+### Task 4: Validate case abundance and ORF102 domains
+
+ORF102 domain boundaries are hmmscan predictions. Conserved residues do not establish cleavage activity. atd1 (ORF166) is a separate call about 45 kb from ORF101-ORF103.
+
+```{r}
+#| label: panel-c
+dfg$orf <- sub("^vctg2997-cat_1_", "ORF", dfg$hit_id)
+rwv_check(checks, "DefenseFinder hits on vOTU0052 (Data 1 S27; legend claim)", c("ORF101", "ORF103", "ORF166"), dfg$orf)
+rwv_check(checks, "ORF101/ORF103 are the NARP2 profiles", c("narp2_nmnat", "narp2_nampt"), dfg$gene_name[dfg$orf != "ORF166"])
+# (C) Where the NARP2 case set occurs. Abundance is the masked trimmed TPM of the 012 TSE divided by
+# 10,000 (computed in 030), i.e. percent of the whole breadth-masked catalogue in each sample
+# (the unit of Fig. 4a); one shared colour scale, no row scaling; a dash marks a vOTU below the 75%
+# breadth threshold in that sample (masked to zero), which is not absence from the water.
+n2 <- narp$vOTU_id[narp$df_narp2 == "1"]
+k13522_carriers <- sort(unique(ch$vOTU_id[ch$feature_id == "K13522"]))
+extra <- setdiff(k13522_carriers, n2)
+rwv_check(checks, "the five DefenseFinder NARP2 calls all carry K13522", TRUE, all(n2 %in% k13522_carriers))
+rwv_check(checks, "nadM (K13522) carriers without a DefenseFinder NARP2 call", c("vOTU0863", "vOTU1898"), extra,
+          source = "f3_carrier_hosts.tsv; narp_definitions.tsv")
+c_rows <- c("vOTU0052", setdiff(n2, "vOTU0052"), extra)
+cab$catalogue_percent <- as.numeric(cab$catalogue_percent); cab$trimmed_tpm_masked <- as.numeric(cab$trimmed_tpm_masked)
+cab$detected <- toupper(cab$detected) == "TRUE"
+rwv_check(checks, "sample table holds the case set in panel order", c_rows, unique(cab$vOTU_id), source = "030/narp_carrier_sample_abundance.tsv")
+rwv_check(checks, "sample table: every vOTU x configured sample once", 49L, nrow(unique(merge(cab[, c("vOTU_id", "sample_id")],
+          expand.grid(vOTU_id = c_rows, sample_id = lvl, stringsAsFactors = FALSE)))))
+rwv_check(checks, "percent equals masked trimmed TPM / 10,000", cab$trimmed_tpm_masked / 1e4, cab$catalogue_percent, tol = 1e-12)
+rwv_check(checks, "non-zero cells are exactly the detected vOTU-sample pairs (covered fraction >= 0.75; checked in 030)", TRUE,
+          identical(cab$catalogue_percent > 0, cab$detected))
+heat_c <- data.frame(vOTU_id = cab$vOTU_id, sample_id = cab$sample_id, pct = cab$catalogue_percent)
+heat_c$txt <- ifelse(heat_c$pct > 0, trimws(formatC(heat_c$pct, format = "fg", digits = 2)), rwv_ndash)
+heat_c$fillv <- ifelse(heat_c$pct > 0, heat_c$pct, NA)
+c_lim <- c(0.02, 4)
+rwv_check(checks, "non-zero abundances fall inside the colour limits", TRUE, all(heat_c$pct[heat_c$pct > 0] >= c_lim[1] & heat_c$pct[heat_c$pct > 0] <= c_lim[2]))
+# 2026-10-14 adoption (reviewed candidate A): one 7 x 7 matrix instead of two stacked blocks
+# and a site strip. The five DefenseFinder NARP2 calls sit above the dashed line and the two
+# other nadM carriers below it; completeness is shown once, in b. Same 49 values, colour
+# limits, log scale, sample order and dash rule as before.
+c_y <- setNames(c(8, 7, 6, 5, 4, 2, 1), c_rows)
+heat_c$row_y <- unname(c_y[heat_c$vOTU_id])
+heat_c$sample_id <- factor(heat_c$sample_id, levels = lvl)
+rwv_check(checks, "carrier abundance: 8 detected cells and 41 dashes (S3b)", c(8L, 41L), c(sum(heat_c$pct > 0), sum(heat_c$pct == 0)),
+          source = "030/narp_carrier_sample_abundance.tsv")
+```
+
+```{r}
+#| label: panel-d
+dom <- setNames(ev$value[ev$group == "orf102_domains"], ev$item[ev$group == "orf102_domains"])
+len <- dom[["ORF102 length"]]
+rwv_check(checks, "ORF102 length (aa)", 211, len, source = "narp_case_evidence.tsv; 030 anchors it to the gene coordinates")
+rwv_check(checks, "GIY-YIG and NUMOD-like boundaries", c(3, 87, 153, 184, 143, 188),
+          unname(dom[c("GIY-YIG catalytic domain start", "GIY-YIG catalytic domain end",
+                       "I-HmuI NUMOD-like domain start", "I-HmuI NUMOD-like domain end",
+                       "NUMOD-like envelope start", "NUMOD-like envelope end")]),
+          source = "document transcription (doc_votu0052_orf102.md line 138); no independent source")
+# 2026-10-14 adoption: a one-dimensional sequence-domain track. Two equal-height segments show the
+# GIY-YIG (3-87) and I-HmuI NUMOD-like (153-184) matches; rectangle height has no meaning. The
+# envelope (143-188) stays in the legend, Supplementary Note 1 and Data 1 S28, not drawn as a third box.
+domain_track <- data.frame(
+  start = unname(dom[c("GIY-YIG catalytic domain start", "I-HmuI NUMOD-like domain start")]),
+  end = unname(dom[c("GIY-YIG catalytic domain end", "I-HmuI NUMOD-like domain end")]),
+  name = c("GIY-YIG", "I-HmuI NUMOD-like"))
+domain_track$label <- paste0(domain_track$name, "\n", rwv_fmt_range(domain_track$start, domain_track$end))
+d_axis <- sprintf("ORF102 protein position (aa; %d aa total)", as.integer(len))
+rwv_check(checks, "ORF102 domain matches (envelope excluded)", c(3, 87, 153, 184),
+          c(rbind(domain_track$start, domain_track$end)))
+```
+
+### Task 5: Retain depth/reference checks in Supplementary Note 1
+
+```{r}
+#| label: note-evidence
+cov <- ev[ev$group == "coverage", ]
+he <- ev[ev$group == "he_targeting", ]
+gl <- ev[ev$group == "global_narp", ]
+rwv_check(checks, "vOTU0052 locus relative depth", 1.00, cov$value[grepl("vctg2997", cov$item)],
+          source = "document transcription (doc_votu0052_coverage_spike.md line 63); no independent source")
+rwv_check(checks, "coverage rows (vOTU0052 + 4 comparison loci)", 5, nrow(cov))
+rwv_check(checks, "strict-site observed versus expected", c(0, 0.45),
+          he$value[match(c("strict site (between the two genes): observed", "strict site: expected"), he$item)],
+          source = "document transcription (doc_votu0052_he_targeting.md line 66); no independent source")
+he_val <- function(item) { v <- he$value[he$item == item]; if (length(v) != 1L) rwv_fail("Missing HE item: ", item); v }
+he_p <- c(he_val("strict site: reported one-sided Poisson enrichment p"), he_val("+-10 ORF window: reported one-sided Poisson enrichment p"))
+he_cohort <- c(he_val("reference cohort: NAMPT-positive INPHARED genomes"), he_val("reference cohort: genomes with NMNAT near NAMPT (NARP2 module)"))
+# The sample of each contig is the third cell of its source table row.
+cov_sample <- vapply(strsplit(cov$source_text, "|", fixed = TRUE), function(z) trimws(gsub("\\*", "", z[4])), "")
+rwv_check(checks, "coverage samples parsed from the source rows (gd1v, od1v, gc1v, gd1v, gd1v)",
+          c("gd1v", "od1v", "gc1v", "gd1v", "gd1v"), cov_sample, source = "doc_votu0052_coverage_spike.md lines 63-67")
+cov_tab <- sort(table(cov_sample), decreasing = TRUE)
+rwv_check(checks, "reported Poisson p (strict, +-10 ORF)", c(1, 0.79), he_p, source = "document transcription (doc_votu0052_he_targeting.md lines 66, 69)")
+rwv_check(checks, "HE reference cohort (NAMPT-positive, NARP2)", c(1369, 104), he_cohort, source = "document transcription (lines 25, 27)")
+# Gene spacing (2026-10-11 addition, notes and legend only; the panels are unchanged):
+# ORFs between NMNAT and NAMPT in the 104 reference modules (document-reported)
+# and in the five local DefenseFinder NARP2 calls (counted from saved gene positions).
+he_dist <- c(he_val("NARP2 modules with no ORF between the two genes"), he_val("NARP2 modules with 1 ORF between the two genes"),
+             he_val("NARP2 modules with 2-4 ORFs between the two genes"), he_val("NARP2 modules with 6-9 ORFs between the two genes"))
+# Historical power label: the case document and S28 call this scenario "odds ratio of 3", but the
+# original analysis script sets lam1 = lam0 * 3, a threefold Poisson expected count. The S28 item
+# text is kept verbatim (it is a transcription); every text written here uses the corrected term.
+he_power <- he_val("strict window: reported power to detect an odds ratio of 3 with 56 assessable genomes")
+rwv_check(checks, "reference ORFs between the two genes: none, 1, 2-4, 6-9", c(48, 42, 5, 9), he_dist,
+          source = "document transcription (doc_votu0052_he_targeting.md lines 75-76); no independent source")
+rwv_check(checks, "references with >= 1 ORF between the genes equal the strict-window assessable genomes", 56, sum(he_dist[-1]))
+rwv_check(checks, "historical reported strict-window power (percent; source label odds ratio 3, scenario = threefold Poisson mean)", 16, he_power,
+          source = "document transcription (doc_votu0052_he_targeting.md line 62)")
+n2_ids <- narp$vOTU_id[narp$df_narp2 == "1"]
+loc <- do.call(rbind, lapply(n2_ids, function(v) {
+  g <- pairs[pairs$vOTU_id == v, ]
+  data.frame(vOTU_id = v, n_genes = nrow(g), between = diff(range(as.numeric(g$gene_position)))  - 1,
+             start = min(as.numeric(g$start_position)), end = max(as.numeric(g$end_position)),
+             length_bp = as.numeric(narp$length_bp[narp$vOTU_id == v]), quality = narp$checkv_quality[narp$vOTU_id == v],
+             completeness = as.numeric(narp$checkv_completeness_pct[narp$vOTU_id == v]))
+}))
+rwv_check(checks, "each local NARP2 call has one NMNAT and one NAMPT row", rep(2, 5), loc$n_genes, source = "narp_gene_pairs.tsv")
+rwv_check(checks, "local ORFs between the two genes (vOTU0052, 0113, 0131, 0544, 1643)",
+          c(vOTU0052 = 1, vOTU0113 = 1, vOTU0131 = 4, vOTU0544 = 0, vOTU1643 = 0), setNames(loc$between, loc$vOTU_id), source = "narp_gene_pairs.tsv gene positions")
+loc$edge <- loc$start <= 100 | loc$end >= loc$length_bp - 100
+rwv_check(checks, "only the vOTU1643 locus lies within 100 bp of a contig end", "vOTU1643", loc$vOTU_id[loc$edge])
+low <- loc[loc$quality == "Low-quality", ]
+rwv_check(checks, "four of the five local NARP2 calls are on Low-quality sequences", 4, nrow(low), source = "narp_definitions.tsv")
+rwv_check(checks, "global NARP1 / NARP2 module calls", c(566, 166), gl$value, source = "definitions.tsv global_narp = 566/166")
+
+# (Table A of Supplementary Note 1) Relative depth of the NARP2 locus in vOTU0052 and in four other NARP2-carrying contigs.
+cov$contig <- sub(" .*", "", cov$item)
+cov$kind <- sub("^[^(]*\\(?", "", sub("\\)$", "", cov$item))
+cov$votu <- pairs$vOTU_id[match(cov$contig, pairs$vcontig_id)]
+rwv_check(checks, "every coverage contig maps to a vOTU through the gene-pair table", FALSE, anyNA(cov$votu), source = "narp_gene_pairs.tsv")
+cov$kind <- ifelse(cov$contig == "vctg2997", "GIY-YIG insertion", cov$kind)
+rwv_check(checks, "coverage labels resolved", FALSE, any(cov$kind == ""))
+cov$focal <- cov$contig == "vctg2997"
+# (Table B of Supplementary Note 1) The two reference windows; values transcribed from the case documentation.
+win <- data.frame(
+  window = c("Strictly between the two member genes", "Within ±10 ORFs of the module"),
+  assessable = c(he$value[he$item == "strict site (between the two genes): assessable genomes"],
+                 he$value[he$item == "+-10 ORF window: assessable genomes"]),
+  observed = c(he$value[he$item == "strict site (between the two genes): observed"], he$value[he$item == "+-10 ORF window: observed"]),
+  expected = c(he$value[he$item == "strict site: expected"], he$value[he$item == "+-10 ORF window: expected"]),
+  p = he_p)
+rwv_check(checks, "HE windows: assessable, observed, expected", c(56, 104, 0, 7, 0.45, 9),
+          c(win$assessable, win$observed, win$expected), source = "document transcription (lines 66, 69); no independent source")
+```
+
+### Task 6: Draw final Supplementary Figure 3 in R/grid
+
+The final figure is assembled as an R/grid object below and exported using the shared figure exporter. Registered neighbourhood coordinates, colour ramps and two stored structure renders are read from analyses/data/00-raw/d220-sfig2-function-context/. The renders must be embedded pixel-identically. Historical v35 figure files remain provenance/check inputs and are not copied as the final figure. The optional Python/PyMuPDF/PyMOL scripts in supplementary-figure-3 rebuild historical materials only. No structure prediction or overlay calculation is rerun. Host background is retained in Supplementary Note 1 Table C and Data 1 S22.
+
+```{r}
+#| label: adopted-figure
+adopted <- c(pdf = "narp-v35-figure.pdf", svg = "narp-v35-figure.svg", png = "narp-v35-figure.png", tiff = "narp-v35-figure.tiff")
+src <- vapply(adopted, raw_path, "")
+av <- as.data.frame(rwv_read_tsv(raw_path("narp-v35-plot-values.tsv"))); av$value <- as.numeric(av$value)
+arec <- jsonlite::read_json(raw_path("narp-v35-export.json"))
+rwv_check(checks, "adopted figure assembly checks all passed (build_s2.py record)", TRUE, all(vapply(arec$qa, function(q) isTRUE(q$pass), logical(1))))
+# a: membership under the four definitions equals 030 narp_definitions.tsv
+am <- av[av$panel == "A", ]
+def_col <- c(NARP1 = "df_narp1", NARP2 = "df_narp2", `KO rule` = "ko_K03462_K13522", dbAPIS = "dbapis_narp_targeting")
+key <- do.call(rbind, lapply(names(def_col), function(d) data.frame(item = paste(narp$vOTU_id, d), value = as.numeric(narp[[def_col[[d]]]] == "1"))))
+rwv_check(checks, "S3a membership = narp_definitions.tsv (19 vOTUs x 4 definitions)", key$value[order(key$item)], am$value[match(sort(key$item), am$item)],
+          source = "030/narp_definitions.tsv")
+# b: the 49 abundance cells equal 030 narp_carrier_sample_abundance.tsv
+ab <- av[av$panel == "B", ]
+rwv_check(checks, "S3b abundance cells = narp_carrier_sample_abundance.tsv (49 cells)", cab$catalogue_percent,
+          ab$value[match(paste(cab$vOTU_id, cab$sample_id), ab$item)], tol = 1e-12, source = "030/narp_carrier_sample_abundance.tsv")
+# c: coordinates of the NARP2 member genes equal 030 narp_gene_pairs.tsv
+gp <- pairs; for (k in c("start_position", "end_position")) gp[[k]] <- as.numeric(gp[[k]])
+cc <- av[av$panel == "C", ]
+in_c <- gp$protein_id %in% sub(" (start|end)_position$", "", cc$item)
+rwv_check(checks, "S3c: every gene row of the five DefenseFinder NARP2 carriers is drawn", TRUE, all(in_c[gp$vOTU_id %in% n2]))
+gk <- function(f) cc$value[match(paste(gp$protein_id[in_c], f), cc$item)]
+rwv_check(checks, "S3c member-gene coordinates = narp_gene_pairs.tsv", c(gp$start_position[in_c], gp$end_position[in_c]),
+          c(gk("start_position"), gk("end_position")), source = "030/narp_gene_pairs.tsv")
+# d: ORF102 length and domain boundaries equal the case evidence used for Supplementary Note 1
+dd <- av[av$panel == "D", ]
+d_keys <- c("ORF102 length", "GIY-YIG catalytic domain start", "GIY-YIG catalytic domain end", "I-HmuI NUMOD-like domain start", "I-HmuI NUMOD-like domain end")
+rwv_check(checks, "S3d ORF102 length and domain boundaries = narp_case_evidence.tsv", unname(dom[d_keys]), dd$value[match(d_keys, dd$item)])
+s3 <- setNames(dd$value, dd$item)
+# 2026-10-18 (v40): Supplementary Figure 3 is drawn here as layout H (outputs/supp34-literature-redesign-2026-10-18,
+# code/candidates.R "S3-H"; author-approved), at 9.2 pt, instead of copying the registered v35 asset. Same saved values:
+# a = narp_definitions (19 x 4 definitions, CheckV), b = narp_carrier_sample_abundance (49 cells), c = the registered
+# neighbourhood table (34 ORFs; start/end equal the registered plot values C), d = the registered structure renders with
+# the saved domain and confidence values (plot values D). The registered v35 figure files stay registered and checked.
+nb <- as.data.frame(rwv_read_tsv(raw_path("narp-v35-neighbourhood-source.tsv")))
+for (k in c("gene_position", "start_position", "end_position", "strandedness")) nb[[k]] <- as.numeric(nb[[k]])
+ramps <- jsonlite::fromJSON(raw_path("narp-v35-colour-ramps.json"))
+img_full <- png::readPNG(raw_path("narp-v35-structure-full.png")); img_ov <- png::readPNG(raw_path("narp-v35-structure-overlay.png"))
+rwv_check(checks, "S3c draws the 34 registered neighbourhood ORFs of the five NARP2 calls", c(34L, 5L), c(nrow(nb), length(unique(nb$vOTU_id))))
+rwv_check(checks, "S3c neighbourhood vOTUs are the five DefenseFinder NARP2 calls", sort(n2), sort(unique(nb$vOTU_id)))
+nbk <- c(paste(nb$protein_id, "start_position"), paste(nb$protein_id, "end_position"))
+rwv_check(checks, "S3c neighbourhood start/end = registered plot values C (68 coordinates)", c(nb$start_position, nb$end_position),
+          cc$value[match(nbk, cc$item)], source = "narp-v35-plot-values.tsv")
+rwv_check(checks, "S3c anchor genes: one K13522 and one K03462 row per neighbourhood", rep(1L, 10),
+          c(vapply(c_rows[1:5], function(v) sum(nb$vOTU_id == v & nb$ko_id == "K13522"), integer(1)),
+            vapply(c_rows[1:5], function(v) sum(nb$vOTU_id == v & nb$ko_id == "K03462"), integer(1))))
+rwv_check(checks, "S3b/S3d colour ramps have 256 steps", c(256L, 256L), c(length(ramps$heat), length(ramps$viridis)))
+a_ids <- c(c_rows[1:5], narp$vOTU_id[!narp$vOTU_id %in% c_rows[1:5]])
+rwv_check(checks, "S3a draws all 19 NARP-related vOTUs once, the five NARP2 calls first", c(19L, 19L), c(length(a_ids), length(unique(a_ids))))
+cols4 <- c("df_narp1", "df_narp2", "ko_K03462_K13522", "dbapis_narp_targeting")
+tot4 <- vapply(cols4, function(k) sum(narp[[k]] == "1"), numeric(1))
+rwv_check(checks, "S3a column totals drawn (NARP1, NARP2, KO rule, dbAPIS)", c(3, 5, 6, 19), unname(tot4), source = "narp_definitions.tsv")
+n1 <- narp$df_narp1 == "1"   # v45: backs the figure-note wording on the NARP1 set
+rwv_check(checks, "S3 note: NARP1 shares none with NARP2 or the KO rule and all are dbAPIS vOTUs", c(0, 0, 3),
+          c(sum(n1 & narp$df_narp2 == "1"), sum(n1 & narp$ko_K03462_K13522 == "1"), sum(n1 & narp$dbapis_narp_targeting == "1")), source = "narp_definitions.tsv")
+W <- spec$width_mm; H <- spec$height_mm; P <- style$text_pt; K <- style$colours
+rwv_check(checks, "page size of the adopted layout H (mm)", c(180, 265), c(W, H), source = "analyses/R/figures.yml")
+tx <- function(s, x, y, size = P$annotation, bold = FALSE, just = "left", col = ink, italic = FALSE)
+  grid::grid.text(s, unit(x, "mm"), unit(H - y, "mm"), just = just,
+                  gp = grid::gpar(fontfamily = fam, fontsize = size, fontface = if (bold) "bold" else if (italic) "italic" else "plain", col = col))
+ln <- function(x, y, xx, yy, col = K$grey_rule, mm = style$line_mm$thin, lty = 1)
+  grid::grid.lines(unit(c(x, xx), "mm"), unit(H - c(y, yy), "mm"), gp = grid::gpar(col = col, lwd = rwv_lwd(mm), lty = lty))
+bx <- function(x, y, w, h, fill = "white", col = NA, mm = style$line_mm$hairline)
+  grid::grid.rect(unit(x, "mm"), unit(H - y, "mm"), unit(w, "mm"), unit(h, "mm"), just = c("left", "top"),
+                  gp = grid::gpar(fill = fill, col = col, lwd = rwv_lwd(mm)))
+# v50 figure cleanup (2026-10-19, Codex task book docs/figure-cleanup-v49-2026-10-19/00): panel letters only; the four
+# explanatory titles and the footnote sentences of a, b and d are not drawn (caption / figure notes / Note 1 carry them);
+# grey below-detection tiles replace the 41 dashes of b; completeness shown with one decimal. Values unchanged.
+tag <- function(id, y, x = 3) tx(rwv_tag(style, id), x, y, P$tag, TRUE)
+heat_fill <- function(v) ramps$heat[1 + floor(255 * pmax(0, pmin(1, (log10(v) - log10(c_lim[1])) / (log10(c_lim[2]) - log10(c_lim[1])))))]
+arrow <- function(a, b, y, dir = 1, fill = K$grey_light, col = fill, mm = style$line_mm$hairline, lty = 1) {
+  h <- min(1.8, (b - a) * .3)
+  x <- if (dir > 0) c(a, b - h, b, b - h, a) else c(b, a + h, a, a + h, b)
+  grid::grid.polygon(unit(x, "mm"), unit(H - c(y - 1.6, y - 1.6, y, y + 1.6, y + 1.6), "mm"), gp = grid::gpar(fill = fill, col = col, lwd = rwv_lwd(mm), lty = lty))
+}
+xr <- c(-1700, 5400)
+neighbour <- function(id, x0, x1, y) {
+  z <- nb[nb$vOTU_id == id, ]; nm <- z[z$ko_id == "K13522", ]; neg <- nm$strandedness == -1
+  anchor <- if (neg) nm$end_position else nm$start_position
+  xm <- function(v) x0 + (v - xr[1]) / diff(xr) * (x1 - x0)
+  ln(x0, y, x1, y)
+  for (i in seq_len(nrow(z))) {
+    zz <- z[i, ]; aa <- if (neg) anchor - zz$end_position else zz$start_position - anchor; bb <- if (neg) anchor - zz$start_position else zz$end_position - anchor
+    member <- zz$ko_id %in% c("K13522", "K03462")
+    he <- (id == "vOTU0052" && zz$gene_position == 102) || (id == "vOTU0131" && zz$gene_position %in% c(22, 27))
+    arrow(xm(aa), xm(bb), y, zz$strandedness * if (neg) -1 else 1,
+          if (member) palettes$gene$narp_member else if (he) "white" else K$grey_light,
+          if (he) palettes$he$ink else if (member) palettes$gene$narp_member else "white",
+          if (he) style$line_mm$main else style$line_mm$hairline, if (he && id == "vOTU0131") 2 else 1)
+    if (member) tx(if (zz$ko_id == "K13522") "NMNAT" else "NAMPT", (xm(aa) + xm(bb)) / 2, y, just = "centre", col = "white")
+    if (he) tx(paste0("ORF", zz$gene_position), (xm(aa) + xm(bb)) / 2, y - 3.8, just = "centre")
+  }
+  if (id == "vOTU1643") { ee <- xm(anchor - 1); ln(ee, y - 2, ee, y + 2, ink, style$line_mm$main); tx("end", ee + 1, y + 3.3) }
+}
+draw_s3 <- function() {
+  # a: membership under the four definitions (all 19 vOTUs), CheckV class and completeness
+  tag("A", 6)
+  hd <- c("N1", "N2", "KO", "db"); fill4 <- c(palettes$function_calls$narp_call, palettes$function_calls$narp_call,
+                                              palettes$function_calls$ko_rule, palettes$function_calls$anti_defense_tool)
+  for (j in 1:4) { tx(hd[j], 26 + (j - .5) * 7, 15, just = "centre", bold = TRUE); tx(paste0("(", tot4[j], ")"), 26 + (j - .5) * 7, 19, just = "centre") }
+  tx("CheckV / %", 55, 15, bold = TRUE)
+  for (i in seq_along(a_ids)) {
+    y <- 24 + (i - 1) * 3.8; z <- narp[narp$vOTU_id == a_ids[i], ]
+    tx(a_ids[i], 3, y, bold = i == 1)
+    for (j in 1:4) bx(26 + (j - 1) * 7, y - 1.5, 6, 3, if (z[[cols4[j]]] == "1") fill4[j] else "white", K$grey_rule)
+    tx(paste0(q_short[[z$checkv_quality]], " ", formatC(as.numeric(z$checkv_completeness_pct), format = "f", digits = 1), "%"), 55, y)
+    if (i == 5) ln(3, y + 1.9, 87, y + 1.9, K$grey_mid, style$line_mm$thin, 2)
+  }
+  # b: the 49 abundance cells of the five NARP2 calls and two further nadM carriers
+  tag("B", 6, 92)
+  for (j in seq_along(lvl)) tx(lvl[j], 112 + (j - .5) * 9.3, 15, just = "centre")
+  for (i in seq_along(c_rows)) {
+    y <- 24 + (i - 1) * 8; tx(c_rows[i], 92, y, bold = i == 1)
+    for (j in seq_along(lvl)) {
+      z <- heat_c[heat_c$vOTU_id == c_rows[i] & as.character(heat_c$sample_id) == lvl[j], ]; stopifnot(nrow(z) == 1L)
+      bx(112 + (j - 1) * 9.3, y - 2.5, 9.0, 5, if (z$pct > 0) heat_fill(z$pct) else K$grey_rule, K$grey_rule)
+      if (z$pct > 0) tx(z$txt, 112 + (j - .5) * 9.3 - .15, y, just = "centre", col = if (z$pct > 0.7) "white" else ink)
+    }
+    if (i == 5) ln(92, y + 4, 177, y + 4, K$grey_mid, style$line_mm$thin, 2)
+  }
+  for (k in 1:256) bx(120 + 40 * (k - 1) / 256, 79, 40 / 256 + .03, 1.8, ramps$heat[k])
+  for (v in c(.03, .1, .3, 1, 3)) tx(v, 120 + (log10(v) - log10(c_lim[1])) / (log10(c_lim[2]) - log10(c_lim[1])) * 40, 84, just = "centre")
+  tx("Whole catalogue (%)", 140, 89, just = "centre")
+  bx(120, 93.5, 9.0, 5, K$grey_rule, K$grey_rule); tx("Below detection rule", 131, 96)
+  # c: the five saved neighbourhoods at one bp scale, anchored at the NMNAT start
+  tag("C", 112)
+  for (i in 1:5) { y <- 123 + (i - 1) * 10; tx(paste0(c_rows[i], if (c_rows[i] %in% c("vOTU0131", "vOTU1643")) "\u2020" else ""), 3, y, bold = TRUE); neighbour(c_rows[i], 26, 176, y) }   # \u2020 displayed reversed (caption)
+  for (v in seq(-1000, 5000, 1000)) { x <- 26 + (v - xr[1]) / diff(xr) * 150; ln(x, 168, x, 169, K$grey_mid); tx(if (v < 0) paste0(rwv_minus, abs(v)) else v, x, 172.5, just = "centre") }
+  tx("bp relative to NMNAT start", 101, 177.5, just = "centre")
+  bx(3, 183, 3, 2.4, palettes$gene$narp_member); tx("NARP2 member", 8, 184.2)
+  arrow(40, 43.5, 184.2, 1, "white", palettes$he$ink, style$line_mm$main, 1); tx("ORF102: domain candidate", 45.5, 184.2)
+  arrow(97, 100.5, 184.2, 1, "white", palettes$he$ink, style$line_mm$main, 2); tx("ORF22/27: VOGdb annotation", 102.5, 184.2)
+  bx(152, 183, 3, 2.4, K$grey_light); tx("Other ORF", 157, 184.2)
+  # d: domain track, saved full-length prediction and local reference comparison
+  tag("D", 193)
+  xdom <- function(n) 57 + (n - 1) / (len - 1) * 115
+  tx(sprintf("ORF102 (%d aa)", as.integer(len)), 26, 201, bold = TRUE)
+  ln(57, 201, 172, 201)
+  for (k in seq_len(nrow(domain_track))) {
+    d <- domain_track[k, ]; bx(xdom(d$start), 200, xdom(d$end) - xdom(d$start), 2, palettes$he$fill, palettes$he$fill)
+    tx(paste0(c("GIY-YIG", "NUMOD-like")[k], " (", rwv_fmt_range(d$start, d$end), ")"), (xdom(d$start) + xdom(d$end)) / 2, 197, just = "centre")
+  }
+  for (n in c(1, 100, len)) tx(n, xdom(n), 205.5, just = "centre")
+  tx(sprintf("Predicted model (%d aa)", as.integer(len)), 44, 211.5, just = "centre"); tx("GIY-YIG reference comparison", 137, 211.5, just = "centre")
+  hf <- 32; wf <- hf * ncol(img_full) / nrow(img_full); wo <- hf * ncol(img_ov) / nrow(img_ov)
+  grid::grid.raster(img_full, unit(44 - wf / 2, "mm"), unit(H - 214, "mm"), unit(wf, "mm"), unit(hf, "mm"), just = c("left", "top"))
+  grid::grid.raster(img_ov, unit(137 - wo / 2, "mm"), unit(H - 214, "mm"), unit(wo, "mm"), unit(hf, "mm"), just = c("left", "top"))
+  for (k in 1:100) bx(6 + (k - 1) / 100 * 25, 248.2, 25 / 100 + .02, 1.7, ramps$viridis[1 + round((k - 1) / 99 * 255)])
+  tx("0.5", 6, 252.8); tx("1.0", 31, 252.8, just = "right"); tx("pLDDT", 34, 249.2)
+  ln(100, 249.2, 104, 249.2, palettes$he$fill, 0.6); tx(paste0("ORF102, ", rwv_fmt_range(dom[["GIY-YIG catalytic domain start"]], dom[["GIY-YIG catalytic domain end"]])), 106, 249.2)
+  ln(139, 249.2, 143, 249.2, K$grey_dark, 0.6); tx("I-TevI (1MK0)", 145, 249.2)
+}
+page <- grid::gTree(children = grid::gList(rwv_capture_grob(draw_s3(), width = rwv_mm_to_in(W), height = rwv_mm_to_in(H), style = style, fonts = fonts)),
+                    vp = grid::viewport(width = unit(W, "mm"), height = unit(H, "mm"), clip = "off"))
+expected3 <- c(rwv_tag(style, c("A", "B", "C", "D")), a_ids, "CheckV / %", "MQ 88.8%",
+               "(3)", "(5)", "(6)", "(19)", lvl, "Whole catalogue (%)", "Below detection rule", "NMNAT", "NAMPT", "ORF102", "ORF22", "ORF27", "end",
+               "bp relative to NMNAT start", "NARP2 member", "ORF102: domain candidate", "ORF22/27: VOGdb annotation", "Other ORF",
+               "Predicted model (211 aa)", "GIY-YIG reference comparison", "pLDDT", "I-TevI (1MK0)")
+rwv_check(checks, "S3b grey below-detection tiles / detected tiles (v50, no dashes)", c(41L, 8L), c(sum(heat_c$pct == 0), sum(heat_c$pct > 0)))
+res3 <- rwv_figure_export(patchwork::wrap_elements(full = page), path_target, "sfig3", spec, style, fonts, expected3, step,
+                          registered_rasters = list(img_full, img_ov))
+knitr::kable(res3$qa[, c("format", "check", "observed", "pass")])
+```
+
+
+### Task 6b: Export Supplementary Note 1 and its complete value table
+
+The formal supplementary-note-1-narp.md (copied by 900 as Supplementary_Note_1_NARP.md) and supplementary-note-1-values.tsv retain 22 entries: five former-panel-E rows, 15 former-panel-F rows and two envelope rows. All values come from 030 tables; prose describes predictions and source transcriptions without a new calculation.
+
+```{r}
+#| label: supplementary-note
+f2 <- function(x) formatC(x, format = "f", digits = 2)
+words <- function(n) c("none", "one", "two", "three", "four", "five")[n + 1L]
+# Reported independent E-values of the two ORF102 matches, parsed from the verbatim source text in S28.
+dom_src <- unique(ev$source_text[ev$group == "orf102_domains"])
+rwv_check(checks, "ORF102 domain rows share one source line", 1L, length(dom_src), source = "narp_case_evidence.tsv")
+ie <- regmatches(dom_src, gregexpr("i-E ([0-9.]+e-[0-9]+)", dom_src))[[1]]
+ie <- sub("^i-E ", "", ie)
+rwv_check(checks, "reported independent E-values (GIY-YIG, NUMOD-like) in the source text", c("2.5e-05", "2.8e-05"), ie,
+          source = "doc_votu0052_orf102.md line 138 (verbatim in Data 1 S28)")
+sci <- function(x) {
+  m <- sub("e.*$", "", x); e <- as.integer(sub("^.*e", "", x))
+  sup <- c("-" = "⁻", "0" = "⁰", "1" = "¹", "2" = "²", "3" = "³", "4" = "⁴",
+           "5" = "⁵", "6" = "⁶", "7" = "⁷", "8" = "⁸", "9" = "⁹")
+  paste0(m, " × 10", paste(sup[strsplit(as.character(e), "")[[1]]], collapse = ""))
+}
+v52 <- narp[narp$vOTU_id == "vOTU0052", ]
+rwv_check(checks, "vOTU0052 is the only Medium-quality DefenseFinder NARP2 call", "vOTU0052",
+          narp$vOTU_id[narp$df_narp2 == "1" & narp$checkv_quality == "Medium-quality"], source = "narp_definitions.tsv")
+c52 <- as.numeric(v52$checkv_completeness_pct)
+cmp_low <- as.numeric(narp$checkv_completeness_pct[narp$df_narp2 == "1" & narp$vOTU_id != "vOTU0052"])
+v113_gd1 <- cab$detected[cab$vOTU_id == "vOTU0113" & cab$sample_id == "gd1"]
+rwv_check(checks, "vOTU0113 is also detected in gd1 (its depth row uses gc1)", TRUE, v113_gd1, source = "030/narp_carrier_sample_abundance.tsv")
+cov$sample <- sub("v$", "", cov_sample)
+cmp_ratio <- cov$value[!cov$focal]
+src_lines <- function(g) {
+  r <- ev[ev$group == g, ]
+  vapply(split(as.integer(r$source_line), r$source_file), function(l) {
+    l <- sort(unique(l)); paste(l, collapse = ", ")
+  }, "")
+}
+src_txt <- function(g) { x <- src_lines(g); paste(sprintf("%s line%s %s", names(x), ifelse(grepl(",", x), "s", ""), x), collapse = "; ") }
+note <- c(
+  "# Supplementary Note 1. NARP2 locus annotation and exploratory context checks", "",
+  paste("This note accompanies Supplementary Fig. 3a, b and d (former panels b–d of the NARP figure, then Supplementary Fig. 2) and the NARP paragraph of the Results.",
+        "It gives the reason for examining the vOTU0052 locus, the sequence-domain evidence behind the annotation of ORF102,",
+        "and two exploratory checks of that locus: a read-depth summary (Table A) and a reference-position comparison (Table B).",
+        "Earlier versions of the NARP figure drew these two checks as panels e and f.",
+        "The domain and exploratory-check quantities are transcribed from the case documentation of the original analysis, with file and line in Data 1 S28;",
+        "none was recomputed for this manuscript, no protein structure was predicted and no new statistical test was run."), "",
+  "## Selected locus and ORF102 annotation", "",
+  sprintf(paste("vOTU0052 (%s bp) is the only medium-quality sequence among the five local DefenseFinder NARP2 calls",
+                "(CheckV estimated completeness %s%%); the other four are low-quality sequences (%s–%s%%).",
+                "It was examined because its recovery allows the gene neighbourhood to be inspected, not because it is the most abundant carrier,",
+                "is ecologically most important or is functionally confirmed."),
+          rwv_fmt_int(as.numeric(v52$length_bp)), formatC(c52, format = "f", digits = 2),
+          formatC(min(cmp_low), format = "f", digits = 1), formatC(max(cmp_low), format = "f", digits = 1)), "",
+  sprintf(paste("On vOTU0052, %s and %s form the DefenseFinder NARP2 call (profiles %s and %s; Fig. 3d).",
+                "The intervening ORF102 is a separate candidate gene, not a member of that call.",
+                "A further DefenseFinder hit, atd1 on %s about 45 kb away, is a distinct system call (Data 1 S27)."),
+          dfg$orf[1], dfg$orf[2], dfg$gene_name[1], dfg$gene_name[2], dfg$orf[3]), "",
+  "| Match on ORF102 | Residue interval | Reported independent E-value | Other recorded interval |",
+  "|---|---:|---:|---|",
+  sprintf("| GIY-YIG | %s | %s | — |", rwv_fmt_range(dom[["GIY-YIG catalytic domain start"]], dom[["GIY-YIG catalytic domain end"]]), sci(ie[1])),
+  sprintf("| I-HmuI NUMOD-like | %s | %s | envelope %s |", rwv_fmt_range(dom[["I-HmuI NUMOD-like domain start"]], dom[["I-HmuI NUMOD-like domain end"]]),
+          sci(ie[2]), rwv_fmt_range(dom[["NUMOD-like envelope start"]], dom[["NUMOD-like envelope end"]])), "",
+  sprintf(paste("ORF102 encodes a %d-aa protein; domains were matched by hmmscan against Pfam-A.",
+                "The envelope of the NUMOD-like match is the alignment-related span reported by hmmscan; it is not a third domain or a confidence interval,",
+                "and the sequence track of Supplementary Fig. 3d draws only the two match intervals, with no quantitative meaning in rectangle height.",
+                "These sequence-domain matches support an HE-like annotation. They do not demonstrate protein folding, DNA cleavage, homing,",
+                "NAD⁺ reconstitution or anti-defense activity. No verified three-dimensional model of ORF102 was available, and none is shown."),
+          as.integer(len)), "",
+  "## Table A. Locus-to-contig median depth (formerly panel e of the NARP figure)", "",
+  paste("Question: was the median read depth over the NARP2 locus higher than over the rest of its contig, in the sample examined for each contig?",
+        "This was an exploratory follow-up to a locus-amplification hypothesis; it does not test enzyme or anti-defense activity."), "",
+  "| vOTU | Contig | Locus | Examined sample | Locus median / contig median depth |",
+  "|---|---|---|---|---:|",
+  sprintf("| %s | %s | %s | %s | %s |", cov$votu, cov$contig, cov$kind, cov$sample, f2(cov$value)), "",
+  sprintf("- The five rows are contig–sample summaries from %s samples (%s); they are not five independent replicates and not a between-group statistical comparison.",
+          words(length(cov_tab)), paste(sprintf("%s, %d", sub("v$", "", names(cov_tab)), as.integer(cov_tab)), collapse = "; ")),
+  "- Each contig was summarized in the one sample with the most mapped reads for that contig. That is not the only sample in which it was detected: vOTU0113 also met the detection criterion in gd1 (Supplementary Fig. 3b).",
+  "- The ratio is the median per-base depth across the locus divided by the median per-base depth across its whole contig (sliding windows were used only for position diagnostics in the original analysis). It is not the abundance of the virus in the sample.",
+  sprintf("- For vOTU0052 in gd1, the two medians coincide at the reported precision (ratio %s). The four comparison ratios range from %s to %s, and %s of them exceed 1; none is a matched control and no significance test was made.",
+          f2(cov$value[cov$focal]), f2(min(cmp_ratio)), f2(max(cmp_ratio)), words(sum(cmp_ratio > 1))),
+  "- vOTU0052 is a medium-quality sequence and the four comparison contigs are low-quality, so their recovery contexts differ; no repeated series per contig is available.",
+  "- A population-median snapshot cannot exclude local depth peaks, amplification in a minority of genomes or amplification under an unobserved induction condition. A ratio of 1.00 shows neither that the assembly is error-free nor that the locus is inactive.", "",
+  "## Table B. HE-domain annotations near reference NARP2 modules (formerly panel f of the NARP figure)", "",
+  paste("Question: are homing-endonuclease (HE) domain annotations found more often than expected between, or near, the two member genes of reference NARP2 modules?",
+        "This reference check does not involve the local samples and does not test activity."), "",
+  sprintf(paste("The reference set is %s NARP2 modules (NMNAT near NAMPT) among %s NAMPT-positive INPHARED phage genomes with uniformly called ORFs.",
+                "It is neither the seven local samples nor the %s-genome collection of Fig. 5.",
+                "HE domains are Pfam GIY-YIG, HNH, LAGLIDADG and NUMOD families at their gathering thresholds."),
+          rwv_fmt_int(he_cohort[2]), rwv_fmt_int(he_cohort[1]), "77,951"), "",
+  "| Window | Assessable modules / total | Observed genomes with an HE-domain annotation | Expected under the conditional null | Reported one-sided Poisson enrichment p |",
+  "|---|---:|---:|---:|---:|",
+  sprintf("| %s | %s/%s | %d | %s | %s |", win$window, rwv_fmt_int(win$assessable), rwv_fmt_int(he_cohort[2]), as.integer(win$observed),
+          f2(win$expected), f2(win$p)), "",
+  sprintf(paste("- The strict window can be assessed only when at least one ORF lies between the two member genes. In %d of the %d modules the two genes are adjacent and the strict window is empty;",
+                "these modules are not failed or unexamined samples. Intervening ORFs: none in %d modules, one in %d, two to four in %d and six to nine in %d, so %d = %d + %d + %d modules are assessable."),
+          he_dist[1], sum(he_dist), he_dist[1], he_dist[2], he_dist[3], he_dist[4], sum(he_dist[-1]), he_dist[2], he_dist[3], he_dist[4]),
+  sprintf(paste("- In the five local DefenseFinder NARP2 calls, counted from the recorded gene positions, the intervening ORFs number %s.",
+                "Four of the five are on low-quality sequences, and the vOTU1643 locus starts at bp %d of its contig, so the spacing between its two genes is observed but the sequence beyond the contig end is not.",
+                "One selected local case cannot estimate how often HE-like genes occupy this position."),
+          paste(sprintf("%s, %d", loc$vOTU_id, as.integer(loc$between)), collapse = "; "), as.integer(loc$start[loc$vOTU_id == "vOTU1643"])),
+  paste("- The expectation sums, over genomes, the probability that at least one HE-domain annotation falls in the window when each genome's own HE-domain count is placed at random among its ORFs",
+        "(a null conditional on each genome's HE count and ORF count). Exchangeable positions are a modelling assumption, and shared ancestry among reference phages limits interpretation."),
+  sprintf("- The p-values are the one-sided Poisson enrichment values of the original report (%s and %s). They were not recomputed, do not test depletion, and do not establish equality or the absence of an association.",
+          f2(win$p[1]), f2(win$p[2])),
+  sprintf("- With a strict-window expectation of %s, observing %d gives little basis for excluding a modest enrichment: the strict window has limited sensitivity, although the test is not uninformative about every possible effect.",
+          f2(win$expected[1]), as.integer(win$observed[1])),
+  sprintf(paste("- The source document reports %d%% power for the strict window and labels that scenario an odds ratio of 3.",
+                "The original analysis script defines the scenario as a threefold increase in the Poisson expected count, not as an odds ratio.",
+                "The %d%% value is kept only as the historically reported figure; it was not recomputed or independently validated here."),
+          as.integer(he_power), as.integer(he_power)),
+  "- No record establishes whether the windows were specified before or after the data were examined; they are reported as defined in the original analysis.", "",
+  "## Sources", "",
+  sprintf("- Data 1 S28: every value in this note with the case document, line and verbatim source text (ORF102 domains: %s; Table A: %s; Table B: %s). The S28 item text of the power row keeps the source label verbatim; its corrected meaning is given above.",
+          src_txt("orf102_domains"), src_txt("coverage"), src_txt("he_targeting")),
+  "- Data 1 S27: DefenseFinder gene rows of vOTU0052. Data 1 S52: per-sample abundance of the seven carriers in Supplementary Fig. 3b. Local gene spacing: gene positions of the five local NARP2 calls in the DRAM-v annotation table.",
+  "- The per-base depth vectors and the per-genome reference tables were not reanalysed for this note; Tables A and B repeat the reported summaries."
+)
+bad <- rwv_text_violations(paste(note, collapse = " "))
+if (length(bad)) rwv_fail("Supplementary Note 1 contains forbidden strings: ", paste(bad, collapse = "; "))
+rwv_check(checks, "Supplementary Note 1: Table A rows (vOTU, sample, ratio)", paste(c("vOTU0052", "vOTU0131", "vOTU0113", "vOTU1643", "vOTU0544"),
+          c("gd1", "od1", "gc1", "gd1", "gd1"), c("1.00", "1.09", "1.28", "0.91", "1.19")), paste(cov$votu, cov$sample, f2(cov$value)),
+          source = "narp_case_evidence.tsv coverage rows; contig to vOTU through narp_gene_pairs.tsv")
+rwv_check(checks, "Supplementary Note 1: Table B (assessable, observed, expected, p) per window",
+          c("56", "0", "0.45", "1.00", "104", "7", "9.00", "0.79"),
+          c(rbind(rwv_fmt_int(win$assessable), as.integer(win$observed), f2(win$expected), f2(win$p))))
+rwv_check(checks, "Supplementary Note 1 does not call the historical power an odds-ratio calculation", TRUE,
+          any(grepl("not as an odds ratio", note, fixed = TRUE)))
+# Author-approved candidate-host context derived from the complete register.
+host_register <- as.data.frame(rwv_read_tsv(rwv_step_input(step, path_source,
+                                      "030-function-inputs", "amg_host_register.tsv")))
+h52 <- host_register[host_register$vOTU_id == "vOTU0052", , drop = FALSE]
+rwv_check(checks, "NARP case has one retained primary-host register row", 1L, nrow(h52))
+rwv_check(checks, "NARP primary host and co-detection agree with the saved endpoints", TRUE,
+          sub("^g__", "", h52$host_genus_clean) == "Novosphingobium" &&
+          h52$codetected_samples == "gd1" &&
+          !toupper(h52$strict_crispr_same_genus) %in% c("TRUE", "1"),
+          source = "030/amg_host_register.tsv")
+note <- c(note, "", "## Candidate host context", "",
+  sprintf(paste("The retained iPHoP prediction for vOTU0052 was *%s* (score %s); the vOTU and predicted host genus",
+                "were co-detected in %s. No strict CRISPR record was available for this vOTU and genus.",
+                "This is candidate host context, not evidence of infection or of the host's metabolic functions (Data 1 S59)."),
+          sub("^g__", "", h52$host_genus_clean), rwv_fmt_num(as.numeric(h52$iphop_confidence), 1), h52$codetected_samples), "",
+  sprintf(paste("The complete register retains all %d AMG-export KO carriers, including those without a retained high-score host prediction;",
+                "%d have a retained high-score record and %d have a co-detected primary predicted genus.",
+                "The selected KO-carrier association paths are in Data 1 S60; their association counts are not carrier abundance."),
+          nrow(host_register), sum(toupper(host_register$has_iphop90_record) %in% c("TRUE", "1")),
+          sum(toupper(host_register$codetected) %in% c("TRUE", "1"))))
+writeLines(note, path_target("supplementary-note-1-narp.md"), useBytes = TRUE)
+# Structured record of every value that left the figure (former E 5, F 15, D envelope 2 = 22 rows).
+env_items <- c("NUMOD-like envelope start", "NUMOD-like envelope end")
+note_vals <- rbind(
+  data.frame(former_panel = "E", item = cov$item, value = cov$value, unit = cov$unit, note_location = "Table A"),
+  data.frame(former_panel = "F", item = he$item, value = he$value, unit = he$unit,
+             note_location = ifelse(grepl("power", he$item), "Table B, text (historical label corrected)", "Table B and its notes")),
+  data.frame(former_panel = "D", item = env_items, value = unname(dom[env_items]), unit = "aa", note_location = "ORF102 domain table"))
+rwv_check(checks, "values leaving the figure are all recorded for the note (E 5 + F 15 + envelope 2)", 22L, nrow(note_vals))
+rwv_write_tsv(note_vals, path_target("supplementary-note-1-values.tsv"))
+```
+
+### Task 7: Record plot values, caption and checks
+
+```{r}
+#| label: values-legend
+rwv_check(checks, "every listed vOTU carries a dbAPIS NARP-targeting hit (legend claim)", TRUE, all(narp$dbapis_narp_targeting == "1"))
+rwv_check(checks, "comparison-locus depth range quoted in Supplementary Note 1", c(0.91, 1.28), range(cov$value[!cov$focal]))
+# Plot values: exactly what the adopted figure draws (registered file; cross-checked against 030 above).
+vals <- av
+rwv_check(checks, "plot values of the adopted figure: A 76 + B 49 + C 73 + D 9; former E/F and the envelope (22) are in the note values",
+          c(A = 76L, B = 49L, C = 73L, D = 9L, note = 22L), c(table(vals$panel)[c("A", "B", "C", "D")], note = nrow(note_vals)))
+rwv_write_tsv(vals, path_target("sfig3-plot-values.tsv"))
+rwv_write_tsv(gaps, path_target("sfig3-gaps.tsv"))
+# Caption: the adopted v35 English legend, verbatim, under the Supplementary Figure 3 label.
+leg_src <- readLines(raw_path("narp-v35-legend.md"), warn = FALSE, encoding = "UTF-8")
+s3_title <- "NARP candidates, local neighbourhoods and ORF102 structural context"
+rwv_check(checks, "adopted caption title (v35)", s3_title, sub("^# Supplementary Figure 2\\. ", "", leg_src[1]))
+i_leg <- which(leg_src == "## Legend (English)")
+legend_body <- trimws(paste(leg_src[(i_leg + 1):length(leg_src)][nzchar(trimws(leg_src[(i_leg + 1):length(leg_src)]))], collapse = " "))
+rwv_check(checks, "adopted caption has no section after the English legend", 1L, length(grep("^## ", leg_src)))
+subs3 <- list(
+  c("vOTU0052 is outlined.", "vOTU0052 is in bold."),
+  c("outlined arrows are nuclease-related candidates, with distinct annotation sources detailed in Supplementary Note 1.",
+    "the solid outlined ORF102 is a GIY-YIG/NUMOD-like domain candidate and the dashed ORF22 and ORF27 outlines are database annotations of a different evidence class (Supplementary Note 1)."),
+  c("The contig end is marked; no cross-row homology or insertion event is inferred.",
+    "The contig end is marked. Rows are anchored at the NMNAT start (coordinate anchoring, not an alignment); no cross-row homology or insertion event is inferred."),
+  # v50 figure cleanup: grey tiles replace the dashes; reversed rows carry a dagger; ORF22/27 source named.
+  c("Dashes mean the existing sample-level detection criterion was not met, not biological absence.",
+    "Grey tiles mean the existing sample-level detection criterion was not met, not biological absence."),
+  c("vOTU0131 and vOTU1643 are reversed for display;", "vOTU0131 and vOTU1643 (\u2020) are reversed for display;"),
+  c("the dashed ORF22 and ORF27 outlines are database annotations of a different evidence class (Supplementary Note 1).",
+    "the dashed ORF22 and ORF27 outlines are DRAM-v VOGdb annotation descriptions, a different evidence class (Supplementary Note 1)."))
+rwv_check(checks, "layout-H caption: each v39/v50 phrase replaced exactly once (6 phrases)", rep(1L, 6),
+          vapply(seq_along(subs3), function(i) { b <- legend_body; for (s in subs3[seq_len(i - 1)]) b <- sub(s[1], s[2], b, fixed = TRUE)
+                 lengths(regmatches(b, gregexpr(subs3[[i]][1], b, fixed = TRUE))) }, integer(1)))
+for (s in subs3) legend_body <- sub(s[1], s[2], legend_body, fixed = TRUE)
+legend_en <- paste0(legend_body, " ", sprintf("Details: Supplementary figure notes, %s.", spec$label))
+notes_en <- c(
+  "Panel a: in this dataset the five DefenseFinder NARP2 vOTUs are within the six of the KO rule, which are within the 19 dbAPIS vOTUs, and the three NARP1 vOTUs share none with NARP2 or the KO rule but are among the 19 dbAPIS vOTUs; this is an observation here, not a general confidence ladder. The 19 rows are the union of the four definitions, so a vOTU positive under any one of them is listed. Column codes: N1 and N2, DefenseFinder NARP1 and NARP2; KO, the K03462 + K13522 co-occurrence rule; db, dbAPIS NARP-targeting hits. The definitions overlap and are not independent validations. Completeness is shown with one decimal; exact values are in Data 1 S25.",
+  "Panel b: abundances are read from the virome TSE (masked trimmed TPM); the panel shows where these vOTUs pass the detection threshold, not their importance. Four of the five NARP2 vOTUs pass it in gd1, and vOTU0113 also in gc1. vOTU0863 meets the KO rule without a DefenseFinder NARP2 call, and vOTU1898 carries nadM but meets neither the KO rule nor a NARP2 call; neither is a NARP2 call. Completeness is shown once, in a. Grey tiles mark samples where the detection criterion was not met; they do not denote biological absence.",
+  "Panel c: gene coordinates come from the DRAM-v annotation table; the member genes of the five NARP2 calls equal Data 1 S42 and the vOTU0052 locus rows are in Data 1 S26. No cross-row homology, synteny or insertion event is inferred. Rows marked \u2020 (vOTU0131, vOTU1643) are reversed for display. ORF22 and ORF27 of vOTU0131 carry DRAM-v VOGdb descriptions (Probable mobile endonuclease D; REFSEQ homing endonuclease), whereas ORF102 domains come from the separate hmmscan/Pfam-A record (Supplementary Note 1).",
+  sprintf("DefenseFinder hits on vOTU0052 (Data 1 S27): i-E-value is the independent E-value; the atd1 hit lies at 91,206%s91,499 bp and is not part of the ORF101%sORF103 neighbourhood.", rwv_ndash, rwv_ndash),
+  sprintf("Panel d: ORF102 (%d aa), N-terminal GIY-YIG catalytic domain (residues %s) and C-terminal I-HmuI NUMOD-like domain (%s; envelope %s, an alignment-related span rather than a third domain). The full-length ESMFold2 model has mean pLDDT %.3f; the cross-region PAE between the two domains is %.1f %s, so their arrangement is uncertain. The local GIY-YIG comparison with I-TevI (PDB 1MK0) pairs %d C%s atoms (RMSD %.2f %s). These are fold-consistency observations from the stored model; no prediction or alignment was re-run.",
+          as.integer(len), rwv_fmt_range(dom[["GIY-YIG catalytic domain start"]], dom[["GIY-YIG catalytic domain end"]]),
+          rwv_fmt_range(dom[["I-HmuI NUMOD-like domain start"]], dom[["I-HmuI NUMOD-like domain end"]]),
+          rwv_fmt_range(dom[["NUMOD-like envelope start"]], dom[["NUMOD-like envelope end"]]),
+          s3[["mean pLDDT"]], s3[["cross-region PAE"]], "Å", as.integer(s3[["CE pairs"]]), "α", s3[["CE RMSD"]], "Å"),
+  "The locus-depth summary (five contig-sample rows) and the reference-window comparison (two windows with their denominators, observed and expected counts, reported p-values and limits), drawn as panels in earlier versions, are in Supplementary Note 1, Tables A and B; these negative checks cannot exclude amplification or association.",
+  "The functional-carrier host background of the Figure 3a KOs, a panel of earlier versions, is Supplementary Note 1, Table C and Data 1 S22.",
+  sprintf("Global context: under the archived module definition NARP1 and NARP2 were called in %d and %d of the 77,951 reference genomes of Fig. 5, with no joint call; NARP profiles are excluded from the fixed 38 non-NARP set, so this is context rather than replication.",
+          as.integer(gl$value[1]), as.integer(gl$value[2])),
+  "Transcribed values (d and Supplementary Note 1): file and line of each value are listed in Data 1 S28.")
+rwv_write_legend(path_target("sfig3-legend.md"), spec$label, s3_title, legend_en,
+  abbreviations = c("C, HQ, MQ, LQ, CheckV complete, high-, medium- and low-quality", "HE, homing endonuclease", "i-E-value, independent E-value",
+                    "KO, KEGG Orthology", "NARP, NAD+ reconstitution pathway", "ORF, open reading frame", "PAE, predicted aligned error",
+                    "pLDDT, predicted local distance difference test", "vOTU, viral operational taxonomic unit"),
+  notes = notes_en,
+  can_read = "The four NARP definitions yield different sets: five NARP2 calls, six KO-rule members and 19 dbAPIS members. vOTU0052 is the only medium-quality member of the five DefenseFinder NARP2 calls. Other panels show seven-sample qualification/abundance under a common catalogue denominator, five real local neighbourhoods on a common bp scale, and ORF102 domain matches with the saved ESMFold2 model and local I-TevI overlay, a structural-consistency observation for the HE-like annotation. Note 1 retains host background and depth/reference checks.",
+  cannot_infer = "Do not relabel the six KO-rule members or vOTU0863/vOTU1898 as DefenseFinder NARP2. Definitions are neither sequential filters nor mutual validation. Grey cells do not establish absence; neighbourhood tracks do not infer cross-row homology, insertion history or collinearity. Domain/structure predictions do not establish folding, cleavage, homing or anti-defense activity. The envelope is not a third domain and relative domain orientation in the full model is uncertain. vOTU0052 was chosen for recovery quality, not abundance/function. Negative checks in Note 1 do not establish no amplification or association.",
+  sources = c("analyses/data/00-raw/d220-sfig2-function-context/narp-v35-neighbourhood-source.tsv, narp-v35-structure-full.png, narp-v35-structure-overlay.png, narp-v35-colour-ramps.json (registered 2026-10-18 for layout H, drawn in step 220); narp-v35-plot-values.tsv and narp-v35-legend.md (registered v35 values and caption base; built by outputs/s2-narp-v35-2026-10-16/build_s2.py from stored tables and the stored ESMFold2 model)",
+              "analyses/data/030-function-inputs/narp_definitions.tsv (panel a check; Data 1 S25)",
+              "analyses/data/030-function-inputs/narp_carrier_sample_abundance.tsv (panel b check; masked trimmed TPM and covered fraction from the 012 TSE; Data 1 S52)",
+              "analyses/data/030-function-inputs/narp_gene_pairs.tsv (panel c check; DRAM-v annotation table; Data 1 S42)",
+              "analyses/data/030-function-inputs/narp_case_evidence.tsv (panel d check and Supplementary Note 1; Data 1 S28)",
+              "analyses/data/030-function-inputs/votu0052_defensefinder.tsv (Data 1 S27)"))
+check_table <- rwv_checks_finish(checks, path_target("sfig3-checks.tsv"))
+knitr::kable(check_table[, c("check", "expected", "observed", "pass")])
+rwv_write_session_info(path_target("session-info.txt"),
+                       c(step = params$name, run_id = step$run_id, mode = step$mode, quarto = rwv_quarto_version()))
+```
+
+```{r}
+#| label: step-record
+outputs <- rwv_step_finish(step, path_target, raw_manifest)
+knitr::kable(transform(outputs, sha256 = substr(outputs$sha256, 1, 16)), caption = "Outputs recorded in step-record.json")
+rwv_report_complete(step, outputs)
+```
+
+## Published figure preview
+
+```{r}
+#| label: preview
+#| out-width: "100%"
+knitr::include_graphics(rwv_public_preview(step, "sfig3.png", "FigureS3.png"))
+```
+
+```{r}
+#| label: list-files-target
+rwv_report_files(step, outputs)
+```
+
+```{r}
+#| label: report-summary
+#| results: asis
+cat(rwv_report_summary(step))
+```

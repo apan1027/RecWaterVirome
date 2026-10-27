@@ -1,4 +1,0 @@
-annotation_set	n	median_d_end_bp	ratio_vs_background	ci_lo	ci_hi
-VFDB-A filtered	114	4226	0.984	0.644	1.261
-DRAM-v AMG	133	4843	0.863	0.655	1.432
-KO-annotated genes	2991	4139	0.906	0.863	0.961

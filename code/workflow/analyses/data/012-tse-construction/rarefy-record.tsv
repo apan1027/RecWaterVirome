@@ -1,3 +1,0 @@
-omic	input_rows	row_order	kept_after_filter	rarefy_depth	rows_after_rarefy	rarefy_seed	replace	tree_tips	rng_kind	mia
-16s	3903	legacy	3093	63564	3092	20260502	FALSE	3092	Mersenne-Twister/Inversion/Rejection	1.16.0
-18s	1049	legacy	892	53257	892	20260502	FALSE	892	Mersenne-Twister/Inversion/Rejection	1.16.0

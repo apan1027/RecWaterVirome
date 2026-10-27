@@ -1,0 +1,189 @@
+# RecWaterVirome category colour dictionaries (frozen by category name).
+# Authors (display order): Jinlong Ru, Cunli Pan
+#
+# V1 "vivid" revision 2026-10-07 (user choice; mockups outputs/colour-vivid-2026-10-07/):
+# F1 dominant taxa clear blue/jade/apricot; anti-defense (ADF) family ochre-gold instead of dusty rose;
+# S3 flanks light/dark blue and single-series estimates slate instead of hazy purple; NARP purple
+# clarified; F4 predicted-host hits brick with a light apricot region tint.
+# balance-v1 merge 2026-10-07 (user decision): Codex area-aware palette
+# (outputs/colour-balance-2026-10-07/palette-candidate.yml, 47 changes) adopted with
+# three user exceptions: heatmap ramp hcl:Reds (more = redder; replaces mako),
+# S3E annotation_criteria and host_status.codetected_in_sample keep the previous colours.
+# HISTORY (superseded; kept for traceability). Previous user colour choices 2026-10-07 (after Codex passed scheme A rev. 2; mockups in
+# outputs/colour-options-2026-10-07/): host genus in 16S #6699CC (F2D/S2A), S3E
+# definitions teal/brown, anti-defense derived sets #CC6677 (F5A/F3C), F4A region
+# tints desaturated, heatmap ramp rocket (F3a/S3e).
+# Colour revision 2026-10-07 (scheme A, revision 2; user-approved): every data
+# panel gets a meaning-based colour; the same meaning keeps the same colour
+# across figures. Sources, HEX and per-panel decisions:
+# outputs/figure-colour-2026-10-07/colour-dictionary.tsv and panel-status-42.tsv.
+#
+# Site colours stay in analyses/R/style.yml and mean site only; none of the hex
+# values below repeats a site colour. Taxon dictionaries list exactly the
+# display categories produced by the frozen display rule (virome: all 8
+# classes; 16S/microeuk: top 8 named taxa by 7-sample mean relative abundance,
+# ties by name, rest named -> Other, Unclassified kept separate). Step 020
+# fails if the rule yields a different set, so a data change cannot silently
+# recolour a category. Hash-registered in analyses/data/source-checksums.tsv.
+version: 1
+
+other: "#D9D9D9"          # merged named taxa ("Other"); light grey
+unclassified: "#737373"   # Unclassified; mid grey, never merged into Other
+
+taxa:
+  virome:
+    Caudoviricetes: "#6A9AC4"
+    Polintoviricetes: "#332288"
+    Maveriviricetes: "#DDCC77"
+    "[Novel_Class]_{kingdom}_Bamfordvirae": "#117733"
+    Pokkesviricetes: "#882255"
+    Tectiliviricetes: "#999933"
+    Malgrandaviricetes: "#AA4499"
+  bact_16s:
+    Pseudomonadota: "#74B49B"
+    Bacillota: "#332288"
+    Bacteroidota: "#DDCC77"
+    Actinomycetota: "#88CCEE"
+    Bdellovibrionota: "#882255"
+    Verrucomicrobiota: "#999933"
+    Planctomycetota: "#AA4499"
+    Myxococcota: "#A6761D"
+  euk_18s_microeuk:
+    Opisthokonta: "#E3A67C"
+    Alveolata: "#332288"
+    Rhizaria: "#DDCC77"
+    Stramenopiles: "#448E84"
+    Chlorophyta: "#882255"
+    Tubulinea: "#999933"
+    Streptophyta: "#AA4499"
+    Malawimonadidae: "#A6761D"
+
+taxon_display_labels:     # display text only; the source label is kept in the data tables
+  "[Novel_Class]_{kingdom}_Bamfordvirae": "Class unassigned (Bamfordvirae)"
+  Opisthokonta: "Opisthokonta (non-metazoan)"
+
+checkv:                   # ordered estimated-completeness classes (display name: colour)
+  Complete: "#2D004B"
+  High-quality: "#542788"
+  Medium-quality: "#8073AC"
+  Low-quality: "#B2ABD2"
+  Undetermined: "#DEDEDE"   # drawn with an outline
+
+carrier_rank:             # F3B: rank of a carrier within its own KO row, not a vOTU identity.
+                          # ColorBrewer Blues (9-class) 9th/5th/3rd steps; "Other carriers" stays neutral grey.
+  Top 1: "#31566F"
+  Top 2: "#7FA5BC"
+  Top 3: "#C4D5DF"
+  Other carriers: "#E0E0E0"
+
+annotation_criteria:      # S3E: the four saved VF annotation definitions. Ordered ink ramp, NOT the site colours:
+                          # the four bars are a definition sensitivity, not four replicates or treatment stages.
+                          # User choice 2026-10-07 (option C): ColorBrewer BrBG teal pair + brown/sand pair.
+  Filtered: "#01665E"
+  Filtered + region exclusion: "#5AB4AC"
+  Strict: "#8C510A"
+  Strict + region exclusion: "#D8B365"
+
+heatmap:                  # continuous sequential ramp shared by Figure 3a and Supplementary Figure 3e.
+                          # Current: hcl:Reds (grDevices::hcl.colors "Reds"), light at low values and dark red at
+                          # high values (user choice 2026-10-07, "more = redder"). Read as the full n-step colormap
+                          # through rwv_heatmap_colours(), not as sampled stops that are then interpolated.
+                          # Each figure keeps its own scale name, unit, limits and display transform; a shared ramp
+                          # does not make the two figures numerically comparable. Zero and undetected cells stay
+                          # white (S3e also marks undetected pairs with a dash and outlines detected cells in thin
+                          # grey), which reduces, but does not by itself rule out, confusing a very pale positive
+                          # with "not detected"; the light-to-dark order is a visual reading, not a tested
+                          # numerical monotonicity check.
+                          # History: three-stop grey ramp (#EDEDED/#8C8C8C/#1A1A1A) -> reversed magma (design
+                          # decision 2026-10-06) -> rocket -> mako (balance-v1 proposal) -> hcl:Reds.
+  palette: "hcl:Reds"     # "hcl:<name>" = grDevices::hcl.colors sequential palette (user choice 2026-10-07: Reds, more = redder, F3a and S3e); otherwise a viridisLite name
+  direction: -1           # -1 = reversed (light at low values)
+  levels: 256             # full ramp length handed to scale_fill_gradientn()
+                          # (key is "levels", not "n": YAML 1.1 reads a bare n as boolean false)
+  zero: "#FFFFFF"
+
+localization:             # F4A/B hit classes: brick (predicted host), ochre (boundary-crossing), teal (viral); NOT a risk scale.
+                          # (history: originally Paul Tol high-contrast red/yellow + Tol "dark" cyan)
+  predicted-host: "#B0503A"
+  boundary-crossing: "#BB9848"
+  viral: "#427F89"
+region:                   # F4A region backgrounds: light apricot (host) and pale blue-grey (viral) tints behind the hits
+                          # (history: Tol "pale" tints, then desaturated option C, then V1 apricot host tint)
+  viral region: "#DCE8EC"
+  host region: "#F0DCD2"
+
+feature_group:            # F5/S4 point/line ink: navy (METAB) and dark ochre-gold (ADF); shapes unchanged.
+                          # (history: Tol medium-contrast dark members, then balance-v1 navy/rose, then V1 navy/gold)
+  METAB: "#244A68"
+  ADF: "#7A520A"                  # V1 final check: darker than #9A6B12 so small triangles read in dense S4a/F5b clouds
+feature_group_fill:       # F5/S4 bar fills (S4C)
+  METAB: "#698BA2"
+  ADF: "#D8B45C"
+feature_group_light:      # F5C/S4E connectors, open-point outlines
+  METAB: "#698BA2"
+  ADF: "#D8B45C"
+feature_group_shape:
+  METAB: 16
+  ADF: 17
+
+function_calls:           # F3C / F5A / S2B. Same concept, same colour across figures.
+  anti_defense_tool: "#9A6B12"      # a single tool's anti-defense calls (DefenseFinder, dbAPIS): dark ochre-gold (V1)
+  anti_defense_derived: "#D8B45C"   # sets derived from the two tools (overlap, union; F5A uses the union): light gold (V1; history: pink #EE99AA, then rose)
+  defense_tool: "#5A8A87"            # defense-system calls (DefenseFinder defense, PADLOC): muted teal, clear of Garching orange
+  narp_call: "#8A6BBE"              # NARP module calls: clear purple (V1; NARP keeps purple across figures)
+  ko_rule: "#244A68"                # S2B KO co-occurrence rule (metabolic genes): METAB family
+
+narp_ink: "#5E3E96"       # NARP points/outlines (S2E)
+he:                       # homing-endonuclease domains (S2D, S2F): muted teal family (history: ColorBrewer BrBG teal side)
+  fill: "#6D9F99"
+  ink: "#3D706B"
+  envelope: "#DAE8E4"
+
+estimate:                 # single-series statistics and model inclusion (F2C, F4C, S3D, S4D): slate blue-grey (V1)
+                          # (history: ColorBrewer Purples, then balance-v1 muted purple)
+  ink: "#2F3E46"
+  fill: "#6E8796"
+
+endpoint:                 # S3A three construct endpoints (each with its own denominator)
+  no_flank_flagged: "#6F91AB"
+  flanked_not_flagged: "#73A59A"
+  flanked_below95: "#C3AC68"
+
+reference_strata: "#79A99D"   # S4F reference-genome strata (Unknown stays white)
+
+host_status:              # F2D/S2A: categorical host-record classes (NOT an evidence scale; colour does not mean infection).
+                          # Distinct hues: BrBG darkest brown (same-sample co-detection), blue-grey (genus present in the
+                          # 16S dataset; balance-v1), light grey (named genus not detected in 16S); unresolved stays white.
+                          # (history: Tol muted cyan #88CCEE, then #6699CC)
+  codetected_in_sample: "#543005"          # genus in 16S and co-detected with the vOTU in >= 1 sample (iPHoP records and CRISPR edges; F2D only)
+  named_genus_detected_in_16s: "#698BA2"   # named genus present in the 16S dataset
+  named_genus_not_detected_in_16s: "#DDDDDD"
+  genus_unresolved: "#FFFFFF"              # drawn with an outline
+  no_record: "#FFFFFF"
+
+gene:                     # F3D locus: NARP members in the NARP colour; candidate stays white with a heavy outline
+  narp_member: "#8A6BBE"
+  candidate: "#FFFFFF"
+  domain: "#6D9F99"
+  envelope: "#DAE8E4"
+flank:                    # S3B/C construct flank proportions: light blue = 10%, dark blue = 20% (V1)
+                          # (history: ColorBrewer PiYG pink side, then balance-v1 purple pair)
+  10% flanks: "#A6C8E4"
+  20% flanks: "#2F6FA8"
+flank_ink: "#2F6FA8"
+
+# 2026-10-17 adoption (Supplementary Figure 2; candidate outputs/pooled-host-network-2026-10-17).
+sample_codetection:       # S2c only: the sample in which a vOTU and its predicted host genus were both detected.
+  bc1: "#0072B2"          # Beijing family (site blue and two shades)
+  bd1: "#56B4E9"
+  bc2: "#243D82"
+  gc1: "#E69F00"          # Garching family (site orange and a darker shade)
+  gd1: "#C45100"
+  oc1: "#009E73"          # Oberschleissheim family (site green and a lighter shade)
+  od1: "#71BC69"
+sharing:                  # S2a/b sharing encodings: intersection and sample-only bars, inactive dots, shared share, inset bars
+  bar: "#285E80"
+  inactive_dot: "#DAE9EF"
+  shared_fill: "#DBEEF3"
+  inset_bar: "#168A99"
+  network_ink: "#17384D"  # S2c outlines of host diamonds and vOTU circles

@@ -1,8 +1,0 @@
-ID	location	water_type	country	replicate
-bc1	Beijing	clean	China	1
-bc2	Beijing	clean	China	2
-bd1	Beijing	dirty	China	1
-gc1	Garching	clean	Germany	1
-gd1	Garching	dirty	Germany	1
-oc1	Oberschleissheim	clean	Germany	1
-od1	Oberschleissheim	dirty	Germany	1

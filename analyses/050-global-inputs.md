@@ -1,0 +1,357 @@
+# Read saved global model coefficients and sensitivities
+
+Jinlong Ru; Cunli Pan.
+
+[Editable QMD](050-global-inputs.qmd) · [Analysis index](README.md)
+
+Source reading companion with accepted figure previews; not a new scientific execution report.
+
+## Tasks
+
+Read, validate and prepare archived per-feature coefficients for the fixed 285 metabolic Pfam domains and 38 non-NARP anti-defense profiles, lineage support, adjustment/resampling/Firth sensitivity and the six local carriage bins. Outputs support Figure 5, Supplementary Note 4 and Data 2; coefficients and tests are not recalculated.
+
+### Task 1: Inputs
+
+```r
+manifest <- rwv_read_tsv(rwv_step_input(step, path_source, "010-input-manifest", "input-manifest.tsv"))
+raw_manifest <- rwv_read_tsv(rwv_step_input(step, path_source, "010-input-manifest", "raw-input-manifest.tsv"))
+defs <- rwv_definitions_read(rwv_project_input(step, "analyses/R/definitions.tsv", manifest))
+raw <- function(f) as.data.frame(rwv_read_tsv(rwv_raw_input(step, path_data, f, raw_manifest)))
+raw_path <- function(f) rwv_raw_input(step, path_data, f, raw_manifest)
+checks <- rwv_checks_new()
+num <- as.numeric
+summary_json <- jsonlite::read_json(raw_path("global_summary.json"))
+# Hash chain: every staged global_primary file must be the file the global
+# artifact manifest recorded.
+gam <- raw("global_artifact_manifest.tsv")
+for (f in sub("^global_", "", basename(raw_manifest$path[raw_manifest$consumer_step == step$name &
+                                                          startsWith(basename(raw_manifest$path), "global_") &
+                                                          basename(raw_manifest$path) != "global_artifact_manifest.tsv" &
+                                                          basename(raw_manifest$path) != "global_fixed38_display.tsv"]))) {
+  rwv_check(checks, paste("global artifact manifest hash of", f),
+            gam$sha256[gam$path == paste0("dev/280-publication-stage-a/global_primary/", f)],
+            raw_manifest$origin_sha256[basename(raw_manifest$path) == paste0("global_", f)],
+            source = "global_primary/artifact_manifest.tsv")
+}
+group_of <- function(def) Filter(function(g) identical(g$definition, def), summary_json$groups)[[1]]
+```
+
+### Task 2: Fixed feature sets and per-feature coefficients
+
+Each coefficient is the log-odds change per tenfold increase in CDS count (binary presence ~ log10(CDS), logit link, one model per feature). Retain all points, negative values and the zero reference without selection by direction or p value.
+
+```r
+fits <- raw("global_full_feature_fits.tsv")
+universe <- raw("global_fixed_universe.tsv")
+for (k in c("carriers", "slope", "se", "cluster_se")) fits[[k]] <- num(fits[[k]])
+rwv_check(checks, "fixed universe equals the fitted features", sort(universe$feat), sort(fits$feat))
+grp <- table(fits$group)
+rwv_check_def(checks, defs, "global_metab", unname(grp[["METAB"]]), "global_full_feature_fits.tsv")
+rwv_check_def(checks, defs, "global_adf", unname(grp[["ADF_profile"]]), "global_full_feature_fits.tsv")
+rwv_check(checks, "every feature has >= 30 carriers", TRUE, all(fits$carriers >= 30))
+rwv_check(checks, "all models converged, none at a boundary", c(TRUE, TRUE),
+          c(all(fits$converged == "TRUE"), all(fits$boundary == "FALSE")))
+rwv_check(checks, "carriers match the frozen universe", num(universe$carriers[match(fits$feat, universe$feat)]), fits$carriers)
+adf <- fits[fits$group == "ADF_profile", ]
+rwv_check(checks, "ADF profiles: 26 positive, 12 negative", c(26, 12), c(sum(adf$slope > 0), sum(adf$slope < 0)),
+          source = "framework facts (26 positive / 12 negative of 38)")
+med <- tapply(fits$slope, fits$group, median)
+rwv_check(checks, "group medians equal global summary.json (6 dp)",
+          round(c(num(group_of("METAB285")$median_slope), num(group_of("ADF38")$median_slope)), 6),
+          round(unname(med[c("METAB", "ADF_profile")]), 6), source = "global_primary/summary.json")
+rwv_check(checks, "group sizes equal global summary.json", c(num(group_of("METAB285")$n), num(group_of("ADF38")$n)),
+          as.numeric(grp[c("METAB", "ADF_profile")]), source = "global_primary/summary.json")
+rwv_check(checks, "saved genome and cluster counts", c(77951, 30079), c(num(summary_json$n_genomes), num(summary_json$n_clusters)))
+group_lab <- c(METAB = "285 metabolic-related Pfam domains", ADF_profile = "38 non-NARP anti-defense profiles")
+coef <- data.frame(feature = fits$feat, group = unname(group_lab[fits$group]), carriers = fits$carriers,
+                   slope = fits$slope, se = fits$se, cluster_se = fits$cluster_se,
+                   unit = "log-odds change per 10-fold increase in CDS count",
+                   model = "binary presence ~ log10(CDS), logit link, one model per feature")
+# 2026-10-15 (task r2 section 4.4): the saved opportunity diagnostics of the same 323 fits are
+# appended by feature key, as saved (text, empty cells and the unaccepted gamma estimate kept
+# verbatim). The original 8 columns and their values are unchanged; unit/model above still refer
+# to the ordinary logit only. Nothing is refitted: these are the global_primary.R outputs.
+opp_fields <- c("converged", "boundary", "warnings", "null_valid", "null_warnings", "null_logit_equivalent", "residual_slope",
+                "gamma", "gamma_unaccepted_estimate", "gamma_se", "gamma_valid", "gamma_converged", "gamma_warnings")
+rwv_check(checks, "opportunity fields present in the saved fits", TRUE, all(opp_fields %in% names(fits)))
+rwv_check(checks, "one saved row per feature (323 unique keys)", c(323L, 323L), c(nrow(fits), length(unique(fits$feat))))
+key <- match(coef$feature, fits$feat)
+rwv_check(checks, "every G01 feature has exactly one saved opportunity row", FALSE, anyNA(key))
+for (k in opp_fields) coef[[k]] <- fits[[k]][key]
+rwv_check(checks, "opportunity fields equal the source strings by key", TRUE,
+          all(vapply(opp_fields, function(k) identical(coef[[k]], fits[[k]][match(coef$feature, fits$feat)]), logical(1))))
+rwv_check(checks, "fixed-opportunity null model valid for all 323", 323L, sum(coef$null_valid == "TRUE"))
+gv <- tapply(coef$gamma_valid == "TRUE", fits$group[key], sum)
+rwv_check(checks, "free-exponent gamma valid: METAB 285/285, ADF 35/38", c(285L, 35L), as.integer(gv[c("METAB", "ADF_profile")]))
+bad_g <- sort(coef$feature[coef$gamma_valid != "TRUE"])
+rwv_check(checks, "gamma not accepted for exactly gp4.5, ocr, samase", c("gp4.5", "ocr", "samase"), bad_g)
+rwv_check(checks, "no accepted gamma or gamma_se where gamma was not accepted", c(TRUE, TRUE),
+          c(all(coef$gamma[coef$gamma_valid != "TRUE"] == ""), all(coef$gamma_se[coef$gamma_valid != "TRUE"] == "")))
+rwv_check(checks, "unaccepted gamma estimates kept for audit (non-empty) where gamma was not accepted", TRUE,
+          all(nzchar(coef$gamma_unaccepted_estimate[coef$gamma_valid != "TRUE"])))
+rwv_check(checks, "saved warnings of the three gamma failures",
+          c(gp4.5 = "glm.fit: fitted probabilities numerically 0 or 1 occurred", ocr = "glm.fit: algorithm did not converge",
+            samase = "glm.fit: fitted probabilities numerically 0 or 1 occurred"),
+          setNames(coef$gamma_warnings[match(bad_g, coef$feature)], bad_g))
+rwv_check(checks, "residual_slope = slope - null_logit_equivalent (saved values, |diff| <= 1e-12)", TRUE,
+          max(abs(coef$slope - num(coef$null_logit_equivalent) - num(coef$residual_slope))) <= 1e-12)
+rwv_check(checks, "aca1 example: saved projection, residual and gamma (text)",
+          c("2.3034134327236", "-1.67220499318136", "0.274024027211473"),
+          c(coef$null_logit_equivalent[coef$feature == "aca1"], coef$residual_slope[coef$feature == "aca1"],
+            coef$gamma[coef$feature == "aca1"]), source = "global_full_feature_fits.tsv")
+rwv_check(checks, "aca1 example: slope", 0.631208439542248, coef$slope[coef$feature == "aca1"], tol = 1e-15,
+          source = "global_full_feature_fits.tsv")
+rwv_write_tsv(coef[order(coef$group, -coef$slope), ], path_target("global_feature_fits.tsv"))
+n_pos <- tapply(fits$slope > 0, fits$group, sum)
+medians <- data.frame(group = unname(group_lab[names(med)]), n_features = as.integer(grp[names(med)]),
+                      median_slope = unname(med), n_positive = as.integer(n_pos[names(med)]),
+                      n_negative = as.integer(grp[names(med)]) - as.integer(n_pos[names(med)]),
+                      note = "median describes the fixed set only; it is not a test between the sets")
+rwv_check(checks, "positives per group (ADF 26, METAB 269)", c(26, 269), as.integer(n_pos[c("ADF_profile", "METAB")]),
+          source = "regression constant derived from full_feature_fits.tsv (METAB 269 has no independent source)")
+rwv_write_tsv(medians, path_target("global_group_medians.tsv"))
+knitr::kable(medians, digits = 4)
+```
+
+### Task 3: Lineage support for 38 profiles
+
+```r
+sup <- raw("global_fixed38_display.tsv")
+for (k in c("slope", "carriers", "carrier_clusters", "single_carrier_cluster")) sup[[k]] <- num(sup[[k]])
+rwv_check_def(checks, defs, "global_adf", nrow(sup), "global_fixed38_display.tsv")
+rwv_check(checks, "display profiles equal the fitted ADF set", sort(adf$feat), sort(sup$profile))
+rwv_check(checks, "display slopes equal the fitted slopes", adf$slope[match(sup$profile, adf$feat)], sup$slope, tol = 1e-9)
+rwv_check(checks, "display carriers equal the fitted carriers", adf$carriers[match(sup$profile, adf$feat)], sup$carriers)
+single <- sup$profile[sup$single_carrier_cluster == 1]
+rwv_check_def(checks, defs, "global_single_cluster", length(single), "global_fixed38_display.tsv")
+rwv_check(checks, "the four single-cluster profiles", sort(c("gp4.5", "ddra", "darb", "samase")), sort(single))
+rwv_check(checks, "single-cluster flag equals carrier_clusters == 1", sup$single_carrier_cluster == 1, sup$carrier_clusters == 1)
+cluster_support <- raw("global_profile_cluster_support.tsv")
+rwv_check(checks, "the 104-row support table is filtered to the fixed 38", 38,
+          sum(cluster_support$profile %in% sup$profile))
+m <- match(sup$profile, cluster_support$profile)
+rwv_check(checks, "carriers and clusters equal the support table", c(TRUE, TRUE),
+          c(identical(num(cluster_support$carriers[m]), sup$carriers), identical(num(cluster_support$clusters[m]), sup$carrier_clusters)))
+support <- data.frame(profile = sup$profile, slope = sup$slope, carriers = sup$carriers,
+                      carrier_clusters = sup$carrier_clusters, single_carrier_cluster = sup$single_carrier_cluster,
+                      note = "carrier genomes and gene-sharing clusters; a single cluster is not a single genome")
+rwv_write_tsv(support[order(-support$slope), ], path_target("global_profile_support.tsv"))
+```
+
+### Task 4: Six local carriage bins
+
+The horizontal axis is predicted gene count on recovered sequences. The numerator is the DefenseFinder anti-defense OR filtered dbAPIS union. Historical confidence intervals and fits are not used.
+
+```r
+bins <- raw("local_carriage_bins.tsv")
+for (k in c("lo_inclusive", "hi_exclusive", "n", "k", "rate")) bins[[k]] <- num(bins[[k]])
+rwv_check(checks, "six ordered bins", 6, nrow(bins))
+rwv_check_def(checks, defs, "catalogue_votu", sum(bins$n), "local_carriage_bins.tsv")
+rwv_check_def(checks, defs, "antidefense_union", sum(bins$k), "local_carriage_bins.tsv")
+rwv_check(checks, "bin rates equal k / n", bins$k / bins$n, bins$rate, tol = 1e-12)
+rwv_check(checks, "highest bin is 17 of 18", c(17, 18), c(bins$k[6], bins$n[6]), source = "framework (17/18)")
+archived <- jsonlite::read_json(raw_path("local_bridge_bins.json"))
+rwv_check(checks, "bins equal the archived local_bridge_bins.json (lo, hi, n, k)",
+          as.numeric(unlist(lapply(archived, function(b) c(b$lo, b$hi, b$n, b$k)))),
+          as.numeric(t(as.matrix(bins[, c("lo_inclusive", "hi_exclusive", "n", "k")]))),
+          source = "manuscript-package-2026-08-28 local_bridge_bins.json (its CI fields are not used)")
+rwv_check(checks, "bins are contiguous and left-closed", bins$hi_exclusive[-6], bins$lo_inclusive[-1])
+bins$label <- sprintf("%d-%d", bins$lo_inclusive, bins$hi_exclusive - 1)
+bins$percent <- 100 * bins$rate
+bins$unit <- "predicted genes per recovered vOTU; interval [lo, hi)"
+rwv_write_tsv(bins, path_target("local_carriage_bins.tsv"))
+knitr::kable(bins[, c("label", "n", "k", "percent")], digits = 2)
+```
+
+### Task 5: Supplementary Note 4 sensitivity, failures and non-estimable records
+
+```r
+adj <- raw("global_adjusted_contrasts.tsv")
+firth <- raw("global_firth_contrasts.tsv")
+res <- raw("global_resample_contrasts.tsv")
+strata <- raw("global_stratum_population.tsv")
+leave <- raw("nad_domain_leaveout.tsv")
+# adjusted_contrasts.tsv records only validity and invalid counts (no medians:
+# the fixed comparison is not estimable under the separate adjustments);
+# firth_contrasts.tsv carries the medians of the sensitivity fits.
+for (k in c("metab", "adf", "difference")) firth[[k]] <- num(firth[[k]])
+rwv_check(checks, "separate adjustments are recorded as invalid for the fixed 38", rep("FALSE", 4), adj$valid)
+rwv_check(checks, "Firth sensitivity contrasts are valid", rep("TRUE", nrow(firth)), firth$valid)
+adjusted <- data.frame(analysis = "separate adjustment (not joint)", covariate = adj$mode, definition = adj$definition,
+                       valid = adj$valid, n_invalid_metab = num(adj$n_invalid_metab), n_invalid_adf = num(adj$n_invalid_adf),
+                       note = "ecosystem and host-phylum adjustments are separate models; neither controls for the other")
+firth_tab <- data.frame(analysis = "Firth sensitivity", covariate = firth$mode, definition = firth$definition, valid = firth$valid,
+                        metab_median = firth$metab, adf_median = firth$adf, difference = firth$difference,
+                        note = "uniform sensitivity for separated nuisance strata; not applied to zero-carrier replicates")
+rwv_write_tsv(adjusted, path_target("global_adjusted.tsv"))
+rwv_write_tsv(firth_tab, path_target("global_firth.tsv"))
+res$valid <- res$valid == "TRUE"
+rs <- aggregate(list(valid_replicates = res$valid), list(mode = res$mode, definition = res$definition), sum)
+rs$replicates <- as.numeric(table(paste(res$mode, res$definition))[paste(rs$mode, rs$definition)])
+saved <- summary_json$resampling
+for (i in seq_along(saved)) {
+  row <- rs[rs$mode == saved[[i]]$mode & rs$definition == saved[[i]]$definition, ]
+  rwv_check(checks, sprintf("valid replicates: %s / %s", saved[[i]]$mode, saved[[i]]$definition),
+            num(saved[[i]]$valid_reps), row$valid_replicates, source = "global_summary.json")
+  rwv_check(checks, sprintf("replicates requested: %s / %s", saved[[i]]$mode, saved[[i]]$definition),
+            num(saved[[i]]$B), row$replicates, source = "global_summary.json")
+}
+rs$median <- sapply(seq_len(nrow(rs)), function(i) {
+  hit <- Filter(function(x) x$mode == rs$mode[i] && x$definition == rs$definition[i], saved)
+  if (length(hit)) num(hit[[1]]$median) else NA_real_
+})
+rs$note <- "a replicate counts only if every fixed feature is estimable in both groups; median is the median over valid replicates of (METAB median - ADF median), in log-odds per 10-fold CDS; the percentile range is not a confidence interval"
+rwv_write_tsv(rs, path_target("global_resampling.tsv"))
+# The per-replicate contrasts and the per-replicate x per-feature diagnostics
+# behind those four summary rows, carried through unchanged so that a reader
+# can see which replicate failed and which features were not estimable.
+res_out <- res
+res_out$valid <- ifelse(res_out$valid, "TRUE", "FALSE")
+rwv_check(checks, "per-replicate contrast rows (2 modes x 2 definitions x replicates)", 500, nrow(res_out),
+          source = "global_resample_contrasts.tsv")
+rwv_check(checks, "valid replicates in the detail equal the summary", rs$valid_replicates,
+          as.numeric(tapply(res$valid, paste(res$mode, res$definition), sum)[paste(rs$mode, rs$definition)]))
+rwv_write_tsv(res_out, path_target("global_resample_contrasts.tsv"))
+rf <- raw("global_resample_features.tsv")
+rwv_check(checks, "per-feature resampling diagnostics rows", 80750, nrow(rf), source = "global_resample_features.tsv")
+rwv_check(checks, "per-feature diagnostics cover the same modes as the contrasts", sort(unique(res$mode)), sort(unique(rf$mode)))
+rwv_check(checks, "per-feature diagnostics cover the fixed feature set", sort(unique(universe$feat)), sort(unique(rf$feat)))
+n_invalid <- tapply(rf$valid == "FALSE", paste(rf$mode, rf$rep), sum)
+key <- paste(res$mode, res$rep)[res$definition == "all38"]
+rwv_check(checks, "a replicate is invalid in all38 exactly when some fixed feature is not estimable",
+          res$valid[res$definition == "all38"], unname(n_invalid[key]) == 0,
+          source = "global_resample_features.tsv valid column")
+rwv_write_tsv(rf, path_target("global_resample_features.tsv"))
+rwv_write_tsv(strata, path_target("global_strata.tsv"))
+leave$value <- num(leave$value)
+rwv_check(checks, "NAD leave-out: median 4.048350 -> 3.982495",
+          c(4.048350, 3.982495), c(leave$value[leave$key == "all_285"], leave$value[leave$key == "excl_NAD6_279"]), tol = 1e-6)
+rwv_write_tsv(leave, path_target("global_nad_leaveout.tsv"))
+six <- leave[leave$row_type == "left-out domain", ]
+rwv_check(checks, "six NAD domains: saved slopes equal the fixed-set fits (4 dp)", round(leave$value[leave$row_type == "left-out domain"], 4),
+          round(fits$slope[match(six$key, fits$feat)], 4), source = "S11_nad_domain_leaveout.tsv (j42) vs full_feature_fits.tsv")
+# Full model records for Data 2 (passed through unchanged).
+for (f in c("adjusted_fits", "firth_feature_fits", "stratum_fits", "aggregation_fits", "aggregation_members")) {
+  x <- raw(paste0("global_", f, ".tsv"))
+  rwv_write_tsv(x, path_target(paste0("global_", f, ".tsv")))
+}
+fr <- jsonlite::read_json(raw_path("global_firth_run.json"))
+rwv_write_tsv(data.frame(key = names(fr), value = vapply(fr, function(v) paste(v, collapse = "; "), character(1))),
+              path_target("global_firth_run.tsv"))
+gaps <- data.frame(
+  item = c("joint adjustment for ecosystem and host phylum", "second-stage logit projection diagnostics",
+           "local-global shared sequence membership", "category aggregation of anti-defense profiles"),
+  status = c("not done: the saved analyses adjust for each covariate separately",
+             "saved for the fixed 285/38 sets (null_logit_equivalent and residual_slope in G01) but the validity, warnings and convergence of the projection fit itself were not saved; recorded invalid for all 19 corrected categories (G21)",
+             "not established in the source project's bounded search",
+             "the historical direct-join aggregation (G14, G15, named25 subsets) is withdrawn and kept for audit; post hoc corrected category definitions are in G20-G25"),
+  consequence = c("Supplementary Note 4 reports the two adjustments separately and does not call them a joint control",
+                  "Supplementary Note 4 discloses the saved projection and difference as descriptive values only; no projection panel is drawn and no validity is asserted",
+                  "Figure 5 keeps the local and global arms visually and textually separate",
+                  "Figure 5 uses the 38 individual profiles, which do not pass through the category join; see the status index G19"))
+rwv_write_tsv(gaps, path_target("global-gaps.tsv"))
+knitr::kable(rs[, c("mode", "definition", "valid_replicates", "replicates", "median")], digits = 3)
+```
+
+### Task 5b: Historical joins, withdrawal status and completed repair records
+
+The withdrawn category aggregation is not used in Figure 5. The per-feature models for 285 metabolic-related domains and 38 anti-defense profiles are read from saved results; they are not refitted here.
+
+```r
+rp <- function(f) raw(paste0("repair_", f))
+rep_sc <- rp("scenario_summary.tsv"); rep_ff <- rp("feature_fits.tsv"); rep_mem <- rp("members.tsv")
+rep_sm <- rp("scenario_members.tsv"); rep_map <- rp("mapping.tsv"); rep_el <- rp("eligibility_changes.tsv")
+rep_in <- rp("input_manifest.tsv")
+rep_done <- jsonlite::read_json(raw_path("repair_COMPLETE.json"))
+rep_iv <- jsonlite::read_json(raw_path("repair_independent_verification.json"))
+rwv_check(checks, "repair run completed with the recorded script", c("COMPLETE", "4f9892c39ed89ca7ef9d9b8218a7104dff5ced4abcc27ee0b5e97d158650175b"),
+          c(rep_done$status, rep_done$script_sha256), source = "repair_COMPLETE.json")
+rwv_check(checks, "repair scenarios and their saved status labels",
+          c(METAB285 = "DESCRIPTIVE_FIXED_BASELINE", corrected_all_profiles_category = "POST_HOC_CORRECTED_DEFINITION",
+            corrected_fixed38_category = "POST_HOC_CORRECTED_DEFINITION", legacy_mixed = "WITHDRAWN_BUG_AFFECTED_AUDIT_ONLY",
+            profile38 = "DESCRIPTIVE_FIXED_BASELINE"),
+          setNames(rep_sc$status, rep_sc$scenario)[c("METAB285", "corrected_all_profiles_category", "corrected_fixed38_category", "legacy_mixed", "profile38")],
+          source = "repair_scenario_summary.tsv")
+n_units <- setNames(num(rep_sc$n_units), rep_sc$scenario)
+rwv_check(checks, "repair units: 285, 38, 22 legacy, 9 and 10 corrected categories", c(285, 38, 22, 9, 10),
+          unname(n_units[c("METAB285", "profile38", "legacy_mixed", "corrected_fixed38_category", "corrected_all_profiles_category")]))
+rwv_check(checks, "repair fits: 364 rows, one per scenario unit", c(364L, 364L), c(nrow(rep_ff), as.integer(sum(n_units))))
+corr <- rep_ff[startsWith(rep_ff$scenario, "corrected_"), ]
+rwv_check(checks, "corrected fits: 19 logit valid, 19 null valid, 18 gamma valid", c(19L, 19L, 19L, 18L),
+          c(nrow(corr), sum(corr$valid == "TRUE"), sum(corr$null_valid == "TRUE"), sum(corr$gamma_valid == "TRUE")))
+rwv_check(checks, "the corrected gamma failure is corrected_fixed38_category / Anti_TA (0/1 warning; not boundary)",
+          c("corrected_fixed38_category", "Anti_TA", "glm.fit: fitted probabilities numerically 0 or 1 occurred", "TRUE", "FALSE"),
+          unlist(corr[corr$gamma_valid != "TRUE", c("scenario", "feature", "gamma_warnings", "gamma_converged", "gamma_boundary")]))
+rwv_check(checks, "corrected null logit projection recorded invalid for all 19, residual NA, warning as saved",
+          c(19L, 19L, 19L), c(sum(corr$null_equivalent_valid == "FALSE"), sum(corr$observed_minus_null_slope == "NA"),
+                              sum(corr$null_equivalent_warnings == "non-integer counts in a binomial glm!")))
+rwv_check(checks, "independent verification of the 19 corrected logit slopes", c("PASS", "19"),
+          c(rep_iv$status, as.character(rep_iv$corrected_fits)), source = "repair_independent_verification.json")
+rwv_check(checks, "independent verification maximum slope difference below 1e-9", TRUE, num(rep_iv$max_absolute_slope_difference) < 1e-9)
+# Historical tables are the old join: G15 units equal the repair record's old_unit for all 104
+# profiles, and the 22 all_profiles_then_threshold fits of G14 are the repair run's legacy_mixed.
+agg_fits <- raw("global_aggregation_fits.tsv"); agg_mem <- raw("global_aggregation_members.tsv")
+rwv_check(checks, "G15 historical units equal the repair record's old_unit (104 profiles)", c(104L, 104L),
+          c(nrow(agg_mem), sum(agg_mem$unit == rep_mem$old_unit[match(agg_mem$profile, rep_mem$profile)], na.rm = TRUE)))
+leg <- rep_ff[rep_ff$scenario == "legacy_mixed", ]
+old22 <- agg_fits[agg_fits$mode == "all_profiles_then_threshold", ]
+rwv_check(checks, "G14 all_profiles_then_threshold (22) equals legacy_mixed slopes", c(22L, 0),
+          c(nrow(old22), max(abs(num(old22$slope) - num(leg$slope[match(old22$unit, leg$feature)])))))
+rwv_check(checks, "G14 fixed38 has 21 historical units (old join of the fixed 38)", c(21L, 21L),
+          c(sum(agg_fits$mode == "fixed38"), length(unique(rep_mem$old_unit[rep_mem$selected38 == "TRUE"]))))
+p38 <- rep_ff[rep_ff$scenario == "profile38", ]; m285 <- rep_ff[rep_ff$scenario == "METAB285", ]
+rwv_check(checks, "repair run reproduces the fixed 285/38 slopes of G01 (|diff| < 1e-6)", TRUE,
+          max(abs(num(p38$slope) - fits$slope[match(p38$feature, fits$feat)]), abs(num(m285$slope) - fits$slope[match(m285$feature, fits$feat)])) < 1e-6)
+named <- rep_mem$profile[rep_mem$selected38 == "TRUE" & !rep_mem$old_direct_join %in% c("", "NA")]
+rwv_check(checks, "named25 = the 25 fixed profiles named by the old join", 25L, length(named))
+rwv_check(checks, "observed profiles, census mapping rows and corrected memberships", c(104L, 356L, 284L, 12L),
+          c(nrow(rep_mem), nrow(rep_map), nrow(rep_sm), nrow(rep_el)))
+for (f in c("scenario_summary", "feature_fits", "members", "scenario_members", "mapping", "eligibility_changes"))
+  rwv_write_tsv(rp(paste0(f, ".tsv")), path_target(paste0("global_repair_", f, ".tsv")))
+# Status index. 'status' is the repair run's own label where it saved one; for the old-join subsets
+# it saved no machine label, so the label below summarises its README ("historical results are kept
+# as withdrawn audit") and label_origin says so.
+rr <- "dev380 repair_scenario_summary.tsv (saved status label)"
+rd <- "summary of the dev380 repair README: old direct-join results withdrawn, kept as audit (no machine label saved)"
+nrow_def <- function(f, d) sum(raw(f)$definition == d)
+st_rows <- list(
+  c("G01_feature_fits", "all 323 rows: 285 METAB + 38 ADF_profile", nrow(coef), "DESCRIPTIVE_FIXED_BASELINE", rr,
+    "current per-feature baseline (Figure 5b, 5c); not affected by the category join", "repair run reproduces these slopes within 5e-7"),
+  c("G01_feature_fits", "opportunity diagnostic columns (null_valid ... gamma_warnings)", nrow(coef), "SAVED_DESCRIPTIVE_DIAGNOSTIC",
+    "implementer description; no status label saved (values from global_primary.R output global_full_feature_fits.tsv)", "Supplementary Note 4 opportunity section",
+    "fixed-opportunity cloglog valid for 323; free gamma valid 285/285 METAB and 35/38 ADF; projection validity not saved"),
+  c("G05_adjusted", "definition == named25", nrow_def("global_adjusted_contrasts.tsv", "named25"), "WITHDRAWN_HISTORICAL_JOIN_AUDIT_ONLY", rd,
+    "audit only", "named25 = fixed profiles that the old join named; not 25 validated features"),
+  c("G06_firth", "definition == named25", nrow_def("global_firth_contrasts.tsv", "named25"), "WITHDRAWN_HISTORICAL_JOIN_AUDIT_ONLY", rd, "audit only", "all38 rows are the current Firth results"),
+  c("G07_resampling", "definition == named25", sum(rs$definition == "named25"), "WITHDRAWN_HISTORICAL_JOIN_AUDIT_ONLY", rd, "audit only", "all38 rows are the current resampling summaries"),
+  c("G17_resample_contrasts", "definition == named25", sum(res$definition == "named25"), "WITHDRAWN_HISTORICAL_JOIN_AUDIT_ONLY", rd, "audit only", "resampling was not repeated for any corrected unit"),
+  c("G12_firth_feature_fits", "column named (TRUE marks the 25 old-join-named profiles)", nrow(raw("global_firth_feature_fits.tsv")), "WITHDRAWN_HISTORICAL_JOIN_AUDIT_ONLY", rd,
+    "the per-feature fits stay current; only the named grouping is historical", "column-level status"),
+  c("G14_aggregation_fits", "mode == fixed38 (21 old-join units)", sum(agg_fits$mode == "fixed38"), "WITHDRAWN_HISTORICAL_JOIN_AUDIT_ONLY", rd,
+    "audit only; corrected counterpart: corrected_fixed38_category (9 units) in G21", "historical direct-join product"),
+  c("G14_aggregation_fits", "mode == all_profiles_then_threshold (22 units = legacy_mixed)", nrow(old22), "WITHDRAWN_BUG_AFFECTED_AUDIT_ONLY", rr,
+    "audit only; corrected counterpart: corrected_all_profiles_category (10 units) in G21", "former 3.5257 contrast and 2.69-3.53 range are withdrawn"),
+  c("G15_aggregation_members", "all 104 profiles (old direct-join unit)", nrow(agg_mem), "WITHDRAWN_HISTORICAL_JOIN_AUDIT_ONLY", rd,
+    "audit only; corrected mapping in G22/G24", "unit column equals repair old_unit"),
+  c("G21_repair_feature_fits", "scenario starts with corrected_ (19 fits)", nrow(corr), "POST_HOC_CORRECTED_DEFINITION", rr,
+    "post hoc category definitions: changed statistical units and weights; not a replicate of the 38-profile parameter",
+    "19 logit and null fits valid, 18 gamma valid; null logit projection recorded invalid for all 19"),
+  c("G21_repair_feature_fits", "scenario == legacy_mixed (22 fits)", nrow(leg), "WITHDRAWN_BUG_AFFECTED_AUDIT_ONLY", rr, "audit only", "recomputed by the repair run; equals G14 all_profiles_then_threshold"),
+  c("G21_repair_feature_fits", "scenario in METAB285, profile38 (323 fits)", nrow(m285) + nrow(p38), "DESCRIPTIVE_FIXED_BASELINE", rr,
+    "reproduction of the fixed baseline by the repair run", "not a separate result; G01 remains the reported table"))
+status <- as.data.frame(do.call(rbind, st_rows), stringsAsFactors = FALSE)
+names(status) <- c("sheet", "rows_covered", "n_rows", "status", "label_origin", "current_use", "note")
+status$n_rows <- as.integer(status$n_rows)
+rwv_check(checks, "status index covers every historical or corrected object once", nrow(status), nrow(unique(status[, c("sheet", "rows_covered")])))
+rwv_write_tsv(status, path_target("global_result_status.tsv"))
+knitr::kable(status[, c("sheet", "rows_covered", "n_rows", "status")])
+```
+
+### Task 6: Record checks and the run
+
+```r
+check_table <- rwv_checks_finish(checks, path_target("input-checks.tsv"))
+knitr::kable(check_table[, c("check", "expected", "observed", "pass")])
+rwv_write_session_info(path_target("session-info.txt"),
+                       c(step = params$name, run_id = step$run_id, mode = step$mode, quarto = rwv_quarto_version()))
+```

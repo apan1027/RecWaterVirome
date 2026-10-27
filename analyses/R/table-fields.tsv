@@ -1,0 +1,1559 @@
+book	sheet	cell	before_type	before	after_type	value
+1	INDEX	E11	text	Marginal PERMANOVA for every distance of each assay, location and c/d label terms retained; the virome location term depends on the distance (Aitchison p = 0.725; Bray-Curtis 0.001; Jaccard 0.002)	text	Marginal PERMANOVA for every distance of each assay, location and c/d label terms retained; the virome location term depends on the distance (Aitchison p = 0.725; Bray-Curtis 0.001; Jaccard 0.002) Main-text summary: virome, bact_16s and euk_18s_microeuk, comprising 13 assay–distance combinations. Five additional combinations for euk_18s_all are retained in these tables.
+1	INDEX	E12	text	Dispersion checks for every distance and grouping, with the saved status (flagged / method-dependent / not flagged)	text	Dispersion checks for every distance and grouping, with the saved status (flagged / method-dependent / not flagged) Main-text summary: virome, bact_16s and euk_18s_microeuk, comprising 13 assay–distance combinations. Five additional combinations for euk_18s_all are retained in these tables.
+1	INDEX	D19	text	Data 1 only	text	Supplementary Data 1 only
+1	INDEX	D38	text	Data 1 only	text	Supplementary Data 1 only
+1	INDEX	E42	text	Per-stratum construct results behind the endpoints of Supplementary Figure 4	text	Per-stratum viral-retention and host-flank-removal results for the controlled constructs described in Supplementary Note 3
+1	INDEX	D44	text	Data 1 only	text	Supplementary Data 1 only
+1	INDEX	D45	text	Table 1	text	Supplementary Table S1
+1	INDEX	F45	text	as S19 but per database entry; 145 entries and 560 carrier vOTUs; this is the 560 of Table 1	text	as S19 but per database entry; 145 entries and 560 carrier vOTUs; this is the 560 of Supplementary Table S1
+1	INDEX	D46	text	Table 1	text	Supplementary Table S1
+1	INDEX	F58	text	Shared means qualifies in at least one other of all seven samples, not the designated process/nearby comparisons of S54-S55; percentages sum to 100 per sample	text	Shared means qualifies in at least one other of all seven samples, not the designated wastewater/reclaimed-water comparisons of S54-S55; percentages sum to 100 per sample
+1	INDEX	A63	blank		text	S62_VF_position_QC
+1	INDEX	B63	blank		n	3
+1	INDEX	C63	blank		n	6
+1	INDEX	D63	blank		text	Supplementary Note 3
+1	INDEX	E63	blank		text	Median-distance diagnostic on representatives without DTR/ITR flags; AMG/KO comparison annotation sets.
+1	INDEX	F63	blank		text	Gene sites, bp and dimensionless ratios; gene-site bootstrap percentile interval, not biological replication or equivalence.
+1	INDEX	G63	blank		text	Post-release scoped QC
+1	INDEX	H63	blank		text	S62_VF_position_QC.tsv
+1	INDEX	A64	blank		text	S63_terminal_repeat_carriers
+1	INDEX	B64	blank		n	18
+1	INDEX	C64	blank		n	12
+1	INDEX	D64	blank		text	Supplementary Note 3
+1	INDEX	E64	blank		text	18 VF-bearing terminal-repeat-flagged representatives, with predicted region and CheckV records.
+1	INDEX	F64	blank		text	Contigs, bp and percentages; flags and completeness estimates do not establish viral provenance.
+1	INDEX	G64	blank		text	Post-release scoped QC
+1	INDEX	H64	blank		text	S63_terminal_repeat_carriers.tsv
+1	INDEX	A65	blank		text	S64_terminal_repeat_VF_hits
+1	INDEX	B65	blank		n	29
+1	INDEX	C65	blank		n	16
+1	INDEX	D65	blank		text	Supplementary Note 3
+1	INDEX	E65	blank		text	29 VFDB matches on DTR/ITR representatives; retains eight predicted-host assignments.
+1	INDEX	F65	blank		text	Matches, bp and percentages; localization is predicted, and no_region_prediction remains unresolved.
+1	INDEX	G65	blank		text	Post-release scoped QC
+1	INDEX	H65	blank		text	S64_terminal_repeat_VF_hits.tsv
+1	INDEX	A66	blank		text	S65_comparison_members
+1	INDEX	B66	blank		n	9180
+1	INDEX	C66	blank		n	20
+1	INDEX	D66	blank		text	Supplementary Note 5
+1	INDEX	E66	blank		text	Complete catalogue membership and abundance register for the three designated comparisons
+1	INDEX	F66	blank		text	Original sample denominators and F0/F1/S0/S1 eligibility are preserved; percentages are catalogue-relative.
+1	INDEX	G66	blank		text	Consolidated supplied source
+1	INDEX	H66	blank		text	Supplementary_Data_1_comparison_members.tsv
+1	INDEX	A67	blank		text	S66_input_diagnostics
+1	INDEX	B67	blank		n	7
+1	INDEX	C67	blank		n	8
+1	INDEX	D67	blank		text	Supplementary Note 5
+1	INDEX	E67	blank		text	Sample-level mapping and depth diagnostics
+1	INDEX	F67	blank		text	Counts are vOTUs; depths are trimmed mean coverage sums; breadth_threshold is a fraction.
+1	INDEX	G67	blank		text	Consolidated supplied source
+1	INDEX	H67	blank		text	Supplementary_Data_1_input_diagnostics.tsv
+1	INDEX	A68	blank		text	S67_full_definitions
+1	INDEX	B68	blank		n	66
+1	INDEX	C68	blank		n	9
+1	INDEX	D68	blank		text	Supplementary Table S1
+1	INDEX	E68	blank		text	Complete 66-row study-unit and definition ledger
+1	INDEX	F68	blank		text	Original definitions, denominators and source labels are retained.
+1	INDEX	G68	blank		text	Consolidated supplied source
+1	INDEX	H68	blank		text	Supplementary_Table_S1_full_definitions.tsv
+1	INDEX	A69	blank		text	S68_S2_host_links
+1	INDEX	B69	blank		n	83
+1	INDEX	C69	blank		n	12
+1	INDEX	D69	blank		text	Supplementary Fig. S2c
+1	INDEX	E69	blank		text	The 83 co-detected virus-host links drawn in Supplementary Fig. S2c
+1	INDEX	F69	blank		text	Sample columns are co-detection flags; iPHoP scores are prediction scores.
+1	INDEX	G69	blank		text	Consolidated supplied source
+1	INDEX	H69	blank		text	Supplementary_Figure_S2_links.tsv
+1	FIELDS	K357	text	Per-stratum construct results behind the endpoints of Supplementary Figure 4	text	Per-stratum viral-retention and host-flank-removal results for the controlled constructs described in Supplementary Note 3
+1	FIELDS	K358	text	Per-stratum construct results behind the endpoints of Supplementary Figure 4	text	Per-stratum viral-retention and host-flank-removal results for the controlled constructs described in Supplementary Note 3
+1	FIELDS	K359	text	Per-stratum construct results behind the endpoints of Supplementary Figure 4	text	Per-stratum viral-retention and host-flank-removal results for the controlled constructs described in Supplementary Note 3
+1	FIELDS	K360	text	Per-stratum construct results behind the endpoints of Supplementary Figure 4	text	Per-stratum viral-retention and host-flank-removal results for the controlled constructs described in Supplementary Note 3
+1	FIELDS	K361	text	Per-stratum construct results behind the endpoints of Supplementary Figure 4	text	Per-stratum viral-retention and host-flank-removal results for the controlled constructs described in Supplementary Note 3
+1	FIELDS	K362	text	Per-stratum construct results behind the endpoints of Supplementary Figure 4	text	Per-stratum viral-retention and host-flank-removal results for the controlled constructs described in Supplementary Note 3
+1	FIELDS	K363	text	Per-stratum construct results behind the endpoints of Supplementary Figure 4	text	Per-stratum viral-retention and host-flank-removal results for the controlled constructs described in Supplementary Note 3
+1	FIELDS	K364	text	Per-stratum construct results behind the endpoints of Supplementary Figure 4	text	Per-stratum viral-retention and host-flank-removal results for the controlled constructs described in Supplementary Note 3
+1	FIELDS	K365	text	Per-stratum construct results behind the endpoints of Supplementary Figure 4	text	Per-stratum viral-retention and host-flank-removal results for the controlled constructs described in Supplementary Note 3
+1	FIELDS	K366	text	Per-stratum construct results behind the endpoints of Supplementary Figure 4	text	Per-stratum viral-retention and host-flank-removal results for the controlled constructs described in Supplementary Note 3
+1	FIELDS	K367	text	Per-stratum construct results behind the endpoints of Supplementary Figure 4	text	Per-stratum viral-retention and host-flank-removal results for the controlled constructs described in Supplementary Note 3
+1	FIELDS	K368	text	Per-stratum construct results behind the endpoints of Supplementary Figure 4	text	Per-stratum viral-retention and host-flank-removal results for the controlled constructs described in Supplementary Note 3
+1	FIELDS	K369	text	Per-stratum construct results behind the endpoints of Supplementary Figure 4	text	Per-stratum viral-retention and host-flank-removal results for the controlled constructs described in Supplementary Note 3
+1	FIELDS	K370	text	Per-stratum construct results behind the endpoints of Supplementary Figure 4	text	Per-stratum viral-retention and host-flank-removal results for the controlled constructs described in Supplementary Note 3
+1	FIELDS	G371	text	Whether the stratum belongs to the primary length series shown in Supplementary Figure 3b	text	Whether the stratum belongs to the primary controlled-construct length series defined in Supplementary Note 3
+1	FIELDS	K371	text	Per-stratum construct results behind the endpoints of Supplementary Figure 4	text	Per-stratum viral-retention and host-flank-removal results for the controlled constructs described in Supplementary Note 3
+1	FIELDS	G421	text	Recorded clean/dirty water label of the sample as supplied with the sampling record (sample descriptions: dirty = d, treatment-process water; clean = c, nearby water after facility outflow); it is NOT a verified treatment stage or hydraulic pair	text	Sample water category: d, wastewater collected from treatment tanks; c, reclaimed water. Original c/d codes are retained.
+1	FIELDS	G536	text	Designated process/nearby sample combination, not hydraulic tracing	text	Designated same-location wastewater/reclaimed-water comparison.
+1	FIELDS	G540	text	Process-water or nearby-water position from available descriptions	text	Water category: wastewater (d) or reclaimed water (c).
+1	FIELDS	G552	text	Designated process/nearby sample combination, not hydraulic tracing	text	Designated same-location wastewater/reclaimed-water comparison.
+1	FIELDS	G556	text	Process-water or nearby-water position from available descriptions	text	Water category: wastewater (d) or reclaimed water (c).
+1	FIELDS	A649	blank		text	S62_VF_position_QC
+1	FIELDS	B649	blank		n	1
+1	FIELDS	C649	blank		text	annotation_set
+1	FIELDS	D649	blank		text	character
+1	FIELDS	E649	blank		n	0
+1	FIELDS	F649	blank		text	VFDB-A filtered
+1	FIELDS	G649	blank		text	Annotation set; AMG and KO are comparison sets, not established contamination-free truth.
+1	FIELDS	I649	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J649	blank		text	True
+1	FIELDS	K649	blank		text	Median-distance diagnostic on representatives without DTR/ITR flags; AMG/KO comparison annotation sets.
+1	FIELDS	L649	blank		text	S62_VF_position_QC.tsv
+1	FIELDS	A650	blank		text	S62_VF_position_QC
+1	FIELDS	B650	blank		n	2
+1	FIELDS	C650	blank		text	n
+1	FIELDS	D650	blank		text	numeric
+1	FIELDS	E650	blank		n	0
+1	FIELDS	F650	blank		n	114
+1	FIELDS	G650	blank		text	Number of annotated gene sites included in the position diagnostic after excluding representatives with DTR/ITR flags. For VFDB-A, 114 sites occur on 96 representatives.
+1	FIELDS	I650	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J650	blank		text	True
+1	FIELDS	K650	blank		text	Median-distance diagnostic on representatives without DTR/ITR flags; AMG/KO comparison annotation sets.
+1	FIELDS	L650	blank		text	S62_VF_position_QC.tsv
+1	FIELDS	A651	blank		text	S62_VF_position_QC
+1	FIELDS	B651	blank		n	3
+1	FIELDS	C651	blank		text	median_d_end_bp
+1	FIELDS	D651	blank		text	numeric
+1	FIELDS	E651	blank		n	0
+1	FIELDS	F651	blank		n	4226
+1	FIELDS	G651	blank		text	Median distance of gene edges to the nearer contig end.
+1	FIELDS	H651	blank		text	bp
+1	FIELDS	I651	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J651	blank		text	True
+1	FIELDS	K651	blank		text	Median-distance diagnostic on representatives without DTR/ITR flags; AMG/KO comparison annotation sets.
+1	FIELDS	L651	blank		text	S62_VF_position_QC.tsv
+1	FIELDS	A652	blank		text	S62_VF_position_QC
+1	FIELDS	B652	blank		n	4
+1	FIELDS	C652	blank		text	ratio_vs_background
+1	FIELDS	D652	blank		text	numeric
+1	FIELDS	E652	blank		n	0
+1	FIELDS	F652	blank		n	0.984
+1	FIELDS	G652	blank		text	Focal median distance divided by one length/density-stratified background median.
+1	FIELDS	I652	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J652	blank		text	True
+1	FIELDS	K652	blank		text	Median-distance diagnostic on representatives without DTR/ITR flags; AMG/KO comparison annotation sets.
+1	FIELDS	L652	blank		text	S62_VF_position_QC.tsv
+1	FIELDS	A653	blank		text	S62_VF_position_QC
+1	FIELDS	B653	blank		n	5
+1	FIELDS	C653	blank		text	ci_lo
+1	FIELDS	D653	blank		text	numeric
+1	FIELDS	E653	blank		n	0
+1	FIELDS	F653	blank		n	0.644
+1	FIELDS	G653	blank		text	2.5th percentile of original gene-site bootstrap distance ratios.
+1	FIELDS	I653	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J653	blank		text	True
+1	FIELDS	K653	blank		text	Median-distance diagnostic on representatives without DTR/ITR flags; AMG/KO comparison annotation sets.
+1	FIELDS	L653	blank		text	S62_VF_position_QC.tsv
+1	FIELDS	A654	blank		text	S62_VF_position_QC
+1	FIELDS	B654	blank		n	6
+1	FIELDS	C654	blank		text	ci_hi
+1	FIELDS	D654	blank		text	numeric
+1	FIELDS	E654	blank		n	0
+1	FIELDS	F654	blank		n	1.261
+1	FIELDS	G654	blank		text	97.5th percentile of original gene-site bootstrap distance ratios.
+1	FIELDS	I654	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J654	blank		text	True
+1	FIELDS	K654	blank		text	Median-distance diagnostic on representatives without DTR/ITR flags; AMG/KO comparison annotation sets.
+1	FIELDS	L654	blank		text	S62_VF_position_QC.tsv
+1	FIELDS	A655	blank		text	S63_terminal_repeat_carriers
+1	FIELDS	B655	blank		n	1
+1	FIELDS	C655	blank		text	vOTU_id
+1	FIELDS	D655	blank		text	character
+1	FIELDS	E655	blank		n	0
+1	FIELDS	F655	blank		text	vOTU0016
+1	FIELDS	G655	blank		text	Viral operational taxonomic unit representative identifier.
+1	FIELDS	I655	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J655	blank		text	True
+1	FIELDS	K655	blank		text	18 VF-bearing terminal-repeat-flagged representatives, with predicted region and CheckV records.
+1	FIELDS	L655	blank		text	S63_terminal_repeat_carriers.tsv
+1	FIELDS	A656	blank		text	S63_terminal_repeat_carriers
+1	FIELDS	B656	blank		n	2
+1	FIELDS	C656	blank		text	vcontig_id
+1	FIELDS	D656	blank		text	character
+1	FIELDS	E656	blank		n	0
+1	FIELDS	F656	blank		text	vctg1107
+1	FIELDS	G656	blank		text	Original contig identifier.
+1	FIELDS	I656	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J656	blank		text	True
+1	FIELDS	K656	blank		text	18 VF-bearing terminal-repeat-flagged representatives, with predicted region and CheckV records.
+1	FIELDS	L656	blank		text	S63_terminal_repeat_carriers.tsv
+1	FIELDS	A657	blank		text	S63_terminal_repeat_carriers
+1	FIELDS	B657	blank		n	3
+1	FIELDS	C657	blank		text	contig_length
+1	FIELDS	D657	blank		text	numeric
+1	FIELDS	E657	blank		n	0
+1	FIELDS	F657	blank		n	50407
+1	FIELDS	G657	blank		text	Representative sequence length in bp.
+1	FIELDS	H657	blank		text	bp
+1	FIELDS	I657	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J657	blank		text	True
+1	FIELDS	K657	blank		text	18 VF-bearing terminal-repeat-flagged representatives, with predicted region and CheckV records.
+1	FIELDS	L657	blank		text	S63_terminal_repeat_carriers.tsv
+1	FIELDS	A658	blank		text	S63_terminal_repeat_carriers
+1	FIELDS	B658	blank		n	4
+1	FIELDS	C658	blank		text	genomad_topology
+1	FIELDS	D658	blank		text	character
+1	FIELDS	E658	blank		n	0
+1	FIELDS	F658	blank		text	DTR
+1	FIELDS	G658	blank		text	Saved DTR/ITR repeat flag; not independent completeness or provenance validation.
+1	FIELDS	I658	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J658	blank		text	True
+1	FIELDS	K658	blank		text	18 VF-bearing terminal-repeat-flagged representatives, with predicted region and CheckV records.
+1	FIELDS	L658	blank		text	S63_terminal_repeat_carriers.tsv
+1	FIELDS	A659	blank		text	S63_terminal_repeat_carriers
+1	FIELDS	B659	blank		n	5
+1	FIELDS	C659	blank		text	checkv_provirus
+1	FIELDS	D659	blank		text	character
+1	FIELDS	E659	blank		n	0
+1	FIELDS	F659	blank		text	Yes
+1	FIELDS	G659	blank		text	Saved CheckV provirus flag.
+1	FIELDS	I659	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J659	blank		text	True
+1	FIELDS	K659	blank		text	18 VF-bearing terminal-repeat-flagged representatives, with predicted region and CheckV records.
+1	FIELDS	L659	blank		text	S63_terminal_repeat_carriers.tsv
+1	FIELDS	A660	blank		text	S63_terminal_repeat_carriers
+1	FIELDS	B660	blank		n	6
+1	FIELDS	C660	blank		text	checkv_quality_score
+1	FIELDS	D660	blank		text	numeric
+1	FIELDS	E660	blank		n	0
+1	FIELDS	F660	blank		n	3.0
+1	FIELDS	G660	blank		text	Saved CheckV quality category code; not a probability.
+1	FIELDS	I660	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J660	blank		text	True
+1	FIELDS	K660	blank		text	18 VF-bearing terminal-repeat-flagged representatives, with predicted region and CheckV records.
+1	FIELDS	L660	blank		text	S63_terminal_repeat_carriers.tsv
+1	FIELDS	A661	blank		text	S63_terminal_repeat_carriers
+1	FIELDS	B661	blank		n	7
+1	FIELDS	C661	blank		text	checkv_completeness
+1	FIELDS	D661	blank		text	numeric
+1	FIELDS	E661	blank		n	0
+1	FIELDS	F661	blank		n	65.0
+1	FIELDS	G661	blank		text	CheckV estimated genome completeness in percent.
+1	FIELDS	H661	blank		text	%
+1	FIELDS	I661	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J661	blank		text	True
+1	FIELDS	K661	blank		text	18 VF-bearing terminal-repeat-flagged representatives, with predicted region and CheckV records.
+1	FIELDS	L661	blank		text	S63_terminal_repeat_carriers.tsv
+1	FIELDS	A662	blank		text	S63_terminal_repeat_carriers
+1	FIELDS	B662	blank		n	8
+1	FIELDS	C662	blank		text	checkv_completeness_method
+1	FIELDS	D662	blank		text	character
+1	FIELDS	E662	blank		n	0
+1	FIELDS	F662	blank		text	AAI-based (medium-confidence)
+1	FIELDS	G662	blank		text	Saved method and confidence label for the estimate.
+1	FIELDS	I662	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J662	blank		text	True
+1	FIELDS	K662	blank		text	18 VF-bearing terminal-repeat-flagged representatives, with predicted region and CheckV records.
+1	FIELDS	L662	blank		text	S63_terminal_repeat_carriers.tsv
+1	FIELDS	A663	blank		text	S63_terminal_repeat_carriers
+1	FIELDS	B663	blank		n	9
+1	FIELDS	C663	blank		text	checkv_contamination
+1	FIELDS	D663	blank		text	numeric
+1	FIELDS	E663	blank		n	0
+1	FIELDS	F663	blank		n	32.8
+1	FIELDS	G663	blank		text	Saved estimated host fraction in percent; predicted, not verified contamination.
+1	FIELDS	H663	blank		text	%
+1	FIELDS	I663	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J663	blank		text	True
+1	FIELDS	K663	blank		text	18 VF-bearing terminal-repeat-flagged representatives, with predicted region and CheckV records.
+1	FIELDS	L663	blank		text	S63_terminal_repeat_carriers.tsv
+1	FIELDS	A664	blank		text	S63_terminal_repeat_carriers
+1	FIELDS	B664	blank		n	10
+1	FIELDS	C664	blank		text	VF_hits
+1	FIELDS	D664	blank		text	numeric
+1	FIELDS	E664	blank		n	0
+1	FIELDS	F664	blank		n	5
+1	FIELDS	G664	blank		text	Number of filtered VFDB matches on this representative.
+1	FIELDS	I664	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J664	blank		text	True
+1	FIELDS	K664	blank		text	18 VF-bearing terminal-repeat-flagged representatives, with predicted region and CheckV records.
+1	FIELDS	L664	blank		text	S63_terminal_repeat_carriers.tsv
+1	FIELDS	A665	blank		text	S63_terminal_repeat_carriers
+1	FIELDS	B665	blank		n	11
+1	FIELDS	C665	blank		text	predicted_host_VF_hits
+1	FIELDS	D665	blank		text	numeric
+1	FIELDS	E665	blank		n	0
+1	FIELDS	F665	blank		n	5
+1	FIELDS	G665	blank		text	Number of these matches assigned to a predicted host region.
+1	FIELDS	I665	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J665	blank		text	True
+1	FIELDS	K665	blank		text	18 VF-bearing terminal-repeat-flagged representatives, with predicted region and CheckV records.
+1	FIELDS	L665	blank		text	S63_terminal_repeat_carriers.tsv
+1	FIELDS	A666	blank		text	S63_terminal_repeat_carriers
+1	FIELDS	B666	blank		n	12
+1	FIELDS	C666	blank		text	unlocalized_VF_hits
+1	FIELDS	D666	blank		text	numeric
+1	FIELDS	E666	blank		n	0
+1	FIELDS	F666	blank		n	0
+1	FIELDS	G666	blank		text	Number of these matches without region predictions.
+1	FIELDS	I666	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J666	blank		text	True
+1	FIELDS	K666	blank		text	18 VF-bearing terminal-repeat-flagged representatives, with predicted region and CheckV records.
+1	FIELDS	L666	blank		text	S63_terminal_repeat_carriers.tsv
+1	FIELDS	A667	blank		text	S64_terminal_repeat_VF_hits
+1	FIELDS	B667	blank		n	1
+1	FIELDS	C667	blank		text	vOTU_id
+1	FIELDS	D667	blank		text	character
+1	FIELDS	E667	blank		n	0
+1	FIELDS	F667	blank		text	vOTU0475
+1	FIELDS	G667	blank		text	Viral operational taxonomic unit representative identifier.
+1	FIELDS	I667	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J667	blank		text	True
+1	FIELDS	K667	blank		text	29 VFDB matches on DTR/ITR representatives; retains eight predicted-host assignments.
+1	FIELDS	L667	blank		text	S64_terminal_repeat_VF_hits.tsv
+1	FIELDS	A668	blank		text	S64_terminal_repeat_VF_hits
+1	FIELDS	B668	blank		n	2
+1	FIELDS	C668	blank		text	vcontig_id
+1	FIELDS	D668	blank		text	character
+1	FIELDS	E668	blank		n	0
+1	FIELDS	F668	blank		text	vctg0232
+1	FIELDS	G668	blank		text	Original contig identifier.
+1	FIELDS	I668	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J668	blank		text	True
+1	FIELDS	K668	blank		text	29 VFDB matches on DTR/ITR representatives; retains eight predicted-host assignments.
+1	FIELDS	L668	blank		text	S64_terminal_repeat_VF_hits.tsv
+1	FIELDS	A669	blank		text	S64_terminal_repeat_VF_hits
+1	FIELDS	B669	blank		n	3
+1	FIELDS	C669	blank		text	contig_length
+1	FIELDS	D669	blank		text	numeric
+1	FIELDS	E669	blank		n	0
+1	FIELDS	F669	blank		n	37307
+1	FIELDS	G669	blank		text	Representative sequence length in bp.
+1	FIELDS	H669	blank		text	bp
+1	FIELDS	I669	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J669	blank		text	True
+1	FIELDS	K669	blank		text	29 VFDB matches on DTR/ITR representatives; retains eight predicted-host assignments.
+1	FIELDS	L669	blank		text	S64_terminal_repeat_VF_hits.tsv
+1	FIELDS	A670	blank		text	S64_terminal_repeat_VF_hits
+1	FIELDS	B670	blank		n	4
+1	FIELDS	C670	blank		text	genomad_topology
+1	FIELDS	D670	blank		text	character
+1	FIELDS	E670	blank		n	0
+1	FIELDS	F670	blank		text	DTR
+1	FIELDS	G670	blank		text	Saved DTR/ITR repeat flag; not independent completeness or provenance validation.
+1	FIELDS	I670	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J670	blank		text	True
+1	FIELDS	K670	blank		text	29 VFDB matches on DTR/ITR representatives; retains eight predicted-host assignments.
+1	FIELDS	L670	blank		text	S64_terminal_repeat_VF_hits.tsv
+1	FIELDS	A671	blank		text	S64_terminal_repeat_VF_hits
+1	FIELDS	B671	blank		n	5
+1	FIELDS	C671	blank		text	checkv_provirus
+1	FIELDS	D671	blank		text	character
+1	FIELDS	E671	blank		n	0
+1	FIELDS	F671	blank		text	No
+1	FIELDS	G671	blank		text	Saved CheckV provirus flag.
+1	FIELDS	I671	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J671	blank		text	True
+1	FIELDS	K671	blank		text	29 VFDB matches on DTR/ITR representatives; retains eight predicted-host assignments.
+1	FIELDS	L671	blank		text	S64_terminal_repeat_VF_hits.tsv
+1	FIELDS	A672	blank		text	S64_terminal_repeat_VF_hits
+1	FIELDS	B672	blank		n	6
+1	FIELDS	C672	blank		text	checkv_quality_score
+1	FIELDS	D672	blank		text	numeric
+1	FIELDS	E672	blank		n	0
+1	FIELDS	F672	blank		n	1.0
+1	FIELDS	G672	blank		text	Saved CheckV quality category code; not a probability.
+1	FIELDS	I672	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J672	blank		text	True
+1	FIELDS	K672	blank		text	29 VFDB matches on DTR/ITR representatives; retains eight predicted-host assignments.
+1	FIELDS	L672	blank		text	S64_terminal_repeat_VF_hits.tsv
+1	FIELDS	A673	blank		text	S64_terminal_repeat_VF_hits
+1	FIELDS	B673	blank		n	7
+1	FIELDS	C673	blank		text	checkv_completeness
+1	FIELDS	D673	blank		text	numeric
+1	FIELDS	E673	blank		n	0
+1	FIELDS	F673	blank		n	100.0
+1	FIELDS	G673	blank		text	CheckV estimated genome completeness in percent.
+1	FIELDS	H673	blank		text	%
+1	FIELDS	I673	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J673	blank		text	True
+1	FIELDS	K673	blank		text	29 VFDB matches on DTR/ITR representatives; retains eight predicted-host assignments.
+1	FIELDS	L673	blank		text	S64_terminal_repeat_VF_hits.tsv
+1	FIELDS	A674	blank		text	S64_terminal_repeat_VF_hits
+1	FIELDS	B674	blank		n	8
+1	FIELDS	C674	blank		text	checkv_completeness_method
+1	FIELDS	D674	blank		text	character
+1	FIELDS	E674	blank		n	0
+1	FIELDS	F674	blank		text	DTR (high-confidence)
+1	FIELDS	G674	blank		text	Saved method and confidence label for the estimate.
+1	FIELDS	I674	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J674	blank		text	True
+1	FIELDS	K674	blank		text	29 VFDB matches on DTR/ITR representatives; retains eight predicted-host assignments.
+1	FIELDS	L674	blank		text	S64_terminal_repeat_VF_hits.tsv
+1	FIELDS	A675	blank		text	S64_terminal_repeat_VF_hits
+1	FIELDS	B675	blank		n	9
+1	FIELDS	C675	blank		text	checkv_contamination
+1	FIELDS	D675	blank		text	numeric
+1	FIELDS	E675	blank		n	0
+1	FIELDS	F675	blank		n	0.0
+1	FIELDS	G675	blank		text	Saved estimated host fraction in percent; predicted, not verified contamination.
+1	FIELDS	H675	blank		text	%
+1	FIELDS	I675	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J675	blank		text	True
+1	FIELDS	K675	blank		text	29 VFDB matches on DTR/ITR representatives; retains eight predicted-host assignments.
+1	FIELDS	L675	blank		text	S64_terminal_repeat_VF_hits.tsv
+1	FIELDS	A676	blank		text	S64_terminal_repeat_VF_hits
+1	FIELDS	B676	blank		n	10
+1	FIELDS	C676	blank		text	query
+1	FIELDS	D676	blank		text	character
+1	FIELDS	E676	blank		n	0
+1	FIELDS	F676	blank		text	vctg0232-cat_1_49
+1	FIELDS	G676	blank		text	Annotated ORF identifier.
+1	FIELDS	I676	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J676	blank		text	True
+1	FIELDS	K676	blank		text	29 VFDB matches on DTR/ITR representatives; retains eight predicted-host assignments.
+1	FIELDS	L676	blank		text	S64_terminal_repeat_VF_hits.tsv
+1	FIELDS	A677	blank		text	S64_terminal_repeat_VF_hits
+1	FIELDS	B677	blank		n	11
+1	FIELDS	C677	blank		text	vf_function
+1	FIELDS	D677	blank		text	character
+1	FIELDS	E677	blank		n	0
+1	FIELDS	F677	blank		text	LPS
+1	FIELDS	G677	blank		text	VFDB homology label; not experimentally established function.
+1	FIELDS	I677	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J677	blank		text	True
+1	FIELDS	K677	blank		text	29 VFDB matches on DTR/ITR representatives; retains eight predicted-host assignments.
+1	FIELDS	L677	blank		text	S64_terminal_repeat_VF_hits.tsv
+1	FIELDS	A678	blank		text	S64_terminal_repeat_VF_hits
+1	FIELDS	B678	blank		n	12
+1	FIELDS	C678	blank		text	pident
+1	FIELDS	D678	blank		text	numeric
+1	FIELDS	E678	blank		n	0
+1	FIELDS	F678	blank		n	46.4
+1	FIELDS	G678	blank		text	Percent sequence identity for the database match.
+1	FIELDS	H678	blank		text	%
+1	FIELDS	I678	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J678	blank		text	True
+1	FIELDS	K678	blank		text	29 VFDB matches on DTR/ITR representatives; retains eight predicted-host assignments.
+1	FIELDS	L678	blank		text	S64_terminal_repeat_VF_hits.tsv
+1	FIELDS	A679	blank		text	S64_terminal_repeat_VF_hits
+1	FIELDS	B679	blank		n	13
+1	FIELDS	C679	blank		text	localization
+1	FIELDS	D679	blank		text	character
+1	FIELDS	E679	blank		n	0
+1	FIELDS	F679	blank		text	no_region_prediction
+1	FIELDS	G679	blank		text	Predicted host/viral/boundary location, or unresolved if no region prediction.
+1	FIELDS	I679	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J679	blank		text	True
+1	FIELDS	K679	blank		text	29 VFDB matches on DTR/ITR representatives; retains eight predicted-host assignments.
+1	FIELDS	L679	blank		text	S64_terminal_repeat_VF_hits.tsv
+1	FIELDS	A680	blank		text	S64_terminal_repeat_VF_hits
+1	FIELDS	B680	blank		n	14
+1	FIELDS	C680	blank		text	region_prediction_available
+1	FIELDS	D680	blank		text	logical
+1	FIELDS	E680	blank		n	0
+1	FIELDS	F680	blank		b	FALSE
+1	FIELDS	G680	blank		text	Whether a usable region prediction was recorded.
+1	FIELDS	I680	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J680	blank		text	True
+1	FIELDS	K680	blank		text	29 VFDB matches on DTR/ITR representatives; retains eight predicted-host assignments.
+1	FIELDS	L680	blank		text	S64_terminal_repeat_VF_hits.tsv
+1	FIELDS	A681	blank		text	S64_terminal_repeat_VF_hits
+1	FIELDS	B681	blank		n	15
+1	FIELDS	C681	blank		text	region_excluded
+1	FIELDS	D681	blank		text	logical
+1	FIELDS	E681	blank		n	0
+1	FIELDS	F681	blank		b	FALSE
+1	FIELDS	G681	blank		text	Whether regional exclusion removes this match.
+1	FIELDS	I681	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J681	blank		text	True
+1	FIELDS	K681	blank		text	29 VFDB matches on DTR/ITR representatives; retains eight predicted-host assignments.
+1	FIELDS	L681	blank		text	S64_terminal_repeat_VF_hits.tsv
+1	FIELDS	A682	blank		text	S64_terminal_repeat_VF_hits
+1	FIELDS	B682	blank		n	16
+1	FIELDS	C682	blank		text	in_strict
+1	FIELDS	D682	blank		text	logical
+1	FIELDS	E682	blank		n	0
+1	FIELDS	F682	blank		b	TRUE
+1	FIELDS	G682	blank		text	Whether the match passes the strict annotation screen; not functional validation.
+1	FIELDS	I682	blank		text	Blank or NA means not recorded; original flags retained.
+1	FIELDS	J682	blank		text	True
+1	FIELDS	K682	blank		text	29 VFDB matches on DTR/ITR representatives; retains eight predicted-host assignments.
+1	FIELDS	L682	blank		text	S64_terminal_repeat_VF_hits.tsv
+1	FIELDS	A683	blank		text	S65_comparison_members
+1	FIELDS	B683	blank		n	1
+1	FIELDS	C683	blank		text	comparison
+1	FIELDS	D683	blank		text	text
+1	FIELDS	E683	blank		n	0
+1	FIELDS	F683	blank		text	bd1-bc1
+1	FIELDS	G683	blank		text	Designated same-location wastewater/reclaimed-water comparison.
+1	FIELDS	H683	blank		text	identifier
+1	FIELDS	I683	blank		text	never empty
+1	FIELDS	J683	blank		b	TRUE
+1	FIELDS	K683	blank		text	Complete catalogue membership and abundance register for the three designated comparisons
+1	FIELDS	L683	blank		text	Supplementary_Data_1_comparison_members.tsv
+1	FIELDS	A684	blank		text	S65_comparison_members
+1	FIELDS	B684	blank		n	2
+1	FIELDS	C684	blank		text	site
+1	FIELDS	D684	blank		text	text
+1	FIELDS	E684	blank		n	0
+1	FIELDS	F684	blank		text	Beijing
+1	FIELDS	G684	blank		text	Sampling site (Beijing, Garching, Oberschleissheim)
+1	FIELDS	H684	blank		text	category
+1	FIELDS	I684	blank		text	never empty
+1	FIELDS	J684	blank		b	TRUE
+1	FIELDS	K684	blank		text	Complete catalogue membership and abundance register for the three designated comparisons
+1	FIELDS	L684	blank		text	Supplementary_Data_1_comparison_members.tsv
+1	FIELDS	A685	blank		text	S65_comparison_members
+1	FIELDS	B685	blank		n	3
+1	FIELDS	C685	blank		text	vOTU_id
+1	FIELDS	D685	blank		text	text
+1	FIELDS	E685	blank		n	0
+1	FIELDS	F685	blank		text	vOTU3045
+1	FIELDS	G685	blank		text	Identifier of a viral operational taxonomic unit in this catalogue
+1	FIELDS	H685	blank		text	identifier
+1	FIELDS	I685	blank		text	never empty
+1	FIELDS	J685	blank		b	TRUE
+1	FIELDS	K685	blank		text	Complete catalogue membership and abundance register for the three designated comparisons
+1	FIELDS	L685	blank		text	Supplementary_Data_1_comparison_members.tsv
+1	FIELDS	A686	blank		text	S65_comparison_members
+1	FIELDS	B686	blank		n	4
+1	FIELDS	C686	blank		text	process_sample
+1	FIELDS	D686	blank		text	text
+1	FIELDS	E686	blank		n	0
+1	FIELDS	F686	blank		text	bd1
+1	FIELDS	G686	blank		text	Original source field: process_sample.
+1	FIELDS	H686	blank		text	source text
+1	FIELDS	I686	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J686	blank		b	FALSE
+1	FIELDS	K686	blank		text	Complete catalogue membership and abundance register for the three designated comparisons
+1	FIELDS	L686	blank		text	Supplementary_Data_1_comparison_members.tsv
+1	FIELDS	A687	blank		text	S65_comparison_members
+1	FIELDS	B687	blank		n	5
+1	FIELDS	C687	blank		text	nearby_sample
+1	FIELDS	D687	blank		text	text
+1	FIELDS	E687	blank		n	0
+1	FIELDS	F687	blank		text	bc1
+1	FIELDS	G687	blank		text	Original source field: nearby_sample.
+1	FIELDS	H687	blank		text	source text
+1	FIELDS	I687	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J687	blank		b	FALSE
+1	FIELDS	K687	blank		text	Complete catalogue membership and abundance register for the three designated comparisons
+1	FIELDS	L687	blank		text	Supplementary_Data_1_comparison_members.tsv
+1	FIELDS	A688	blank		text	S65_comparison_members
+1	FIELDS	B688	blank		n	6
+1	FIELDS	C688	blank		text	detected_D
+1	FIELDS	D688	blank		text	logical
+1	FIELDS	E688	blank		n	0
+1	FIELDS	F688	blank		text	FALSE
+1	FIELDS	G688	blank		text	Original source field: detected_D.
+1	FIELDS	H688	blank		text	source Boolean flag
+1	FIELDS	I688	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J688	blank		b	FALSE
+1	FIELDS	K688	blank		text	Complete catalogue membership and abundance register for the three designated comparisons
+1	FIELDS	L688	blank		text	Supplementary_Data_1_comparison_members.tsv
+1	FIELDS	A689	blank		text	S65_comparison_members
+1	FIELDS	B689	blank		n	7
+1	FIELDS	C689	blank		text	detected_C
+1	FIELDS	D689	blank		text	logical
+1	FIELDS	E689	blank		n	0
+1	FIELDS	F689	blank		text	TRUE
+1	FIELDS	G689	blank		text	Original source field: detected_C.
+1	FIELDS	H689	blank		text	source Boolean flag
+1	FIELDS	I689	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J689	blank		b	FALSE
+1	FIELDS	K689	blank		text	Complete catalogue membership and abundance register for the three designated comparisons
+1	FIELDS	L689	blank		text	Supplementary_Data_1_comparison_members.tsv
+1	FIELDS	A690	blank		text	S65_comparison_members
+1	FIELDS	B690	blank		n	8
+1	FIELDS	C690	blank		text	percent_D
+1	FIELDS	D690	blank		text	numeric
+1	FIELDS	E690	blank		n	0
+1	FIELDS	F690	blank		text	0
+1	FIELDS	G690	blank		text	Original source field: percent_D.
+1	FIELDS	H690	blank		text	source numeric value
+1	FIELDS	I690	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J690	blank		b	FALSE
+1	FIELDS	K690	blank		text	Complete catalogue membership and abundance register for the three designated comparisons
+1	FIELDS	L690	blank		text	Supplementary_Data_1_comparison_members.tsv
+1	FIELDS	A691	blank		text	S65_comparison_members
+1	FIELDS	B691	blank		n	9
+1	FIELDS	C691	blank		text	percent_C
+1	FIELDS	D691	blank		text	numeric
+1	FIELDS	E691	blank		n	0
+1	FIELDS	F691	blank		text	0.02790222080752055
+1	FIELDS	G691	blank		text	Original source field: percent_C.
+1	FIELDS	H691	blank		text	source numeric value
+1	FIELDS	I691	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J691	blank		b	FALSE
+1	FIELDS	K691	blank		text	Complete catalogue membership and abundance register for the three designated comparisons
+1	FIELDS	L691	blank		text	Supplementary_Data_1_comparison_members.tsv
+1	FIELDS	A692	blank		text	S65_comparison_members
+1	FIELDS	B692	blank		n	10
+1	FIELDS	C692	blank		text	count_D
+1	FIELDS	D692	blank		text	numeric
+1	FIELDS	E692	blank		n	0
+1	FIELDS	F692	blank		text	42
+1	FIELDS	G692	blank		text	Original source field: count_D.
+1	FIELDS	H692	blank		text	source numeric value
+1	FIELDS	I692	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J692	blank		b	FALSE
+1	FIELDS	K692	blank		text	Complete catalogue membership and abundance register for the three designated comparisons
+1	FIELDS	L692	blank		text	Supplementary_Data_1_comparison_members.tsv
+1	FIELDS	A693	blank		text	S65_comparison_members
+1	FIELDS	B693	blank		n	11
+1	FIELDS	C693	blank		text	count_C
+1	FIELDS	D693	blank		text	numeric
+1	FIELDS	E693	blank		n	0
+1	FIELDS	F693	blank		text	1235
+1	FIELDS	G693	blank		text	Original source field: count_C.
+1	FIELDS	H693	blank		text	source numeric value
+1	FIELDS	I693	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J693	blank		b	FALSE
+1	FIELDS	K693	blank		text	Complete catalogue membership and abundance register for the three designated comparisons
+1	FIELDS	L693	blank		text	Supplementary_Data_1_comparison_members.tsv
+1	FIELDS	A694	blank		text	S65_comparison_members
+1	FIELDS	B694	blank		n	12
+1	FIELDS	C694	blank		text	trimmed_depth_D
+1	FIELDS	D694	blank		text	numeric
+1	FIELDS	E694	blank		n	0
+1	FIELDS	F694	blank		text	0.32753888
+1	FIELDS	G694	blank		text	Original source field: trimmed_depth_D.
+1	FIELDS	H694	blank		text	source numeric value
+1	FIELDS	I694	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J694	blank		b	FALSE
+1	FIELDS	K694	blank		text	Complete catalogue membership and abundance register for the three designated comparisons
+1	FIELDS	L694	blank		text	Supplementary_Data_1_comparison_members.tsv
+1	FIELDS	A695	blank		text	S65_comparison_members
+1	FIELDS	B695	blank		n	13
+1	FIELDS	C695	blank		text	trimmed_depth_C
+1	FIELDS	D695	blank		text	numeric
+1	FIELDS	E695	blank		n	0
+1	FIELDS	F695	blank		text	14.183898
+1	FIELDS	G695	blank		text	Original source field: trimmed_depth_C.
+1	FIELDS	H695	blank		text	source numeric value
+1	FIELDS	I695	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J695	blank		b	FALSE
+1	FIELDS	K695	blank		text	Complete catalogue membership and abundance register for the three designated comparisons
+1	FIELDS	L695	blank		text	Supplementary_Data_1_comparison_members.tsv
+1	FIELDS	A696	blank		text	S65_comparison_members
+1	FIELDS	B696	blank		n	14
+1	FIELDS	C696	blank		text	breadth_D
+1	FIELDS	D696	blank		text	numeric
+1	FIELDS	E696	blank		n	0
+1	FIELDS	F696	blank		text	0.25462586
+1	FIELDS	G696	blank		text	Original source field: breadth_D.
+1	FIELDS	H696	blank		text	source numeric value
+1	FIELDS	I696	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J696	blank		b	FALSE
+1	FIELDS	K696	blank		text	Complete catalogue membership and abundance register for the three designated comparisons
+1	FIELDS	L696	blank		text	Supplementary_Data_1_comparison_members.tsv
+1	FIELDS	A697	blank		text	S65_comparison_members
+1	FIELDS	B697	blank		n	15
+1	FIELDS	C697	blank		text	breadth_C
+1	FIELDS	D697	blank		text	numeric
+1	FIELDS	E697	blank		n	0
+1	FIELDS	F697	blank		text	0.99061286
+1	FIELDS	G697	blank		text	Original source field: breadth_C.
+1	FIELDS	H697	blank		text	source numeric value
+1	FIELDS	I697	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J697	blank		b	FALSE
+1	FIELDS	K697	blank		text	Complete catalogue membership and abundance register for the three designated comparisons
+1	FIELDS	L697	blank		text	Supplementary_Data_1_comparison_members.tsv
+1	FIELDS	A698	blank		text	S65_comparison_members
+1	FIELDS	B698	blank		n	16
+1	FIELDS	C698	blank		text	member_set
+1	FIELDS	D698	blank		text	text
+1	FIELDS	E698	blank		n	0
+1	FIELDS	F698	blank		text	nearby_only_qualified
+1	FIELDS	G698	blank		text	Original source field: member_set.
+1	FIELDS	H698	blank		text	source text
+1	FIELDS	I698	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J698	blank		b	FALSE
+1	FIELDS	K698	blank		text	Complete catalogue membership and abundance register for the three designated comparisons
+1	FIELDS	L698	blank		text	Supplementary_Data_1_comparison_members.tsv
+1	FIELDS	A699	blank		text	S65_comparison_members
+1	FIELDS	B699	blank		n	17
+1	FIELDS	C699	blank		text	eligible_F0
+1	FIELDS	D699	blank		text	logical
+1	FIELDS	E699	blank		n	0
+1	FIELDS	F699	blank		text	FALSE
+1	FIELDS	G699	blank		text	Carrier is eligible under the filtered criteria (the same under every sample)
+1	FIELDS	H699	blank		text	TRUE/FALSE
+1	FIELDS	I699	blank		text	none
+1	FIELDS	J699	blank		b	TRUE
+1	FIELDS	K699	blank		text	Complete catalogue membership and abundance register for the three designated comparisons
+1	FIELDS	L699	blank		text	Supplementary_Data_1_comparison_members.tsv
+1	FIELDS	A700	blank		text	S65_comparison_members
+1	FIELDS	B700	blank		n	18
+1	FIELDS	C700	blank		text	eligible_F1
+1	FIELDS	D700	blank		text	logical
+1	FIELDS	E700	blank		n	0
+1	FIELDS	F700	blank		text	FALSE
+1	FIELDS	G700	blank		text	TRUE if the vOTU qualifies as a candidate carrier under definition F1 (filtered annotations, hits in predicted host or boundary regions excluded). Sequence-level and identical across the seven samples
+1	FIELDS	H700	blank		text	boolean
+1	FIELDS	I700	blank		text	never empty
+1	FIELDS	J700	blank		b	TRUE
+1	FIELDS	K700	blank		text	Complete catalogue membership and abundance register for the three designated comparisons
+1	FIELDS	L700	blank		text	Supplementary_Data_1_comparison_members.tsv
+1	FIELDS	A701	blank		text	S65_comparison_members
+1	FIELDS	B701	blank		n	19
+1	FIELDS	C701	blank		text	eligible_S0
+1	FIELDS	D701	blank		text	logical
+1	FIELDS	E701	blank		n	0
+1	FIELDS	F701	blank		text	FALSE
+1	FIELDS	G701	blank		text	TRUE if the vOTU qualifies under definition S0 (strict annotations, no regional exclusion). Sequence-level and identical across the seven samples
+1	FIELDS	H701	blank		text	boolean
+1	FIELDS	I701	blank		text	never empty
+1	FIELDS	J701	blank		b	TRUE
+1	FIELDS	K701	blank		text	Complete catalogue membership and abundance register for the three designated comparisons
+1	FIELDS	L701	blank		text	Supplementary_Data_1_comparison_members.tsv
+1	FIELDS	A702	blank		text	S65_comparison_members
+1	FIELDS	B702	blank		n	20
+1	FIELDS	C702	blank		text	eligible_S1
+1	FIELDS	D702	blank		text	logical
+1	FIELDS	E702	blank		n	0
+1	FIELDS	F702	blank		text	FALSE
+1	FIELDS	G702	blank		text	Carrier keeps at least one strict match after the region exclusion
+1	FIELDS	H702	blank		text	TRUE/FALSE
+1	FIELDS	I702	blank		text	none
+1	FIELDS	J702	blank		b	TRUE
+1	FIELDS	K702	blank		text	Complete catalogue membership and abundance register for the three designated comparisons
+1	FIELDS	L702	blank		text	Supplementary_Data_1_comparison_members.tsv
+1	FIELDS	A703	blank		text	S66_input_diagnostics
+1	FIELDS	B703	blank		n	1
+1	FIELDS	C703	blank		text	sample_id
+1	FIELDS	D703	blank		text	text
+1	FIELDS	E703	blank		n	0
+1	FIELDS	F703	blank		text	bc1
+1	FIELDS	G703	blank		text	Water sample, one of bc1, bd1, bc2, gc1, gd1, oc1, od1
+1	FIELDS	H703	blank		text	identifier
+1	FIELDS	I703	blank		text	never empty
+1	FIELDS	J703	blank		b	TRUE
+1	FIELDS	K703	blank		text	Sample-level mapping and depth diagnostics
+1	FIELDS	L703	blank		text	Supplementary_Data_1_input_diagnostics.tsv
+1	FIELDS	A704	blank		text	S66_input_diagnostics
+1	FIELDS	B704	blank		n	2
+1	FIELDS	C704	blank		text	count_positive_vOTUs
+1	FIELDS	D704	blank		text	numeric
+1	FIELDS	E704	blank		n	0
+1	FIELDS	F704	blank		text	2067
+1	FIELDS	G704	blank		text	Original source field: count_positive_vOTUs.
+1	FIELDS	H704	blank		text	source numeric value
+1	FIELDS	I704	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J704	blank		b	FALSE
+1	FIELDS	K704	blank		text	Sample-level mapping and depth diagnostics
+1	FIELDS	L704	blank		text	Supplementary_Data_1_input_diagnostics.tsv
+1	FIELDS	A705	blank		text	S66_input_diagnostics
+1	FIELDS	B705	blank		n	3
+1	FIELDS	C705	blank		text	count_positive_zero_trimmed_depth_vOTUs
+1	FIELDS	D705	blank		text	numeric
+1	FIELDS	E705	blank		n	0
+1	FIELDS	F705	blank		text	1002
+1	FIELDS	G705	blank		text	Original source field: count_positive_zero_trimmed_depth_vOTUs.
+1	FIELDS	H705	blank		text	source numeric value
+1	FIELDS	I705	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J705	blank		b	FALSE
+1	FIELDS	K705	blank		text	Sample-level mapping and depth diagnostics
+1	FIELDS	L705	blank		text	Supplementary_Data_1_input_diagnostics.tsv
+1	FIELDS	A706	blank		text	S66_input_diagnostics
+1	FIELDS	B706	blank		n	4
+1	FIELDS	C706	blank		text	positive_trimmed_depth_vOTUs
+1	FIELDS	D706	blank		text	numeric
+1	FIELDS	E706	blank		n	0
+1	FIELDS	F706	blank		text	1065
+1	FIELDS	G706	blank		text	Original source field: positive_trimmed_depth_vOTUs.
+1	FIELDS	H706	blank		text	source numeric value
+1	FIELDS	I706	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J706	blank		b	FALSE
+1	FIELDS	K706	blank		text	Sample-level mapping and depth diagnostics
+1	FIELDS	L706	blank		text	Supplementary_Data_1_input_diagnostics.tsv
+1	FIELDS	A707	blank		text	S66_input_diagnostics
+1	FIELDS	B707	blank		n	5
+1	FIELDS	C707	blank		text	qualifying_vOTUs
+1	FIELDS	D707	blank		text	numeric
+1	FIELDS	E707	blank		n	0
+1	FIELDS	F707	blank		text	991
+1	FIELDS	G707	blank		text	Members with positive trimmed depth after the fixed full-depth breadth mask
+1	FIELDS	H707	blank		text	vOTUs
+1	FIELDS	I707	blank		text	never empty
+1	FIELDS	J707	blank		b	TRUE
+1	FIELDS	K707	blank		text	Sample-level mapping and depth diagnostics
+1	FIELDS	L707	blank		text	Supplementary_Data_1_input_diagnostics.tsv
+1	FIELDS	A708	blank		text	S66_input_diagnostics
+1	FIELDS	B708	blank		n	6
+1	FIELDS	C708	blank		text	unmasked_depth_sum
+1	FIELDS	D708	blank		text	numeric
+1	FIELDS	E708	blank		n	0
+1	FIELDS	F708	blank		text	51088.59136084564
+1	FIELDS	G708	blank		text	Original source field: unmasked_depth_sum.
+1	FIELDS	H708	blank		text	source numeric value
+1	FIELDS	I708	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J708	blank		b	FALSE
+1	FIELDS	K708	blank		text	Sample-level mapping and depth diagnostics
+1	FIELDS	L708	blank		text	Supplementary_Data_1_input_diagnostics.tsv
+1	FIELDS	A709	blank		text	S66_input_diagnostics
+1	FIELDS	B709	blank		n	7
+1	FIELDS	C709	blank		text	masked_depth_sum
+1	FIELDS	D709	blank		text	numeric
+1	FIELDS	E709	blank		n	0
+1	FIELDS	F709	blank		text	50834.297735099935
+1	FIELDS	G709	blank		text	Original source field: masked_depth_sum.
+1	FIELDS	H709	blank		text	source numeric value
+1	FIELDS	I709	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J709	blank		b	FALSE
+1	FIELDS	K709	blank		text	Sample-level mapping and depth diagnostics
+1	FIELDS	L709	blank		text	Supplementary_Data_1_input_diagnostics.tsv
+1	FIELDS	A710	blank		text	S66_input_diagnostics
+1	FIELDS	B710	blank		n	8
+1	FIELDS	C710	blank		text	breadth_threshold
+1	FIELDS	D710	blank		text	numeric
+1	FIELDS	E710	blank		n	0
+1	FIELDS	F710	blank		text	0.75
+1	FIELDS	G710	blank		text	Covered-fraction threshold a vOTU must reach in a sample to count as detected in that sample
+1	FIELDS	H710	blank		text	fraction of the representative contig (0-1)
+1	FIELDS	I710	blank		text	never empty
+1	FIELDS	J710	blank		b	TRUE
+1	FIELDS	K710	blank		text	Sample-level mapping and depth diagnostics
+1	FIELDS	L710	blank		text	Supplementary_Data_1_input_diagnostics.tsv
+1	FIELDS	A711	blank		text	S67_full_definitions
+1	FIELDS	B711	blank		n	1
+1	FIELDS	C711	blank		text	Figure
+1	FIELDS	D711	blank		text	text
+1	FIELDS	E711	blank		n	0
+1	FIELDS	F711	blank		text	F1,F2,S1,S2
+1	FIELDS	G711	blank		text	Original source field: Figure.
+1	FIELDS	H711	blank		text	source text
+1	FIELDS	I711	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J711	blank		b	FALSE
+1	FIELDS	K711	blank		text	Complete 66-row study-unit and definition ledger
+1	FIELDS	L711	blank		text	Supplementary_Table_S1_full_definitions.tsv
+1	FIELDS	A712	blank		text	S67_full_definitions
+1	FIELDS	B712	blank		n	2
+1	FIELDS	C712	blank		text	Study unit
+1	FIELDS	D712	blank		text	text
+1	FIELDS	E712	blank		n	0
+1	FIELDS	F712	blank		text	water sample
+1	FIELDS	G712	blank		text	Original source field: Study unit.
+1	FIELDS	H712	blank		text	source text
+1	FIELDS	I712	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J712	blank		b	FALSE
+1	FIELDS	K712	blank		text	Complete 66-row study-unit and definition ledger
+1	FIELDS	L712	blank		text	Supplementary_Table_S1_full_definitions.tsv
+1	FIELDS	A713	blank		text	S67_full_definitions
+1	FIELDS	B713	blank		n	3
+1	FIELDS	C713	blank		text	Object or tool
+1	FIELDS	D713	blank		text	text
+1	FIELDS	E713	blank		n	0
+1	FIELDS	F713	blank		text	7 water samples x 3 assays (virome, 16S, 18S)
+1	FIELDS	G713	blank		text	Original source field: Object or tool.
+1	FIELDS	H713	blank		text	source text
+1	FIELDS	I713	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J713	blank		b	FALSE
+1	FIELDS	K713	blank		text	Complete 66-row study-unit and definition ledger
+1	FIELDS	L713	blank		text	Supplementary_Table_S1_full_definitions.tsv
+1	FIELDS	A714	blank		text	S67_full_definitions
+1	FIELDS	B714	blank		n	4
+1	FIELDS	C714	blank		text	Value
+1	FIELDS	D714	blank		text	text
+1	FIELDS	E714	blank		n	0
+1	FIELDS	F714	blank		text	7
+1	FIELDS	G714	blank		text	Original source field: Value.
+1	FIELDS	H714	blank		text	source text
+1	FIELDS	I714	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J714	blank		b	FALSE
+1	FIELDS	K714	blank		text	Complete 66-row study-unit and definition ledger
+1	FIELDS	L714	blank		text	Supplementary_Table_S1_full_definitions.tsv
+1	FIELDS	A715	blank		text	S67_full_definitions
+1	FIELDS	B715	blank		n	5
+1	FIELDS	C715	blank		text	Unit
+1	FIELDS	D715	blank		text	text
+1	FIELDS	E715	blank		n	0
+1	FIELDS	F715	blank		text	samples
+1	FIELDS	G715	blank		text	Original source field: Unit.
+1	FIELDS	H715	blank		text	source text
+1	FIELDS	I715	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J715	blank		b	FALSE
+1	FIELDS	K715	blank		text	Complete 66-row study-unit and definition ledger
+1	FIELDS	L715	blank		text	Supplementary_Table_S1_full_definitions.tsv
+1	FIELDS	A716	blank		text	S67_full_definitions
+1	FIELDS	B716	blank		n	6
+1	FIELDS	C716	blank		text	Denominator
+1	FIELDS	D716	blank		text	text
+1	FIELDS	E716	blank		n	0
+1	FIELDS	F716	blank		text	-
+1	FIELDS	G716	blank		text	Original source field: Denominator.
+1	FIELDS	H716	blank		text	source text
+1	FIELDS	I716	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J716	blank		b	FALSE
+1	FIELDS	K716	blank		text	Complete 66-row study-unit and definition ledger
+1	FIELDS	L716	blank		text	Supplementary_Table_S1_full_definitions.tsv
+1	FIELDS	A717	blank		text	S67_full_definitions
+1	FIELDS	B717	blank		n	7
+1	FIELDS	C717	blank		text	What it counts
+1	FIELDS	D717	blank		text	text
+1	FIELDS	E717	blank		n	0
+1	FIELDS	F717	blank		text	Seven water samples bc1, bd1, bc2, gc1, gd1, oc1, od1; each measured once by three assays
+1	FIELDS	G717	blank		text	Original source field: What it counts.
+1	FIELDS	H717	blank		text	source text
+1	FIELDS	I717	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J717	blank		b	FALSE
+1	FIELDS	K717	blank		text	Complete 66-row study-unit and definition ledger
+1	FIELDS	L717	blank		text	Supplementary_Table_S1_full_definitions.tsv
+1	FIELDS	A718	blank		text	S67_full_definitions
+1	FIELDS	B718	blank		n	8
+1	FIELDS	C718	blank		text	How it must not be used
+1	FIELDS	D718	blank		text	text
+1	FIELDS	E718	blank		n	0
+1	FIELDS	F718	blank		text	Not 21 independent biological samples; c/d are record labels (sample descriptions: d, treatment-process water; c, nearby water after facility outflow), not verified hydraulic pairs or before/after treatment; bc2 has no designated d counterpart
+1	FIELDS	G718	blank		text	Original source field: How it must not be used.
+1	FIELDS	H718	blank		text	source text
+1	FIELDS	I718	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J718	blank		b	FALSE
+1	FIELDS	K718	blank		text	Complete 66-row study-unit and definition ledger
+1	FIELDS	L718	blank		text	Supplementary_Table_S1_full_definitions.tsv
+1	FIELDS	A719	blank		text	S67_full_definitions
+1	FIELDS	B719	blank		n	9
+1	FIELDS	C719	blank		text	Source
+1	FIELDS	D719	blank		text	text
+1	FIELDS	E719	blank		n	0
+1	FIELDS	F719	blank		text	S1_sample_metadata.tsv
+1	FIELDS	G719	blank		text	Original source field: Source.
+1	FIELDS	H719	blank		text	source text
+1	FIELDS	I719	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J719	blank		b	FALSE
+1	FIELDS	K719	blank		text	Complete 66-row study-unit and definition ledger
+1	FIELDS	L719	blank		text	Supplementary_Table_S1_full_definitions.tsv
+1	FIELDS	A720	blank		text	S68_S2_host_links
+1	FIELDS	B720	blank		n	1
+1	FIELDS	C720	blank		text	vOTU_id
+1	FIELDS	D720	blank		text	text
+1	FIELDS	E720	blank		n	0
+1	FIELDS	F720	blank		text	vOTU0663
+1	FIELDS	G720	blank		text	Identifier of a viral operational taxonomic unit in this catalogue
+1	FIELDS	H720	blank		text	identifier
+1	FIELDS	I720	blank		text	never empty
+1	FIELDS	J720	blank		b	TRUE
+1	FIELDS	K720	blank		text	The 83 co-detected virus-host links drawn in Supplementary Fig. S2c
+1	FIELDS	L720	blank		text	Supplementary_Figure_S2_links.tsv
+1	FIELDS	A721	blank		text	S68_S2_host_links
+1	FIELDS	B721	blank		n	2
+1	FIELDS	C721	blank		text	host_genus
+1	FIELDS	D721	blank		text	text
+1	FIELDS	E721	blank		n	0
+1	FIELDS	F721	blank		text	Acidovorax
+1	FIELDS	G721	blank		text	Predicted host genus of the record or edge, with the GTDB g__ prefix
+1	FIELDS	H721	blank		text	GTDB genus name
+1	FIELDS	I721	blank		text	empty where the iPHoP genus is unresolved
+1	FIELDS	J721	blank		b	TRUE
+1	FIELDS	K721	blank		text	The 83 co-detected virus-host links drawn in Supplementary Fig. S2c
+1	FIELDS	L721	blank		text	Supplementary_Figure_S2_links.tsv
+1	FIELDS	A722	blank		text	S68_S2_host_links
+1	FIELDS	B722	blank		n	3
+1	FIELDS	C722	blank		text	iphop_score
+1	FIELDS	D722	blank		text	numeric
+1	FIELDS	E722	blank		n	0
+1	FIELDS	F722	blank		text	97.8
+1	FIELDS	G722	blank		text	Original source field: iphop_score.
+1	FIELDS	H722	blank		text	source numeric value
+1	FIELDS	I722	blank		text	Original blanks and NA markers retained.
+1	FIELDS	J722	blank		b	FALSE
+1	FIELDS	K722	blank		text	The 83 co-detected virus-host links drawn in Supplementary Fig. S2c
+1	FIELDS	L722	blank		text	Supplementary_Figure_S2_links.tsv
+1	FIELDS	A723	blank		text	S68_S2_host_links
+1	FIELDS	B723	blank		n	4
+1	FIELDS	C723	blank		text	n_codetected_samples
+1	FIELDS	D723	blank		text	numeric
+1	FIELDS	E723	blank		n	0
+1	FIELDS	F723	blank		text	1
+1	FIELDS	G723	blank		text	Count of qualifying same-sample primary-host co-detections.
+1	FIELDS	H723	blank		text	records
+1	FIELDS	I723	blank		text	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+1	FIELDS	J723	blank		b	TRUE
+1	FIELDS	K723	blank		text	The 83 co-detected virus-host links drawn in Supplementary Fig. S2c
+1	FIELDS	L723	blank		text	Supplementary_Figure_S2_links.tsv
+1	FIELDS	A724	blank		text	S68_S2_host_links
+1	FIELDS	B724	blank		n	5
+1	FIELDS	C724	blank		text	codetected_samples
+1	FIELDS	D724	blank		text	text
+1	FIELDS	E724	blank		n	0
+1	FIELDS	F724	blank		text	bc2
+1	FIELDS	G724	blank		text	Semicolon-separated co-detected sample IDs in configured order; empty without co-detection.
+1	FIELDS	H724	blank		text	configured sample identifiers
+1	FIELDS	I724	blank		text	NA or empty where the corresponding evidence is unavailable; absence of a record is not biological absence
+1	FIELDS	J724	blank		b	TRUE
+1	FIELDS	K724	blank		text	The 83 co-detected virus-host links drawn in Supplementary Fig. S2c
+1	FIELDS	L724	blank		text	Supplementary_Figure_S2_links.tsv
+1	FIELDS	A725	blank		text	S68_S2_host_links
+1	FIELDS	B725	blank		n	6
+1	FIELDS	C725	blank		text	bc1
+1	FIELDS	D725	blank		text	numeric
+1	FIELDS	E725	blank		n	0
+1	FIELDS	F725	blank		text	0
+1	FIELDS	G725	blank		text	Virus and predicted host genus co-detected in bc1.
+1	FIELDS	H725	blank		text	0 or 1
+1	FIELDS	I725	blank		text	empty only where the source table is empty
+1	FIELDS	J725	blank		b	TRUE
+1	FIELDS	K725	blank		text	The 83 co-detected virus-host links drawn in Supplementary Fig. S2c
+1	FIELDS	L725	blank		text	Supplementary_Figure_S2_links.tsv
+1	FIELDS	A726	blank		text	S68_S2_host_links
+1	FIELDS	B726	blank		n	7
+1	FIELDS	C726	blank		text	bd1
+1	FIELDS	D726	blank		text	numeric
+1	FIELDS	E726	blank		n	0
+1	FIELDS	F726	blank		text	0
+1	FIELDS	G726	blank		text	Virus and predicted host genus co-detected in bd1.
+1	FIELDS	H726	blank		text	0 or 1
+1	FIELDS	I726	blank		text	empty only where the source table is empty
+1	FIELDS	J726	blank		b	TRUE
+1	FIELDS	K726	blank		text	The 83 co-detected virus-host links drawn in Supplementary Fig. S2c
+1	FIELDS	L726	blank		text	Supplementary_Figure_S2_links.tsv
+1	FIELDS	A727	blank		text	S68_S2_host_links
+1	FIELDS	B727	blank		n	8
+1	FIELDS	C727	blank		text	bc2
+1	FIELDS	D727	blank		text	numeric
+1	FIELDS	E727	blank		n	0
+1	FIELDS	F727	blank		text	1
+1	FIELDS	G727	blank		text	Virus and predicted host genus co-detected in bc2.
+1	FIELDS	H727	blank		text	0 or 1
+1	FIELDS	I727	blank		text	empty only where the source table is empty
+1	FIELDS	J727	blank		b	TRUE
+1	FIELDS	K727	blank		text	The 83 co-detected virus-host links drawn in Supplementary Fig. S2c
+1	FIELDS	L727	blank		text	Supplementary_Figure_S2_links.tsv
+1	FIELDS	A728	blank		text	S68_S2_host_links
+1	FIELDS	B728	blank		n	9
+1	FIELDS	C728	blank		text	gc1
+1	FIELDS	D728	blank		text	numeric
+1	FIELDS	E728	blank		n	0
+1	FIELDS	F728	blank		text	0
+1	FIELDS	G728	blank		text	Virus and predicted host genus co-detected in gc1.
+1	FIELDS	H728	blank		text	0 or 1
+1	FIELDS	I728	blank		text	empty only where the source table is empty
+1	FIELDS	J728	blank		b	TRUE
+1	FIELDS	K728	blank		text	The 83 co-detected virus-host links drawn in Supplementary Fig. S2c
+1	FIELDS	L728	blank		text	Supplementary_Figure_S2_links.tsv
+1	FIELDS	A729	blank		text	S68_S2_host_links
+1	FIELDS	B729	blank		n	10
+1	FIELDS	C729	blank		text	gd1
+1	FIELDS	D729	blank		text	numeric
+1	FIELDS	E729	blank		n	0
+1	FIELDS	F729	blank		text	0
+1	FIELDS	G729	blank		text	Virus and predicted host genus co-detected in gd1.
+1	FIELDS	H729	blank		text	0 or 1
+1	FIELDS	I729	blank		text	empty only where the source table is empty
+1	FIELDS	J729	blank		b	TRUE
+1	FIELDS	K729	blank		text	The 83 co-detected virus-host links drawn in Supplementary Fig. S2c
+1	FIELDS	L729	blank		text	Supplementary_Figure_S2_links.tsv
+1	FIELDS	A730	blank		text	S68_S2_host_links
+1	FIELDS	B730	blank		n	11
+1	FIELDS	C730	blank		text	oc1
+1	FIELDS	D730	blank		text	numeric
+1	FIELDS	E730	blank		n	0
+1	FIELDS	F730	blank		text	0
+1	FIELDS	G730	blank		text	Virus and predicted host genus co-detected in oc1.
+1	FIELDS	H730	blank		text	0 or 1
+1	FIELDS	I730	blank		text	empty only where the source table is empty
+1	FIELDS	J730	blank		b	TRUE
+1	FIELDS	K730	blank		text	The 83 co-detected virus-host links drawn in Supplementary Fig. S2c
+1	FIELDS	L730	blank		text	Supplementary_Figure_S2_links.tsv
+1	FIELDS	A731	blank		text	S68_S2_host_links
+1	FIELDS	B731	blank		n	12
+1	FIELDS	C731	blank		text	od1
+1	FIELDS	D731	blank		text	numeric
+1	FIELDS	E731	blank		n	0
+1	FIELDS	F731	blank		text	0
+1	FIELDS	G731	blank		text	Virus and predicted host genus co-detected in od1.
+1	FIELDS	H731	blank		text	0 or 1
+1	FIELDS	I731	blank		text	empty only where the source table is empty
+1	FIELDS	J731	blank		b	TRUE
+1	FIELDS	K731	blank		text	The 83 co-detected virus-host links drawn in Supplementary Fig. S2c
+1	FIELDS	L731	blank		text	Supplementary_Figure_S2_links.tsv
+1	S01_samples	L2	text	c/d = recorded clean/dirty label; sample descriptions: d, treatment-process water; c, nearby water after facility outflow; not verified hydraulic pairs or a before/after treatment; bc2 has no designated d counterpart	text	Sample labels: d, wastewater collected from treatment tanks; c, reclaimed water. bc2 has no designated d counterpart.
+1	S01_samples	L3	text	c/d = recorded clean/dirty label; sample descriptions: d, treatment-process water; c, nearby water after facility outflow; not verified hydraulic pairs or a before/after treatment; bc2 has no designated d counterpart	text	Sample labels: d, wastewater collected from treatment tanks; c, reclaimed water. bc2 has no designated d counterpart.
+1	S01_samples	L4	text	c/d = recorded clean/dirty label; sample descriptions: d, treatment-process water; c, nearby water after facility outflow; not verified hydraulic pairs or a before/after treatment; bc2 has no designated d counterpart	text	Sample labels: d, wastewater collected from treatment tanks; c, reclaimed water. bc2 has no designated d counterpart.
+1	S01_samples	L5	text	c/d = recorded clean/dirty label; sample descriptions: d, treatment-process water; c, nearby water after facility outflow; not verified hydraulic pairs or a before/after treatment; bc2 has no designated d counterpart	text	Sample labels: d, wastewater collected from treatment tanks; c, reclaimed water. bc2 has no designated d counterpart.
+1	S01_samples	L6	text	c/d = recorded clean/dirty label; sample descriptions: d, treatment-process water; c, nearby water after facility outflow; not verified hydraulic pairs or a before/after treatment; bc2 has no designated d counterpart	text	Sample labels: d, wastewater collected from treatment tanks; c, reclaimed water. bc2 has no designated d counterpart.
+1	S01_samples	L7	text	c/d = recorded clean/dirty label; sample descriptions: d, treatment-process water; c, nearby water after facility outflow; not verified hydraulic pairs or a before/after treatment; bc2 has no designated d counterpart	text	Sample labels: d, wastewater collected from treatment tanks; c, reclaimed water. bc2 has no designated d counterpart.
+1	S01_samples	L8	text	c/d = recorded clean/dirty label; sample descriptions: d, treatment-process water; c, nearby water after facility outflow; not verified hydraulic pairs or a before/after treatment; bc2 has no designated d counterpart	text	Sample labels: d, wastewater collected from treatment tanks; c, reclaimed water. bc2 has no designated d counterpart.
+1	S37_gaps	B2	text	not exported: only PNG files analyses/data/115-supp-qc/figures/panel_a_rarefaction.png and panel_i_crossomic_rarefaction.png in the source project	text	Historical source-project gap: original unmasked curve values were not exported. Current retained-table rarefaction values are supplied in Data 1 S50 and displayed in Supplementary Figure 1c.
+1	S37_gaps	C2	text	S1 shows saved end-point diagnostics; curves are not redrawn (re-running vegan::rarefy is outside this task)	text	S50 supports the retained-table subsampling display with the full-depth detection mask fixed; it does not requalify breadth after raw-read subsampling or establish complete sampling of environmental viruses.
+2	INDEX	F5	text	intervals are left-closed [lo, hi); n and k are vOTUs; rate is a fraction. This is the only local table in Data 2	text	intervals are left-closed [lo, hi); n and k are vOTUs; rate is a fraction. This is the only local table in Supplementary Data 2
+2	INDEX	A27	blank		text	G26_projection_QC
+2	INDEX	B27	blank		n	323
+2	INDEX	C27	blank		n	28
+2	INDEX	D27	blank		text	Supplementary Note 4
+2	INDEX	E27	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	INDEX	F27	blank		text	Slopes in log-odds per tenfold CDS increase; diagnostics are numerical, not adjusted biological effects or tests.
+2	INDEX	G27	blank		text	Post-release scoped QC
+2	INDEX	H27	blank		text	G26_projection_QC.tsv
+2	INDEX	A28	blank		text	G27_projection_QC_summary
+2	INDEX	B28	blank		n	2
+2	INDEX	C28	blank		n	9
+2	INDEX	D28	blank		text	Supplementary Note 4
+2	INDEX	E28	blank		text	Fixed-set summaries of per-feature slopes/differences and projection convergence; original strict-valid counts are zero.
+2	INDEX	F28	blank		text	Group n counts fixed features (285/38), not independent biological samples; median residual is median of per-feature differences.
+2	INDEX	G28	blank		text	Post-release scoped QC
+2	INDEX	H28	blank		text	G27_projection_QC_summary.tsv
+2	INDEX	A29	blank		text	G28_feature_keywords
+2	INDEX	B29	blank		n	92
+2	INDEX	C29	blank		n	5
+2	INDEX	D29	blank		text	Supplementary Methods
+2	INDEX	E29	blank		text	Exact literal keyword classifier and category precedence
+2	INDEX	F29	blank		text	Precedence and keyword position start at 1; literal keywords preserve trailing spaces.
+2	INDEX	G29	blank		text	Consolidated supplied source
+2	INDEX	H29	blank		text	global-feature-keywords.json
+2	FIELDS	G130	text	Data 2 sheet the status row refers to	text	Supplementary Data 2 sheet the status row refers to
+2	FIELDS	A217	blank		text	G26_projection_QC
+2	FIELDS	B217	blank		n	1
+2	FIELDS	C217	blank		text	feature
+2	FIELDS	D217	blank		text	character
+2	FIELDS	E217	blank		n	0
+2	FIELDS	F217	blank		text	pfam03819
+2	FIELDS	G217	blank		text	Fixed-set functional feature identifier.
+2	FIELDS	I217	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J217	blank		text	True
+2	FIELDS	K217	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L217	blank		text	G26_projection_QC.tsv
+2	FIELDS	A218	blank		text	G26_projection_QC
+2	FIELDS	B218	blank		n	2
+2	FIELDS	C218	blank		text	group
+2	FIELDS	D218	blank		text	character
+2	FIELDS	E218	blank		n	0
+2	FIELDS	F218	blank		text	METAB
+2	FIELDS	G218	blank		text	METAB, 285 metabolic-related Pfam domains; ADF_profile, 38 non-NARP anti-defense profiles.
+2	FIELDS	I218	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J218	blank		text	True
+2	FIELDS	K218	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L218	blank		text	G26_projection_QC.tsv
+2	FIELDS	A219	blank		text	G26_projection_QC
+2	FIELDS	B219	blank		n	3
+2	FIELDS	C219	blank		text	carriers
+2	FIELDS	D219	blank		text	numeric
+2	FIELDS	E219	blank		n	0
+2	FIELDS	F219	blank		n	4396
+2	FIELDS	G219	blank		text	Number of reference genomes carrying the feature.
+2	FIELDS	I219	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J219	blank		text	True
+2	FIELDS	K219	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L219	blank		text	G26_projection_QC.tsv
+2	FIELDS	A220	blank		text	G26_projection_QC
+2	FIELDS	B220	blank		n	4
+2	FIELDS	C220	blank		text	beta
+2	FIELDS	D220	blank		text	numeric
+2	FIELDS	E220	blank		n	0
+2	FIELDS	F220	blank		n	2.44882844633778
+2	FIELDS	G220	blank		text	Observed ordinary-logit slope against log10 CDS count.
+2	FIELDS	I220	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J220	blank		text	True
+2	FIELDS	K220	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L220	blank		text	G26_projection_QC.tsv
+2	FIELDS	A221	blank		text	G26_projection_QC
+2	FIELDS	B221	blank		n	5
+2	FIELDS	C221	blank		text	null_valid
+2	FIELDS	D221	blank		text	logical
+2	FIELDS	E221	blank		n	0
+2	FIELDS	F221	blank		b	TRUE
+2	FIELDS	G221	blank		text	Original strict acceptance flag of the fixed-opportunity reference, not the projection.
+2	FIELDS	I221	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J221	blank		text	True
+2	FIELDS	K221	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L221	blank		text	G26_projection_QC.tsv
+2	FIELDS	A222	blank		text	G26_projection_QC
+2	FIELDS	B222	blank		n	6
+2	FIELDS	C222	blank		text	projection
+2	FIELDS	D222	blank		text	numeric
+2	FIELDS	E222	blank		n	0
+2	FIELDS	F222	blank		n	2.42225535317161
+2	FIELDS	G222	blank		text	Logit-scale slope projected from fixed-opportunity expected carrier counts.
+2	FIELDS	I222	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J222	blank		text	True
+2	FIELDS	K222	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L222	blank		text	G26_projection_QC.tsv
+2	FIELDS	A223	blank		text	G26_projection_QC
+2	FIELDS	B223	blank		n	7
+2	FIELDS	C223	blank		text	residual
+2	FIELDS	D223	blank		text	numeric
+2	FIELDS	E223	blank		n	0
+2	FIELDS	F223	blank		n	0.0265730931661663
+2	FIELDS	G223	blank		text	Per-feature beta minus projected reference slope; descriptive difference.
+2	FIELDS	I223	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J223	blank		text	True
+2	FIELDS	K223	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L223	blank		text	G26_projection_QC.tsv
+2	FIELDS	A224	blank		text	G26_projection_QC
+2	FIELDS	B224	blank		n	8
+2	FIELDS	C224	blank		text	original_strict_valid
+2	FIELDS	D224	blank		text	logical
+2	FIELDS	E224	blank		n	0
+2	FIELDS	F224	blank		b	FALSE
+2	FIELDS	G224	blank		text	Projection passes original no-warning rule; FALSE for all 323 because of non-integer expected-count warnings.
+2	FIELDS	I224	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J224	blank		text	True
+2	FIELDS	K224	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L224	blank		text	G26_projection_QC.tsv
+2	FIELDS	A225	blank		text	G26_projection_QC
+2	FIELDS	B225	blank		n	9
+2	FIELDS	C225	blank		text	projection_converged
+2	FIELDS	D225	blank		text	logical
+2	FIELDS	E225	blank		n	0
+2	FIELDS	F225	blank		b	TRUE
+2	FIELDS	G225	blank		text	Projection GLM convergence flag, or number converged in group summary.
+2	FIELDS	I225	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J225	blank		text	True
+2	FIELDS	K225	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L225	blank		text	G26_projection_QC.tsv
+2	FIELDS	A226	blank		text	G26_projection_QC
+2	FIELDS	B226	blank		n	10
+2	FIELDS	C226	blank		text	projection_boundary
+2	FIELDS	D226	blank		text	logical
+2	FIELDS	E226	blank		n	0
+2	FIELDS	F226	blank		b	FALSE
+2	FIELDS	G226	blank		text	Projection GLM boundary flag.
+2	FIELDS	I226	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J226	blank		text	True
+2	FIELDS	K226	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L226	blank		text	G26_projection_QC.tsv
+2	FIELDS	A227	blank		text	G26_projection_QC
+2	FIELDS	B227	blank		n	11
+2	FIELDS	C227	blank		text	projection_rank
+2	FIELDS	D227	blank		text	numeric
+2	FIELDS	E227	blank		n	0
+2	FIELDS	F227	blank		n	2
+2	FIELDS	G227	blank		text	Projection design matrix rank.
+2	FIELDS	I227	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J227	blank		text	True
+2	FIELDS	K227	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L227	blank		text	G26_projection_QC.tsv
+2	FIELDS	A228	blank		text	G26_projection_QC
+2	FIELDS	B228	blank		n	12
+2	FIELDS	C228	blank		text	projection_iterations
+2	FIELDS	D228	blank		text	numeric
+2	FIELDS	E228	blank		n	0
+2	FIELDS	F228	blank		n	4
+2	FIELDS	G228	blank		text	Number of projection GLM iterations.
+2	FIELDS	I228	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J228	blank		text	True
+2	FIELDS	K228	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L228	blank		text	G26_projection_QC.tsv
+2	FIELDS	A229	blank		text	G26_projection_QC
+2	FIELDS	B229	blank		n	13
+2	FIELDS	C229	blank		text	projection_warnings
+2	FIELDS	D229	blank		text	character
+2	FIELDS	E229	blank		n	0
+2	FIELDS	F229	blank		text	non-integer counts in a binomial glm!
+2	FIELDS	G229	blank		text	Actual warning text recorded from original binomial projection.
+2	FIELDS	I229	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J229	blank		text	True
+2	FIELDS	K229	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L229	blank		text	G26_projection_QC.tsv
+2	FIELDS	A230	blank		text	G26_projection_QC
+2	FIELDS	B230	blank		n	14
+2	FIELDS	C230	blank		text	quasi_projection
+2	FIELDS	D230	blank		text	numeric
+2	FIELDS	E230	blank		n	0
+2	FIELDS	F230	blank		n	2.42225535317161
+2	FIELDS	G230	blank		text	Quasibinomial cross-check of the deterministic projection coefficient.
+2	FIELDS	I230	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J230	blank		text	True
+2	FIELDS	K230	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L230	blank		text	G26_projection_QC.tsv
+2	FIELDS	A231	blank		text	G26_projection_QC
+2	FIELDS	B231	blank		n	15
+2	FIELDS	C231	blank		text	quasi_converged
+2	FIELDS	D231	blank		text	logical
+2	FIELDS	E231	blank		n	0
+2	FIELDS	F231	blank		b	TRUE
+2	FIELDS	G231	blank		text	Quasibinomial convergence flag, or number converged in group summary.
+2	FIELDS	I231	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J231	blank		text	True
+2	FIELDS	K231	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L231	blank		text	G26_projection_QC.tsv
+2	FIELDS	A232	blank		text	G26_projection_QC
+2	FIELDS	B232	blank		n	16
+2	FIELDS	C232	blank		text	quasi_boundary
+2	FIELDS	D232	blank		text	logical
+2	FIELDS	E232	blank		n	0
+2	FIELDS	F232	blank		b	FALSE
+2	FIELDS	G232	blank		text	Quasibinomial boundary flag.
+2	FIELDS	I232	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J232	blank		text	True
+2	FIELDS	K232	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L232	blank		text	G26_projection_QC.tsv
+2	FIELDS	A233	blank		text	G26_projection_QC
+2	FIELDS	B233	blank		n	17
+2	FIELDS	C233	blank		text	quasi_warnings
+2	FIELDS	D233	blank		text	character
+2	FIELDS	E233	blank		n	323
+2	FIELDS	G233	blank		text	Warning text from quasibinomial coefficient check; blank means none recorded.
+2	FIELDS	I233	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J233	blank		text	True
+2	FIELDS	K233	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L233	blank		text	G26_projection_QC.tsv
+2	FIELDS	A234	blank		text	G26_projection_QC
+2	FIELDS	B234	blank		n	18
+2	FIELDS	C234	blank		text	independent_projection
+2	FIELDS	D234	blank		text	numeric
+2	FIELDS	E234	blank		n	0
+2	FIELDS	F234	blank		n	2.42225535317163
+2	FIELDS	G234	blank		text	Coefficient from independent weighted cross-entropy minimization.
+2	FIELDS	I234	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J234	blank		text	True
+2	FIELDS	K234	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L234	blank		text	G26_projection_QC.tsv
+2	FIELDS	A235	blank		text	G26_projection_QC
+2	FIELDS	B235	blank		n	19
+2	FIELDS	C235	blank		text	independent_converged
+2	FIELDS	D235	blank		text	logical
+2	FIELDS	E235	blank		n	0
+2	FIELDS	F235	blank		b	TRUE
+2	FIELDS	G235	blank		text	Independent numerical convergence flag, or number converged in summary.
+2	FIELDS	I235	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J235	blank		text	True
+2	FIELDS	K235	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L235	blank		text	G26_projection_QC.tsv
+2	FIELDS	A236	blank		text	G26_projection_QC
+2	FIELDS	B236	blank		n	20
+2	FIELDS	C236	blank		text	independent_max_score
+2	FIELDS	D236	blank		text	numeric
+2	FIELDS	E236	blank		n	0
+2	FIELDS	F236	blank		n	1.3941484685448e-16
+2	FIELDS	G236	blank		text	Maximum absolute normalized score in independent numerical solution.
+2	FIELDS	I236	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J236	blank		text	True
+2	FIELDS	K236	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L236	blank		text	G26_projection_QC.tsv
+2	FIELDS	A237	blank		text	G26_projection_QC
+2	FIELDS	B237	blank		n	21
+2	FIELDS	C237	blank		text	saved_beta
+2	FIELDS	D237	blank		text	numeric
+2	FIELDS	E237	blank		n	0
+2	FIELDS	F237	blank		n	2.44882844633778
+2	FIELDS	G237	blank		text	Original archived ordinary-logit coefficient.
+2	FIELDS	I237	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J237	blank		text	True
+2	FIELDS	K237	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L237	blank		text	G26_projection_QC.tsv
+2	FIELDS	A238	blank		text	G26_projection_QC
+2	FIELDS	B238	blank		n	22
+2	FIELDS	C238	blank		text	saved_projection
+2	FIELDS	D238	blank		text	numeric
+2	FIELDS	E238	blank		n	0
+2	FIELDS	F238	blank		n	2.42225535317161
+2	FIELDS	G238	blank		text	Original archived projected reference slope.
+2	FIELDS	I238	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J238	blank		text	True
+2	FIELDS	K238	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L238	blank		text	G26_projection_QC.tsv
+2	FIELDS	A239	blank		text	G26_projection_QC
+2	FIELDS	B239	blank		n	23
+2	FIELDS	C239	blank		text	saved_residual
+2	FIELDS	D239	blank		text	numeric
+2	FIELDS	E239	blank		n	0
+2	FIELDS	F239	blank		n	0.0265730931661663
+2	FIELDS	G239	blank		text	Original archived descriptive slope difference.
+2	FIELDS	I239	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J239	blank		text	True
+2	FIELDS	K239	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L239	blank		text	G26_projection_QC.tsv
+2	FIELDS	A240	blank		text	G26_projection_QC
+2	FIELDS	B240	blank		n	24
+2	FIELDS	C240	blank		text	beta_difference
+2	FIELDS	D240	blank		text	numeric
+2	FIELDS	E240	blank		n	0
+2	FIELDS	F240	blank		n	-8.88178419700125e-16
+2	FIELDS	G240	blank		text	Reproduced beta minus archived beta; floating-point check only.
+2	FIELDS	I240	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J240	blank		text	True
+2	FIELDS	K240	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L240	blank		text	G26_projection_QC.tsv
+2	FIELDS	A241	blank		text	G26_projection_QC
+2	FIELDS	B241	blank		n	25
+2	FIELDS	C241	blank		text	projection_difference
+2	FIELDS	D241	blank		text	numeric
+2	FIELDS	E241	blank		n	0
+2	FIELDS	F241	blank		n	2.66453525910038e-15
+2	FIELDS	G241	blank		text	Reproduced projection minus archived projection.
+2	FIELDS	I241	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J241	blank		text	True
+2	FIELDS	K241	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L241	blank		text	G26_projection_QC.tsv
+2	FIELDS	A242	blank		text	G26_projection_QC
+2	FIELDS	B242	blank		n	26
+2	FIELDS	C242	blank		text	residual_difference
+2	FIELDS	D242	blank		text	numeric
+2	FIELDS	E242	blank		n	0
+2	FIELDS	F242	blank		n	-3.46944695195361e-18
+2	FIELDS	G242	blank		text	Reproduced residual minus archived residual.
+2	FIELDS	I242	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J242	blank		text	True
+2	FIELDS	K242	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L242	blank		text	G26_projection_QC.tsv
+2	FIELDS	A243	blank		text	G26_projection_QC
+2	FIELDS	B243	blank		n	27
+2	FIELDS	C243	blank		text	quasi_difference
+2	FIELDS	D243	blank		text	numeric
+2	FIELDS	E243	blank		n	0
+2	FIELDS	F243	blank		n	0
+2	FIELDS	G243	blank		text	Quasibinomial coefficient minus original projection.
+2	FIELDS	I243	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J243	blank		text	True
+2	FIELDS	K243	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L243	blank		text	G26_projection_QC.tsv
+2	FIELDS	A244	blank		text	G26_projection_QC
+2	FIELDS	B244	blank		n	28
+2	FIELDS	C244	blank		text	independent_difference
+2	FIELDS	D244	blank		text	numeric
+2	FIELDS	E244	blank		n	0
+2	FIELDS	F244	blank		n	1.64313007644523e-14
+2	FIELDS	G244	blank		text	Independent cross-entropy coefficient minus original projection.
+2	FIELDS	I244	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J244	blank		text	True
+2	FIELDS	K244	blank		text	323 feature-level projection reproductions with original flags, numerical warnings and two coefficient cross-checks.
+2	FIELDS	L244	blank		text	G26_projection_QC.tsv
+2	FIELDS	A245	blank		text	G27_projection_QC_summary
+2	FIELDS	B245	blank		n	1
+2	FIELDS	C245	blank		text	group
+2	FIELDS	D245	blank		text	character
+2	FIELDS	E245	blank		n	0
+2	FIELDS	F245	blank		text	METAB
+2	FIELDS	G245	blank		text	METAB, 285 metabolic-related Pfam domains; ADF_profile, 38 non-NARP anti-defense profiles.
+2	FIELDS	I245	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J245	blank		text	True
+2	FIELDS	K245	blank		text	Fixed-set summaries of per-feature slopes/differences and projection convergence; original strict-valid counts are zero.
+2	FIELDS	L245	blank		text	G27_projection_QC_summary.tsv
+2	FIELDS	A246	blank		text	G27_projection_QC_summary
+2	FIELDS	B246	blank		n	2
+2	FIELDS	C246	blank		text	n
+2	FIELDS	D246	blank		text	numeric
+2	FIELDS	E246	blank		n	0
+2	FIELDS	F246	blank		n	285
+2	FIELDS	G246	blank		text	Number of annotated gene sites (position table) or features (projection summary).
+2	FIELDS	I246	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J246	blank		text	True
+2	FIELDS	K246	blank		text	Fixed-set summaries of per-feature slopes/differences and projection convergence; original strict-valid counts are zero.
+2	FIELDS	L246	blank		text	G27_projection_QC_summary.tsv
+2	FIELDS	A247	blank		text	G27_projection_QC_summary
+2	FIELDS	B247	blank		n	3
+2	FIELDS	C247	blank		text	median_beta
+2	FIELDS	D247	blank		text	numeric
+2	FIELDS	E247	blank		n	0
+2	FIELDS	F247	blank		n	4.04834979821829
+2	FIELDS	G247	blank		text	Median observed beta in the fixed feature set.
+2	FIELDS	I247	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J247	blank		text	True
+2	FIELDS	K247	blank		text	Fixed-set summaries of per-feature slopes/differences and projection convergence; original strict-valid counts are zero.
+2	FIELDS	L247	blank		text	G27_projection_QC_summary.tsv
+2	FIELDS	A248	blank		text	G27_projection_QC_summary
+2	FIELDS	B248	blank		n	4
+2	FIELDS	C248	blank		text	median_projection
+2	FIELDS	D248	blank		text	numeric
+2	FIELDS	E248	blank		n	0
+2	FIELDS	F248	blank		n	2.30771866302636
+2	FIELDS	G248	blank		text	Median projected reference slope in the fixed feature set.
+2	FIELDS	I248	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J248	blank		text	True
+2	FIELDS	K248	blank		text	Fixed-set summaries of per-feature slopes/differences and projection convergence; original strict-valid counts are zero.
+2	FIELDS	L248	blank		text	G27_projection_QC_summary.tsv
+2	FIELDS	A249	blank		text	G27_projection_QC_summary
+2	FIELDS	B249	blank		n	5
+2	FIELDS	C249	blank		text	median_residual
+2	FIELDS	D249	blank		text	numeric
+2	FIELDS	E249	blank		n	0
+2	FIELDS	F249	blank		n	1.74435633980046
+2	FIELDS	G249	blank		text	Median of per-feature beta minus projected slope, not a difference of group medians.
+2	FIELDS	I249	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J249	blank		text	True
+2	FIELDS	K249	blank		text	Fixed-set summaries of per-feature slopes/differences and projection convergence; original strict-valid counts are zero.
+2	FIELDS	L249	blank		text	G27_projection_QC_summary.tsv
+2	FIELDS	A250	blank		text	G27_projection_QC_summary
+2	FIELDS	B250	blank		n	6
+2	FIELDS	C250	blank		text	projection_converged
+2	FIELDS	D250	blank		text	numeric
+2	FIELDS	E250	blank		n	0
+2	FIELDS	F250	blank		n	285
+2	FIELDS	G250	blank		text	Projection GLM convergence flag, or number converged in group summary.
+2	FIELDS	I250	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J250	blank		text	True
+2	FIELDS	K250	blank		text	Fixed-set summaries of per-feature slopes/differences and projection convergence; original strict-valid counts are zero.
+2	FIELDS	L250	blank		text	G27_projection_QC_summary.tsv
+2	FIELDS	A251	blank		text	G27_projection_QC_summary
+2	FIELDS	B251	blank		n	7
+2	FIELDS	C251	blank		text	original_strict_valid
+2	FIELDS	D251	blank		text	numeric
+2	FIELDS	E251	blank		n	0
+2	FIELDS	F251	blank		n	0
+2	FIELDS	G251	blank		text	Projection passes original no-warning rule; FALSE for all 323 because of non-integer expected-count warnings.
+2	FIELDS	I251	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J251	blank		text	True
+2	FIELDS	K251	blank		text	Fixed-set summaries of per-feature slopes/differences and projection convergence; original strict-valid counts are zero.
+2	FIELDS	L251	blank		text	G27_projection_QC_summary.tsv
+2	FIELDS	A252	blank		text	G27_projection_QC_summary
+2	FIELDS	B252	blank		n	8
+2	FIELDS	C252	blank		text	quasi_converged
+2	FIELDS	D252	blank		text	numeric
+2	FIELDS	E252	blank		n	0
+2	FIELDS	F252	blank		n	285
+2	FIELDS	G252	blank		text	Quasibinomial convergence flag, or number converged in group summary.
+2	FIELDS	I252	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J252	blank		text	True
+2	FIELDS	K252	blank		text	Fixed-set summaries of per-feature slopes/differences and projection convergence; original strict-valid counts are zero.
+2	FIELDS	L252	blank		text	G27_projection_QC_summary.tsv
+2	FIELDS	A253	blank		text	G27_projection_QC_summary
+2	FIELDS	B253	blank		n	9
+2	FIELDS	C253	blank		text	independent_converged
+2	FIELDS	D253	blank		text	numeric
+2	FIELDS	E253	blank		n	0
+2	FIELDS	F253	blank		n	285
+2	FIELDS	G253	blank		text	Independent numerical convergence flag, or number converged in summary.
+2	FIELDS	I253	blank		text	Blank or NA means not recorded; original flags retained.
+2	FIELDS	J253	blank		text	True
+2	FIELDS	K253	blank		text	Fixed-set summaries of per-feature slopes/differences and projection convergence; original strict-valid counts are zero.
+2	FIELDS	L253	blank		text	G27_projection_QC_summary.tsv
+2	FIELDS	A254	blank		text	G28_feature_keywords
+2	FIELDS	B254	blank		n	1
+2	FIELDS	C254	blank		text	record_type
+2	FIELDS	D254	blank		text	text
+2	FIELDS	E254	blank		n	0
+2	FIELDS	F254	blank		text	precedence
+2	FIELDS	G254	blank		text	Record role: precedence, keyword, matching, source_relative or source_sha256.
+2	FIELDS	H254	blank		text	record role
+2	FIELDS	I254	blank		text	Never missing.
+2	FIELDS	J254	blank		b	TRUE
+2	FIELDS	K254	blank		text	Exact literal keyword classifier and category precedence
+2	FIELDS	L254	blank		text	global-feature-keywords.json
+2	FIELDS	A255	blank		text	G28_feature_keywords
+2	FIELDS	B255	blank		n	2
+2	FIELDS	C255	blank		text	category
+2	FIELDS	D255	blank		text	text
+2	FIELDS	E255	blank		n	3
+2	FIELDS	F255	blank		text	STRUCT
+2	FIELDS	G255	blank		text	Classifier category label: STRUCT, REPL, REG or METAB; blank for source metadata.
+2	FIELDS	H255	blank		text	classifier category
+2	FIELDS	I255	blank		text	Blank for source-metadata records.
+2	FIELDS	J255	blank		b	TRUE
+2	FIELDS	K255	blank		text	Exact literal keyword classifier and category precedence
+2	FIELDS	L255	blank		text	global-feature-keywords.json
+2	FIELDS	A256	blank		text	G28_feature_keywords
+2	FIELDS	B256	blank		n	3
+2	FIELDS	C256	blank		text	priority
+2	FIELDS	D256	blank		text	numeric
+2	FIELDS	E256	blank		n	3
+2	FIELDS	F256	blank		text	1
+2	FIELDS	G256	blank		text	First-match category precedence: STRUCT 1, REPL 2, REG 3, METAB 4.
+2	FIELDS	H256	blank		text	index
+2	FIELDS	I256	blank		text	Blank for source-metadata records.
+2	FIELDS	J256	blank		b	TRUE
+2	FIELDS	K256	blank		text	Exact literal keyword classifier and category precedence
+2	FIELDS	L256	blank		text	global-feature-keywords.json
+2	FIELDS	A257	blank		text	G28_feature_keywords
+2	FIELDS	B257	blank		n	4
+2	FIELDS	C257	blank		text	position
+2	FIELDS	D257	blank		text	numeric
+2	FIELDS	E257	blank		n	3
+2	FIELDS	F257	blank		text	1
+2	FIELDS	G257	blank		text	One-based item position within its source list.
+2	FIELDS	H257	blank		text	index
+2	FIELDS	I257	blank		text	Blank for source-metadata records.
+2	FIELDS	J257	blank		b	TRUE
+2	FIELDS	K257	blank		text	Exact literal keyword classifier and category precedence
+2	FIELDS	L257	blank		text	global-feature-keywords.json
+2	FIELDS	A258	blank		text	G28_feature_keywords
+2	FIELDS	B258	blank		n	5
+2	FIELDS	C258	blank		text	value
+2	FIELDS	D258	blank		text	text
+2	FIELDS	E258	blank		n	0
+2	FIELDS	F258	blank		text	STRUCT
+2	FIELDS	G258	blank		text	Exact literal keyword, category label or source metadata; trailing spaces are significant.
+2	FIELDS	H258	blank		text	literal text
+2	FIELDS	I258	blank		text	Never missing.
+2	FIELDS	J258	blank		b	TRUE
+2	FIELDS	K258	blank		text	Exact literal keyword classifier and category precedence
+2	FIELDS	L258	blank		text	global-feature-keywords.json
